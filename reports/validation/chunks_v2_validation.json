@@ -1,0 +1,60 @@
+{
+  "documents": {
+    "Buku_IKU_Diktisaintek_Berdampak_V1.md": {
+      "blocks": 815,
+      "chunks": 379,
+      "blocks_not_in_any_chunk": [],
+      "blocks_low_word_coverage": [],
+      "missing_numbers": {},
+      "blocks_with_source_notes": 8,
+      "source_notes_lost": [],
+      "ok": true
+    },
+    "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md": {
+      "blocks": 601,
+      "chunks": 226,
+      "blocks_not_in_any_chunk": [],
+      "blocks_low_word_coverage": [],
+      "missing_numbers": {},
+      "blocks_with_source_notes": 8,
+      "source_notes_lost": [],
+      "ok": true
+    }
+  },
+  "chunks": {
+    "total": 605,
+    "tokens_min": 51,
+    "tokens_median": 272,
+    "tokens_p95": 488.0,
+    "tokens_max": 512,
+    "chunks_over_max_tokens": [],
+    "very_short_chunks(<12 kata)": [
+      "BUKU_0030",
+      "BUKU_0031",
+      "BUKU_0125",
+      "BUKU_0130",
+      "BUKU_0256",
+      "BUKU_0327",
+      "PPT_0019",
+      "PPT_0195"
+    ],
+    "definition_chunks_without_iku_id": [],
+    "section_path_with_mixed_iku": [],
+    "per_jenis": {
+      "-": 268,
+      "iku": 212,
+      "sub_indikator": 93,
+      "iku_lldikti": 32
+    },
+    "per_bagian": {
+      "-": 272,
+      "Definisi": 87,
+      "Kriteria": 96,
+      "Ketentuan": 50,
+      "Formula": 69,
+      "Kriteria dan Ketentuan": 29,
+      "Isi": 2
+    },
+    "with_iku_id": 337
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "summary": {
+    "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+    "total_blocks": 601,
+    "block_type_counts": {
+      "heading": 210,
+      "paragraph": 272,
+      "table": 111,
+      "image_note": 8
+    },
+    "original_word_count_cleaned": 20842,
+    "processed_word_count": 21749,
+    "content_coverage_pct": 104.4,
+    "content_coverage_nontable_pct": 100.0,
+    "content_coverage_table_pct": 106.1,
+    "number_coverage_pct": 100.0,
+    "missing_number_occurrences": 0,
+    "pages_in_markdown": 89,
+    "pages_without_blocks": [],
+    "original_table_count(html)": 80,
+    "processed_table_count(html)": 80,
+    "original_table_count(markdown_pipe)": 31,
+    "processed_table_count(markdown_pipe)": 31,
+    "table_row_mismatches": 0,
+    "formula_without_division": [],
+    "empty_blocks": 0,
+    "suspicious_headings": 14,
+    "duplicate_block_groups": 13,
+    "blocks_with_source_notes": 8
+  },
+  "issues": {
+    "missing_numbers": [],
+    "formula_without_division": [],
+    "pages_without_blocks": [],
+    "empty_or_short_blocks": [],
+    "suspicious_headings": [
+      {
+        "id": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_100",
+        "content": "Ilustrasi:"
+      },
+      {
+        "id": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_129",
+        "content": "Catatan:"
+      },
+      {
+        "id": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_294",
+        "content": "Diketahui:"
+      },
+      {
+        "id": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_296",
+        "content": "Asumsi:"
+      },
+      {
+        "id": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_393",
+        "content": "2."
+      },
+      {
+        "id": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_451",
+        "content": "Contoh:"
+      },
+      {
+        "id": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_455",
+        "content": "Contoh:"
+      },
+      {
+        "id": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_459",
+        "content": "Contoh:"
+      },
+      {
+        "id": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_489",
+        "content": "Penjelasan Warna:"
+      },
+      {
+        "id": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_504",
+        "content": "IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pen"
+      },
+      {
+        "id": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_516",
+        "content": "IKU 7 : Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Ber"
+      },
+      {
+        "id": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_518",
+        "content": "IKU 7 : Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Ber"
+      },
+      {
+        "id": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_536",
+        "content": "3 IKU 8: Persentase SDM Perguruan Tinggi (Dosen/Peneliti) yang Terlibat Langsung dalam Penyusunan Ke"
+      },
+      {
+        "id": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_570",
+        "content": "5.4.4. Sub Indikator (IKU 7): Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan"
+      }
+    ],
+    "duplicate_blocks": [
+      {
+        "content": "KEMENTERIAN PENDIDIKAN TINGGI,\nSAINS DAN TEKNOLOGI\nREPUBLIK INDONESIA",
+        "count": 2,
+        "ids": [
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_21",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_58"
+        ]
+      },
+      {
+        "content": "ANGGARAN KEMDIKTISAINTEK",
+        "count": 2,
+        "ids": [
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_68",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_83"
+        ]
+      },
+      {
+        "content": "DUKUNGAN KEBIJAKAN",
+        "count": 2,
+        "ids": [
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_70",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_86"
+        ]
+      },
+      {
+        "content": "QS World University Rankings",
+        "count": 2,
+        "ids": [
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_134",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_142"
+        ]
+      },
+      {
+        "content": "1 Dosen ±2 Publikasi /Tahun",
+        "count": 2,
+        "ids": [
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_139",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_148"
+        ]
+      },
+      {
+        "content": "3.6. INDIKATOR INPUT OUTPUT – DIKTISAINTEK BERDAMPAK",
+        "count": 2,
+        "ids": [
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_166",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_167"
+        ]
+      },
+      {
+        "content": "INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK PERGURUAN TINGGI",
+        "count": 3,
+        "ids": [
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_179",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_188",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_189"
+        ]
+      },
+      {
+        "content": "INDIKATOR KINERJA INTERNAL KEMDIKTISAINTEK",
+        "count": 2,
+        "ids": [
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_181",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_191"
+        ]
+      },
+      {
+        "content": "Program Dukungan",
+        "count": 6,
+        "ids": [
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_235",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_252",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_281",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_282",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_311",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_366"
+        ]
+      },
+      {
+        "content": "Langkah Strategis",
+        "count": 5,
+        "ids": [
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_250",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_291",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_292",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_349",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_397"
+        ]
+      },
+      {
+        "content": "<sup>BAB IV</sup>",
+        "count": 2,
+        "ids": [
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_415",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_426"
+        ]
+      },
+      {
+        "content": "(Dalam Miliar Rp)",
+        "count": 4,
+        "ids": [
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_430",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_435",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_440",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_444"
+        ]
+      },
+      {
+        "content": "DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA",
+        "count": 3,
+        "ids": [
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_577",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_582",
+          "PPT_IKU_Diktisaintek_Berdampak_PTS_V2_593"
+        ]
+      }
+    ],
+    "table_row_mismatch": []
+  }
+}

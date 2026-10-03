@@ -1,0 +1,194 @@
+{
+  "summary": {
+    "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+    "total_blocks": 815,
+    "block_type_counts": {
+      "heading": 209,
+      "paragraph": 429,
+      "image_note": 14,
+      "table": 163
+    },
+    "original_word_count_cleaned": 38282,
+    "processed_word_count": 39405,
+    "content_coverage_pct": 102.9,
+    "content_coverage_nontable_pct": 100.0,
+    "content_coverage_table_pct": 104.4,
+    "number_coverage_pct": 100.0,
+    "missing_number_occurrences": 0,
+    "pages_in_markdown": 143,
+    "pages_without_blocks": [
+      143
+    ],
+    "original_table_count(html)": 142,
+    "processed_table_count(html)": 142,
+    "original_table_count(markdown_pipe)": 21,
+    "processed_table_count(markdown_pipe)": 21,
+    "table_row_mismatches": 0,
+    "formula_without_division": [],
+    "empty_blocks": 0,
+    "suspicious_headings": 15,
+    "duplicate_block_groups": 10,
+    "blocks_with_source_notes": 8
+  },
+  "issues": {
+    "missing_numbers": [],
+    "formula_without_division": [],
+    "pages_without_blocks": [
+      143
+    ],
+    "empty_or_short_blocks": [],
+    "suspicious_headings": [
+      {
+        "id": "Buku_IKU_Diktisaintek_Berdampak_V1_145",
+        "content": "Ilustrasi:"
+      },
+      {
+        "id": "Buku_IKU_Diktisaintek_Berdampak_V1_208",
+        "content": "Catatan:"
+      },
+      {
+        "id": "Buku_IKU_Diktisaintek_Berdampak_V1_273",
+        "content": "CATATAN:"
+      },
+      {
+        "id": "Buku_IKU_Diktisaintek_Berdampak_V1_390",
+        "content": "Asumsi:"
+      },
+      {
+        "id": "Buku_IKU_Diktisaintek_Berdampak_V1_442",
+        "content": "Tunjangan postdoctoral:"
+      },
+      {
+        "id": "Buku_IKU_Diktisaintek_Berdampak_V1_444",
+        "content": "Dana riset:"
+      },
+      {
+        "id": "Buku_IKU_Diktisaintek_Berdampak_V1_446",
+        "content": "Total investasi per orang:"
+      },
+      {
+        "id": "Buku_IKU_Diktisaintek_Berdampak_V1_581",
+        "content": "2 IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang P"
+      },
+      {
+        "id": "Buku_IKU_Diktisaintek_Berdampak_V1_592",
+        "content": "IKU 7: Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berk"
+      },
+      {
+        "id": "Buku_IKU_Diktisaintek_Berdampak_V1_606",
+        "content": "IKU 8: Persentase SDM Perguruan Tinggi (Dosen/Peneliti) yang Terlibat Langsung dalam Penyusunan Kebi"
+      },
+      {
+        "id": "Buku_IKU_Diktisaintek_Berdampak_V1_617",
+        "content": "IKU 11: (d) Pencegahan dan Penanganan: (1) Anti Kekerasan; (2) Anti Narkotika, Psikotropika dan Baha"
+      },
+      {
+        "id": "Buku_IKU_Diktisaintek_Berdampak_V1_645",
+        "content": "5.4.4. Sub Indikator (IKU 7): Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan"
+      },
+      {
+        "id": "Buku_IKU_Diktisaintek_Berdampak_V1_727",
+        "content": "INDIKATOR KINERJA UTAMA PERGURUAN TINGGI DAN LEMBAGA LAYANAN PENDIDIKAN TINGGI DI LINGKUNGAN KEMENTE"
+      },
+      {
+        "id": "Buku_IKU_Diktisaintek_Berdampak_V1_729",
+        "content": "REPUBLIK INDONESIA,"
+      },
+      {
+        "id": "Buku_IKU_Diktisaintek_Berdampak_V1_733",
+        "content": "MEMUTUSKAN:"
+      }
+    ],
+    "duplicate_blocks": [
+      {
+        "content": "photo: KEMENTERIAN PENDIDIKAN TINGGI, SAINS DAN TEKNOLOGI REPUBLIK INDONESIA",
+        "count": 7,
+        "ids": [
+          "Buku_IKU_Diktisaintek_Berdampak_V1_14",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_56",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_166",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_305",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_536",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_668",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_692"
+        ]
+      },
+      {
+        "content": "**INDIKATOR KINERJA UTAMA (IKU)**  **DIKTISAINTEK BERDAMPAK**",
+        "count": 2,
+        "ids": [
+          "Buku_IKU_Diktisaintek_Berdampak_V1_15",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_669"
+        ]
+      },
+      {
+        "content": "Kerangka strategis Kemdiktisaintek disusun untuk memastikan bahwa seluruh kebija",
+        "count": 2,
+        "ids": [
+          "Buku_IKU_Diktisaintek_Berdampak_V1_98",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_108"
+        ]
+      },
+      {
+        "content": "Sumber: Statistik PDDikti, 2024-2025",
+        "count": 2,
+        "ids": [
+          "Buku_IKU_Diktisaintek_Berdampak_V1_181",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_187"
+        ]
+      },
+      {
+        "content": "INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK PERGURUAN TINGGI",
+        "count": 3,
+        "ids": [
+          "Buku_IKU_Diktisaintek_Berdampak_V1_261",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_262",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_271"
+        ]
+      },
+      {
+        "content": "Pengampu atas indikator",
+        "count": 2,
+        "ids": [
+          "Buku_IKU_Diktisaintek_Berdampak_V1_269",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_277"
+        ]
+      },
+      {
+        "content": "Program Dukungan",
+        "count": 2,
+        "ids": [
+          "Buku_IKU_Diktisaintek_Berdampak_V1_325",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_466"
+        ]
+      },
+      {
+        "content": "Langkah Strategis",
+        "count": 4,
+        "ids": [
+          "Buku_IKU_Diktisaintek_Berdampak_V1_339",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_388",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_437",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_487"
+        ]
+      },
+      {
+        "content": "Salinan sesuai dengan aslinya\nKepala Biro Hukum\nKementerian Pendidikan Tinggi, S",
+        "count": 2,
+        "ids": [
+          "Buku_IKU_Diktisaintek_Berdampak_V1_744",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_813"
+        ]
+      },
+      {
+        "content": "Ineke Indraswati\nNIP 197809262000122001",
+        "count": 2,
+        "ids": [
+          "Buku_IKU_Diktisaintek_Berdampak_V1_746",
+          "Buku_IKU_Diktisaintek_Berdampak_V1_815"
+        ]
+      }
+    ],
+    "table_row_mismatch": []
+  }
+}

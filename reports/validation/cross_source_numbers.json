@@ -1,0 +1,640 @@
+{
+  "mismatched_rows": [
+    {
+      "secondary_page": 8,
+      "primary_page": 11,
+      "table_similarity": 0.99,
+      "row_similarity": 0.81,
+      "secondary_row": "Proses Internal | SS.1. Meningkatnya partisipasi pendidikan tinggi berkualitas. SS.2. Meningkatnya mutu dan relevansi pendidikan tinggi. SS.5. Meningkatnya kualitas kebijakan nasional bidang pendidikan tinggi, sains dan teknologi yang berbasis riset. | IKSS.1.1. Angka Partisipasi Kasar Pendidikan Tinggi (APK PT) | 38,04% (2029) | Sekretariat Jenderal; Direktorat Jenderal Pendidikan Tinggi",
+      "primary_row": "Proses Internal | SS.1. Meningkatnya partisipasi pendidikan tinggi berkualitas. SS.2. Meningkatnya mutu dan relevansi pendidikan tinggi. SS.5. Meningkatnya kualitas kebijakan nasional bidang pendidikan tinggi, sains dan teknologi yang berbasis riset. SS.7. Meningkatnya tata kelola Kementerian yang partisipatif, transparan, dan akuntabel | IKSS.1.1. Angka Partisipasi Kasar Pendidikan Tinggi (APK PT) | 38,04% (2029) | Sekretariat Jenderal; Direktorat Jenderal Pendidikan Tinggi",
+      "numbers_only_in_secondary": [],
+      "numbers_only_in_primary": [
+        "7"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 8,
+      "primary_page": 11,
+      "table_similarity": 0.99,
+      "row_similarity": 0.84,
+      "secondary_row": "Proses Internal | SS.1. Meningkatnya partisipasi pendidikan tinggi berkualitas. SS.2. Meningkatnya mutu dan relevansi pendidikan tinggi. SS.5. Meningkatnya kualitas kebijakan nasional bidang pendidikan tinggi, sains dan teknologi yang berbasis riset. | IKSS.2.1. % lulusan pendidikan tinggi yang langsung bekerja/melanjutkan jenjang pendidikan berikutnya dalam jangka waktu 1 tahun setelah kelulusan (a) total; (b) karyawan atau wirausaha | (a) 65.37% (2029) (b) 86.31% (2029) | Direktorat Jenderal Pendidikan Tinggi; Direktorat Jenderal Sains dan Teknologi",
+      "primary_row": "Proses Internal | SS.1. Meningkatnya partisipasi pendidikan tinggi berkualitas. SS.2. Meningkatnya mutu dan relevansi pendidikan tinggi. SS.5. Meningkatnya kualitas kebijakan nasional bidang pendidikan tinggi, sains dan teknologi yang berbasis riset. SS.7. Meningkatnya tata kelola Kementerian yang partisipatif, transparan, dan akuntabel | IKSS.2.1. % lulusan pendidikan tinggi yang langsung bekerja/melanjutkan jenjang pendidikan berikutnya dalam jangka waktu 1 tahun setelah kelulusan (a) total; (b) karyawan atau wirausaha | (a) 65.37% (2029) (b) 86.31% (2029) | Direktorat Jenderal Pendidikan Tinggi; Direktoral Jenderal Sains dan Teknologi",
+      "numbers_only_in_secondary": [],
+      "numbers_only_in_primary": [
+        "7"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 8,
+      "primary_page": 11,
+      "table_similarity": 0.99,
+      "row_similarity": 0.82,
+      "secondary_row": "Proses Internal | SS.1. Meningkatnya partisipasi pendidikan tinggi berkualitas. SS.2. Meningkatnya mutu dan relevansi pendidikan tinggi. SS.5. Meningkatnya kualitas kebijakan nasional bidang pendidikan tinggi, sains dan teknologi yang berbasis riset. | IKSS.2.2. % lulusan pendidikan tinggi vokasi yang bekerja di bidang sesuai pendidikan dalam jangka waktu 1 tahun setelah kelulusan | (a) 75,5% (2029) (b) 5,5% (2029) | Direktorat Jenderal Pendidikan Tinggi; Direktorat Jenderal Sains dan Teknologi",
+      "primary_row": "Proses Internal | SS.1. Meningkatnya partisipasi pendidikan tinggi berkualitas. SS.2. Meningkatnya mutu dan relevansi pendidikan tinggi. SS.5. Meningkatnya kualitas kebijakan nasional bidang pendidikan tinggi, sains dan teknologi yang berbasis riset. SS.7. Meningkatnya tata kelola Kementerian yang partisipatif, transparan, dan akuntabel | IKSS.2.2. % lulusan pendidikan tinggi vokasi yang bekerja di bidang sesuai pendidikan dalam jangka waktu 1 tahun setelah kelulusan | (a) 75,5% (2029) (b) 5,5% (2029) | Direktorat Jenderal Pendidikan Tinggi; Direktoral Jenderal Sains dan Teknologi",
+      "numbers_only_in_secondary": [],
+      "numbers_only_in_primary": [
+        "7"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 8,
+      "primary_page": 11,
+      "table_similarity": 0.99,
+      "row_similarity": 0.81,
+      "secondary_row": "Proses Internal | SS.7. Meningkatnya tata kelola Kementerian yang partisipatif, transparan, dan akuntabel | IKSS.5.1. Jumlah perumusan kebijakan nasional bidang pendidikan tinggi, sains, dan teknologi yang berbasis riset (%) | 100% (2029) | Direktorat Jenderal Pendidikan Tinggi; Direktorat Jenderal Riset dan Pengembangan; Direktorat Jenderal Sains dan Teknologi",
+      "primary_row": "Proses Internal | SS.1. Meningkatnya partisipasi pendidikan tinggi berkualitas. SS.2. Meningkatnya mutu dan relevansi pendidikan tinggi. SS.5. Meningkatnya kualitas kebijakan nasional bidang pendidikan tinggi, sains dan teknologi yang berbasis riset. SS.7. Meningkatnya tata kelola Kementerian yang partisipatif, transparan, dan akuntabel | IKSS.5.1. Jumlah perumusan kebijakan nasional bidang pendidikan tinggi, sains, dan teknologi yang berbasis riset (%) | 100% (2029) | Direktorat Jenderal Pendidikan Tinggi; Direktorat Jenderal Riset dan Pengembangan; Direktoral Jenderal Sains dan Teknologi",
+      "numbers_only_in_secondary": [],
+      "numbers_only_in_primary": [
+        "1",
+        "2",
+        "5"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 11,
+      "primary_page": 14,
+      "table_similarity": 0.81,
+      "row_similarity": 0.83,
+      "secondary_row": "**Pagu Dana Equity WCU** | 7 PTN-BH **7 PTN-BH** | **70** Miliar Per Tahun | Setara | **1,4** Triliun Per Tahun | • Tarif BI Rate 4,75%",
+      "primary_row": "**Pagu Dana Equity WCU** | 7 PTN-BH **7 PTN-BH** | **70** Miliar Per Tahun | Setara | **1,4** Triliun Per Tahun",
+      "numbers_only_in_secondary": [
+        "475"
+      ],
+      "numbers_only_in_primary": [],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 16,
+      "primary_page": 21,
+      "table_similarity": 0.97,
+      "row_similarity": 1.0,
+      "secondary_row": "5 | 301-350 | Malaysia | Sunway University | 51.6-54.2 | 27.2 | 34.2 | 60.1 | 58.4 | 89.3",
+      "primary_row": "5 | 301-350 | Malaysia | Sunway University | 51.6-54.2 | 27.2 | 34.2 | G0.1 | 58.4 | 89.3",
+      "numbers_only_in_secondary": [
+        "601"
+      ],
+      "numbers_only_in_primary": [
+        "01"
+      ],
+      "known_issue": [
+        "the-wur-font-glitch"
+      ]
+    },
+    {
+      "secondary_page": 16,
+      "primary_page": 21,
+      "table_similarity": 0.97,
+      "row_similarity": 1.0,
+      "secondary_row": "12 | 501–600 | Vietnam | UEH University | 43.6–46.1 | 13 | 21.8 | 62.1 | 50.1 | 53.6",
+      "primary_row": "12 | 501-600 | Vietnam | UEH University | 43.6-46.1 | 13 | 21.8 | G2.1 | 50.1 | 53.6",
+      "numbers_only_in_secondary": [
+        "621"
+      ],
+      "numbers_only_in_primary": [
+        "21"
+      ],
+      "known_issue": [
+        "the-wur-font-glitch"
+      ]
+    },
+    {
+      "secondary_page": 16,
+      "primary_page": 21,
+      "table_similarity": 0.97,
+      "row_similarity": 1.0,
+      "secondary_row": "15 | 601–800 | Vietnam | Duy Tan University | 39.0–43.5 | 12.8 | 17 | 91.9 | 27.9 | 55.2",
+      "primary_row": "15 | 601-800 | Vietnam | Duy Tan University | 39.0-43.5 | 12.8 | 17 | G1.G | 27.9 | 55.2",
+      "numbers_only_in_secondary": [
+        "919"
+      ],
+      "numbers_only_in_primary": [
+        "1"
+      ],
+      "known_issue": [
+        "the-wur-font-glitch"
+      ]
+    },
+    {
+      "secondary_page": 28,
+      "primary_page": 33,
+      "table_similarity": 1.0,
+      "row_similarity": 1.0,
+      "secondary_row": "<br> **2.234** <br> Mahasiswa Asing |  | **9.058** <br> Mahasiswa Asing",
+      "primary_row": " |  | **9.058**<br>Mahasiswa Asing",
+      "numbers_only_in_secondary": [
+        "2234"
+      ],
+      "numbers_only_in_primary": [],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 31,
+      "primary_page": 36,
+      "table_similarity": 0.97,
+      "row_similarity": 1.0,
+      "secondary_row": "Indonesia | 9,80 | 23,60",
+      "primary_row": "Indonesia | 68.454 | 9,80 | 23,60",
+      "numbers_only_in_secondary": [],
+      "numbers_only_in_primary": [
+        "68454"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 31,
+      "primary_page": 36,
+      "table_similarity": 0.97,
+      "row_similarity": 1.0,
+      "secondary_row": "Malaysia | 19,60 | 41,60",
+      "primary_row": "Malaysia | 52.861 | 19,60 | 41,60",
+      "numbers_only_in_secondary": [],
+      "numbers_only_in_primary": [
+        "52861"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 31,
+      "primary_page": 36,
+      "table_similarity": 0.97,
+      "row_similarity": 1.0,
+      "secondary_row": "Vietnam | 20,50 | 44,10",
+      "primary_row": "Vietnam | 22.603 | 20,50 | 44,10",
+      "numbers_only_in_secondary": [],
+      "numbers_only_in_primary": [
+        "22603"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 31,
+      "primary_page": 36,
+      "table_similarity": 0.97,
+      "row_similarity": 1.0,
+      "secondary_row": "Thailand | 23,90 | 54,70",
+      "primary_row": "Thailand | 31.331 | 23,90 | 54,70",
+      "numbers_only_in_secondary": [],
+      "numbers_only_in_primary": [
+        "31331"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 31,
+      "primary_page": 36,
+      "table_similarity": 0.73,
+      "row_similarity": 1.0,
+      "secondary_row": "Realisasi | 2024 | 9,80% | 23,60%",
+      "primary_row": "Realisasi 2024 | 9,80% | 6.708 | 23,60% | 16.155",
+      "numbers_only_in_secondary": [],
+      "numbers_only_in_primary": [
+        "16155",
+        "6708"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 31,
+      "primary_page": 36,
+      "table_similarity": 0.73,
+      "row_similarity": 1.0,
+      "secondary_row": "Realisasi | 2024 | 6.708 | 16.155",
+      "primary_row": "Realisasi 2024 | 9,80% | 6.708 | 23,60% | 16.155",
+      "numbers_only_in_secondary": [],
+      "numbers_only_in_primary": [
+        "2360",
+        "980"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 31,
+      "primary_page": 36,
+      "table_similarity": 0.73,
+      "row_similarity": 1.0,
+      "secondary_row": "Target | 2026 | 15% | 45%",
+      "primary_row": "Target 2026 | 15% | 10.268 | 45% | 30.804",
+      "numbers_only_in_secondary": [],
+      "numbers_only_in_primary": [
+        "10268",
+        "30804"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 31,
+      "primary_page": 36,
+      "table_similarity": 0.73,
+      "row_similarity": 1.0,
+      "secondary_row": "Target | 2026 | 10.268 | 30.804",
+      "primary_row": "Target 2026 | 15% | 10.268 | 45% | 30.804",
+      "numbers_only_in_secondary": [],
+      "numbers_only_in_primary": [
+        "15",
+        "45"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 32,
+      "primary_page": 37,
+      "table_similarity": 0.5,
+      "row_similarity": 0.75,
+      "secondary_row": "**Total Artikel Publikasi** | 1.785 | 5.355",
+      "primary_row": "11.900 riset | Total Artikel Publikasi | 1.785 | 5.355",
+      "numbers_only_in_secondary": [],
+      "numbers_only_in_primary": [
+        "11900"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 32,
+      "primary_page": 37,
+      "table_similarity": 0.57,
+      "row_similarity": 0.8,
+      "secondary_row": "**Target Total Artikel Publikasi** | **81** | **243**",
+      "primary_row": "540 riset | Target Total Artikel Publikasi | 81 | 243",
+      "numbers_only_in_secondary": [],
+      "numbers_only_in_primary": [
+        "540"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 32,
+      "primary_page": 37,
+      "table_similarity": 0.57,
+      "row_similarity": 0.75,
+      "secondary_row": "**Total Artikel Publikasi (d + e)** | **1.866** | **5.598**",
+      "primary_row": "11.900 riset | Total Artikel Publikasi | 1.785 | 5.355",
+      "numbers_only_in_secondary": [
+        "1866",
+        "5598"
+      ],
+      "numbers_only_in_primary": [
+        "11900",
+        "1785",
+        "5355"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 35,
+      "primary_page": 40,
+      "table_similarity": 0.83,
+      "row_similarity": 1.0,
+      "secondary_row": "PTN-BH | Baseline 2024 | Proyeksi Pemenuhan target Publikasi 2026-202G (Postdoctoral Program) |  |  |  |  | ",
+      "primary_row": "PTN-BH | Baseline 2024 | Proyeksi Pemenuhan target Publikasi 2026-2029 (Postdoctoral Program) |  |  |  |  | ",
+      "numbers_only_in_secondary": [
+        "202"
+      ],
+      "numbers_only_in_primary": [
+        "2029"
+      ],
+      "known_issue": [
+        "ppt-tahun-202g"
+      ]
+    },
+    {
+      "secondary_page": 35,
+      "primary_page": 40,
+      "table_similarity": 0.83,
+      "row_similarity": 1.0,
+      "secondary_row": "PTN-BH | Baseline 2024 | Target Q1 2026 (45%) | %Q1 Postdoc 2026 | Target Top Tier 2028 (17%) | %Top Tier Postdoc 2028 | Target Top Tier 202G (20%) | %Top Tier Postdoc 202G",
+      "primary_row": "PTN-BH | Baseline 2024 | Target Q1 2026 (45%) | % Q1 Postdoc 2026 | Target Top Tier 2028 (17%) | % Top Tier Postdoc 2028 | Target Top Tier 2029 (20%) | % Top Tier Postdoc 2029",
+      "numbers_only_in_secondary": [
+        "202"
+      ],
+      "numbers_only_in_primary": [
+        "2029"
+      ],
+      "known_issue": [
+        "ppt-tahun-202g"
+      ]
+    },
+    {
+      "secondary_page": 37,
+      "primary_page": 42,
+      "table_similarity": 0.59,
+      "row_similarity": 1.0,
+      "secondary_row": "UGM | 42.49 | 33.87 | 47.91 | 37.80 | 36.38 | 40.92",
+      "primary_row": "UGM | 42.49 | 33.87 | 47.91 | 37.80 | 36.58 | 40.92",
+      "numbers_only_in_secondary": [
+        "3638"
+      ],
+      "numbers_only_in_primary": [
+        "3658"
+      ],
+      "known_issue": [
+        "grafik-pendapatan-non-spp"
+      ]
+    },
+    {
+      "secondary_page": 37,
+      "primary_page": 42,
+      "table_similarity": 0.59,
+      "row_similarity": 1.0,
+      "secondary_row": "ITB | 46.43 | 39.70 | 37.40 | 37.88 | 44.12 | 53.18",
+      "primary_row": "ITB | 46.43 | 39.70 | 37.42 | 37.89 | 44.12 | 53.18",
+      "numbers_only_in_secondary": [
+        "3740",
+        "3788"
+      ],
+      "numbers_only_in_primary": [
+        "3742",
+        "3789"
+      ],
+      "known_issue": [
+        "grafik-pendapatan-non-spp"
+      ]
+    },
+    {
+      "secondary_page": 37,
+      "primary_page": 42,
+      "table_similarity": 0.59,
+      "row_similarity": 1.0,
+      "secondary_row": "UNAIR | 25.36 | 27.19 | 23.52 | 28.46 | 29.49 | 29.47",
+      "primary_row": "UNAIR | 25.38 | 27.19 | 23.52 | 28.44 | 29.41 | 29.47",
+      "numbers_only_in_secondary": [
+        "2536",
+        "2846",
+        "2949"
+      ],
+      "numbers_only_in_primary": [
+        "2538",
+        "2844",
+        "2941"
+      ],
+      "known_issue": [
+        "grafik-pendapatan-non-spp"
+      ]
+    },
+    {
+      "secondary_page": 37,
+      "primary_page": 42,
+      "table_similarity": 0.59,
+      "row_similarity": 1.0,
+      "secondary_row": "IPB | 39.59 | 40.33 | 34.52 | 39.74 | 40.64 | ",
+      "primary_row": "IPB | 39.55 | 40.33 | 34.52 | 39.74 | 40.54 | ",
+      "numbers_only_in_secondary": [
+        "3959",
+        "4064"
+      ],
+      "numbers_only_in_primary": [
+        "3955",
+        "4054"
+      ],
+      "known_issue": [
+        "grafik-pendapatan-non-spp"
+      ]
+    },
+    {
+      "secondary_page": 39,
+      "primary_page": 43,
+      "table_similarity": 0.8,
+      "row_similarity": 1.0,
+      "secondary_row": "Universitas Indonesia | 3.127 | 839",
+      "primary_row": "Universitas Indonesia | 3.127 | 836",
+      "numbers_only_in_secondary": [
+        "839"
+      ],
+      "numbers_only_in_primary": [
+        "836"
+      ],
+      "known_issue": [
+        "dana-abadi-font-glitch"
+      ]
+    },
+    {
+      "secondary_page": 39,
+      "primary_page": 43,
+      "table_similarity": 0.8,
+      "row_similarity": 1.0,
+      "secondary_row": "Institut Teknologi Bandung | 2.151 | 189",
+      "primary_row": "Institut Teknologi Bandung | 2.151 | 186",
+      "numbers_only_in_secondary": [
+        "189"
+      ],
+      "numbers_only_in_primary": [
+        "186"
+      ],
+      "known_issue": [
+        "dana-abadi-font-glitch"
+      ]
+    },
+    {
+      "secondary_page": 39,
+      "primary_page": 43,
+      "table_similarity": 0.8,
+      "row_similarity": 1.0,
+      "secondary_row": "Universitas Airlangga | 1.805 | 259",
+      "primary_row": "Universitas Airlangga | 1.805 | 256",
+      "numbers_only_in_secondary": [
+        "259"
+      ],
+      "numbers_only_in_primary": [
+        "256"
+      ],
+      "known_issue": [
+        "dana-abadi-font-glitch"
+      ]
+    },
+    {
+      "secondary_page": 46,
+      "primary_page": 101,
+      "table_similarity": 0.56,
+      "row_similarity": 0.95,
+      "secondary_row": "Formula | a. AEE = (Jumlah mahasiswa tahun akademik yang lulus sesuai masa tempuh kurikulum) / (Total mahasiwa tahun akademik tersebut) x 100% b. Tingkat Pencapaian AEE = (AEE Realisasi) / (AEE Ideal) x 100% c. AEE PT = ∑_{i =1}^{n} (Tingkat Pencapaian i) / (n) Dimana: i = program pendidikan (misalnya D3, D4, S1, S2, S3, dan seterusnya) n = jumlah program pendidikan yang dihitung Tingkat Pencapaian AEE i = hasil perbandingan antara AEE realisasi dan AEE ideal pada program pendidikan ( i ) Contoh Perhitungan Capaian AEE dengan Basis Normalisasi Diketahui: a. AEE ideal D3 = 33%, AEE D3 realisasi = 30% b. AEE ideal D4 = 25%, AEE D4 realisasi = 20% c. AEE ideal S1 = 25%, AEE S1 realisasi = 20% d. AEE ideal S2 = 50%, AEE S2 realisasi = 45% e. AEE ideal S3 = 33%, AEE S3 realisasi = 30% | a. Tingkat pencapaian AEE D3 = (30%) / (33%) = 90,91% b. Tingkat pencapaian AEE D4 = (20%) / (25%) = 80,00 c. Tingkat pencapaian AEE S1 = (20%) / (25%) = 80,00% d. Tingkat pencapaian AEE S2 = (45%) / (50%) = 90% e. Tingkat pencapaian AEE S3 = (30%) / (33%) = 90,91% AEE PT = (90,91%+80%+80%+90%+90,91%) / () = 86,36%",
+      "primary_row": " |  | Formula | a. AEE = $\\frac{Jumlah\\ mahasiswa\\ tahun\\ akademik\\ yang\\ lulus\\ sesuai\\ masa\\ tempuh\\ kurikulum}{Total\\ mahasiwa\\ tahun\\ akademik\\ tersebut}$ x 100% b. Tingkat Pencapaian AEE = $\\frac{AEE\\ Realisasi}{AEE\\ Ideal}$ x 100% c. AEE PT = $\\sum_{i=1}^{n} \\frac{Tingkat\\ Pencapaian\\ i}{n}$ Dimana: i = program pendidikan (misalnya D3, D4, S1, S2, S3, dan seterusnya) n = jumlah program pendidikan yang dihitung Tingkat Pencapaian AEE i = hasil perbandingan antara AEE realisasi dan AEE ideal pada program pendidikan ( i ) Contoh Perhitungan Capaian AEE dengan Basis Normalisasi Diketahui: a. AEE ideal D3 = 33%, AEE D3 realisasi = 30%",
+      "numbers_only_in_secondary": [
+        "20",
+        "25",
+        "45",
+        "50",
+        "80",
+        "8000",
+        "8636",
+        "90",
+        "9091"
+      ],
+      "numbers_only_in_primary": [],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 47,
+      "primary_page": 51,
+      "table_similarity": 0.85,
+      "row_similarity": 0.98,
+      "secondary_row": "Kriteria | a. Cakupan lulusan yang diukur adalah lulusan yang status bekerja, berwirausaha, atau melanjutkan studi diketahui dalam jangka waktu paling lama 1 (satu) tahun setelah kelulusan, termasuk lulusan yang telah bekerja atau berwirausaha sebelum lulus. b. Kriteria bagi lulusan yang setelah lulus kuliah bekerja: 1) masa tunggu, upah minimum provinsi (UMP), dan bobot penilaian: 1) masa tunggu < 6 bulan dan gaji > 1.2x UMP (Bobot = 1); a) masa tunggu < 1 tahun dan gaji > 1.2x UMP (Bobot = 0,8); dan b) masa tunggu < 1 tahun dan gaji < 1.2x UMP (Bobot = 0,6). 2) tempat bekerja sebagaimana dimaksud pada huruf b meliputi: a) perusahaan swasta (termasuk perusahaan nasional, multinasional, startup, UMKM, dst.); b) lembaga/organisasi nirlaba; c) institusi/organisasi multilateral (misal: PBB, UNICEF, dsb); atau d) instansi Pemerintah, BUMN, atau BUMD. |  | Freelancer | 0,5 | 0,4 | 0,3 | 0,2",
+      "primary_row": "Kriteria | a. Cakupan lulusan yang diukur adalah lulusan yang status bekerja, berwirausaha, atau melanjutkan studi diketahui dalam jangka waktu paling lama 1 (satu) tahun setelah kelulusan, termasuk lulusan yang telah bekerja atau berwirausaha sebelum lulus. b. Kriteria bagi lulusan yang setelah lulus kuliah bekerja: 1) masa tunggu, upah minimum provinsi (UMP), dan bobot penilaian: a) masa tunggu < 6 bulan dan gaji > 1.2x UMP (Bobot = 1); b) masa tunggu < 1 tahun dan gaji > 1.2x UMP (Bobot = 0,8); dan c) masa tunggu < 1 tahun dan gaji < 1.2x UMP (Bobot = 0,6). 2) tempat bekerja sebagaimana dimaksud pada huruf b meliputi: a) perusahaan swasta (termasuk perusahaan nasional, multinasional, startup, UMKM, dst.); b) lembaga/organisasi nirlaba; c) institusi/organisasi multilateral (misal: PBB, UNICEF, dsb); atau d) instansi Pemerintah, BUMN, atau BUMD. c. Kriteria bagi lulusan yang setelah lulus kuliah berwirausaha: |  |  |  | ",
+      "numbers_only_in_secondary": [
+        "02",
+        "03",
+        "04",
+        "05"
+      ],
+      "numbers_only_in_primary": [],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 50,
+      "primary_page": 107,
+      "table_similarity": 0.79,
+      "row_similarity": 0.79,
+      "secondary_row": "Ketentuan | d. Pelaksanaan kegiatan penelitian atau riset oleh mahasiswa dapat dilakukan bersama dengan: 1) dosen tetap dari perguruan tinggi asal; 2) dosen tetap dari perguruan tinggi lain; 3) lembaga riset yang bereputasi; 4) perusahaan multinasional (didampingi dosen pembimbing); dan/atau 5) Pemerintah/BUMN/BUMD (didampingi dosen pembimbing). e. Pelaksanaan kegiatan program mahasiswa berdampak dilakukan dengan ketentuan topik dan format proyek bebas, namun dosen menilai mutu dari aspek penetapan topik, perencanaan, pelaksanaan, dan hasil. Sebagai contoh, bentuk proyek bisa mencakup: 1) tim lomba internasional (misal formula race, lomba robot, mobil hemat energi, cansat, dsb.); 2) proyek untuk mewujudkan rancangan engineering, teknologi, maupun sosial; atau 3) capstone design project (standar ABET). | ",
+      "primary_row": " |  |  | 5) Pemerintah/BUMN/BUMD (didampingi dosen pembimbing). e. Pelaksanaan kegiatan program mahasiswa berdampak dilakukan dengan ketentuan topik dan format proyek bebas, namun dosen menilai mutu dari aspek penetapan topik, perencanaan, pelaksanaan, dan hasil. Sebagai contoh, bentuk proyek bisa mencakup: 1) tim lomba internasional (misal formula race, lomba robot, mobil hemat energi, cansat, dsb.); 2) proyek untuk mewujudkan rancangan engineering, teknologi, maupun sosial; atau 3) capstone design project (standar ABET).",
+      "numbers_only_in_secondary": [
+        "4"
+      ],
+      "numbers_only_in_primary": [],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 50,
+      "primary_page": 107,
+      "table_similarity": 0.79,
+      "row_similarity": 0.86,
+      "secondary_row": "Formula | $$\\frac{\\sum_{1}^{i} n_i k_i}{t} \\times 100\\%$$ n = jumlah mahasiswa program Sarjana dan Diploma yang mendapatkan pengalaman dan pengakuan satuan kredit semester di luar kampus dan meraih prestasi minimal tingkat provinsi t = total mahasiswa. k = konstanta bobot Ketentuan Bobot Prestasi: 1. Tingkat internasional a. Juara 1, bobot = 1 b. Juara 2, 3, atau favorit, bobot = 0,5 c. Juara harapan, bobot = 0,3 d. Finalis, bobot = 0,2 | 2. Tingkat nasional a. Juara 1, bobot = 0,6 b. Juara 2, 3, atau favorit, bobot = 0,3 c. Juara harapan, bobot = 0,20 d. Finalis, bobot = 0,10 3. Tingkat provinsi a. Juara 1, bobot = 0,4 b. Juara 2, 3, atau favorit, bobot = 0,2 c. Juara harapan, bobot = 0,10 d. Finalis, bobot = 0,05 Ketentuan Bobot Pembelajaran di Luar Kampus: 1. Pembelajaran ≤ 5 SKS, bobot = 0,4 2. Pembelajaran 6 – 10 SKS, bobot = 0,6 3. Pembelajaran ≥ 10 SKS, bobot = 1",
+      "primary_row": " |  | Formula | (∑_{1}^{i} n_{i} k_{i}) / (t) × 100 % n = jumlah mahasiswa program Sarjana dan Diploma yang mendapatkan pengalaman dan pengakuan satuan kredit semester di luar kampus dan meraih prestasi minimal tingkat provinsi t = total mahasiswa k = konstanta bobot Ketentuan Bobot Prestasi: 1. Tingkat internasional a. Juara 1, bobot = 1 b. Juara 2, 3, atau favorit, bobot = 0,5 c. Juara harapan, bobot = 0,3 d. Finalis, bobot = 0,2 2. Tingkat nasional a. Juara 1, bobot = 0,6 b. Juara 2, 3, atau favorit, bobot = 0,3 c. Juara harapan, bobot = 0,20 d. Finalis, bobot = 0,10",
+      "numbers_only_in_secondary": [
+        "005",
+        "04",
+        "10",
+        "5",
+        "6"
+      ],
+      "numbers_only_in_primary": [],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 68,
+      "primary_page": 129,
+      "table_similarity": 0.83,
+      "row_similarity": 0.76,
+      "secondary_row": "Kriteria | a. Kriteria kebijakan anti kekerasan di lingkungan perguruan tinggi yang diakui dan dinilai berdasarkan Permendikbudristek No. 55 Tahun 2024 tentang Pencegahan dan Penanganan Kekerasan di Lingkungan Perguruan Tinggi, meliputi: 1) Mahasiswa untuk mengikuti modul pembelajaran tentang kekerasan, intoleransi, dan perundungan yang ditetapkan oleh Kemdiktisaintek misal melalui platform Learning Management System, atau opsi pengajaran lainnya, dan 2) Membuat paling sedikit 1 (satu) bentuk kebijakan anti kekerasan berupa: a) memasukkan materi tentang moderasi beragama/kebhinekaan pada mata kuliah wajib kurikulum agama atau program yang diikuti oleh seluruh mahasiswa; b) memiliki satuan tugas Pencegahan dan Penanganan Kekerasan di Perguruan Tinggi (PPKPT) sesuai dengan Permendikbudristek No. 55 Tahun 2024 tentang Pencegahan dan Penanganan Kekerasan di Lingkungan Perguruan Tinggi (Permendikbudristek PPKPT); c) melakukan sosialisasi terkait PPKPT; d) memiliki regulasi yang mengatur pencegahan dan penanganan kekerasan di lingkungan kampus secara menyeluruh; e) memiliki program pencegahan kekerasan di lingkungan kampus yang ditujukan ke seluruh warga kampus; dan/ atau f) memiliki Peraturan spesifik yang melarang adanya perpeloncoan dalam kegiatan mahasiswa yang ada di perguruan tinggi. | b. Kriteria kebijakan anti narkoba di lingkungan Perguruan Tinggi yang diakui dan dinilai meliputi: 1) memasukkan materi tentang anti narkoba pada program atau mata kuliah yang diikuti oleh seluruh mahasiswa; dan/atau 2) melakukan sosialisasi anti narkoba. c. Kriteria kebijakan anti korupsi di lingkungan perguruan tinggi yang diakui dan dinilai meliputi: 1) menyelenggarakan mata kuliah pendidikan anti korupsi; 2) memiliki mekanisme pengendalian gratifikasi; 3) memiliki mekanisme penanganan pengadual masyarakat; 4) mengimplementasikan Whistle Blowing System; dan/atau 5) memiliki mekanisme penanganan benturan kepentingan (conflict of interest). d. Kriteria implementasi kebijakan pencegahan dan penanganan meliputi pelaksanaan tindak lanjut terhadap kasus kekerasan, narkoba, dan/atau korupsi oleh Perguruan Tinggi dalam periode penilaian.",
+      "primary_row": " | d. Pencegahan dan Penanganan: 1) Anti Kekerasan; 2) Anti Narkotika, Psikotropika dan Bahan Adiktif berbahaya lainnya (narkoba); dan 3) Anti Korupsi | Kriteria | a. Kriteria kebijakan anti kekerasan di lingkungan perguruan tinggi yang diakui dan dinilai berdasarkan Permendikbudristek No. 55 Tahun 2024 tentang Pencegahan dan Penanganan Kekerasan di Lingkungan Perguruan Tinggi, meliputi: 1) Mahasiswa untuk mengikuti modul pembelajaran tentang kekerasan, intoleransi, dan perundungan yang ditetapkan oleh Kemdiktisaintek misal melalui platform Learning Management System, atau opsi pengajaran lainnya, dan 2) Membuat paling sedikit 1 (satu) bentuk kebijakan anti kekerasan berupa: a) memasukkan materi tentang moderasi beragama/kebhinekaan pada mata kuliah wajib kurikulum agama atau program yang diikuti oleh seluruh mahasiswa; b) memiliki satuan tugas Pencegahan dan Penanganan Kekerasan di Perguruan Tinggi (PPKPT) sesuai dengan Permendikbudristek No. 55 Tahun 2024 tentang Pencegahan dan Penanganan Kekerasan di Lingkungan Perguruan Tinggi (Permendikbudristek PPKPT); c) melakukan sosialisasi terkait PPKPT; d) memiliki regulasi yang mengatur pencegahan dan penanganan kekerasan di lingkungan kampus secara menyeluruh; e) memiliki program pencegahan kekerasan di lingkungan kampus yang ditujukan ke seluruh warga kampus; dan/ atau f) memiliki Peraturan spesifik yang melarang adanya perpeloncoan dalam kegiatan mahasiswa yang ada di perguruan tinggi.",
+      "numbers_only_in_secondary": [
+        "4",
+        "5"
+      ],
+      "numbers_only_in_primary": [],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 69,
+      "primary_page": 130,
+      "table_similarity": 0.6,
+      "row_similarity": 1.0,
+      "secondary_row": "Ketentuan | a. Periode penilaian adalah 1 (satu) tahun kalender atau tahun akademik, sesuai dengan siklus pelaporan kinerja perguruan tinggi. b. Syarat validasi Pemenuhan IKU 1) Pemenuhan IKU dinyatakan sah apabila perguruan tinggi memenuhi seluruh ketentuan berikut: 2) memiliki kebijakan, regulasi, atau mekanisme resmi pencegahan dan penanganan kekerasan yang ditetapkan oleh pimpinan perguruan tinggi; 3) kebijakan dan mekanisme tersebut sesuai dan/atau mengacu pada Permendikbudristek Nomor 55 Tahun 2024 tentang Pencegahan dan Penanganan Kekerasan di Lingkungan Perguruan Tinggi; dan 4) tersedia bukti implementasi berupa dokumen, laporan kegiatan, atau eviden sosialisasi dan edukasi pencegahan kekerasan.",
+      "primary_row": " |  | Ketentuan | a. Periode penilaian adalah 1 (satu) tahun kalender atau tahun akademik, sesuai dengan siklus pelaporan kinerja perguruan tinggi. b. Syarat validasi Pemenuhan IKU Pemenuhan IKU dinyatakan sah apabila perguruan tinggi memenuhi seluruh ketentuan berikut: 1) memiliki kebijakan, regulasi, atau mekanisme resmi pencegahan dan penanganan kekerasan yang ditetapkan oleh pimpinan perguruan tinggi; 2) kebijakan dan mekanisme tersebut sesuai dan/atau mengacu pada Permendikbudristek Nomor 55 Tahun 2024 tentang Pencegahan dan Penanganan Kekerasan di Lingkungan Perguruan Tinggi; dan 3) tersedia bukti implementasi berupa dokumen, laporan kegiatan, atau eviden sosialisasi dan edukasi pencegahan kekerasan.",
+      "numbers_only_in_secondary": [
+        "4"
+      ],
+      "numbers_only_in_primary": [],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 75,
+      "primary_page": 74,
+      "table_similarity": 0.99,
+      "row_similarity": 1.0,
+      "secondary_row": "Kriteria dan Ketentuan | 1. Ruang Lingkup Publikasi Top Tier yang Diakui: a. Publikasi yang diterbitkan pada jurnal internasional dengan Sub Subject di Scopus dengan Percentile ≥ 90 (Top 10%) dalam bidang keilmuannya berdasarkan Scopus atau Web of Science (WoS) pada tahun pelaporan. b. Publikasi pada jurnal dengan peringkat tertinggi dalam klaster subjeknya. c. Publikasi di jurnal Ql/Top Tier yang diterbitkan oleh major Publisher and Academic Associations termasuk Elsevier, Sage, Oxford University Press, Nature Portofolio, Springer, Taylor and Frarck, Cambridge University Press, Wiley, Wolters Klu,ver, Blackwell Publishing, Acodemy of Management, American Psychological Association, American Society for Public Administration (ASPA), dar, Emerald Publishing. 2. Tidak Termasuk: a. Publikasi Q1 yang berada di bawah persentil 90. b. Jurnal yang hanya berstatus Q1 tanpa memenuhi ambang Top 10%. c. Publikasi di jurnal yang tidak menyediakan data persentil cite rank. d. Ketentuan publikasi Q1/top tier harus sesuai dengan major publisher, namun tidak termasuk penerbit seperti MDPI, Frontiers. dan Hindawi Publisher. 3. Periode Pengukuran: a. Tahunan (1 tahun kalender). 4. Syarat Validasi: a. Status percentile diverifikasi melalui Scopus atau Web of Science (WoS). b. Nilai CiteScore Percentile sesuai tahun artikel terbit. c. Afiliasi perguruan tinggi tercantum.",
+      "primary_row": "Kriteria dan Ketentuan | a. Ruang Lingkup Publikasi Top Tier yang Diakui: 1) Publikasi yang diterbitkan pada jurnal internasional dengan Sub Subject di Scopus dengan Percentile ≥ 90 (Top 10%) dalam bidang keilmuannya berdasarkan Scopus atau Web of Science (WoS) pada tahun pelaporan. 2) Publikasi pada jurnal dengan peringkat tertinggi dalam klaster subjeknya. 3) Publikasi di jurnal Ql/Top Tier yang diterbitkan oleh major Publisher and Academic Associations termasuk Elsevier, Sage, Oxford University Press, Nature Portofolio, Springer, Taylor and Frarck, Cambridge University Press, Wiley, Wolters Klu,ver, Blackwell Publishing, Acodemy of Management, American Psychological Association, American Society for Public Administration (ASPA), dar, Emerald Publishing b. Tidak Termasuk: 1) Publikasi Q1 yang berada di bawah persentil 90. 2) Jurnal yang hanya berstatus Q1 tanpa memenuhi ambang Top 10%. 3) Publikasi di jurnal yang tidak menyediakan data persentil cite rank. 4) Ketentuan publikasi Q1/top tier harus sesuai dengan major publisher, namun tidak termasuk penerbit seperti MDPI, Frontiers. dan Hindawi Publisher. 5) Periode Pengukuran: Tahunan (1 tahun kalender). c. Syarat Validasi: 1) Status percentile diverifikasi melalui Scopus atau Web of Science (WoS). 2) Nilai CiteScore Percentile sesuai tahun artikel terbit. 3) Afiliasi perguruan tinggi tercantum. |  | ",
+      "numbers_only_in_secondary": [],
+      "numbers_only_in_primary": [
+        "5"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 77,
+      "primary_page": 76,
+      "table_similarity": 0.84,
+      "row_similarity": 1.0,
+      "secondary_row": "Karya Tulis Ilmiah | Artikel jurnal Top Tier, Q1–Q4 (Scopus/ WoS), proceeding internasional bereputasi, atau book chapter internasional | ii. Keterlibatan aktif peneliti luar negeri 1) Peneliti asing berperan dalam desain riset, metodologi, 2) analisis data, atau penulisan luaran. 3) Keterlibatan dibuktikan melalui: grant agreement, 4) MoU/MoA, LoI, kontrak riset, atau dokumen kerja sama formal. | ii. Peneliti mitra memenuhi standar minimum reputasi ilmiah 1) Bidang STEM: H-index ≥ 30 2) Bidang non-STEM: H-index ≥ 15",
+      "primary_row": "Karya Tulis Ilmiah | Artikel jurnal Top Tier, Q1–Q4 (Scopus/ WoS), proceeding internasional bereputasi, atau book chapter internasional | ii. Keterlibatan aktif peneliti luar negeri • Peneliti asing berperan dalam desain riset, metodologi, • analisis data, atau penulisan luaran. • Keterlibatan dibuktikan melalui: grant agreement, • MoU/MoA, LoI, kontrak riset, atau dokumen kerja sama formal. | ii. Peneliti mitra memenuhi standar minimum reputasi ilmiah 4) Bidang STEM: H-index ≥ 30 5) Bidang non-STEM: H-index ≥ 15",
+      "numbers_only_in_secondary": [
+        "2",
+        "3"
+      ],
+      "numbers_only_in_primary": [
+        "5"
+      ],
+      "known_issue": []
+    },
+    {
+      "secondary_page": 85,
+      "primary_page": 83,
+      "table_similarity": 0.99,
+      "row_similarity": 1.0,
+      "secondary_row": "Kriteria dan ketentuan | **Ketentuan Pendanaan** 1. Pendanaan digunakan untuk kegiatan yang secara langsung menunjang: penelitian dasar, terapan, dan pengembangan, penelitian kolaboratif (nasional maupun internasional), hibah riset internal kompetitif, dukungan penulisan artikel ilmiah, conference fee, atau publikasi, hibah percepatan tesis/disertasi terkait riset institusi, penguatan pusat riset, core lab, atau research group. 2. Dana yang dicatat adalah realisasi keuangan (dana benar-benar dikeluarkan), bukan sekadar rencana, pengajuan, atau DPA/RBA. 3. Dana wajib berasal dari: pendapatan masyarakat (SPP/UKT, non-SPP, penugasan fakultas, layanan masyarakat, dsb.). Bukan dana APBN, BOPTN, atau hibah eksternal. Bukti & Validasi 1. Proposal riset, kontrak/MoU, laporan kegiatan, jurnal/paten yang dihasilkan, invoice & bukti pembayaran, laporan keuangan program. Validasi via unit LP3 (Lembaga Penelitian dan Pengabdian) atau unit keuangan PT.",
+      "primary_row": "Kriteria dan ketentuan | a. Ketentuan Pendanaan 1) Pendanaan digunakan untuk kegiatan yang secara langsung menunjang: penelitian dasar, terapan, dan pengembangan, penelitian kolaboratif (nasional maupun internasional), hibah riset internal kompetitif, dukungan penulisan artikel ilmiah, conference fee, atau publikasi, hibah percepatan tesis/disertasi terkait riset institusi, penguatan pusat riset, core lab, atau research group. 2) Dana yang dicatat adalah realisasi keuangan (dana benar-benar dikeluarkan), bukan sekadar rencana, pengajuan, atau DPA/RBA. 3) Dana wajib berasal dari: pendapatan masyarakat (SPP/UKT, non-SPP, penugasan fakultas, layanan masyarakat, dsb.). Bukan dana APBN, BOPTN, atau hibah eksternal. 4) b. Bukti & Validasi Proposal riset, kontrak/MoU, laporan kegiatan, jurnal/paten yang dihasilkan, invoice & bukti pembayaran, laporan keuangan program. Validasi via unit LP3 (Lembaga Penelitian dan Pengabdian) atau unit keuangan PT.",
+      "numbers_only_in_secondary": [],
+      "numbers_only_in_primary": [
+        "4"
+      ],
+      "known_issue": []
+    }
+  ],
+  "glitch_cells": [
+    {
+      "document": "Buku_IKU_Diktisaintek_Berdampak_V1",
+      "page": 21,
+      "cell": "G0.1",
+      "row": "| 5 | 301-350 | Malaysia | Sunway University | 51.6-54.2 | 27.2 | 34.2 | G0.1 | 58.4 | 89.3 |",
+      "known_issue": [
+        "the-wur-font-glitch"
+      ]
+    },
+    {
+      "document": "Buku_IKU_Diktisaintek_Berdampak_V1",
+      "page": 21,
+      "cell": "G2.1",
+      "row": "| 12 | 501-600 | Vietnam | UEH University | 43.6-46.1 | 13 | 21.8 | G2.1 | 50.1 | 53.6 |",
+      "known_issue": [
+        "the-wur-font-glitch"
+      ]
+    },
+    {
+      "document": "Buku_IKU_Diktisaintek_Berdampak_V1",
+      "page": 21,
+      "cell": "G1.G",
+      "row": "| 15 | 601-800 | Vietnam | Duy Tan University | 39.0-43.5 | 12.8 | 17 | G1.G | 27.9 | 55.2 |",
+      "known_issue": [
+        "the-wur-font-glitch"
+      ]
+    },
+    {
+      "document": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2",
+      "page": 35,
+      "cell": "202G",
+      "row": "| PTN-BH | Baseline 2024 | Proyeksi Pemenuhan target Publikasi 2026-202G (Postdoctoral Program) | | | | | |",
+      "known_issue": [
+        "ppt-tahun-202g"
+      ]
+    },
+    {
+      "document": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2",
+      "page": 35,
+      "cell": "202G",
+      "row": "| PTN-BH | Baseline 2024 | Target Q1 2026 (45%) | %Q1 Postdoc 2026 | Target Top Tier 2028 (17%) | %Top Tier Postdoc 2028 | Target Top Tier 202G (20%) | %Top Tie",
+      "known_issue": [
+        "ppt-tahun-202g"
+      ]
+    },
+    {
+      "document": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2",
+      "page": 35,
+      "cell": "202G",
+      "row": "| PTN-BH | Baseline 2024 | Target Q1 2026 (45%) | %Q1 Postdoc 2026 | Target Top Tier 2028 (17%) | %Top Tier Postdoc 2028 | Target Top Tier 202G (20%) | %Top Tie",
+      "known_issue": [
+        "ppt-tahun-202g"
+      ]
+    }
+  ]
+}

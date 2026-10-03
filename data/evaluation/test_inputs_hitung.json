@@ -1,0 +1,104 @@
+{
+  "description": "Input terstruktur untuk 18 soal hitungan (H01-H18) di test_set_buku_iku.md. Pada chatbot sungguhan, LLM yang mengubah kalimat pertanyaan menjadi 'fungsi' + 'argumen' ini (tool calling); di sini ditulis manual agar kalkulator bisa diuji terpisah. 'harapan' = kunci jawaban dari test set. 'sitasi' = IKU yang seharusnya dikutip (untuk memilih chunk sitasi).",
+  "cases": [
+    {"id": "H01", "fungsi": "iku1_aee_prodi",
+     "argumen": {"jenjang": "S1", "lulus_tepat_waktu": 40, "total_mahasiswa": 200},
+     "harapan": {"aee_realisasi_pct": 20.0, "tingkat_pencapaian_pct": 80.0},
+     "sitasi": {"iku_id": "1", "jenis": "iku", "halaman": [49]}},
+
+    {"id": "H02", "fungsi": "iku1_aee_pt",
+     "argumen": {"realisasi_per_jenjang": {"D3": 30, "S1": 22.5, "S2": 40}},
+     "harapan": 86.97,
+     "sitasi": {"iku_id": "1", "jenis": "iku", "halaman": [49, 50]}},
+
+    {"id": "H03", "fungsi": "iku1_aee_prodi",
+     "argumen": {"jenjang": "S1", "lulus_tepat_waktu": 45, "total_mahasiswa": 250, "pindah": 10, "drop_out": 15},
+     "harapan": {"aee_realisasi_pct": 20.0, "tingkat_pencapaian_pct": 80.0},
+     "sitasi": {"iku_id": "1", "jenis": "iku", "halaman": [49]}},
+
+    {"id": "H04", "fungsi": "iku2",
+     "argumen": {"total_responden": 400, "kategori": {"bekerja_<6bln_>1.2ump": 280, "belum": 120}},
+     "harapan": 70.0,
+     "sitasi": {"iku_id": "2", "jenis": "iku", "halaman": [51, 52]}},
+
+    {"id": "H05", "fungsi": "iku2",
+     "argumen": {"total_responden": 500, "kategori": {
+       "bekerja_<6bln_>1.2ump": 200, "bekerja_<1thn_>1.2ump": 100, "bekerja_<1thn_<1.2ump": 50,
+       "studi_lanjut_<12bln": 30, "founder_<6bln_>1.2ump": 20, "freelancer_>6bln_<1.2ump": 10, "belum": 90}},
+     "harapan": 70.8,
+     "sitasi": {"iku_id": "2", "jenis": "iku", "halaman": [51, 52]}},
+
+    {"id": "H06", "fungsi": "iku2_responden_minimum",
+     "argumen": {"jumlah_lulusan": 2000},
+     "harapan": 972,
+     "sitasi": {"iku_id": "2", "jenis": "iku", "halaman": [52]}},
+
+    {"id": "H07", "fungsi": "iku3",
+     "argumen": {"total_mahasiswa": 1000,
+                 "kegiatan": [{"jumlah": 100, "sks": 20}, {"jumlah": 150, "sks": 8}, {"jumlah": 50, "sks": 4}],
+                 "prestasi": [{"jumlah": 5, "tingkat": "nasional", "peringkat": "juara1"},
+                              {"jumlah": 10, "tingkat": "internasional", "peringkat": "finalis"}]},
+     "harapan": 21.5,
+     "sitasi": {"iku_id": "3", "jenis": "iku", "halaman": [53, 54]}},
+
+    {"id": "H08", "fungsi": "iku3",
+     "argumen": {"total_mahasiswa": 500,
+                 "prestasi": [{"jumlah": 2, "tingkat": "internasional", "peringkat": "juara1"},
+                              {"jumlah": 4, "tingkat": "provinsi", "peringkat": "juara2_3_favorit"},
+                              {"jumlah": 20, "tingkat": "provinsi", "peringkat": "finalis"}]},
+     "harapan": 0.76,
+     "sitasi": {"iku_id": "3", "jenis": "iku", "halaman": [54]}},
+
+    {"id": "H09", "fungsi": "rasio",
+     "argumen": {"kode": "iku5", "pembilang": 30, "penyebut": 120},
+     "harapan": 25.0,
+     "sitasi": {"iku_id": "5", "jenis": "iku", "halaman": [57]}},
+
+    {"id": "H10", "fungsi": "iku6",
+     "argumen": {"total_publikasi": 200,
+                 "publikasi": {"top_tier": 10, "q1": 40, "q2": 50, "q3": 30, "q4": 20, "tidak_terindeks": 50}},
+     "harapan": 54.75,
+     "sitasi": {"iku_id": "6", "jenis": "iku", "halaman": [63]}},
+
+    {"id": "H11", "fungsi": "iku6",
+     "argumen": {"total_publikasi": 20, "publikasi": {"q1": 6, "prosiding": 10}, "kolaborasi": {"q1": 4}},
+     "harapan": 67.5,
+     "sitasi": {"iku_id": "6", "jenis": "iku", "halaman": [63]}},
+
+    {"id": "H12", "fungsi": "rasio",
+     "argumen": {"kode": "iku7", "pembilang": 45, "penyebut": 60},
+     "harapan": 75.0,
+     "sitasi": {"iku_id": "7", "jenis": "iku", "halaman": [58]}},
+
+    {"id": "H13", "fungsi": "iku9",
+     "argumen": {"total_pendapatan": 500, "rincian": {
+       "ukt": 300, "boptn": 80, "hibah_riset": 50, "konsultasi": 40, "unit_bisnis": 20, "hasil_dana_abadi": 10}},
+     "harapan": 24.0,
+     "sitasi": {"iku_id": "9", "jenis": "iku", "halaman": [59]}},
+
+    {"id": "H14", "fungsi": "rasio",
+     "argumen": {"kode": "iku4", "pembilang": 45, "penyebut": 300},
+     "harapan": 15.0,
+     "sitasi": {"iku_id": "4", "jenis": "iku", "halaman": [62]}},
+
+    {"id": "H15", "fungsi": "rasio",
+     "argumen": {"kode": "iku8", "pembilang": 12, "penyebut": 400},
+     "harapan": 3.0,
+     "sitasi": {"iku_id": "8", "jenis": "iku", "halaman": [64]}},
+
+    {"id": "H16", "fungsi": "iku11b_predikat",
+     "argumen": {"nilai_akhir": 82},
+     "harapan": "A (sangat baik)",
+     "sitasi": {"iku_id": "11b", "jenis": "iku", "halaman": [66]}},
+
+    {"id": "H17", "fungsi": "rasio",
+     "argumen": {"kode": "iku11d", "pembilang": 18, "penyebut": 24},
+     "harapan": 75.0,
+     "sitasi": {"iku_id": "11d", "jenis": "iku", "halaman": [68]}},
+
+    {"id": "H18", "fungsi": "iku12_penghasilan_minimum",
+     "argumen": {"ump": 3000000, "jabatan": ["lektor", "profesor"]},
+     "harapan": {"lektor": 9000000, "profesor": 18000000},
+     "sitasi": {"iku_id": "12", "jenis": "iku", "halaman": [60]}}
+  ]
+}

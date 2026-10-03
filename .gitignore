@@ -1,0 +1,18 @@
+# Rahasia — JANGAN di-commit
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Vector store: dibangun ulang dari data/embeddings (python src/vectordb/build_chroma.py --reset)
+data/vectorstore/
+
+# IDE / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

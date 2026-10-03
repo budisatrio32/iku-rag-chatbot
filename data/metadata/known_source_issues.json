@@ -1,0 +1,60 @@
+{
+  "description": "Cacat atau kesalahan yang TERBUKTI ada di dokumen sumber atau hasil parsingnya (sudah dicek ke PDF asli). process_markdown.py menempelkan 'note' ke setiap blok yang memuat semua 'match_all' (tidak peka huruf besar/kecil) sebagai field source_notes, agar chatbot tidak menyampaikan nilai yang cacat sebagai fakta.",
+  "font_glitch_g": "Beberapa tabel di kedua PDF memakai font cacat yang menampilkan angka 9 sebagai huruf 'G'. Bukti: Buku hlm. 43 / PPT hlm. 39, tabel 'Hasil Perbandingan 2 Skenario' menulis '83G', '18G', '25G', sedangkan tabel 'Skenario 2' di halaman yang sama (font normal) menulis 839, 189, 259, dan paragrafnya menyebut 'Unair Rp259 miliar'. PPT hlm. 35 menulis '2026-202G' untuk 2026-2029. Parser AI kadang menebak huruf G sebagai angka lain (mis. 6), sehingga angka hasil parsing di sel seperti ini harus dicocokkan silang.",
+  "issues": [
+    {
+      "id": "the-wur-font-glitch",
+      "source_files": [
+        "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+        "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md"
+      ],
+      "match_all": ["Research Quality", "Duy Tan University"],
+      "evidence": "Tabel THE WUR (ASEAN Top 20) Indicators, Buku hlm. 21 dan PPT hlm. 16: PDF aslinya menampilkan 'G0.1' (Sunway University), 'G2.1' (UEH University), dan 'G1.G' (Duy Tan University) di kolom Research Quality. Hasil parsing berbeda-beda: Buku menyalin 'G0.1/G2.1/G1.G', PPT menulis 60.1/62.1/91.9, parsing lama menulis 61.6 untuk Duy Tan.",
+      "note": "Tiga sel kolom Research Quality pada tabel THE WUR tercetak cacat font di dokumen sumber: Sunway University 'G0.1', UEH University 'G2.1', Duy Tan University 'G1.G'. Pada font cacat ini huruf G menggantikan angka 9 (terbukti di tabel Dana Abadi pada dokumen yang sama), sehingga nilai yang paling mungkin adalah 90.1, 92.1, dan 91.9. Sebutkan nilai ini sebagai perkiraan beserta alasannya, bukan sebagai angka pasti; abaikan nilai lain di hasil parsing (mis. 60.1, 62.1, 61.6)."
+    },
+    {
+      "id": "dana-abadi-font-glitch",
+      "source_files": [
+        "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+        "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md"
+      ],
+      "match_all": ["Hasil Perbandingan 2 Skenario", "3.127"],
+      "evidence": "Buku hlm. 43 dan PPT hlm. 39, tabel 'Hasil Perbandingan 2 Skenario': PDF menampilkan '83G', '18G', '25G' di kolom Skenario 2. Tabel 'Skenario 2' di halaman yang sama menulis 839, 189, 259. Hasil parsing Buku menulis 836, 186, 256 (salah); hasil parsing PPT menulis 839, 189, 259 (benar).",
+      "note": "Kolom Skenario 2 pada tabel 'Hasil Perbandingan 2 Skenario' (kekurangan dana abadi): Universitas Indonesia 839, Institut Teknologi Bandung 189, Universitas Airlangga 259 (miliar Rp). Dokumen mencetaknya '83G', '18G', '25G' karena cacat font; angka 836, 186, 256 yang mungkin muncul di hasil parsing adalah SALAH."
+    },
+    {
+      "id": "ppt-tahun-202g",
+      "source_files": ["PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md"],
+      "match_all": ["202G"],
+      "evidence": "PPT hlm. 35 tabel proyeksi Postdoctoral Program menulis '2026-202G'; Buku hlm. 40 pada tabel yang sama menulis 2026-2029.",
+      "note": "'202G' adalah cacat font untuk tahun 2029 (rentang 2026-2029)."
+    },
+    {
+      "id": "grafik-pendapatan-non-spp",
+      "source_files": [
+        "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+        "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md"
+      ],
+      "match_all": ["Non SPP", "UNAIR", "2019"],
+      "evidence": "Buku hlm. 42 dan PPT hlm. 37, grafik batang 'Proporsi Pendapatan Non SPP dan Non Negara' (UI, UGM, ITB, UNAIR, IPB; 2019-2024). Label angka di grafik sangat kecil; hasil parsing kedua dokumen berbeda tipis di beberapa nilai (mis. UGM 2023: 36.58 vs 36.38; UNAIR 2023: 29.41 vs 29.49) dan tidak dapat dipastikan dari gambar halaman.",
+      "note": "Angka persentase pada grafik ini dibaca parser dari label grafik yang sangat kecil; beberapa nilai bisa meleset hingga ±0,2 poin. Sebutkan sebagai perkiraan dan rujuk rentang di teks analisis (pendapatan non-SPP dan non-Negara 29-53%)."
+    },
+    {
+      "id": "dana-masyarakat-5-persen",
+      "source_files": [
+        "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+        "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md"
+      ],
+      "match_all": ["1,04", "54"],
+      "evidence": "Buku hlm. 44 (bagian 4.11 Alokasi Pendapatan Dana Masyarakat): '5% x Rp 1,04 T = 54 M' dan paragraf '5 persen setara Rp54 miliar'.",
+      "note": "Dokumen menulis 5% x Rp1,04 T = Rp54 M, padahal hasil hitung yang benar adalah Rp52 M. Turunan '540 riset' (54 M : 100 juta) mengikuti angka 54 M, sedangkan '40% = 20,8 M' justru konsisten dengan 52 M. Jika menghitung ulang, sebutkan selisih ini."
+    },
+    {
+      "id": "ppt-jumlah-iku-wajib",
+      "source_files": ["PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md"],
+      "match_all": ["sebanyak 6 (enam)"],
+      "evidence": "PPT hlm. 44 menulis 'IKU wajib bagi seluruh perguruan tinggi sebanyak 6 (enam)', padahal tabel pada slide yang sama mencentang 7 IKU wajib (IKU 1, 2, 3, 5, 7, 9, 12).",
+      "note": "PPT menulis jumlah IKU wajib 6 (enam), tetapi tabel di slide yang sama dan Buku IKU (sumber utama) menyatakan 7 (tujuh): IKU 1, 2, 3, 5, 7, 9, dan 12. Gunakan 7."
+    }
+  ]
+}

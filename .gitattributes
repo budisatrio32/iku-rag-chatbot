@@ -1,0 +1,6 @@
+* text=auto
+
+*.pdf     binary
+*.npy     binary
+*.sqlite3 binary
+*.bin     binary

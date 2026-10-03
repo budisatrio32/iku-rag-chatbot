@@ -1,0 +1,3535 @@
+{
+  "config": {
+    "timestamp": "2026-10-03 21:48:10",
+    "test_set": "data\\evaluation\\test_set_buku_iku.md",
+    "model": "BAAI/bge-m3",
+    "collection": "pmpt_qa_v2",
+    "n_chunks": 605,
+    "top_k": 5,
+    "oos_threshold": 0.45,
+    "retriever": {
+      "candidates": 30,
+      "hybrid": false,
+      "iku_boost": false,
+      "dedupe": false,
+      "rerank": false,
+      "min_chars": 0
+    }
+  },
+  "summary": {
+    "overall": {
+      "n": 29,
+      "hit@1": 18,
+      "hit@3": 25,
+      "hit@5": 25,
+      "mrr": 0.73
+    },
+    "by_type": {
+      "Definisi": {
+        "n": 10,
+        "hit@1": 7,
+        "hit@3": 9,
+        "hit@5": 9,
+        "mrr": 0.783
+      },
+      "Jebakan ⚠️": {
+        "n": 1,
+        "hit@1": 0,
+        "hit@3": 0,
+        "hit@5": 0,
+        "mrr": 0.0
+      },
+      "Hitung": {
+        "n": 18,
+        "hit@1": 11,
+        "hit@3": 16,
+        "hit@5": 16,
+        "mrr": 0.741
+      }
+    },
+    "by_iku": {
+      "1": {
+        "n": 6,
+        "hit@1": 4,
+        "hit@3": 5,
+        "hit@5": 5,
+        "mrr": 0.75
+      },
+      "11b": {
+        "n": 1,
+        "hit@1": 1,
+        "hit@3": 1,
+        "hit@5": 1,
+        "mrr": 1.0
+      },
+      "11c": {
+        "n": 1,
+        "hit@1": 0,
+        "hit@3": 1,
+        "hit@5": 1,
+        "mrr": 0.333
+      },
+      "11d": {
+        "n": 1,
+        "hit@1": 1,
+        "hit@3": 1,
+        "hit@5": 1,
+        "mrr": 1.0
+      },
+      "12": {
+        "n": 1,
+        "hit@1": 0,
+        "hit@3": 1,
+        "hit@5": 1,
+        "mrr": 0.5
+      },
+      "2": {
+        "n": 4,
+        "hit@1": 3,
+        "hit@3": 4,
+        "hit@5": 4,
+        "mrr": 0.875
+      },
+      "3": {
+        "n": 3,
+        "hit@1": 3,
+        "hit@3": 3,
+        "hit@5": 3,
+        "mrr": 1.0
+      },
+      "4": {
+        "n": 1,
+        "hit@1": 1,
+        "hit@3": 1,
+        "hit@5": 1,
+        "mrr": 1.0
+      },
+      "5": {
+        "n": 1,
+        "hit@1": 0,
+        "hit@3": 1,
+        "hit@5": 1,
+        "mrr": 0.5
+      },
+      "6": {
+        "n": 3,
+        "hit@1": 0,
+        "hit@3": 2,
+        "hit@5": 2,
+        "mrr": 0.278
+      },
+      "7": {
+        "n": 2,
+        "hit@1": 2,
+        "hit@3": 2,
+        "hit@5": 2,
+        "mrr": 1.0
+      },
+      "8": {
+        "n": 1,
+        "hit@1": 0,
+        "hit@3": 0,
+        "hit@5": 0,
+        "mrr": 0.0
+      },
+      "9": {
+        "n": 2,
+        "hit@1": 2,
+        "hit@3": 2,
+        "hit@5": 2,
+        "mrr": 1.0
+      },
+      "Umum": {
+        "n": 2,
+        "hit@1": 1,
+        "hit@3": 1,
+        "hit@5": 1,
+        "mrr": 0.5
+      }
+    },
+    "page_citation": {
+      "n_with_primary_evidence": 23,
+      "page_correct": 13,
+      "from_lampiran": 10
+    },
+    "top1_from_secondary": 8,
+    "hit_from_secondary": 5,
+    "evidence_not_in_corpus": [
+      "D04"
+    ],
+    "near_miss": [
+      "H10",
+      "H15"
+    ],
+    "out_of_scope": {
+      "n": 1,
+      "passed": 0,
+      "top1_distances": {
+        "D12": 0.3727
+      }
+    },
+    "distance": {
+      "mean_top1_hit": 0.3212,
+      "mean_top1_miss": 0.3022,
+      "max_top1_in_scope": 0.4319
+    },
+    "latency_mean_s": 0.03
+  },
+  "results": [
+    {
+      "id": "D01",
+      "tipe": "Definisi",
+      "iku": "1",
+      "topik": "Definisi AEE",
+      "question": "Apa itu IKU 1?",
+      "expected_answer": "IKU 1 adalah **Angka Efisiensi Edukasi (AEE) Perguruan Tinggi**, yaitu indikator yang mengukur tingkat keberhasilan mahasiswa menyelesaikan studi **tepat waktu** sesuai masa studi standar, dibandingkan dengan total mahasiswa yang masuk pada periode tertentu. AEE PT dihitung dari **rata-rata tingkat pencapaian AEE setiap program pendidikan**. Sifatnya **IKU Wajib**.",
+      "expected_pages": [
+        49
+      ],
+      "keywords": [
+        "tepat waktu",
+        "masa studi standar"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "49",
+      "page_correct": true,
+      "primary_hit_lampiran": false,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0138",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49"
+        },
+        {
+          "chunk_id": "BUKU_0299",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "100"
+        },
+        {
+          "chunk_id": "PPT_0105",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "45"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.3565,
+      "oos_pass": null,
+      "latency_s": 0.289,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib",
+          "distance": 0.3565,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 | Bagian: Definisi | hlm. 49] | IKU 1 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | --- | --- | | Definisi | Merupakan indikator yang meng"
+        },
+        {
+          "rank": 2,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "86",
+          "section_path": "BAB - VI > 5.5. Indikator Kinerja Utama (IKU) Lembaga Layanan Pendidikan Tinggi > IKU 1: Keunggulan layanan LLDIKTI",
+          "distance": 0.3583,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - VI > 5.5. Indikator Kinerja Utama (IKU) Lembaga Layanan Pendidikan Tinggi > IKU 1: Keunggulan layanan LLDIKTI | Bagian: Definisi | hlm. 86] | IKU 1 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | --- | --- | | Definisi | Merupakan indikator yang mengukur "
+        },
+        {
+          "rank": 3,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "45",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi",
+          "distance": 0.3674,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi > IKU 1 | Bagian: Definisi | hlm. 45] | IKU 1 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | |"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib",
+          "distance": 0.3727,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 | Bagian: Kriteria | hlm. 49] | IKU 1 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | --- | --- | | Kriteria | a. Mahasiswa lulus tepat wakt"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "58",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7: Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan",
+          "distance": 0.3748,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7: Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lai"
+        }
+      ]
+    },
+    {
+      "id": "D02",
+      "tipe": "Definisi",
+      "iku": "1",
+      "topik": "Masa tempuh & AEE ideal",
+      "question": "Berapa masa tempuh kurikulum dan AEE ideal untuk program Sarjana dan Diploma Tiga?",
+      "expected_answer": "- Sarjana / Sarjana Terapan (D4): masa tempuh **8 semester**, AEE ideal **25%**.\n- Diploma Tiga: masa tempuh **6 semester**, AEE ideal **33%**.",
+      "expected_pages": [
+        49
+      ],
+      "keywords": [
+        "aee ideal",
+        "8 semester",
+        "25%"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "100–101",
+      "page_correct": false,
+      "primary_hit_lampiran": true,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0140",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49"
+        },
+        {
+          "chunk_id": "BUKU_0301",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "100–101"
+        },
+        {
+          "chunk_id": "PPT_0107",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "45"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.3277,
+      "oos_pass": null,
+      "latency_s": 0.026,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "100–101",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3277,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 1. Angka Efisiensi Edukasi perguruan tinggi (AEE PT) | Bagian: Ketentuan | hlm. 100–101] | NO. | IKU | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- | ---"
+        },
+        {
+          "rank": 2,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib",
+          "distance": 0.3376,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 | Bagian: Ketentuan | hlm. 49] | IKU 1 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | --- | --- | | Ketentuan | a. Jumlah mahasiswa tahun a"
+        },
+        {
+          "rank": 3,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "45",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi",
+          "distance": 0.3802,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi > IKU 1 | Bagian: Ketentuan | hlm. 45] | IKU 1 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | "
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "100",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.4054,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 1. Angka Efisiensi Edukasi perguruan tinggi (AEE PT) | Bagian: Kriteria | hlm. 100] | NO. | IKU | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- | --- | --"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "101–102",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.4117,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 1. Angka Efisiensi Edukasi perguruan tinggi (AEE PT) | Bagian: Formula | hlm. 101–102] | NO. | IKU | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- | --- |"
+        }
+      ]
+    },
+    {
+      "id": "D03",
+      "tipe": "Definisi",
+      "iku": "Umum",
+      "topik": "Jumlah IKU wajib/pilihan/partisipatif",
+      "question": "Berapa jumlah IKU wajib, IKU pilihan, dan IKU partisipatif?",
+      "expected_answer": "- **7 IKU wajib** bagi seluruh perguruan tinggi.\n- **5 IKU pilihan**; PT memilih **2** dari 5.\n- PT harus mengusulkan **1 IKU partisipatif**.\n- Catatan: IKU 6 (publikasi Scopus/WoS) **wajib bagi PTN-BH**.",
+      "expected_pages": [
+        48
+      ],
+      "keywords": [
+        "sebanyak 7 (tujuh)",
+        "partisipatif"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "48–49",
+      "page_correct": true,
+      "primary_hit_lampiran": false,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 1,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0137",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "48–49"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.3311,
+      "oos_pass": null,
+      "latency_s": 0.019,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "48–49",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak",
+          "distance": 0.3311,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak | hlm. 48–49] | No | Sasaran | Indikator Kinerja Utama | Wajib | Pilihan | | --- | --- | --- | --- | --- | | 3 | Tata Kelola Berintegritas | 10. Jumlah usulan Zona Integritas – WBK/WBBM | | ● | "
+        },
+        {
+          "rank": 2,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "44",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK",
+          "distance": 0.3377,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK | hlm. 44] | No. | Sasaran | Indikator Kinerja Utama | Wajib | Pilihan | | --- | --- | --- | --- | --- | | 3. | Tata Kelola Berintegritas | 10. Jumlah usulan Zona Integritas – WBK/WBBM | | ● "
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "61",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan",
+          "distance": 0.3453,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan | hlm. 61] IKU Pilihan merupakan indikator kinerja yang dapat dipilih oleh perguruan tinggi. Jumlah IKU Pilihan yang tersedia sebanyak 5 (lima) ind"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib",
+          "distance": 0.3486,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 | Bagian: Ketentuan | hlm. 49] | IKU 1 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | --- | --- | | Ketentuan | a. Jumlah mahasiswa tahun a"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "69",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.3. Indikator Kinerja Utama (IKU) Partisipatif",
+          "distance": 0.3509,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.3. Indikator Kinerja Utama (IKU) Partisipatif | hlm. 69] KU partisipatif merupakan indikator yang menggambarkan keunggulan, kekhasan, atau fokus pengembangan masing-masing perguruan tinggi"
+        }
+      ]
+    },
+    {
+      "id": "D04",
+      "tipe": "Definisi",
+      "iku": "Umum",
+      "topik": "Daftar IKU wajib",
+      "question": "Sebutkan IKU yang bersifat wajib.",
+      "expected_answer": "IKU 1 (AEE), IKU 2 (lulusan bekerja/studi lanjut/wirausaha dalam 1 tahun), IKU 3 (mahasiswa berkegiatan/berprestasi di luar prodi), IKU 5 (rasio luaran kerja sama), IKU 7 (keterlibatan SDGs), IKU 9 (pendapatan non-UKT), dan IKU 12 (perencanaan kesejahteraan dosen).",
+      "expected_pages": [
+        48
+      ],
+      "keywords": [
+        "angka efisiensi edukasi",
+        "kesejahteraan dosen",
+        "pendapatan non pendidikan"
+      ],
+      "in_scope": true,
+      "status": "MISS - bukti tidak ada di corpus",
+      "n_returned": 5,
+      "first_hit_rank": null,
+      "reciprocal_rank": 0.0,
+      "hit_source": null,
+      "primary_hit_page": null,
+      "page_correct": null,
+      "primary_hit_lampiran": null,
+      "raw_rank_top20": null,
+      "corpus_evidence_count": 0,
+      "corpus_evidence": [],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.3476,
+      "oos_pass": null,
+      "latency_s": 0.022,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib",
+          "distance": 0.3476,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 | Bagian: Definisi | hlm. 49] | IKU 1 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | --- | --- | | Definisi | Merupakan indikator yang meng"
+        },
+        {
+          "rank": 2,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "53",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi",
+          "distance": 0.3538,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | Bagian: Definisi | hlm. 53] | IKU 3 | DEFINISI"
+        },
+        {
+          "rank": 3,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "44",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK",
+          "distance": 0.3541,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK | hlm. 44] | No. | Sasaran | Indikator Kinerja Utama | Wajib | Pilihan | | --- | --- | --- | --- | --- | | 3. | Tata Kelola Berintegritas | 10. Jumlah usulan Zona Integritas – WBK/WBBM | | ● "
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "48–49",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak",
+          "distance": 0.3565,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak | hlm. 48–49] | No | Sasaran | Indikator Kinerja Utama | Wajib | Pilihan | | --- | --- | --- | --- | --- | | 3 | Tata Kelola Berintegritas | 10. Jumlah usulan Zona Integritas – WBK/WBBM | | ● | "
+        },
+        {
+          "rank": 5,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "49",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pendidikan Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. (2)",
+          "distance": 0.3596,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pendidikan Berikutnya/ Berwirausaha dalam Jangk"
+        }
+      ]
+    },
+    {
+      "id": "D05",
+      "tipe": "Definisi",
+      "iku": "2",
+      "topik": "Sumber data & responden minimum",
+      "question": "Dari mana data IKU 2 diperoleh, dan bagaimana menentukan jumlah responden minimum?",
+      "expected_answer": "Data diperoleh dari **tracer study** yang dilakukan **1 tahun setelah kelulusan**. Responden minimum dihitung dengan **rumus Slovin** dengan **galat (d) 2,3%**: n = N / (N·d² + 1), dengan N = jumlah lulusan.",
+      "expected_pages": [
+        51,
+        52
+      ],
+      "keywords": [
+        "tracer study",
+        "slovin"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "51",
+      "page_correct": true,
+      "primary_hit_lampiran": false,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0147",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "51"
+        },
+        {
+          "chunk_id": "BUKU_0310",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "104"
+        },
+        {
+          "chunk_id": "PPT_0118",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "48"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.4091,
+      "oos_pass": null,
+      "latency_s": 0.019,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "51",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pendidikan Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan.",
+          "distance": 0.4091,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pendidikan Berikutnya/ Berwirausaha dalam Jangka"
+        },
+        {
+          "rank": 2,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "48",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pendidikan Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. (2)",
+          "distance": 0.4138,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pendidikan Berikutnya/ Berwirausaha dalam Jangk"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "52",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pendidikan Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan.",
+          "distance": 0.4173,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pendidikan Berikutnya/ Berwirausaha dalam Jangka"
+        },
+        {
+          "rank": 4,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "48–49",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pendidikan Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. (2)",
+          "distance": 0.4235,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pendidikan Berikutnya/ Berwirausaha dalam Jangk"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "87",
+          "section_path": "BAB - VI > 5.5. Indikator Kinerja Utama (IKU) Lembaga Layanan Pendidikan Tinggi > IKU 2: Arsitektur Perguruan Tinggi Swasta (PTS)",
+          "distance": 0.4242,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - VI > 5.5. Indikator Kinerja Utama (IKU) Lembaga Layanan Pendidikan Tinggi > IKU 2: Arsitektur Perguruan Tinggi Swasta (PTS) > IKU 2 | Bagian: Kriteria | hlm. 87] | IKU 2 | | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- | --- | --- | --- | | Kriteri"
+        }
+      ]
+    },
+    {
+      "id": "D06",
+      "tipe": "Definisi",
+      "iku": "3",
+      "topik": "Kegiatan di luar prodi yang diakui",
+      "question": "Kegiatan di luar program studi apa saja yang diakui untuk IKU 3?",
+      "expected_answer": "Kegiatan harus didampingi dosen pembimbing dan mendapat pengakuan SKS, berupa:\n1. magang/praktik kerja (swasta, nirlaba, organisasi multilateral, pemerintah/BUMN/BUMD);\n2. program mahasiswa berdampak (sosial/pengabdian masyarakat);\n3. pertukaran mahasiswa (dalam/luar negeri, berdasarkan perjanjian kerja sama); dan/atau\n4. penelitian/riset di bawah pengawasan dosen atau peneliti.\n\nPrestasi diakui bila berupa kompetisi tingkat provinsi/nasional/internasional, minimal sebagai finalis.\nCatatan: magang **tidak dihitung** bagi prodi vokasi yang sudah memiliki magang wajib.",
+      "expected_pages": [
+        53
+      ],
+      "keywords": [
+        "magang",
+        "pertukaran mahasiswa",
+        "dosen pembimbing"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "53",
+      "page_correct": true,
+      "primary_hit_lampiran": false,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 5,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0150",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "53"
+        },
+        {
+          "chunk_id": "BUKU_0151",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "53"
+        },
+        {
+          "chunk_id": "BUKU_0313",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "105–106"
+        },
+        {
+          "chunk_id": "BUKU_0314",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "106–107"
+        },
+        {
+          "chunk_id": "PPT_0121",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "49"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.2737,
+      "oos_pass": null,
+      "latency_s": 0.02,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "53",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi",
+          "distance": 0.2737,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | Bagian: Kriteria | hlm. 53] | IKU 3 | DEFINISI"
+        },
+        {
+          "rank": 2,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "53",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi",
+          "distance": 0.2754,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | Bagian: Ketentuan | hlm. 53] | IKU 3 | DEFINIS"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "105–106",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3126,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 3. Persentase mahasiswa program Diploma dan Sarjana yang berkegiatan/meraih prestasi di luar program studi | Bagian: Kriteria | hlm. 105–106] | NO. | IKU | DEFIN"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "106–107",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3138,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 3. Persentase mahasiswa program Diploma dan Sarjana yang berkegiatan/meraih prestasi di luar program studi | Bagian: Ketentuan | hlm. 106–107] | NO. | IKU | DEFI"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "53",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi",
+          "distance": 0.314,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | Bagian: Definisi | hlm. 53] | IKU 3 | DEFINISI"
+        }
+      ]
+    },
+    {
+      "id": "D07",
+      "tipe": "Definisi",
+      "iku": "7",
+      "topik": "SDG wajib & pilihan",
+      "question": "SDG apa saja yang wajib dan pilihan dalam IKU 7?",
+      "expected_answer": "SDG wajib: **SDG 1** (Tanpa Kemiskinan), **SDG 4** (Pendidikan Berkualitas), dan **SDG 17** (Kemitraan). Ditambah **2 SDG pilihan** di luar ketiganya, sesuai keunggulan PT, dan harus dituangkan dalam dokumen resmi (Renstra atau laporan kinerja tahunan).",
+      "expected_pages": [
+        58
+      ],
+      "keywords": [
+        "sdg 17",
+        "2 (dua) tujuan sdgs lain"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "58",
+      "page_correct": true,
+      "primary_hit_lampiran": false,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0163",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "58"
+        },
+        {
+          "chunk_id": "BUKU_0339",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "120–121"
+        },
+        {
+          "chunk_id": "PPT_0137",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "55"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.2403,
+      "oos_pass": null,
+      "latency_s": 0.019,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "58",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7: Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan",
+          "distance": 0.2403,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7: Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lai"
+        },
+        {
+          "rank": 2,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "55",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7 : Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan (2)",
+          "distance": 0.2461,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7 : Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "58",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7: Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan",
+          "distance": 0.2726,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7: Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lai"
+        },
+        {
+          "rank": 4,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "54",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7 : Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2 (dua) SDGs Lain Sesuai Keunggulan",
+          "distance": 0.2783,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7 : Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2 (dua) SD"
+        },
+        {
+          "rank": 5,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "54",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7 : Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2 (dua) SDGs Lain Sesuai Keunggulan",
+          "distance": 0.2865,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7 : Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2 (dua) SD"
+        }
+      ]
+    },
+    {
+      "id": "D08",
+      "tipe": "Definisi",
+      "iku": "9",
+      "topik": "Yang tidak termasuk pendapatan non-UKT",
+      "question": "Pendapatan apa saja yang tidak termasuk dalam perhitungan IKU 9?",
+      "expected_answer": "1. SPP/UKT/biaya kuliah mahasiswa;\n2. iuran pengembangan institusi;\n3. subsidi langsung pemerintah (belanja pegawai, operasional, BOPTN, BPPTNBH, dan sejenisnya);\n4. sumbangan/filantropi yang tidak masuk laporan keuangan resmi; dan\n5. dana pokok dana abadi (*endowment fund*).",
+      "expected_pages": [
+        59
+      ],
+      "keywords": [
+        "boptn",
+        "iuran pengembangan institusi"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "122–123",
+      "page_correct": false,
+      "primary_hit_lampiran": true,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0166",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "59"
+        },
+        {
+          "chunk_id": "BUKU_0346",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "122–123"
+        },
+        {
+          "chunk_id": "PPT_0140",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "56"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.3021,
+      "oos_pass": null,
+      "latency_s": 0.022,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "122–123",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3021,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 9. Persentase pendapatan/ penghasilan dari bidang non-akademik (selain UKT/uang kuliah) | Bagian: Kriteria | hlm. 122–123] | NO. | IKU | DEFINISI, KRITERIA, KETE"
+        },
+        {
+          "rank": 2,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "59",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT",
+          "distance": 0.3045,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT | Bagian: Kriteria | hlm. 59] | IKU 9 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | --- | --- "
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "122",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3077,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 9. Persentase pendapatan/ penghasilan dari bidang non-akademik (selain UKT/uang kuliah) | Bagian: Definisi | hlm. 122] | NO. | IKU | DEFINISI, KRITERIA, KETENTUA"
+        },
+        {
+          "rank": 4,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "56",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9 : Persentase Pendapatan Non Pendidikan/UKT",
+          "distance": 0.3157,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9 : Persentase Pendapatan Non Pendidikan/UKT | Bagian: Kriteria | hlm. 56] | IKU 9 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- "
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "59",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT",
+          "distance": 0.3208,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT | Bagian: Definisi | hlm. 59] | IKU 9 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | --- | --- "
+        }
+      ]
+    },
+    {
+      "id": "D09",
+      "tipe": "Definisi",
+      "iku": "6",
+      "topik": "Penerbit yang dikecualikan",
+      "question": "Penerbit apa yang tidak diperhitungkan dalam IKU 6?",
+      "expected_answer": "**MDPI, Frontiers, dan Hindawi**.",
+      "expected_pages": [
+        63
+      ],
+      "keywords": [
+        "mdpi",
+        "hindawi"
+      ],
+      "in_scope": true,
+      "status": "HIT @2",
+      "n_returned": 5,
+      "first_hit_rank": 2,
+      "reciprocal_rank": 0.5,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "63",
+      "page_correct": true,
+      "primary_hit_lampiran": false,
+      "raw_rank_top20": 2,
+      "corpus_evidence_count": 9,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0182",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "63"
+        },
+        {
+          "chunk_id": "BUKU_0222",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "73"
+        },
+        {
+          "chunk_id": "BUKU_0224",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "74"
+        },
+        {
+          "chunk_id": "BUKU_0227",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "75"
+        },
+        {
+          "chunk_id": "BUKU_0334",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "118–119"
+        },
+        {
+          "chunk_id": "PPT_0155",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "61–62"
+        },
+        {
+          "chunk_id": "PPT_0194",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "74"
+        },
+        {
+          "chunk_id": "PPT_0197",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "75"
+        },
+        {
+          "chunk_id": "PPT_0200",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "76"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.4319,
+      "oos_pass": null,
+      "latency_s": 0.018,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "63",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS)",
+          "distance": 0.4319,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | Bagian: Definisi | hlm. 63] | IKU 6 | DEFINISI, KRITERIA, KETENTUAN, DAN FORM"
+        },
+        {
+          "rank": 2,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "63",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS)",
+          "distance": 0.4332,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | Bagian: Ketentuan | hlm. 63] | IKU 6 | DEFINISI, KRITERIA, KETENTUAN, DAN FOR"
+        },
+        {
+          "rank": 3,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "61–62",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS)",
+          "distance": 0.4351,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | Bagian: Ketentuan | hlm. 61–62] | IKU 6 | DEFINISI, KRITERIA, KETENTUAN, D"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "63",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS)",
+          "distance": 0.441,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | Bagian: Kriteria | hlm. 63] | IKU 6 | DEFINISI, KRITERIA, KETENTUAN, DAN FORM"
+        },
+        {
+          "rank": 5,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "61",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS)",
+          "distance": 0.4427,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | Bagian: Definisi | hlm. 61] | IKU 6 | DEFINISI, KRITERIA, KETENTUAN, DAN F"
+        }
+      ]
+    },
+    {
+      "id": "D10",
+      "tipe": "Definisi",
+      "iku": "11c",
+      "topik": "Arah penilaian integritas akademik",
+      "question": "Bagaimana arah penilaian IKU 11c (pelanggaran integritas akademik)?",
+      "expected_answer": "**Semakin rendah semakin baik.** Nilai 0 laporan mencerminkan kinerja baik, **asalkan** PT memiliki dan menjalankan mekanisme pencegahan, pelaporan, verifikasi, dan penanganan pelanggaran integritas akademik. Formula: jumlah laporan pelanggaran integritas akademik dalam 1 periode (satuan: laporan).",
+      "expected_pages": [
+        67
+      ],
+      "keywords": [
+        "semakin rendah semakin baik"
+      ],
+      "in_scope": true,
+      "status": "HIT @3",
+      "n_returned": 5,
+      "first_hit_rank": 3,
+      "reciprocal_rank": 0.3333333333333333,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "67",
+      "page_correct": true,
+      "primary_hit_lampiran": false,
+      "raw_rank_top20": 3,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0201",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "67"
+        },
+        {
+          "chunk_id": "BUKU_0359",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "126–130"
+        },
+        {
+          "chunk_id": "PPT_0174",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "67"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.2792,
+      "oos_pass": null,
+      "latency_s": 0.02,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "67",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (c) Pencegahan dan Penanganan Pelanggaran Integritas Akademik",
+          "distance": 0.2792,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (c) Pencegahan dan Penanganan Pelanggaran Integritas Akademik | Bagian: Kriteria | hlm. 67] | IKU 11 c | DEFINISI, KRITERIA, KETENTUAN, D"
+        },
+        {
+          "rank": 2,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "67",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (c) Pencegahan dan Penanganan Pelanggaran Integritas Akademik",
+          "distance": 0.288,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (c) Pencegahan dan Penanganan Pelanggaran Integritas Akademik | Bagian: Definisi | hlm. 67] | IKU 11 c | DEFINISI, KRITERIA, KETENTUAN, D"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "67",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (c) Pencegahan dan Penanganan Pelanggaran Integritas Akademik",
+          "distance": 0.2892,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (c) Pencegahan dan Penanganan Pelanggaran Integritas Akademik | Bagian: Ketentuan | hlm. 67] | IKU 11 c | DEFINISI, KRITERIA, KETENTUAN, "
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "125–130",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3107,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 11. a. Hasil audit atas Laporan Keuangan perguruan tinggi | Bagian: Kriteria | hlm. 125–130] | NO. | IKU | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- |"
+        },
+        {
+          "rank": 5,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "67",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > 4 IKU 10: Jumlah Usulan Zona Integritas – WBK/WBBM > IKU 11.1 : Hasil audit atas Laporan Keuangan Perguruan Tinggi",
+          "distance": 0.3192,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > 4 IKU 10: Jumlah Usulan Zona Integritas – WBK/WBBM > IKU 11.1 : Hasil audit atas Laporan Keuangan Perguruan Tinggi | Bagian: Kriteria | hlm. 6"
+        }
+      ]
+    },
+    {
+      "id": "D11",
+      "tipe": "Jebakan ⚠️",
+      "iku": "1",
+      "topik": "Salah IKU (lulusan bekerja ≠ IKU 1)",
+      "question": "Lulusan 400, yang bekerja 280, berapa capaian IKU 1?",
+      "expected_answer": "Chatbot harus **mengoreksi**: IKU 1 adalah Angka Efisiensi Edukasi (kelulusan tepat waktu), bukan persentase lulusan bekerja. Data lulusan bekerja termasuk **IKU 2**. Jika dihitung sebagai IKU 2, dengan asumsi seluruh 280 lulusan berbobot 1 (masa tunggu < 6 bulan dan gaji > 1,2× UMP) dan 400 adalah total responden tracer study: 280/400 × 100% = **70%** (lihat H04).",
+      "expected_pages": [
+        49,
+        51
+      ],
+      "keywords": [
+        "tepat waktu",
+        "masa studi standar"
+      ],
+      "in_scope": true,
+      "status": "MISS - bukti tidak masuk top-20",
+      "n_returned": 5,
+      "first_hit_rank": null,
+      "reciprocal_rank": 0.0,
+      "hit_source": null,
+      "primary_hit_page": null,
+      "page_correct": null,
+      "primary_hit_lampiran": null,
+      "raw_rank_top20": null,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0138",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49"
+        },
+        {
+          "chunk_id": "BUKU_0299",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "100"
+        },
+        {
+          "chunk_id": "PPT_0105",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "45"
+        }
+      ],
+      "top1_source": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+      "top1_distance": 0.3407,
+      "oos_pass": null,
+      "latency_s": 0.021,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "45",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi",
+          "distance": 0.3407,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi > IKU 1 | Bagian: Ketentuan | hlm. 45] | IKU 1 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | "
+        },
+        {
+          "rank": 2,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "104–105",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3414,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 2. Persentase lulusan pendidikan tinggi program diploma satu, diploma dua, diploma tiga, diploma empat/sarjana terapan, dan sarjana yang langsung bekerja, berwir"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib",
+          "distance": 0.3449,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 | Bagian: Ketentuan | hlm. 49] | IKU 1 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | --- | --- | | Ketentuan | a. Jumlah mahasiswa tahun a"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "104",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3472,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 2. Persentase lulusan pendidikan tinggi program diploma satu, diploma dua, diploma tiga, diploma empat/sarjana terapan, dan sarjana yang langsung bekerja, berwir"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "102–103",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3489,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 2. Persentase lulusan pendidikan tinggi program diploma satu, diploma dua, diploma tiga, diploma empat/sarjana terapan, dan sarjana yang langsung bekerja, berwir"
+        }
+      ]
+    },
+    {
+      "id": "D12",
+      "tipe": "Jebakan ⚠️",
+      "iku": "—",
+      "topik": "Di luar cakupan dokumen",
+      "question": "Berapa besaran UKT di Universitas Gadjah Mada tahun 2026?",
+      "expected_answer": "Informasi ini **tidak ada** di Buku IKU. Chatbot harus menyatakan tidak menemukan jawabannya di dokumen, bukan mengarang angka.",
+      "expected_pages": [],
+      "keywords": [],
+      "in_scope": false,
+      "status": "GAGAL (di luar cakupan)",
+      "n_returned": 5,
+      "first_hit_rank": null,
+      "reciprocal_rank": 0.0,
+      "hit_source": null,
+      "primary_hit_page": null,
+      "page_correct": null,
+      "primary_hit_lampiran": null,
+      "raw_rank_top20": null,
+      "corpus_evidence_count": 0,
+      "corpus_evidence": [],
+      "top1_source": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+      "top1_distance": 0.3727,
+      "oos_pass": false,
+      "latency_s": 0.019,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "39",
+          "section_path": "BAB - IV > 4.11. DANA ABADI > Skenario 1",
+          "distance": 0.3727,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - IV > 4.11. DANA ABADI > Skenario 1 | hlm. 39] Analisis (Dalam Miliar Rp) | PERGURUAN TINGGI | DANA ABADI 2024 (A) | PERKIRAAN BAGI HASIL (B) | BAGI HASIL YANG DIBUTUHKAN (C) | DANA ABADI YANG DIBUTUHKAN (D) | KEKURANGAN DANA ABADI (D-A) | | --- | --- | "
+        },
+        {
+          "rank": 2,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "28",
+          "section_path": "BAB - IV > 4.3. PROYEKSI PERTUMBUHAN MAHASISWA ASING 2030 > Universitas Gadjah Mada",
+          "distance": 0.3783,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - IV > 4.3. PROYEKSI PERTUMBUHAN MAHASISWA ASING 2030 > Universitas Gadjah Mada | hlm. 28] | Tahun 2025 | Target IKU UGM 15% | Target Tahun 2030 | | :--- | :---: | :--- | | <br> **2.234** <br> Mahasiswa Asing | | **9.058** <br> Mahasiswa Asing | --- | UGM"
+        },
+        {
+          "rank": 3,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "39",
+          "section_path": "BAB - IV > 4.11. DANA ABADI > Hasil Perbandingan 2 Skenario",
+          "distance": 0.3815,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - IV > 4.11. DANA ABADI > Hasil Perbandingan 2 Skenario | hlm. 39] (Dalam Miliar Rp) Tabel: Hasil Perbandingan 2 Skenario | PERGURUAN TINGGI | KEKURANGAN DANA ABADI | | | --- | --- | --- | | PERGURUAN TINGGI | SKENARIO 1 | SKENARIO 2 | | Universitas Indon"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "33",
+          "section_path": "BAB - IV > 4.3. PROYEKSI PERTUMBUHAN MAHASISWA ASING 2030",
+          "distance": 0.3902,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - IV > 4.3. PROYEKSI PERTUMBUHAN MAHASISWA ASING 2030 | hlm. 33] Sebagai ilustrasi implementasi kebijakan peningkatan tertiary inbound mobility, Universitas Gadjah Mada (UGM) dapat dijadikan studi kasus proyeksi pertumbuhan mahasiswa asing hingga tahun 2030."
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "43",
+          "section_path": "BAB - IV > 4.10. DANA ABADI > Latar Belakang",
+          "distance": 0.3939,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - IV > 4.10. DANA ABADI > Latar Belakang | hlm. 43] **Dana Abadi Top 7 PTN-BH 2024** (Dalam Miliar Rp) | PERGURUAN TINGGI | DANA ABADI 2024 (A) | BEBAN OPERASIONAL (B) | % (A / B ) | TOTAL ASET (C) | % (A/C) | | --- | --- | --- | --- | --- | --- | | Universi"
+        }
+      ]
+    },
+    {
+      "id": "H01",
+      "tipe": "Hitung",
+      "iku": "1",
+      "topik": "AEE satu prodi",
+      "question": "Prodi S1 memiliki 200 mahasiswa dalam satu tahun akademik. Sebanyak 40 mahasiswa lulus tepat 8 semester. Berapa AEE realisasi dan tingkat pencapaian AEE prodi tersebut?",
+      "expected_answer": "AEE realisasi **20%**, tingkat pencapaian **80%**.",
+      "expected_pages": [
+        49
+      ],
+      "keywords": [
+        "aee ideal",
+        "tingkat pencapaian aee"
+      ],
+      "in_scope": true,
+      "status": "HIT @2",
+      "n_returned": 5,
+      "first_hit_rank": 2,
+      "reciprocal_rank": 0.5,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "101–102",
+      "page_correct": false,
+      "primary_hit_lampiran": true,
+      "raw_rank_top20": 2,
+      "corpus_evidence_count": 5,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0141",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49–50"
+        },
+        {
+          "chunk_id": "BUKU_0142",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49–50"
+        },
+        {
+          "chunk_id": "BUKU_0302",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "101–102"
+        },
+        {
+          "chunk_id": "BUKU_0303",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "101–102"
+        },
+        {
+          "chunk_id": "PPT_0108",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "46"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.3543,
+      "oos_pass": null,
+      "latency_s": 0.02,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "100–101",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3543,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 1. Angka Efisiensi Edukasi perguruan tinggi (AEE PT) | Bagian: Ketentuan | hlm. 100–101] | NO. | IKU | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- | ---"
+        },
+        {
+          "rank": 2,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "101–102",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.4025,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 1. Angka Efisiensi Edukasi perguruan tinggi (AEE PT) | Bagian: Formula | hlm. 101–102] | NO. | IKU | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- | --- |"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib",
+          "distance": 0.4029,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 | Bagian: Ketentuan | hlm. 49] | IKU 1 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | --- | --- | | Ketentuan | a. Jumlah mahasiswa tahun a"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49–50",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib",
+          "distance": 0.4089,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 | Bagian: Formula | hlm. 49–50] | IKU 1 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | --- | --- | | Formula | a. AEE = \\(\\frac{Jumlah\\ mah"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "101–102",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.4115,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 1. Angka Efisiensi Edukasi perguruan tinggi (AEE PT) | Bagian: Formula | hlm. 101–102] | NO. | IKU | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- | --- |"
+        }
+      ]
+    },
+    {
+      "id": "H02",
+      "tipe": "Hitung",
+      "iku": "1",
+      "topik": "AEE PT (rata-rata beberapa jenjang)",
+      "question": "Sebuah PT memiliki 3 program pendidikan: D3 dengan AEE realisasi 30%, S1 dengan 22,5%, dan S2 dengan 40%. Berapa AEE PT?",
+      "expected_answer": "**86,97%**.",
+      "expected_pages": [
+        49,
+        50
+      ],
+      "keywords": [
+        "aee pt",
+        "tingkat pencapaian"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "101–102",
+      "page_correct": false,
+      "primary_hit_lampiran": true,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 7,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0141",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49–50"
+        },
+        {
+          "chunk_id": "BUKU_0142",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49–50"
+        },
+        {
+          "chunk_id": "BUKU_0299",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "100"
+        },
+        {
+          "chunk_id": "BUKU_0302",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "101–102"
+        },
+        {
+          "chunk_id": "BUKU_0303",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "101–102"
+        },
+        {
+          "chunk_id": "PPT_0108",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "46"
+        },
+        {
+          "chunk_id": "PPT_0109",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "46–47"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.2946,
+      "oos_pass": null,
+      "latency_s": 0.024,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "101–102",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.2946,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 1. Angka Efisiensi Edukasi perguruan tinggi (AEE PT) | Bagian: Formula | hlm. 101–102] | NO. | IKU | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- | --- |"
+        },
+        {
+          "rank": 2,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "101–102",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3012,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 1. Angka Efisiensi Edukasi perguruan tinggi (AEE PT) | Bagian: Formula | hlm. 101–102] | NO. | IKU | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- | --- |"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "100–101",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3293,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 1. Angka Efisiensi Edukasi perguruan tinggi (AEE PT) | Bagian: Ketentuan | hlm. 100–101] | NO. | IKU | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- | ---"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "100",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3396,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 1. Angka Efisiensi Edukasi perguruan tinggi (AEE PT) | Bagian: Kriteria | hlm. 100] | NO. | IKU | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- | --- | --"
+        },
+        {
+          "rank": 5,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "46",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2)",
+          "distance": 0.3439,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2) > IKU 1 | Bagian: Formula | hlm. 46] | IKU 1 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA "
+        }
+      ]
+    },
+    {
+      "id": "H03",
+      "tipe": "Hitung",
+      "iku": "1",
+      "topik": "AEE dengan pengecualian pindah/DO",
+      "question": "Prodi S1 mencatat 250 mahasiswa pada satu tahun akademik, termasuk 10 mahasiswa pindah dan 15 mahasiswa *drop out*. Sebanyak 45 mahasiswa lulus tepat 8 semester. Berapa AEE realisasi dan tingkat pencapaiannya?",
+      "expected_answer": "AEE realisasi **20%**, tingkat pencapaian **80%**. Jawaban 45/250 = 18% **salah**.",
+      "expected_pages": [
+        49
+      ],
+      "keywords": [
+        "drop out",
+        "mahasiswa pindah"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "100–101",
+      "page_correct": false,
+      "primary_hit_lampiran": true,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0140",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49"
+        },
+        {
+          "chunk_id": "BUKU_0301",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "100–101"
+        },
+        {
+          "chunk_id": "PPT_0107",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "45"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.3368,
+      "oos_pass": null,
+      "latency_s": 0.019,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "100–101",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3368,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 1. Angka Efisiensi Edukasi perguruan tinggi (AEE PT) | Bagian: Ketentuan | hlm. 100–101] | NO. | IKU | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- | ---"
+        },
+        {
+          "rank": 2,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "101–102",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3781,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 1. Angka Efisiensi Edukasi perguruan tinggi (AEE PT) | Bagian: Formula | hlm. 101–102] | NO. | IKU | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- | --- |"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "25",
+          "section_path": "BAB - III > 3.7. KETERKAITAN IKU DIKTISAINTEK BERDAMPAK DENGAN IKU KEMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK PERGURUAN TINGGI",
+          "distance": 0.3824,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - III > 3.7. KETERKAITAN IKU DIKTISAINTEK BERDAMPAK DENGAN IKU KEMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK PERGURUAN TINGGI | hlm. 25] | IKU 1. Angka Efisiensi Edukasi PT (AEE) (*) | IKU 2. % lulusan pendidikan tinggi & vokasi yang langsung bekerj"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib",
+          "distance": 0.3883,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 | Bagian: Ketentuan | hlm. 49] | IKU 1 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | --- | --- | | Ketentuan | a. Jumlah mahasiswa tahun a"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "49–50",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib",
+          "distance": 0.3915,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 | Bagian: Formula | hlm. 49–50] | IKU 1 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | --- | --- | | Formula | a. AEE = \\(\\frac{Jumlah\\ mah"
+        }
+      ]
+    },
+    {
+      "id": "H04",
+      "tipe": "Hitung",
+      "iku": "2",
+      "topik": "Lulusan bekerja (satu bobot)",
+      "question": "Tracer study mengumpulkan 400 responden lulusan S1. Sebanyak 280 lulusan bekerja dengan masa tunggu < 6 bulan dan gaji > 1,2× UMP; sisanya belum bekerja. Berapa capaian IKU 2?",
+      "expected_answer": "**70%**.",
+      "expected_pages": [
+        51,
+        52
+      ],
+      "keywords": [
+        "masa tunggu",
+        "1.2x ump"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+      "primary_hit_page": "103–104",
+      "page_correct": false,
+      "primary_hit_lampiran": true,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 9,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0144",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "51"
+        },
+        {
+          "chunk_id": "BUKU_0305",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "103–104"
+        },
+        {
+          "chunk_id": "BUKU_0306",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "103–104"
+        },
+        {
+          "chunk_id": "PPT_0111",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "47"
+        },
+        {
+          "chunk_id": "PPT_0112",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "47"
+        },
+        {
+          "chunk_id": "PPT_0113",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "47"
+        },
+        {
+          "chunk_id": "PPT_0114",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "47"
+        },
+        {
+          "chunk_id": "PPT_0115",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "47"
+        },
+        {
+          "chunk_id": "PPT_0116",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "47"
+        }
+      ],
+      "top1_source": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+      "top1_distance": 0.2834,
+      "oos_pass": null,
+      "latency_s": 0.024,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "47",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2)",
+          "distance": 0.2834,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2) > IKU 2 | Bagian: Kriteria | hlm. 47] | IKU 2 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA"
+        },
+        {
+          "rank": 2,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "47",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2)",
+          "distance": 0.2947,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2) > IKU 2 | Bagian: Kriteria | hlm. 47] | IKU 2 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "103–104",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.2949,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 2. Persentase lulusan pendidikan tinggi program diploma satu, diploma dua, diploma tiga, diploma empat/sarjana terapan, dan sarjana yang langsung bekerja, berwir"
+        },
+        {
+          "rank": 4,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "47",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2)",
+          "distance": 0.2974,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2) > IKU 2 | Bagian: Kriteria | hlm. 47] | IKU 2 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "103–104",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.2979,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 2. Persentase lulusan pendidikan tinggi program diploma satu, diploma dua, diploma tiga, diploma empat/sarjana terapan, dan sarjana yang langsung bekerja, berwir"
+        }
+      ]
+    },
+    {
+      "id": "H05",
+      "tipe": "Hitung",
+      "iku": "2",
+      "topik": "Lulusan dengan bobot campuran",
+      "question": "Tracer study mengumpulkan 500 responden lulusan. Rinciannya: - 200 bekerja, masa tunggu < 6 bulan, gaji > 1,2× UMP - 100 bekerja, masa tunggu < 1 tahun, gaji > 1,2× UMP - 50 bekerja, masa tunggu < 1 tahun, gaji < 1,2× UMP - 30 melanjutkan studi (surat penerimaan < 12 bulan) - 20 *founder*, < 6 bulan, penghasilan > 1,2× UMP - 10 *freelancer*, > 6 bulan, penghasilan < 1,2× UMP - 90 belum bekerja/studi/wirausaha Berapa capaian IKU 2?",
+      "expected_answer": "**70,8%**.",
+      "expected_pages": [
+        51,
+        52
+      ],
+      "keywords": [
+        "freelancer",
+        "bobot = 0,8"
+      ],
+      "in_scope": true,
+      "status": "HIT @2",
+      "n_returned": 5,
+      "first_hit_rank": 2,
+      "reciprocal_rank": 0.5,
+      "hit_source": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+      "primary_hit_page": null,
+      "page_correct": null,
+      "primary_hit_lampiran": null,
+      "raw_rank_top20": 2,
+      "corpus_evidence_count": 2,
+      "corpus_evidence": [
+        {
+          "chunk_id": "PPT_0115",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "47"
+        },
+        {
+          "chunk_id": "PPT_0116",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "47"
+        }
+      ],
+      "top1_source": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+      "top1_distance": 0.2473,
+      "oos_pass": null,
+      "latency_s": 0.026,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "47",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2)",
+          "distance": 0.2473,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2) > IKU 2 | Bagian: Kriteria | hlm. 47] | IKU 2 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA"
+        },
+        {
+          "rank": 2,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "47",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2)",
+          "distance": 0.2605,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2) > IKU 2 | Bagian: Kriteria | hlm. 47] | IKU 2 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA"
+        },
+        {
+          "rank": 3,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "47",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2)",
+          "distance": 0.2627,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2) > IKU 2 | Bagian: Kriteria | hlm. 47] | IKU 2 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "51",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pendidikan Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan.",
+          "distance": 0.2634,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pendidikan Berikutnya/ Berwirausaha dalam Jangka"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "103–104",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.2641,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 2. Persentase lulusan pendidikan tinggi program diploma satu, diploma dua, diploma tiga, diploma empat/sarjana terapan, dan sarjana yang langsung bekerja, berwir"
+        }
+      ]
+    },
+    {
+      "id": "H06",
+      "tipe": "Hitung",
+      "iku": "2",
+      "topik": "Responden minimum Slovin",
+      "question": "Jumlah lulusan suatu PT adalah 2.000 orang. Berapa jumlah responden minimum tracer study untuk IKU 2?",
+      "expected_answer": "**972 responden**.",
+      "expected_pages": [
+        52
+      ],
+      "keywords": [
+        "responden minimum",
+        "galat"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+      "primary_hit_page": null,
+      "page_correct": null,
+      "primary_hit_lampiran": null,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0148",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "52"
+        },
+        {
+          "chunk_id": "BUKU_0311",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "104–105"
+        },
+        {
+          "chunk_id": "PPT_0119",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "48–49"
+        }
+      ],
+      "top1_source": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+      "top1_distance": 0.3538,
+      "oos_pass": null,
+      "latency_s": 0.018,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "48–49",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pendidikan Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. (2)",
+          "distance": 0.3538,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pendidikan Berikutnya/ Berwirausaha dalam Jangk"
+        },
+        {
+          "rank": 2,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "48",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pendidikan Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. (2)",
+          "distance": 0.357,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 2: Persentase Lulusan Pendidikan Tinggi dan Vokasi yang Langsung Bekerja/Melanjutkan Jenjang Pendidikan Berikutnya/ Berwirausaha dalam Jangk"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "104",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3666,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 2. Persentase lulusan pendidikan tinggi program diploma satu, diploma dua, diploma tiga, diploma empat/sarjana terapan, dan sarjana yang langsung bekerja, berwir"
+        },
+        {
+          "rank": 4,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "47",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2)",
+          "distance": 0.3703,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2) > IKU 2 | Bagian: Kriteria | hlm. 47] | IKU 2 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA"
+        },
+        {
+          "rank": 5,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "47",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2)",
+          "distance": 0.3717,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 1 IKU 1: Angka Efisiensi Edukasi Perguruan Tinggi (2) > IKU 2 | Bagian: Kriteria | hlm. 47] | IKU 2 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA"
+        }
+      ]
+    },
+    {
+      "id": "H07",
+      "tipe": "Hitung",
+      "iku": "3",
+      "topik": "Kegiatan SKS + prestasi",
+      "question": "Sebuah PT memiliki 1.000 mahasiswa S1/Diploma. Rinciannya: - 100 mahasiswa magang 20 SKS - 150 mahasiswa pertukaran 8 SKS - 50 mahasiswa riset 4 SKS - 5 mahasiswa juara 1 lomba nasional - 10 mahasiswa finalis lomba internasional Berapa capaian IKU 3?",
+      "expected_answer": "**21,5%**.",
+      "expected_pages": [
+        53,
+        54
+      ],
+      "keywords": [
+        "5 sks, bobot = 0,4",
+        "finalis, bobot = 0,2"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "107–108",
+      "page_correct": false,
+      "primary_hit_lampiran": true,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0152",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "53–54"
+        },
+        {
+          "chunk_id": "BUKU_0315",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "107–108"
+        },
+        {
+          "chunk_id": "PPT_0124",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "50"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.3249,
+      "oos_pass": null,
+      "latency_s": 0.023,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "107–108",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3249,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 3. Persentase mahasiswa program Diploma dan Sarjana yang berkegiatan/meraih prestasi di luar program studi | Bagian: Formula | hlm. 107–108] | NO. | IKU | DEFINI"
+        },
+        {
+          "rank": 2,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "50",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi (2)",
+          "distance": 0.3272,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi (2) | Bagian: Formula | hlm. 50] | IKU 3 | DE"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "53–54",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi",
+          "distance": 0.3276,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | Bagian: Formula | hlm. 53–54] | IKU 3 | DEFINI"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "53",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi",
+          "distance": 0.3301,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | Bagian: Kriteria | hlm. 53] | IKU 3 | DEFINISI"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "53",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi",
+          "distance": 0.3311,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | Bagian: Ketentuan | hlm. 53] | IKU 3 | DEFINIS"
+        }
+      ]
+    },
+    {
+      "id": "H08",
+      "tipe": "Hitung",
+      "iku": "3",
+      "topik": "Prestasi saja",
+      "question": "Dari 500 mahasiswa, prestasi yang tercatat adalah 2 juara 1 internasional, 4 juara 2 tingkat provinsi, dan 20 finalis tingkat provinsi. Tidak ada kegiatan SKS di luar prodi. Berapa capaian IKU 3?",
+      "expected_answer": "**0,76%**.",
+      "expected_pages": [
+        54
+      ],
+      "keywords": [
+        "juara harapan",
+        "finalis, bobot = 0,05"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "53–54",
+      "page_correct": true,
+      "primary_hit_lampiran": false,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0152",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "53–54"
+        },
+        {
+          "chunk_id": "BUKU_0315",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "107–108"
+        },
+        {
+          "chunk_id": "PPT_0124",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "50"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.3073,
+      "oos_pass": null,
+      "latency_s": 0.021,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "53–54",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi",
+          "distance": 0.3073,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | Bagian: Formula | hlm. 53–54] | IKU 3 | DEFINI"
+        },
+        {
+          "rank": 2,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "50",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi (2)",
+          "distance": 0.3222,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi (2) | Bagian: Formula | hlm. 50] | IKU 3 | DE"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "107–108",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3262,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 3. Persentase mahasiswa program Diploma dan Sarjana yang berkegiatan/meraih prestasi di luar program studi | Bagian: Formula | hlm. 107–108] | NO. | IKU | DEFINI"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "53",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi",
+          "distance": 0.3358,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | Bagian: Kriteria | hlm. 53] | IKU 3 | DEFINISI"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "53",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi",
+          "distance": 0.3403,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3: Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | Bagian: Ketentuan | hlm. 53] | IKU 3 | DEFINIS"
+        }
+      ]
+    },
+    {
+      "id": "H09",
+      "tipe": "Hitung",
+      "iku": "5",
+      "topik": "Rasio luaran kerja sama",
+      "question": "PT memiliki 120 kerja sama. Dari kerja sama itu dihasilkan 30 karya (judul) yang telah dimanfaatkan oleh mitra, melibatkan total 90 dosen. Berapa capaian IKU 5?",
+      "expected_answer": "**25%**. Yang dihitung adalah **jumlah judul/karya, bukan jumlah dosen**, sehingga angka 90 tidak dipakai.",
+      "expected_pages": [
+        57
+      ],
+      "keywords": [
+        "total kerjasama perguruan tinggi",
+        "bukan jumlah dosen"
+      ],
+      "in_scope": true,
+      "status": "HIT @2",
+      "n_returned": 5,
+      "first_hit_rank": 2,
+      "reciprocal_rank": 0.5,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "57–58",
+      "page_correct": true,
+      "primary_hit_lampiran": false,
+      "raw_rank_top20": 2,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0159",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "57–58"
+        },
+        {
+          "chunk_id": "BUKU_0331",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "117"
+        },
+        {
+          "chunk_id": "PPT_0133",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "53"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.308,
+      "oos_pass": null,
+      "latency_s": 0.02,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "56–57",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 4 IKU 5: Rasio Luaran Hasil Kerjasama Antara Perguruan Tinggi dan Start-Up/Industri/Lembaga",
+          "distance": 0.308,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 4 IKU 5: Rasio Luaran Hasil Kerjasama Antara Perguruan Tinggi dan Start-Up/Industri/Lembaga | Bagian: Ketentuan | hlm. 56–57] | IKU 5 | DEFINISI, K"
+        },
+        {
+          "rank": 2,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "57–58",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 4 IKU 5: Rasio Luaran Hasil Kerjasama Antara Perguruan Tinggi dan Start-Up/Industri/Lembaga",
+          "distance": 0.3089,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 4 IKU 5: Rasio Luaran Hasil Kerjasama Antara Perguruan Tinggi dan Start-Up/Industri/Lembaga | Bagian: Formula | hlm. 57–58] | IKU 5 | DEFINISI, KRI"
+        },
+        {
+          "rank": 3,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "52",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 5 : Rasio Luaran Hasil Kerjasama Antara Perguruan Tinggi dan Start-Up/Industri/Lembaga (2)",
+          "distance": 0.309,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 5 : Rasio Luaran Hasil Kerjasama Antara Perguruan Tinggi dan Start-Up/Industri/Lembaga (2) | Bagian: Kriteria | hlm. 52] | IKU 5 | DEFINISI,"
+        },
+        {
+          "rank": 4,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "53",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 4 IKU 5 : Rasio Luaran Hasil Kerjasama Antara Perguruan Tinggi dan Start-Up/Industri/Lembaga (3)",
+          "distance": 0.309,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 4 IKU 5 : Rasio Luaran Hasil Kerjasama Antara Perguruan Tinggi dan Start-Up/Industri/Lembaga (3) | Bagian: Formula | hlm. 53] | IKU 5 | DEFINISI"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "117",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3091,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 5. Persentase luaran hasil kerja sama dan hilirisasi antara perguruan tinggi dengan industri/Lembaga. | Bagian: Formula | hlm. 117] | NO. | IKU | DEFINISI, KRITE"
+        }
+      ]
+    },
+    {
+      "id": "H10",
+      "tipe": "Hitung",
+      "iku": "6",
+      "topik": "Publikasi berbobot kuartil",
+      "question": "Total publikasi PT dalam satu periode adalah 200, terdiri atas 10 jurnal Top Tier, 40 Q1, 50 Q2, 30 Q3, 20 Q4, dan 50 publikasi tidak terindeks Scopus/WoS. Berapa capaian IKU 6?",
+      "expected_answer": "**54,75%**.",
+      "expected_pages": [
+        63
+      ],
+      "keywords": [
+        "top tier",
+        "bobot 1,2",
+        "q4"
+      ],
+      "in_scope": true,
+      "status": "MISS - bukti di rank mentah 7",
+      "n_returned": 5,
+      "first_hit_rank": null,
+      "reciprocal_rank": 0.0,
+      "hit_source": null,
+      "primary_hit_page": null,
+      "page_correct": null,
+      "primary_hit_lampiran": null,
+      "raw_rank_top20": 7,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0181",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "63"
+        },
+        {
+          "chunk_id": "BUKU_0333",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "117–118"
+        },
+        {
+          "chunk_id": "PPT_0154",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "61"
+        }
+      ],
+      "top1_source": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+      "top1_distance": 0.2906,
+      "oos_pass": null,
+      "latency_s": 0.021,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "76",
+          "section_path": "BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasional (Scopus/WoS) > c. Persentase Publikasi Bereputasi Quartile 1",
+          "distance": 0.2906,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasional (Scopus/WoS) > c. Persentase Publikasi Bereputasi Quartile 1 | Bagian: Kriteria dan Ketentuan | hlm. 76] | DEFINISI, KRITERIA, KETEN"
+        },
+        {
+          "rank": 2,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "75",
+          "section_path": "BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasional (Scopus/WoS) > b. Persentase Publikasi Bereputasi Top Tier",
+          "distance": 0.2909,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasional (Scopus/WoS) > b. Persentase Publikasi Bereputasi Top Tier | Bagian: Kriteria dan Ketentuan | hlm. 75] | DEFINISI, KRITERIA, KETENTU"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "74",
+          "section_path": "BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasional (Scopus/WoS) > b. Persentase Publikasi Bereputasi Top Tier",
+          "distance": 0.304,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasional (Scopus/WoS) > b. Persentase Publikasi Bereputasi Top Tier | Bagian: Kriteria dan Ketentuan | hlm. 74] | DEFINISI, KRITERIA, KETENTUAN,"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "75",
+          "section_path": "BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasional (Scopus/WoS) > c. Persentase Publikasi Bereputasi Quartile 1",
+          "distance": 0.3098,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasional (Scopus/WoS) > c. Persentase Publikasi Bereputasi Quartile 1 | Bagian: Kriteria dan Ketentuan | hlm. 75] | DEFINISI, KRITERIA, KETENTUA"
+        },
+        {
+          "rank": 5,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "74",
+          "section_path": "BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasional (Scopus/WoS) > a. Total Publikasi Internasional",
+          "distance": 0.3137,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasional (Scopus/WoS) > a. Total Publikasi Internasional | Bagian: Kriteria dan Ketentuan | hlm. 74] | DEFINISI, KRITERIA, KETENTUAN, DAN FOR"
+        }
+      ]
+    },
+    {
+      "id": "H11",
+      "tipe": "Hitung",
+      "iku": "6",
+      "topik": "Bonus kolaborasi internasional",
+      "question": "Total publikasi 20, terdiri atas 4 artikel Q1 hasil kolaborasi dengan penulis luar negeri, 6 artikel Q1 tanpa kolaborasi, dan 10 prosiding internasional terindeks Scopus. Berapa capaian IKU 6?",
+      "expected_answer": "**67,5%**.",
+      "expected_pages": [
+        63
+      ],
+      "keywords": [
+        "kolaborasi internasional",
+        "prosiding internasional"
+      ],
+      "in_scope": true,
+      "status": "HIT @3",
+      "n_returned": 5,
+      "first_hit_rank": 3,
+      "reciprocal_rank": 0.3333333333333333,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "117–118",
+      "page_correct": false,
+      "primary_hit_lampiran": true,
+      "raw_rank_top20": 3,
+      "corpus_evidence_count": 6,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0181",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "63"
+        },
+        {
+          "chunk_id": "BUKU_0182",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "63"
+        },
+        {
+          "chunk_id": "BUKU_0333",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "117–118"
+        },
+        {
+          "chunk_id": "BUKU_0334",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "118–119"
+        },
+        {
+          "chunk_id": "PPT_0154",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "61"
+        },
+        {
+          "chunk_id": "PPT_0155",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "61–62"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.3096,
+      "oos_pass": null,
+      "latency_s": 0.019,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "76",
+          "section_path": "BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasional (Scopus/WoS) > d. Persentase Penelitian Berkolaborasi Internasional",
+          "distance": 0.3096,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasional (Scopus/WoS) > d. Persentase Penelitian Berkolaborasi Internasional | hlm. 76] | Kategori Luaran Penelitian | | Kriteria Inti | Kriteri"
+        },
+        {
+          "rank": 2,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "77",
+          "section_path": "BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasional (Scopus/WoS) > d. Persentase Penelitian Berkolaborasi Internasional",
+          "distance": 0.3146,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasional (Scopus/WoS) > d. Persentase Penelitian Berkolaborasi Internasional | Bagian: Definisi | hlm. 77] | DEFINISI, KRITERIA, KETENTUAN, D"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "117–118",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3225,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 6. Persentase publikasi bereputasi internasional (Scopus/WoS) | Bagian: Kriteria | hlm. 117–118] | NO. | IKU | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | -"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "63",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS)",
+          "distance": 0.3226,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | Bagian: Kriteria | hlm. 63] | IKU 6 | DEFINISI, KRITERIA, KETENTUAN, DAN FORM"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "73",
+          "section_path": "BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasional (Scopus/WoS) > a. Total Publikasi Internasional",
+          "distance": 0.3239,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasional (Scopus/WoS) > a. Total Publikasi Internasional | Bagian: Kriteria dan Ketentuan | hlm. 73] | DEFINISI, KRITERIA, KETENTUAN, DAN FORMUL"
+        }
+      ]
+    },
+    {
+      "id": "H12",
+      "tipe": "Hitung",
+      "iku": "7",
+      "topik": "Keterlibatan SDGs",
+      "question": "Dari 60 program SDGs PT, 45 program berkontribusi pada SDG 1, 4, 17, dan 2 SDG pilihan. Berapa capaian IKU 7?",
+      "expected_answer": "**75%**.",
+      "expected_pages": [
+        58
+      ],
+      "keywords": [
+        "total program sdg"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+      "primary_hit_page": "58",
+      "page_correct": true,
+      "primary_hit_lampiran": false,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0164",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "58"
+        },
+        {
+          "chunk_id": "BUKU_0340",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "121"
+        },
+        {
+          "chunk_id": "PPT_0138",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "55"
+        }
+      ],
+      "top1_source": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+      "top1_distance": 0.2854,
+      "oos_pass": null,
+      "latency_s": 0.021,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "55",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7 : Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan (2)",
+          "distance": 0.2854,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7 : Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs"
+        },
+        {
+          "rank": 2,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "55",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7 : Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan (2)",
+          "distance": 0.2904,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7 : Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "58",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7: Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan",
+          "distance": 0.2928,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7: Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lai"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "58",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7: Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan",
+          "distance": 0.2937,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7: Persentase Keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG4 Pendidikan Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lai"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "121",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3091,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 7. Persentase keterlibatan perguruan tinggi dalam: 1) SDG 1 (Tanpa Kemiskinan); dan 2) SDG 4 (Pendidikan Berkualitas); 3) SDG 17 (Kemitraan) | Bagian: Formula | "
+        }
+      ]
+    },
+    {
+      "id": "H13",
+      "tipe": "Hitung",
+      "iku": "9",
+      "topik": "Pendapatan non-UKT",
+      "question": "Total pendapatan PT dalam satu tahun anggaran adalah Rp500 miliar, terdiri atas: - UKT Rp300 miliar - BOPTN Rp80 miliar - hibah riset kompetitif Rp50 miliar - jasa konsultasi dan pelatihan Rp40 miliar - unit bisnis (hotel, penerbitan) Rp20 miliar - hasil investasi dana abadi Rp10 miliar Berapa capaian IKU 9?",
+      "expected_answer": "**24%**. Jawaban yang memasukkan BOPTN (200/500 = 40%) **salah**.",
+      "expected_pages": [
+        59
+      ],
+      "keywords": [
+        "boptn",
+        "dana abadi"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "59",
+      "page_correct": true,
+      "primary_hit_lampiran": false,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0166",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "59"
+        },
+        {
+          "chunk_id": "BUKU_0346",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "122–123"
+        },
+        {
+          "chunk_id": "PPT_0140",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "56"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.3208,
+      "oos_pass": null,
+      "latency_s": 0.024,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "59",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT",
+          "distance": 0.3208,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT | Bagian: Kriteria | hlm. 59] | IKU 9 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | --- | --- "
+        },
+        {
+          "rank": 2,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "122–123",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3263,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 9. Persentase pendapatan/ penghasilan dari bidang non-akademik (selain UKT/uang kuliah) | Bagian: Kriteria | hlm. 122–123] | NO. | IKU | DEFINISI, KRITERIA, KETE"
+        },
+        {
+          "rank": 3,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "56",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9 : Persentase Pendapatan Non Pendidikan/UKT",
+          "distance": 0.3298,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9 : Persentase Pendapatan Non Pendidikan/UKT | Bagian: Kriteria | hlm. 56] | IKU 9 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- "
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "79",
+          "section_path": "BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.5. Sub Indikator (IKU 9): Persentase Pendapatan Non Pendidikan/UKT > 1. Persentase Pendapatan terhadap Total Aset Perguruan Tinggi",
+          "distance": 0.3327,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.5. Sub Indikator (IKU 9): Persentase Pendapatan Non Pendidikan/UKT > 1. Persentase Pendapatan terhadap Total Aset Perguruan Tinggi | Bagian: Kriteria dan Ketentuan | hlm. 79] | DEFINISI, KRITERIA, KETENTUAN,"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "59",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT",
+          "distance": 0.3472,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT | Bagian: Formula | hlm. 59] | IKU 9 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | --- | --- |"
+        }
+      ]
+    },
+    {
+      "id": "H14",
+      "tipe": "Hitung",
+      "iku": "4",
+      "topik": "Dosen rekognisi internasional",
+      "question": "PT memiliki 300 dosen dalam satu tahun terakhir; 45 dosen ber-NUPTK mendapat rekognisi internasional. Berapa capaian IKU 4?",
+      "expected_answer": "**15%**.",
+      "expected_pages": [
+        62
+      ],
+      "keywords": [
+        "nuptk",
+        "rekognisi internasional"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "112",
+      "page_correct": false,
+      "primary_hit_lampiran": true,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0179",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "62–63"
+        },
+        {
+          "chunk_id": "BUKU_0322",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "112"
+        },
+        {
+          "chunk_id": "PPT_0152",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "60–61"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.2516,
+      "oos_pass": null,
+      "latency_s": 0.02,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "112",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.2516,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 4. Jumlah Dosen perguruan tinggi yang mendapatkan rekognisi internasional atau hasil penelitiannya diterapkan oleh masyarakat. | Bagian: Formula | hlm. 112] | NO"
+        },
+        {
+          "rank": 2,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "60–61",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 4: Persentase Dosen Perguruan Tinggi yang Mendapatkan Rekognisi Internasional (3)",
+          "distance": 0.255,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 4: Persentase Dosen Perguruan Tinggi yang Mendapatkan Rekognisi Internasional (3) | Bagian: Formula | hlm. 60–61] | IKU 4 | DEFINISI, KRIT"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "62–63",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 4: Persentase Dosen Perguruan Tinggi yang Mendapatkan Rekognisi Internasional",
+          "distance": 0.267,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 4: Persentase Dosen Perguruan Tinggi yang Mendapatkan Rekognisi Internasional | Bagian: Formula | hlm. 62–63] | IKU 4 | DEFINISI, KRITERIA, K"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "108",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.2768,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 4. Jumlah Dosen perguruan tinggi yang mendapatkan rekognisi internasional atau hasil penelitiannya diterapkan oleh masyarakat. | Bagian: Definisi | hlm. 108] | N"
+        },
+        {
+          "rank": 5,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "58",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 4: Persentase Dosen Perguruan Tinggi yang Mendapatkan Rekognisi Internasional",
+          "distance": 0.2827,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 4: Persentase Dosen Perguruan Tinggi yang Mendapatkan Rekognisi Internasional | Bagian: Definisi | hlm. 58] | IKU 4 | DEFINISI, KRITERIA, "
+        }
+      ]
+    },
+    {
+      "id": "H15",
+      "tipe": "Hitung",
+      "iku": "8",
+      "topik": "SDM penyusun kebijakan",
+      "question": "Dari 400 SDM PT (dosen/peneliti), 12 orang terlibat langsung dalam penyusunan kebijakan nasional/daerah/industri, dibuktikan dengan SK atau undangan resmi. Berapa capaian IKU 8?",
+      "expected_answer": "**3%**.",
+      "expected_pages": [
+        64
+      ],
+      "keywords": [
+        "penyusunan kebijakan",
+        "total sdm pt"
+      ],
+      "in_scope": true,
+      "status": "MISS - bukti di rank mentah 6",
+      "n_returned": 5,
+      "first_hit_rank": null,
+      "reciprocal_rank": 0.0,
+      "hit_source": null,
+      "primary_hit_page": null,
+      "page_correct": null,
+      "primary_hit_lampiran": null,
+      "raw_rank_top20": 6,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0187",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "64"
+        },
+        {
+          "chunk_id": "BUKU_0344",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "122"
+        },
+        {
+          "chunk_id": "PPT_0160",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "63"
+        }
+      ],
+      "top1_source": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+      "top1_distance": 0.2299,
+      "oos_pass": null,
+      "latency_s": 0.021,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "63",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > 3 IKU 8: Persentase SDM Perguruan Tinggi (Dosen/Peneliti) yang Terlibat Langsung dalam Penyusunan Kebijakan (Nasional/Daerah/Industri)",
+          "distance": 0.2299,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > 3 IKU 8: Persentase SDM Perguruan Tinggi (Dosen/Peneliti) yang Terlibat Langsung dalam Penyusunan Kebijakan (Nasional/Daerah/Industri) | Bagia"
+        },
+        {
+          "rank": 2,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "63",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > 3 IKU 8: Persentase SDM Perguruan Tinggi (Dosen/Peneliti) yang Terlibat Langsung dalam Penyusunan Kebijakan (Nasional/Daerah/Industri)",
+          "distance": 0.2326,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > 3 IKU 8: Persentase SDM Perguruan Tinggi (Dosen/Peneliti) yang Terlibat Langsung dalam Penyusunan Kebijakan (Nasional/Daerah/Industri) | Bagia"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "64",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 8: Persentase SDM Perguruan Tinggi (Dosen/Peneliti) yang Terlibat Langsung dalam Penyusunan Kebijakan (Nasional/Daerah/Industri)",
+          "distance": 0.2335,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 8: Persentase SDM Perguruan Tinggi (Dosen/Peneliti) yang Terlibat Langsung dalam Penyusunan Kebijakan (Nasional/Daerah/Industri) | Bagian: Kr"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "64",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 8: Persentase SDM Perguruan Tinggi (Dosen/Peneliti) yang Terlibat Langsung dalam Penyusunan Kebijakan (Nasional/Daerah/Industri)",
+          "distance": 0.2346,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 8: Persentase SDM Perguruan Tinggi (Dosen/Peneliti) yang Terlibat Langsung dalam Penyusunan Kebijakan (Nasional/Daerah/Industri) | Bagian: De"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "121",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.2403,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 8. Persentase Sumber Daya Manusia (SDM) perguruan tinggi yang terlibat langsung dalam penyusunan kebijakan (nasional/daerah/ industri) | Bagian: Definisi | hlm. "
+        }
+      ]
+    },
+    {
+      "id": "H16",
+      "tipe": "Hitung",
+      "iku": "11b",
+      "topik": "Konversi nilai SAKIP ke predikat",
+      "question": "Nilai akhir evaluasi SAKIP sebuah PT adalah 82. Apa predikatnya?",
+      "expected_answer": "Predikat **A (sangat baik)**, rentang nilai 80–89: efektif dan efisien, menghasilkan kinerja di atas target.",
+      "expected_pages": [
+        66
+      ],
+      "keywords": [
+        "sakip",
+        "sangat baik"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "135",
+      "page_correct": false,
+      "primary_hit_lampiran": true,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 6,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0196",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "66"
+        },
+        {
+          "chunk_id": "BUKU_0265",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "87"
+        },
+        {
+          "chunk_id": "BUKU_0355",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "125–130"
+        },
+        {
+          "chunk_id": "BUKU_0371",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "134"
+        },
+        {
+          "chunk_id": "BUKU_0372",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "135"
+        },
+        {
+          "chunk_id": "PPT_0169",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "66"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.396,
+      "oos_pass": null,
+      "latency_s": 0.02,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "135",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 2. IKU BAGI LEMBAGA LAYANAN PENDIDIKAN TINGGI",
+          "distance": 0.396,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 2. IKU BAGI LEMBAGA LAYANAN PENDIDIKAN TINGGI | hlm. 135] | Kriteria | Skala dan Predikat Penilaian SAKIP: | | | | --- | --- | --- | --- | | Kriteria | | | | | Kriteria | 90 - 100 | AA (Memuaskan)"
+        },
+        {
+          "rank": 2,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "66",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (b) Predikat Sistem Akuntabilitas Kinerja Instansi Pemerintah (SAKIP) Perguruan Tinggi",
+          "distance": 0.4065,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (b) Predikat Sistem Akuntabilitas Kinerja Instansi Pemerintah (SAKIP) Perguruan Tinggi | Bagian: Kriteria | hlm. 66] | IKU 11 b | | DEFIN"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "87",
+          "section_path": "BAB - VI > 5.5. Indikator Kinerja Utama (IKU) Lembaga Layanan Pendidikan Tinggi > IKU 3: Tata kelola LLDIKTI yang berkualitas dan berintegritas",
+          "distance": 0.433,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - VI > 5.5. Indikator Kinerja Utama (IKU) Lembaga Layanan Pendidikan Tinggi > IKU 3: Tata kelola LLDIKTI yang berkualitas dan berintegritas | Bagian: Kriteria | hlm. 87] | IKU 3 | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | | --- | --- | --- | --- | | K"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "66",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (b) Predikat Sistem Akuntabilitas Kinerja Instansi Pemerintah (SAKIP) Perguruan Tinggi",
+          "distance": 0.4374,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (b) Predikat Sistem Akuntabilitas Kinerja Instansi Pemerintah (SAKIP) Perguruan Tinggi | Bagian: Definisi | hlm. 66] | IKU 11 b | | DEFIN"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "125–130",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.4385,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 11. a. Hasil audit atas Laporan Keuangan perguruan tinggi | Bagian: Kriteria | hlm. 125–130] | NO. | IKU | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | | | --- |"
+        }
+      ]
+    },
+    {
+      "id": "H17",
+      "tipe": "Hitung",
+      "iku": "11d",
+      "topik": "Kegiatan anti kekerasan/narkoba/korupsi",
+      "question": "PT merencanakan 24 kegiatan pencegahan dan penanganan kekerasan, narkoba, dan korupsi; 18 kegiatan terlaksana. Berapa capaian IKU 11d?",
+      "expected_answer": "**75%**.",
+      "expected_pages": [
+        68
+      ],
+      "keywords": [
+        "total kegiatan yang direncanakan"
+      ],
+      "in_scope": true,
+      "status": "HIT @1",
+      "n_returned": 5,
+      "first_hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "hit_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "primary_hit_page": "68",
+      "page_correct": true,
+      "primary_hit_lampiran": false,
+      "raw_rank_top20": 1,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0207",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "68"
+        },
+        {
+          "chunk_id": "BUKU_0361",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "126–131"
+        },
+        {
+          "chunk_id": "PPT_0180",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "69"
+        }
+      ],
+      "top1_source": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+      "top1_distance": 0.3472,
+      "oos_pass": null,
+      "latency_s": 0.021,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "68",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (d) Pencegahan dan Penanganan: (1) Anti Kekerasan; (2) Anti Narkotika, Psikotropika dan Bahan Adiktif berbahaya lainnya (narkoba); dan (3) Anti Korupsi",
+          "distance": 0.3472,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (d) Pencegahan dan Penanganan: (1) Anti Kekerasan; (2) Anti Narkotika, Psikotropika dan Bahan Adiktif berbahaya lainnya (narkoba); dan (3"
+        },
+        {
+          "rank": 2,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "68",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (d) Pencegahan dan Penanganan: (1) Anti Kekerasan; (2) Anti Narkotika, Psikotropika dan Bahan Adiktif berbahaya lainnya (narkoba); dan (3) Anti Korupsi",
+          "distance": 0.3496,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (d) Pencegahan dan Penanganan: (1) Anti Kekerasan; (2) Anti Narkotika, Psikotropika dan Bahan Adiktif berbahaya lainnya (narkoba); dan (3"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "68",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (d) Pencegahan dan Penanganan: (1) Anti Kekerasan; (2) Anti Narkotika, Psikotropika dan Bahan Adiktif berbahaya lainnya (narkoba); dan (3) Anti Korupsi",
+          "distance": 0.351,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (d) Pencegahan dan Penanganan: (1) Anti Kekerasan; (2) Anti Narkotika, Psikotropika dan Bahan Adiktif berbahaya lainnya (narkoba); dan (3"
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "68",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (d) Pencegahan dan Penanganan: (1) Anti Kekerasan; (2) Anti Narkotika, Psikotropika dan Bahan Adiktif berbahaya lainnya (narkoba); dan (3) Anti Korupsi",
+          "distance": 0.3553,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (d) Pencegahan dan Penanganan: (1) Anti Kekerasan; (2) Anti Narkotika, Psikotropika dan Bahan Adiktif berbahaya lainnya (narkoba); dan (3"
+        },
+        {
+          "rank": 5,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "68",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (d) Pencegahan dan Penanganan: (1) Anti Kekerasan; (2) Anti Narkotika, Psikotropika dan Bahan Adiktif berbahaya lainnya (narkoba); dan (3) Anti Korupsi",
+          "distance": 0.3584,
+          "is_evidence": false,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 11: (d) Pencegahan dan Penanganan: (1) Anti Kekerasan; (2) Anti Narkotika, Psikotropika dan Bahan Adiktif berbahaya lainnya (narkoba); dan (3"
+        }
+      ]
+    },
+    {
+      "id": "H18",
+      "tipe": "Hitung",
+      "iku": "12",
+      "topik": "Standar penghasilan dosen",
+      "question": "UMP di provinsi tempat PT berada adalah Rp3.000.000. Berapa penghasilan minimum dosen dengan jabatan Lektor dan Profesor menurut IKU 12?",
+      "expected_answer": "Lektor minimal **Rp9.000.000**, Profesor minimal **Rp18.000.000**.",
+      "expected_pages": [
+        60
+      ],
+      "keywords": [
+        "lektor kepala",
+        "ump"
+      ],
+      "in_scope": true,
+      "status": "HIT @2",
+      "n_returned": 5,
+      "first_hit_rank": 2,
+      "reciprocal_rank": 0.5,
+      "hit_source": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+      "primary_hit_page": "60",
+      "page_correct": true,
+      "primary_hit_lampiran": false,
+      "raw_rank_top20": 2,
+      "corpus_evidence_count": 3,
+      "corpus_evidence": [
+        {
+          "chunk_id": "BUKU_0170",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "60"
+        },
+        {
+          "chunk_id": "BUKU_0363",
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "131"
+        },
+        {
+          "chunk_id": "PPT_0144",
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "57"
+        }
+      ],
+      "top1_source": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+      "top1_distance": 0.3568,
+      "oos_pass": null,
+      "latency_s": 0.018,
+      "retrieved": [
+        {
+          "rank": 1,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "23",
+          "section_path": "BAB - III > 3.8. PROFIL DAN DAMPAK PT INDONESIA > Kontribusi ekonomi",
+          "distance": 0.3568,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - III > 3.8. PROFIL DAN DAMPAK PT INDONESIA > Kontribusi ekonomi | hlm. 23] **±Rp. 390 T*** (exc. riset dan pengmas) *SPP dan pengeluaran mahasiswa, gaji dosen dan tendik* Top 5 PTN-BH pengeluaran: **±Rp. 12,7 T** UK: £1 oleh PT berdampak pada ekonomi £4,"
+        },
+        {
+          "rank": 2,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "57",
+          "section_path": "BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 7 IKU 12 : Ketersediaan perencanaan strategis peningkatan kesejahteraan dosen",
+          "distance": 0.3829,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - V > 5.3. INDIKATOR KINERJA UTAMA (IKU) DIKTISAINTEK BERDAMPAK > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 7 IKU 12 : Ketersediaan perencanaan strategis peningkatan kesejahteraan dosen | Bagian: Kriteria | hlm. 57] | IKU 12 | DEFINISI, KRITERIA, KETEN"
+        },
+        {
+          "rank": 3,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "60",
+          "section_path": "BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 12: Ketersediaan perencanaan strategis peningkatan kesejahteraan dosen",
+          "distance": 0.3951,
+          "is_evidence": true,
+          "page_match": true,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 | BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 12: Ketersediaan perencanaan strategis peningkatan kesejahteraan dosen | Bagian: Kriteria | hlm. 60] | IKU 12 | DEFINISI, KRITERIA, KETENTUAN, "
+        },
+        {
+          "rank": 4,
+          "source_file": "Buku_IKU_Diktisaintek_Berdampak_V1.md",
+          "page": "131",
+          "section_path": "LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI",
+          "distance": 0.3956,
+          "is_evidence": true,
+          "page_match": false,
+          "doc_part": "lampiran",
+          "also_in": [],
+          "snippet": "[Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) | LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 12. Ketersediaan perencanaan strategis peningkatan kesejahteraan dosen | Bagian: Kriteria | hlm. 131] | NO. | IKU | DEFINISI, KRITERIA, KETENTUAN, DAN FORMULA | "
+        },
+        {
+          "rank": 5,
+          "source_file": "PPT_IKU_Diktisaintek_Berdampak_PTS_V2.md",
+          "page": "30",
+          "section_path": "BAB - IV > 4.4. PENINGKATAN DOSEN BERKUALIFIKASI DOKTOR (2) > Asumsi:",
+          "distance": 0.4051,
+          "is_evidence": false,
+          "page_match": false,
+          "doc_part": "utama",
+          "also_in": [],
+          "snippet": "[PPT IKU Diktisaintek Berdampak PTS V2 | BAB - IV > 4.4. PENINGKATAN DOSEN BERKUALIFIKASI DOKTOR (2) > Asumsi: | hlm. 30] * Apabila di alokasikan dana dari Dana Masyarakat untuk ***Upgrading upskilling SDM 5% = Rp 1,04 T x 5% =*** **Rp 52 Miliar** * Apabila di alokasikan dana untuk dosen kuliah S3 d"
+        }
+      ]
+    }
+  ]
+}

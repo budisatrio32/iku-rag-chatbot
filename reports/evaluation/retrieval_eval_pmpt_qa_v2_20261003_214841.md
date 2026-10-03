@@ -1,0 +1,633 @@
+# Laporan Evaluasi Retrieval
+
+- Waktu: 2026-10-03 21:48:41
+- Test set: `data\evaluation\test_set_buku_iku.md` (30 soal, 29 dalam cakupan, 1 di luar cakupan)
+- Model embedding: `BAAI/bge-m3` | Koleksi: `pmpt_qa_v2` (605 chunk)
+- top_k: 5 | ambang di luar cakupan: distance ≥ 0.45
+- Retriever: `{'candidates': 30, 'hybrid': False, 'iku_boost': True, 'dedupe': True, 'rerank': False, 'min_chars': 0}`
+- Sitasi Buku yang berasal dari Lampiran: 1
+
+Definisi: sebuah soal **HIT** jika ada chunk yang memuat semua *kata kunci bukti* soal tersebut di 5 hasil teratas `Retriever.search()`.
+
+## Ringkasan
+
+| Metrik | Nilai |
+|---|---|
+| Hit@1 | 21/29 (72.4%) |
+| Hit@3 | 26/29 (89.7%) |
+| Hit@5 | 26/29 (89.7%) |
+| MRR@5 | 0.799 |
+| Halaman sitasi benar (chunk bukti dari Buku) | 25/26 (96.2%) |
+| Hasil #1 berasal dari PPT (bukan Buku) | 0/29 |
+| Chunk bukti pertama berasal dari PPT | 0 soal |
+| Bukti tidak ada di corpus (masalah chunking) | 1 ['D04'] |
+| Nyaris kena (bukti di top-20 tapi tidak di top-5) | 1 ['H05'] |
+| Soal di luar cakupan lolos | 0/1 |
+| Rata-rata distance #1 (soal HIT / MISS) | 0.3324 / 0.3186 |
+| Distance #1 tertinggi soal dalam cakupan | 0.4319 |
+| Distance #1 soal di luar cakupan | {'D12': 0.3783} |
+| Rata-rata waktu per query | 0.048 s |
+
+### Per tipe soal
+
+| Tipe | n | Hit@1 | Hit@3 | Hit@5 | MRR |
+|---|---|---|---|---|---|
+| Definisi | 10 | 70.0% | 90.0% | 90.0% | 0.783 |
+| Jebakan ⚠️ | 1 | 0.0% | 0.0% | 0.0% | 0.0 |
+| Hitung | 18 | 77.8% | 94.4% | 94.4% | 0.852 |
+
+### Per IKU
+
+| IKU | n | Hit@1 | Hit@5 | MRR |
+|---|---|---|---|---|
+| 1 | 6 | 4/6 | 5/6 | 0.75 |
+| 11b | 1 | 1/1 | 1/1 | 1.0 |
+| 11c | 1 | 0/1 | 1/1 | 0.333 |
+| 11d | 1 | 1/1 | 1/1 | 1.0 |
+| 12 | 1 | 1/1 | 1/1 | 1.0 |
+| 2 | 4 | 3/4 | 3/4 | 0.75 |
+| 3 | 3 | 3/3 | 3/3 | 1.0 |
+| 4 | 1 | 1/1 | 1/1 | 1.0 |
+| 5 | 1 | 0/1 | 1/1 | 0.5 |
+| 6 | 3 | 2/3 | 3/3 | 0.833 |
+| 7 | 2 | 2/2 | 2/2 | 1.0 |
+| 8 | 1 | 0/1 | 1/1 | 0.333 |
+| 9 | 2 | 2/2 | 2/2 | 1.0 |
+| Umum | 2 | 1/2 | 1/2 | 0.5 |
+
+## Hasil per soal
+
+| ID | IKU | Status | Sumber bukti | Hlm. bukti (Buku) | Hlm. benar | Rank mentah | Distance #1 | Sumber #1 |
+|---|---|---|---|---|---|---|---|---|
+| D01 | 1 | HIT @1 | Buku | 49 ✅ | 49 | 1 | 0.3565 | Buku |
+| D02 | 1 | HIT @1 | Buku | 49 ✅ | 49 | 1 | 0.3376 | Buku |
+| D03 | Umum | HIT @1 | Buku | 48–49 ✅ | 48 | 1 | 0.3311 | Buku |
+| D04 | Umum | MISS - bukti tidak ada di corpus | - | - | 48 | - | 0.3476 | Buku |
+| D05 | 2 | HIT @1 | Buku | 51 ✅ | 51, 52 | 1 | 0.4091 | Buku |
+| D06 | 3 | HIT @1 | Buku | 53 ✅ | 53 | 1 | 0.2737 | Buku |
+| D07 | 7 | HIT @1 | Buku | 58 ✅ | 58 | 1 | 0.2403 | Buku |
+| D08 | 9 | HIT @1 | Buku | 59 ✅ | 59 | 1 | 0.3045 | Buku |
+| D09 | 6 | HIT @2 | Buku | 63 ✅ | 63 | 2 | 0.4319 | Buku |
+| D10 | 11c | HIT @3 | Buku | 67 ✅ | 67 | 3 | 0.2792 | Buku |
+| D11 | 1 | MISS - bukti tidak masuk top-20 | - | - | 49, 51 | - | 0.3449 | Buku |
+| D12 | — | GAGAL (di luar cakupan) | - | - | - | - | 0.3783 | PPT |
+| H01 | 1 | HIT @2 | Buku | 49–50 ✅ | 49 | 2 | 0.4029 | Buku |
+| H02 | 1 | HIT @1 | Buku | 49–50 ✅ | 49, 50 | 1 | 0.3536 | Buku |
+| H03 | 1 | HIT @1 | Buku | 49 ✅ | 49 | 1 | 0.3883 | Buku |
+| H04 | 2 | HIT @1 | Buku | 51 ✅ | 51, 52 | 1 | 0.3037 | Buku |
+| H05 | 2 | MISS - bukti di rank mentah 2 | - | - | 51, 52 | 2 | 0.2634 | Buku |
+| H06 | 2 | HIT @1 | Buku | 52 ✅ | 52 | 1 | 0.384 | Buku |
+| H07 | 3 | HIT @1 | Buku | 53–54 ✅ | 53, 54 | 1 | 0.3276 | Buku |
+| H08 | 3 | HIT @1 | Buku | 53–54 ✅ | 54 | 1 | 0.3073 | Buku |
+| H09 | 5 | HIT @2 | Buku | 57–58 ✅ | 57 | 2 | 0.308 | Buku |
+| H10 | 6 | HIT @1 | Buku | 63 ✅ | 63 | 7 | 0.3271 | Buku |
+| H11 | 6 | HIT @1 | Buku | 63 ✅ | 63 | 3 | 0.3226 | Buku |
+| H12 | 7 | HIT @1 | Buku | 58 ✅ | 58 | 1 | 0.2928 | Buku |
+| H13 | 9 | HIT @1 | Buku | 59 ✅ | 59 | 1 | 0.3208 | Buku |
+| H14 | 4 | HIT @1 | Buku | 62–63 ✅ | 62 | 1 | 0.267 | Buku |
+| H15 | 8 | HIT @3 | Buku | 64 ✅ | 64 | 6 | 0.2335 | Buku |
+| H16 | 11b | HIT @1 | Buku | 135 ❌ | 66 | 1 | 0.396 | Buku |
+| H17 | 11d | HIT @1 | Buku | 68 ✅ | 68 | 1 | 0.3472 | Buku |
+| H18 | 12 | HIT @1 | Buku | 60 ✅ | 60 | 2 | 0.3951 | Buku |
+
+## Detail per soal
+
+<details><summary>✅ <b>D01</b> — HIT @1 — Apa itu IKU 1?</summary>
+
+**Pertanyaan:** Apa itu IKU 1?
+
+**Kata kunci bukti:** `tepat waktu`, `masa studi standar`
+
+**Halaman benar:** 49 | **Chunk bukti di corpus:** 3 (Buku hlm.49, Buku hlm.100, PPT hlm.45)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 49 | 0.3565 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 2 |  | Buku | 49 | 0.3727 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 3 |  | Buku | 49 | 0.3858 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 4 |  | Buku | 49–50 | 0.3949 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 5 |  | Buku | 49–50 | 0.405 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+
+</details>
+
+<details><summary>✅ <b>D02</b> — HIT @1 — Berapa masa tempuh kurikulum dan AEE ideal untuk program Sarjana dan Diploma Tiga?</summary>
+
+**Pertanyaan:** Berapa masa tempuh kurikulum dan AEE ideal untuk program Sarjana dan Diploma Tiga?
+
+**Kata kunci bukti:** `aee ideal`, `8 semester`, `25%`
+
+**Halaman benar:** 49 | **Chunk bukti di corpus:** 3 (Buku hlm.49, Buku hlm.100–101, PPT hlm.45)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 49 | 0.3376 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 2 |  | Buku | 49 | 0.4676 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 3 |  | Buku | 49–50 | 0.4265 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 4 |  | Buku | 49 | 0.4839 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 5 |  | Buku | 25 | 0.4481 | …EMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK PERGURUAN TINGGI | [Buku IKU Diktisaintek Berdampak V1 / BAB - III > 3.7. KETERKAITAN IKU DIKTISAINTEK BERDAMPAK DENGAN IKU KEMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK  |
+
+</details>
+
+<details><summary>✅ <b>D03</b> — HIT @1 — Berapa jumlah IKU wajib, IKU pilihan, dan IKU partisipatif?</summary>
+
+**Pertanyaan:** Berapa jumlah IKU wajib, IKU pilihan, dan IKU partisipatif?
+
+**Kata kunci bukti:** `sebanyak 7 (tujuh)`, `partisipatif`
+
+**Halaman benar:** 48 | **Chunk bukti di corpus:** 1 (Buku hlm.48–49)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 48–49 | 0.3311 | …BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak / hlm. 48–49] / No / Sasaran / Indikator Kinerja Utama |
+| 2 |  | Buku | 61 | 0.3453 | … Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan / hlm.  |
+| 3 |  | Buku | 49 | 0.3486 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 4 |  | Buku | 69 | 0.3509 | …isaintek Berdampak > 5.3.3. Indikator Kinerja Utama (IKU) Partisipatif | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.3. Indikator Kinerja Utama (IKU) Partisipatif /  |
+| 5 |  | Buku | 58 | 0.3561 | …Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7:  |
+
+</details>
+
+<details><summary>❌ <b>D04</b> — MISS - bukti tidak ada di corpus — Sebutkan IKU yang bersifat wajib.</summary>
+
+**Pertanyaan:** Sebutkan IKU yang bersifat wajib.
+
+**Kata kunci bukti:** `angka efisiensi edukasi`, `kesejahteraan dosen`, `pendapatan non pendidikan`
+
+**Halaman benar:** 48 | **Chunk bukti di corpus:** 0 
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 |  | Buku | 49 | 0.3476 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 2 |  | Buku | 53 | 0.3538 | …a S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3 |
+| 3 |  | Buku | 48–49 | 0.3565 | …BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak / hlm. 48–49] / No / Sasaran / Indikator Kinerja Utama |
+| 4 |  | Buku | 51 | 0.3739 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+| 5 |  | Buku | 55 | 0.3756 | … Hasil Kerjasama Antara Perguruan Tinggi dan Start-Up/Industri/Lembaga | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 4 IKU 5 |
+
+</details>
+
+<details><summary>✅ <b>D05</b> — HIT @1 — Dari mana data IKU 2 diperoleh, dan bagaimana menentukan jumlah responden minimum?</summary>
+
+**Pertanyaan:** Dari mana data IKU 2 diperoleh, dan bagaimana menentukan jumlah responden minimum?
+
+**Kata kunci bukti:** `tracer study`, `slovin`
+
+**Halaman benar:** 51, 52 | **Chunk bukti di corpus:** 3 (Buku hlm.51, Buku hlm.104, PPT hlm.48)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 51 | 0.4091 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+| 2 |  | Buku | 52 | 0.4173 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+| 3 |  | Buku | 87 | 0.4242 | …an Pendidikan Tinggi > IKU 2: Arsitektur Perguruan Tinggi Swasta (PTS) | [Buku IKU Diktisaintek Berdampak V1 / BAB - VI > 5.5. Indikator Kinerja Utama (IKU) Lembaga Layanan Pendidikan Tinggi > IKU 2: Arsitektur Perguruan Tinggi Swast |
+| 4 |  | Buku | 51 | 0.4552 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+| 5 |  | Buku | 87 | 0.4301 | …an Pendidikan Tinggi > IKU 2: Arsitektur Perguruan Tinggi Swasta (PTS) | [Buku IKU Diktisaintek Berdampak V1 / BAB - VI > 5.5. Indikator Kinerja Utama (IKU) Lembaga Layanan Pendidikan Tinggi > IKU 2: Arsitektur Perguruan Tinggi Swast |
+
+</details>
+
+<details><summary>✅ <b>D06</b> — HIT @1 — Kegiatan di luar program studi apa saja yang diakui untuk IKU 3?</summary>
+
+**Pertanyaan:** Kegiatan di luar program studi apa saja yang diakui untuk IKU 3?
+
+**Kata kunci bukti:** `magang`, `pertukaran mahasiswa`, `dosen pembimbing`
+
+**Halaman benar:** 53 | **Chunk bukti di corpus:** 5 (Buku hlm.53, Buku hlm.53, Buku hlm.105–106, Buku hlm.106–107, PPT hlm.49)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 53 | 0.2737 | …a S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3 |
+| 2 | ✅ | Buku | 53 | 0.2754 | …a S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3 |
+| 3 |  | Buku | 53 | 0.314 | …a S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3 |
+| 4 |  | Buku | 53–54 | 0.3557 | …a S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3 |
+| 5 |  | Buku | 62 | 0.3943 | …entase Dosen Perguruan Tinggi yang Mendapatkan Rekognisi Internasional | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 4 |
+
+</details>
+
+<details><summary>✅ <b>D07</b> — HIT @1 — SDG apa saja yang wajib dan pilihan dalam IKU 7?</summary>
+
+**Pertanyaan:** SDG apa saja yang wajib dan pilihan dalam IKU 7?
+
+**Kata kunci bukti:** `sdg 17`, `2 (dua) tujuan sdgs lain`
+
+**Halaman benar:** 58 | **Chunk bukti di corpus:** 3 (Buku hlm.58, Buku hlm.120–121, PPT hlm.55)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 58 | 0.2403 | …Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7:  |
+| 2 |  | Buku | 58 | 0.2886 | …Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7:  |
+| 3 |  | Buku | 58 | 0.2726 | …Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7:  |
+| 4 |  | Buku | 58 | 0.3032 | …Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7:  |
+| 5 |  | Buku | 58 | 0.3026 | …Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7:  |
+
+</details>
+
+<details><summary>✅ <b>D08</b> — HIT @1 — Pendapatan apa saja yang tidak termasuk dalam perhitungan IKU 9?</summary>
+
+**Pertanyaan:** Pendapatan apa saja yang tidak termasuk dalam perhitungan IKU 9?
+
+**Kata kunci bukti:** `boptn`, `iuran pengembangan institusi`
+
+**Halaman benar:** 59 | **Chunk bukti di corpus:** 3 (Buku hlm.59, Buku hlm.122–123, PPT hlm.56)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 59 | 0.3045 | … Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9 |
+| 2 |  | Buku | 59 | 0.3208 | … Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9 |
+| 3 |  | Buku | 59 | 0.3296 | … Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9 |
+| 4 |  | Buku | 59 | 0.339 | … Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9 |
+| 5 |  | Buku | 79–80 | 0.3595 | …entase DIPA/APBN Pemerintah terhadap Total Pendapatan Perguruan Tinggi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.5. Sub Indikator (IKU 9): Persentase Pendapatan Non Pendidikan/UKT  |
+
+</details>
+
+<details><summary>✅ <b>D09</b> — HIT @2 — Penerbit apa yang tidak diperhitungkan dalam IKU 6?</summary>
+
+**Pertanyaan:** Penerbit apa yang tidak diperhitungkan dalam IKU 6?
+
+**Kata kunci bukti:** `mdpi`, `hindawi`
+
+**Halaman benar:** 63 | **Chunk bukti di corpus:** 9 (Buku hlm.63, Buku hlm.73, Buku hlm.74, Buku hlm.75, Buku hlm.118–119, PPT hlm.61–62)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 |  | Buku | 63 | 0.4319 | …an > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6 |
+| 2 | ✅ | Buku | 63 | 0.4332 | …an > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6 |
+| 3 |  | Buku | 63 | 0.441 | …an > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6 |
+| 4 |  | Buku | 63 | 0.4589 | …an > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6 |
+| 5 |  | Buku | 59 | 0.443 | … Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9 |
+
+</details>
+
+<details><summary>✅ <b>D10</b> — HIT @3 — Bagaimana arah penilaian IKU 11c (pelanggaran integritas akademik)?</summary>
+
+**Pertanyaan:** Bagaimana arah penilaian IKU 11c (pelanggaran integritas akademik)?
+
+**Kata kunci bukti:** `semakin rendah semakin baik`
+
+**Halaman benar:** 67 | **Chunk bukti di corpus:** 3 (Buku hlm.67, Buku hlm.126–130, PPT hlm.67)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 |  | Buku | 67 | 0.2792 | … IKU 11: (c) Pencegahan dan Penanganan Pelanggaran Integritas Akademik | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 1 |
+| 2 |  | Buku | 67 | 0.288 | … IKU 11: (c) Pencegahan dan Penanganan Pelanggaran Integritas Akademik | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 1 |
+| 3 | ✅ | Buku | 67 | 0.2892 | … IKU 11: (c) Pencegahan dan Penanganan Pelanggaran Integritas Akademik | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 1 |
+| 4 |  | Buku | 67 | 0.3294 | … IKU 11: (c) Pencegahan dan Penanganan Pelanggaran Integritas Akademik | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 1 |
+| 5 |  | Buku | 125–130 | 0.3107 | …LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI | [Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) / LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 11. a. Hasil audit at |
+
+</details>
+
+<details><summary>❌ <b>D11</b> — MISS - bukti tidak masuk top-20 — Lulusan 400, yang bekerja 280, berapa capaian IKU 1?</summary>
+
+**Pertanyaan:** Lulusan 400, yang bekerja 280, berapa capaian IKU 1?
+
+**Kata kunci bukti:** `tepat waktu`, `masa studi standar`
+
+**Halaman benar:** 49, 51 | **Chunk bukti di corpus:** 3 (Buku hlm.49, Buku hlm.100, PPT hlm.45)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 |  | Buku | 49 | 0.3449 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 2 |  | Buku | 49–50 | 0.3585 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 3 |  | Buku | 49 | 0.3712 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 4 |  | Buku | 49–50 | 0.3813 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 5 |  | Buku | 52 | 0.364 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+
+</details>
+
+<details><summary>❌ <b>D12</b> — GAGAL (di luar cakupan) — Berapa besaran UKT di Universitas Gadjah Mada tahun 2026?</summary>
+
+**Pertanyaan:** Berapa besaran UKT di Universitas Gadjah Mada tahun 2026?
+
+**Kata kunci bukti:** — (di luar cakupan)
+
+**Halaman benar:** - | **Chunk bukti di corpus:** 0 
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 |  | PPT | 28 | 0.3783 | …3. PROYEKSI PERTUMBUHAN MAHASISWA ASING 2030 > Universitas Gadjah Mada | [PPT IKU Diktisaintek Berdampak PTS V2 / BAB - IV > 4.3. PROYEKSI PERTUMBUHAN MAHASISWA ASING 2030 > Universitas Gadjah Mada / hlm. 28] / Tahun 2025 / Target IK |
+| 2 |  | Buku | 33 | 0.3902 | …BAB - IV > 4.3. PROYEKSI PERTUMBUHAN MAHASISWA ASING 2030 | [Buku IKU Diktisaintek Berdampak V1 / BAB - IV > 4.3. PROYEKSI PERTUMBUHAN MAHASISWA ASING 2030 / hlm. 33] Sebagai ilustrasi implementasi kebijakan peningkatan  |
+| 3 |  | Buku | 43 | 0.3939 | …BAB - IV > 4.10. DANA ABADI > Latar Belakang | [Buku IKU Diktisaintek Berdampak V1 / BAB - IV > 4.10. DANA ABADI > Latar Belakang / hlm. 43] **Dana Abadi Top 7 PTN-BH 2024** (Dalam Miliar Rp) / PERGURUAN TIN |
+| 4 |  | Buku | 41 | 0.3988 | …BAB - IV > 4.8. QS WORLD UNIVERSIY RANKING | [Buku IKU Diktisaintek Berdampak V1 / BAB - IV > 4.8. QS WORLD UNIVERSIY RANKING / hlm. 41] / / QS World University Ranking: Ranked Indonesian Universities / /  |
+| 5 |  | Buku | 43 | 0.4064 | …BAB - IV > 4.10. DANA ABADI > Analisis | [Buku IKU Diktisaintek Berdampak V1 / BAB - IV > 4.10. DANA ABADI > Analisis / hlm. 43] **Skenario 1** (Dalam Miliar Rp) Tabel: Skenario 1 (Dalam Miliar Rp) / P |
+
+</details>
+
+<details><summary>✅ <b>H01</b> — HIT @2 — Prodi S1 memiliki 200 mahasiswa dalam satu tahun akademik. Sebanyak 40 mahasiswa lulus tep</summary>
+
+**Pertanyaan:** Prodi S1 memiliki 200 mahasiswa dalam satu tahun akademik. Sebanyak 40 mahasiswa lulus tepat 8 semester. Berapa AEE realisasi dan tingkat pencapaian AEE prodi tersebut?
+
+**Kata kunci bukti:** `aee ideal`, `tingkat pencapaian aee`
+
+**Halaman benar:** 49 | **Chunk bukti di corpus:** 5 (Buku hlm.49–50, Buku hlm.49–50, Buku hlm.101–102, Buku hlm.101–102, PPT hlm.46)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 |  | Buku | 49 | 0.4029 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 2 | ✅ | Buku | 49–50 | 0.4089 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 3 |  | Buku | 25 | 0.4204 | …EMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK PERGURUAN TINGGI | [Buku IKU Diktisaintek Berdampak V1 / BAB - III > 3.7. KETERKAITAN IKU DIKTISAINTEK BERDAMPAK DENGAN IKU KEMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK  |
+| 4 |  | Buku | 49 | 0.5188 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 5 |  | Buku | 25 | 0.4277 | …EMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK PERGURUAN TINGGI | [Buku IKU Diktisaintek Berdampak V1 / BAB - III > 3.7. KETERKAITAN IKU DIKTISAINTEK BERDAMPAK DENGAN IKU KEMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK  |
+
+</details>
+
+<details><summary>✅ <b>H02</b> — HIT @1 — Sebuah PT memiliki 3 program pendidikan: D3 dengan AEE realisasi 30%, S1 dengan 22,5%, dan</summary>
+
+**Pertanyaan:** Sebuah PT memiliki 3 program pendidikan: D3 dengan AEE realisasi 30%, S1 dengan 22,5%, dan S2 dengan 40%. Berapa AEE PT?
+
+**Kata kunci bukti:** `aee pt`, `tingkat pencapaian`
+
+**Halaman benar:** 49, 50 | **Chunk bukti di corpus:** 7 (Buku hlm.49–50, Buku hlm.49–50, Buku hlm.100, Buku hlm.101–102, Buku hlm.101–102, PPT hlm.46)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 49–50 | 0.3536 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 2 |  | Buku | 49 | 0.4306 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 3 |  | Buku | 49 | 0.4934 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 4 |  | Buku | 25 | 0.3491 | …EMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK PERGURUAN TINGGI | [Buku IKU Diktisaintek Berdampak V1 / BAB - III > 3.7. KETERKAITAN IKU DIKTISAINTEK BERDAMPAK DENGAN IKU KEMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK  |
+| 5 |  | Buku | 25 | 0.3495 | …EMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK PERGURUAN TINGGI | [Buku IKU Diktisaintek Berdampak V1 / BAB - III > 3.7. KETERKAITAN IKU DIKTISAINTEK BERDAMPAK DENGAN IKU KEMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK  |
+
+</details>
+
+<details><summary>✅ <b>H03</b> — HIT @1 — Prodi S1 mencatat 250 mahasiswa pada satu tahun akademik, termasuk 10 mahasiswa pindah dan</summary>
+
+**Pertanyaan:** Prodi S1 mencatat 250 mahasiswa pada satu tahun akademik, termasuk 10 mahasiswa pindah dan 15 mahasiswa *drop out*. Sebanyak 45 mahasiswa lulus tepat 8 semester. Berapa AEE realisasi dan tingkat pencapaiannya?
+
+**Kata kunci bukti:** `drop out`, `mahasiswa pindah`
+
+**Halaman benar:** 49 | **Chunk bukti di corpus:** 3 (Buku hlm.49, Buku hlm.100–101, PPT hlm.45)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 49 | 0.3883 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 2 |  | Buku | 49–50 | 0.3915 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+| 3 |  | Buku | 25 | 0.3824 | …EMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK PERGURUAN TINGGI | [Buku IKU Diktisaintek Berdampak V1 / BAB - III > 3.7. KETERKAITAN IKU DIKTISAINTEK BERDAMPAK DENGAN IKU KEMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK  |
+| 4 |  | Buku | 25 | 0.392 | …EMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK PERGURUAN TINGGI | [Buku IKU Diktisaintek Berdampak V1 / BAB - III > 3.7. KETERKAITAN IKU DIKTISAINTEK BERDAMPAK DENGAN IKU KEMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK  |
+| 5 |  | Buku | 25 | 0.3966 | …EMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK PERGURUAN TINGGI | [Buku IKU Diktisaintek Berdampak V1 / BAB - III > 3.7. KETERKAITAN IKU DIKTISAINTEK BERDAMPAK DENGAN IKU KEMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK  |
+
+</details>
+
+<details><summary>✅ <b>H04</b> — HIT @1 — Tracer study mengumpulkan 400 responden lulusan S1. Sebanyak 280 lulusan bekerja dengan ma</summary>
+
+**Pertanyaan:** Tracer study mengumpulkan 400 responden lulusan S1. Sebanyak 280 lulusan bekerja dengan masa tunggu < 6 bulan dan gaji > 1,2× UMP; sisanya belum bekerja. Berapa capaian IKU 2?
+
+**Kata kunci bukti:** `masa tunggu`, `1.2x ump`
+
+**Halaman benar:** 51, 52 | **Chunk bukti di corpus:** 9 (Buku hlm.51, Buku hlm.103–104, Buku hlm.103–104, PPT hlm.47, PPT hlm.47, PPT hlm.47)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 51 | 0.3037 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+| 2 |  | Buku | 51 | 0.3336 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+| 3 |  | Buku | 52 | 0.3471 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+| 4 |  | Buku | 51 | 0.3379 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+| 5 |  | Buku | 51 | 0.3445 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+
+</details>
+
+<details><summary>❌ <b>H05</b> — MISS - bukti di rank mentah 2 — Tracer study mengumpulkan 500 responden lulusan. Rinciannya: - 200 bekerja, masa tunggu < </summary>
+
+**Pertanyaan:** Tracer study mengumpulkan 500 responden lulusan. Rinciannya: - 200 bekerja, masa tunggu < 6 bulan, gaji > 1,2× UMP - 100 bekerja, masa tunggu < 1 tahun, gaji > 1,2× UMP - 50 bekerja, masa tunggu < 1 tahun, gaji < 1,2× UMP - 30 melanjutkan studi (surat penerimaan < 12 bulan) - 20 *founder*, < 6 bulan, penghasilan > 1,2× UMP - 10 *freelancer*, > 6 bulan, penghasilan < 1,2× UMP - 90 belum bekerja/studi/wirausaha Berapa capaian IKU 2?
+
+**Kata kunci bukti:** `freelancer`, `bobot = 0,8`
+
+**Halaman benar:** 51, 52 | **Chunk bukti di corpus:** 2 (PPT hlm.47, PPT hlm.47)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 |  | Buku | 51 | 0.2634 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+| 2 |  | Buku | 51 | 0.3158 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+| 3 |  | Buku | 51 | 0.3056 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+| 4 |  | Buku | 51 | 0.3091 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+| 5 |  | Buku | 52 | 0.3289 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+
+</details>
+
+<details><summary>✅ <b>H06</b> — HIT @1 — Jumlah lulusan suatu PT adalah 2.000 orang. Berapa jumlah responden minimum tracer study u</summary>
+
+**Pertanyaan:** Jumlah lulusan suatu PT adalah 2.000 orang. Berapa jumlah responden minimum tracer study untuk IKU 2?
+
+**Kata kunci bukti:** `responden minimum`, `galat`
+
+**Halaman benar:** 52 | **Chunk bukti di corpus:** 3 (Buku hlm.52, Buku hlm.104–105, PPT hlm.48–49)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 52 | 0.384 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+| 2 |  | Buku | 51 | 0.3801 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+| 3 |  | Buku | 51 | 0.4033 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+| 4 |  | Buku | 51 | 0.4142 | …Berikutnya/ Berwirausaha dalam Jangka Waktu 1 Tahun Setelah Kelulusan. | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 2 IKU 2 |
+| 5 |  | PPT | 34 | 0.3728 | …- IV > 4.7. POSTDOCTORALPROGRAM > Target Penerima Postdoctoral program | [PPT IKU Diktisaintek Berdampak PTS V2 / BAB - IV > 4.7. POSTDOCTORALPROGRAM > Target Penerima Postdoctoral program / hlm. 34] / <br>**1.000**<br>**Orang** / PT |
+
+</details>
+
+<details><summary>✅ <b>H07</b> — HIT @1 — Sebuah PT memiliki 1.000 mahasiswa S1/Diploma. Rinciannya: - 100 mahasiswa magang 20 SKS -</summary>
+
+**Pertanyaan:** Sebuah PT memiliki 1.000 mahasiswa S1/Diploma. Rinciannya: - 100 mahasiswa magang 20 SKS - 150 mahasiswa pertukaran 8 SKS - 50 mahasiswa riset 4 SKS - 5 mahasiswa juara 1 lomba nasional - 10 mahasiswa finalis lomba internasional Berapa capaian IKU 3?
+
+**Kata kunci bukti:** `5 sks, bobot = 0,4`, `finalis, bobot = 0,2`
+
+**Halaman benar:** 53, 54 | **Chunk bukti di corpus:** 3 (Buku hlm.53–54, Buku hlm.107–108, PPT hlm.50)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 53–54 | 0.3276 | …a S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3 |
+| 2 |  | Buku | 53 | 0.3301 | …a S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3 |
+| 3 |  | Buku | 53 | 0.3311 | …a S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3 |
+| 4 |  | Buku | 53 | 0.3679 | …a S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3 |
+| 5 |  | Buku | 49 | 0.3528 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+
+</details>
+
+<details><summary>✅ <b>H08</b> — HIT @1 — Dari 500 mahasiswa, prestasi yang tercatat adalah 2 juara 1 internasional, 4 juara 2 tingk</summary>
+
+**Pertanyaan:** Dari 500 mahasiswa, prestasi yang tercatat adalah 2 juara 1 internasional, 4 juara 2 tingkat provinsi, dan 20 finalis tingkat provinsi. Tidak ada kegiatan SKS di luar prodi. Berapa capaian IKU 3?
+
+**Kata kunci bukti:** `juara harapan`, `finalis, bobot = 0,05`
+
+**Halaman benar:** 54 | **Chunk bukti di corpus:** 3 (Buku hlm.53–54, Buku hlm.107–108, PPT hlm.50)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 53–54 | 0.3073 | …a S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3 |
+| 2 |  | Buku | 53 | 0.3358 | …a S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3 |
+| 3 |  | Buku | 53 | 0.3403 | …a S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3 |
+| 4 |  | Buku | 53 | 0.3499 | …a S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 3 IKU 3 |
+| 5 |  | Buku | 49 | 0.3596 | …U) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 1 / |
+
+</details>
+
+<details><summary>✅ <b>H09</b> — HIT @2 — PT memiliki 120 kerja sama. Dari kerja sama itu dihasilkan 30 karya (judul) yang telah dim</summary>
+
+**Pertanyaan:** PT memiliki 120 kerja sama. Dari kerja sama itu dihasilkan 30 karya (judul) yang telah dimanfaatkan oleh mitra, melibatkan total 90 dosen. Berapa capaian IKU 5?
+
+**Kata kunci bukti:** `total kerjasama perguruan tinggi`, `bukan jumlah dosen`
+
+**Halaman benar:** 57 | **Chunk bukti di corpus:** 3 (Buku hlm.57–58, Buku hlm.117, PPT hlm.53)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 |  | Buku | 56–57 | 0.308 | … Hasil Kerjasama Antara Perguruan Tinggi dan Start-Up/Industri/Lembaga | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 4 IKU 5 |
+| 2 | ✅ | Buku | 57–58 | 0.3089 | … Hasil Kerjasama Antara Perguruan Tinggi dan Start-Up/Industri/Lembaga | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 4 IKU 5 |
+| 3 |  | Buku | 55–56 | 0.3102 | … Hasil Kerjasama Antara Perguruan Tinggi dan Start-Up/Industri/Lembaga | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 4 IKU 5 |
+| 4 |  | Buku | 55–56 | 0.3129 | … Hasil Kerjasama Antara Perguruan Tinggi dan Start-Up/Industri/Lembaga | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 4 IKU 5 |
+| 5 |  | Buku | 55–56 | 0.3214 | … Hasil Kerjasama Antara Perguruan Tinggi dan Start-Up/Industri/Lembaga | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 4 IKU 5 |
+
+</details>
+
+<details><summary>✅ <b>H10</b> — HIT @1 — Total publikasi PT dalam satu periode adalah 200, terdiri atas 10 jurnal Top Tier, 40 Q1, </summary>
+
+**Pertanyaan:** Total publikasi PT dalam satu periode adalah 200, terdiri atas 10 jurnal Top Tier, 40 Q1, 50 Q2, 30 Q3, 20 Q4, dan 50 publikasi tidak terindeks Scopus/WoS. Berapa capaian IKU 6?
+
+**Kata kunci bukti:** `top tier`, `bobot 1,2`, `q4`
+
+**Halaman benar:** 63 | **Chunk bukti di corpus:** 3 (Buku hlm.63, Buku hlm.117–118, PPT hlm.61)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 63 | 0.3271 | …an > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6 |
+| 2 |  | Buku | 63 | 0.3443 | …an > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6 |
+| 3 |  | Buku | 63 | 0.3568 | …an > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6 |
+| 4 |  | Buku | 63 | 0.3544 | …an > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6 |
+| 5 |  | Buku | 74 | 0.304 | …ternasional (Scopus/WoS) > b. Persentase Publikasi Bereputasi Top Tier | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasi |
+
+</details>
+
+<details><summary>✅ <b>H11</b> — HIT @1 — Total publikasi 20, terdiri atas 4 artikel Q1 hasil kolaborasi dengan penulis luar negeri,</summary>
+
+**Pertanyaan:** Total publikasi 20, terdiri atas 4 artikel Q1 hasil kolaborasi dengan penulis luar negeri, 6 artikel Q1 tanpa kolaborasi, dan 10 prosiding internasional terindeks Scopus. Berapa capaian IKU 6?
+
+**Kata kunci bukti:** `kolaborasi internasional`, `prosiding internasional`
+
+**Halaman benar:** 63 | **Chunk bukti di corpus:** 6 (Buku hlm.63, Buku hlm.63, Buku hlm.117–118, Buku hlm.118–119, PPT hlm.61, PPT hlm.61–62)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 63 | 0.3226 | …an > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6 |
+| 2 | ✅ | Buku | 63 | 0.3302 | …an > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6 |
+| 3 |  | Buku | 63 | 0.353 | …an > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6 |
+| 4 |  | Buku | 63 | 0.3704 | …an > IKU 6: Persentase Publikasi Bereputasi Internasional (Scopus/WoS) | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 6 |
+| 5 |  | Buku | 76 | 0.3096 | …al (Scopus/WoS) > d. Persentase Penelitian Berkolaborasi Internasional | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.3. Sub Indikator (IKU 6): Persentase Publikasi Bereputasi Internasi |
+
+</details>
+
+<details><summary>✅ <b>H12</b> — HIT @1 — Dari 60 program SDGs PT, 45 program berkontribusi pada SDG 1, 4, 17, dan 2 SDG pilihan. Be</summary>
+
+**Pertanyaan:** Dari 60 program SDGs PT, 45 program berkontribusi pada SDG 1, 4, 17, dan 2 SDG pilihan. Berapa capaian IKU 7?
+
+**Kata kunci bukti:** `total program sdg`
+
+**Halaman benar:** 58 | **Chunk bukti di corpus:** 3 (Buku hlm.58, Buku hlm.121, PPT hlm.55)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 58 | 0.2928 | …Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7:  |
+| 2 |  | Buku | 58 | 0.3109 | …Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7:  |
+| 3 |  | Buku | 58 | 0.2937 | …Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7:  |
+| 4 |  | Buku | 58 | 0.3169 | …Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7:  |
+| 5 |  | Buku | 58 | 0.3238 | …Berkualitas), SDG17 (Kemitraan), dan 2(dua)SDGs Lain Sesuai Keunggulan | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 7:  |
+
+</details>
+
+<details><summary>✅ <b>H13</b> — HIT @1 — Total pendapatan PT dalam satu tahun anggaran adalah Rp500 miliar, terdiri atas: - UKT Rp3</summary>
+
+**Pertanyaan:** Total pendapatan PT dalam satu tahun anggaran adalah Rp500 miliar, terdiri atas: - UKT Rp300 miliar - BOPTN Rp80 miliar - hibah riset kompetitif Rp50 miliar - jasa konsultasi dan pelatihan Rp40 miliar - unit bisnis (hotel, penerbitan) Rp20 miliar - hasil investasi dana abadi Rp10 miliar Berapa capaian IKU 9?
+
+**Kata kunci bukti:** `boptn`, `dana abadi`
+
+**Halaman benar:** 59 | **Chunk bukti di corpus:** 3 (Buku hlm.59, Buku hlm.122–123, PPT hlm.56)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 59 | 0.3208 | … Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9 |
+| 2 |  | Buku | 59 | 0.3472 | … Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9 |
+| 3 |  | Buku | 59 | 0.37 | … Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9 |
+| 4 |  | Buku | 59 | 0.3669 | … Utama (IKU) Wajib > 6 IKU 9: Persentase Pendapatan Non Pendidikan/UKT | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > 6 IKU 9 |
+| 5 |  | Buku | 79 | 0.3327 | …an/UKT > 1. Persentase Pendapatan terhadap Total Aset Perguruan Tinggi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.4. Sub Indikator Kinerja Utama (IKU) > 5.4.5. Sub Indikator (IKU 9): Persentase Pendapatan Non Pendidikan/UKT  |
+
+</details>
+
+<details><summary>✅ <b>H14</b> — HIT @1 — PT memiliki 300 dosen dalam satu tahun terakhir; 45 dosen ber-NUPTK mendapat rekognisi int</summary>
+
+**Pertanyaan:** PT memiliki 300 dosen dalam satu tahun terakhir; 45 dosen ber-NUPTK mendapat rekognisi internasional. Berapa capaian IKU 4?
+
+**Kata kunci bukti:** `nuptk`, `rekognisi internasional`
+
+**Halaman benar:** 62 | **Chunk bukti di corpus:** 3 (Buku hlm.62–63, Buku hlm.112, PPT hlm.60–61)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 62–63 | 0.267 | …entase Dosen Perguruan Tinggi yang Mendapatkan Rekognisi Internasional | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 4 |
+| 2 |  | Buku | 61 | 0.3057 | …entase Dosen Perguruan Tinggi yang Mendapatkan Rekognisi Internasional | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 4 |
+| 3 |  | Buku | 61–62 | 0.3327 | …entase Dosen Perguruan Tinggi yang Mendapatkan Rekognisi Internasional | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 4 |
+| 4 |  | Buku | 62 | 0.3345 | …entase Dosen Perguruan Tinggi yang Mendapatkan Rekognisi Internasional | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 4 |
+| 5 |  | Buku | 61–62 | 0.346 | …entase Dosen Perguruan Tinggi yang Mendapatkan Rekognisi Internasional | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 4 |
+
+</details>
+
+<details><summary>✅ <b>H15</b> — HIT @3 — Dari 400 SDM PT (dosen/peneliti), 12 orang terlibat langsung dalam penyusunan kebijakan na</summary>
+
+**Pertanyaan:** Dari 400 SDM PT (dosen/peneliti), 12 orang terlibat langsung dalam penyusunan kebijakan nasional/daerah/industri, dibuktikan dengan SK atau undangan resmi. Berapa capaian IKU 8?
+
+**Kata kunci bukti:** `penyusunan kebijakan`, `total sdm pt`
+
+**Halaman benar:** 64 | **Chunk bukti di corpus:** 3 (Buku hlm.64, Buku hlm.122, PPT hlm.63)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 |  | Buku | 64 | 0.2335 | …erlibat Langsung dalam Penyusunan Kebijakan (Nasional/Daerah/Industri) | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 8 |
+| 2 |  | Buku | 64 | 0.2346 | …erlibat Langsung dalam Penyusunan Kebijakan (Nasional/Daerah/Industri) | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 8 |
+| 3 | ✅ | Buku | 64 | 0.2466 | …erlibat Langsung dalam Penyusunan Kebijakan (Nasional/Daerah/Industri) | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 8 |
+| 4 |  | Buku | 64 | 0.2648 | …erlibat Langsung dalam Penyusunan Kebijakan (Nasional/Daerah/Industri) | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 8 |
+| 5 |  | PPT | 20 | 0.2837 | …EMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMPAK PERGURUAN TINGGI | [PPT IKU Diktisaintek Berdampak PTS V2 / BAB - III > 3.7. KETERKAITAN IKU DIKTISAINTEK BERDAMPAK DENGAN IKU KEMENTERIAN > INDIKATOR KINERJA DIKTISAINTEK BERDAMP |
+
+</details>
+
+<details><summary>✅ <b>H16</b> — HIT @1 — Nilai akhir evaluasi SAKIP sebuah PT adalah 82. Apa predikatnya?</summary>
+
+**Pertanyaan:** Nilai akhir evaluasi SAKIP sebuah PT adalah 82. Apa predikatnya?
+
+**Kata kunci bukti:** `sakip`, `sangat baik`
+
+**Halaman benar:** 66 | **Chunk bukti di corpus:** 6 (Buku hlm.66, Buku hlm.87, Buku hlm.125–130, Buku hlm.134, Buku hlm.135, PPT hlm.66)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 135 | 0.396 | … Kepmen 358/M/KEP/2025 > 2. IKU BAGI LEMBAGA LAYANAN PENDIDIKAN TINGGI | [Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) / LAMPIRAN Kepmen 358/M/KEP/2025 > 2. IKU BAGI LEMBAGA LAYANAN PENDIDIKAN TINGGI / hlm. 135 |
+| 2 | ✅ | Buku | 66 | 0.4065 | …tem Akuntabilitas Kinerja Instansi Pemerintah (SAKIP) Perguruan Tinggi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 1 |
+| 3 | ✅ | Buku | 87 | 0.433 | …Tinggi > IKU 3: Tata kelola LLDIKTI yang berkualitas dan berintegritas | [Buku IKU Diktisaintek Berdampak V1 / BAB - VI > 5.5. Indikator Kinerja Utama (IKU) Lembaga Layanan Pendidikan Tinggi > IKU 3: Tata kelola LLDIKTI yang berkuali |
+| 4 |  | Buku | 66 | 0.4374 | …tem Akuntabilitas Kinerja Instansi Pemerintah (SAKIP) Perguruan Tinggi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 1 |
+| 5 | ✅ | Buku | 125–130 | 0.4385 | …LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI | [Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) / LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 11. a. Hasil audit at |
+
+</details>
+
+<details><summary>✅ <b>H17</b> — HIT @1 — PT merencanakan 24 kegiatan pencegahan dan penanganan kekerasan, narkoba, dan korupsi; 18 </summary>
+
+**Pertanyaan:** PT merencanakan 24 kegiatan pencegahan dan penanganan kekerasan, narkoba, dan korupsi; 18 kegiatan terlaksana. Berapa capaian IKU 11d?
+
+**Kata kunci bukti:** `total kegiatan yang direncanakan`
+
+**Halaman benar:** 68 | **Chunk bukti di corpus:** 3 (Buku hlm.68, Buku hlm.126–131, PPT hlm.69)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 68 | 0.3472 | …ka dan Bahan Adiktif berbahaya lainnya (narkoba); dan (3) Anti Korupsi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 1 |
+| 2 |  | Buku | 68 | 0.3496 | …ka dan Bahan Adiktif berbahaya lainnya (narkoba); dan (3) Anti Korupsi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 1 |
+| 3 |  | Buku | 68 | 0.351 | …ka dan Bahan Adiktif berbahaya lainnya (narkoba); dan (3) Anti Korupsi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 1 |
+| 4 |  | Buku | 68 | 0.3553 | …ka dan Bahan Adiktif berbahaya lainnya (narkoba); dan (3) Anti Korupsi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 1 |
+| 5 |  | Buku | 68 | 0.3584 | …ka dan Bahan Adiktif berbahaya lainnya (narkoba); dan (3) Anti Korupsi | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.2. Indikator Kinerja Utama (IKU) Pilihan > IKU 1 |
+
+</details>
+
+<details><summary>✅ <b>H18</b> — HIT @1 — UMP di provinsi tempat PT berada adalah Rp3.000.000. Berapa penghasilan minimum dosen deng</summary>
+
+**Pertanyaan:** UMP di provinsi tempat PT berada adalah Rp3.000.000. Berapa penghasilan minimum dosen dengan jabatan Lektor dan Profesor menurut IKU 12?
+
+**Kata kunci bukti:** `lektor kepala`, `ump`
+
+**Halaman benar:** 60 | **Chunk bukti di corpus:** 3 (Buku hlm.60, Buku hlm.131, PPT hlm.57)
+
+| # | Bukti | Sumber | Hlm. | Distance | Section | Cuplikan |
+|---|---|---|---|---|---|---|
+| 1 | ✅ | Buku | 60 | 0.3951 | …12: Ketersediaan perencanaan strategis peningkatan kesejahteraan dosen | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 12: |
+| 2 |  | Buku | 60 | 0.4715 | …12: Ketersediaan perencanaan strategis peningkatan kesejahteraan dosen | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 12: |
+| 3 |  | Buku | 60 | 0.4745 | …12: Ketersediaan perencanaan strategis peningkatan kesejahteraan dosen | [Buku IKU Diktisaintek Berdampak V1 / BAB - V > 5.3. Indikator Kinerja Utama (IKU) Diktisaintek Berdampak > 5.3.1. Indikator Kinerja Utama (IKU) Wajib > IKU 12: |
+| 4 |  | Buku | 132 | 0.4783 | …LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI | [Buku IKU Diktisaintek Berdampak V1 (Lampiran Kepmen 358/M/KEP/2025) / LAMPIRAN Kepmen 358/M/KEP/2025 > 1. IKU BAGI PERGURUAN TINGGI > IKU 12. Ketersediaan pere |
+| 5 |  | PPT | 23 | 0.3568 | …BAB - III > 3.8. PROFIL DAN DAMPAK PT INDONESIA > Kontribusi ekonomi | [PPT IKU Diktisaintek Berdampak PTS V2 / BAB - III > 3.8. PROFIL DAN DAMPAK PT INDONESIA > Kontribusi ekonomi / hlm. 23] **±Rp. 390 T*** (exc. riset dan pengmas |
+
+</details>

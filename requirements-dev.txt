@@ -1,0 +1,3 @@
+# Alat pengembangan & pengujian. Unit test kalkulator tidak butuh torch/GPU,
+# jadi file ini sengaja tidak menyertakan requirements.txt (dipakai juga oleh CI).
+pytest>=8

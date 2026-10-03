@@ -1,0 +1,21 @@
+# PyTorch dipasang LEBIH DULU sesuai hardware (lihat README bagian Setup):
+#   GPU NVIDIA : pip install torch --index-url https://download.pytorch.org/whl/cu126
+#   CPU saja   : pip install torch --index-url https://download.pytorch.org/whl/cpu
+#
+# Versi yang sudah diuji (2026-10-03, Python 3.13.5):
+#   torch 2.14.0+cu126, sentence-transformers 6.1.0, transformers 5.17.0,
+#   chromadb 1.5.9, llama-cloud 2.16.0, numpy 2.5.3
+
+# Parsing
+llama-cloud>=2.8
+python-dotenv>=1.0
+pypdf>=6.0
+
+# Processing
+beautifulsoup4>=4.12
+
+# Chunking, embedding, retrieval
+numpy>=2.0
+transformers>=5.0
+sentence-transformers>=6.0
+chromadb>=1.5,<2
