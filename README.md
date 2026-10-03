@@ -14,11 +14,12 @@ Sumber pengetahuan:
 3. [Struktur repositori](#struktur-repositori)
 4. [Prasyarat](#prasyarat)
 5. [Setup (langkah demi langkah)](#setup-langkah-demi-langkah)
-6. [Menjalankan pipeline dari awal](#menjalankan-pipeline-dari-awal)
-7. [Pengujian & evaluasi](#pengujian--evaluasi)
-8. [Alur kerja pengembangan](#alur-kerja-pengembangan)
-9. [Troubleshooting](#troubleshooting)
-10. [Dokumentasi lanjutan](#dokumentasi-lanjutan)
+6. [Menjalankan chatbot](#menjalankan-chatbot)
+7. [Menjalankan pipeline dari awal](#menjalankan-pipeline-dari-awal)
+8. [Pengujian & evaluasi](#pengujian--evaluasi)
+9. [Alur kerja pengembangan](#alur-kerja-pengembangan)
+10. [Troubleshooting](#troubleshooting)
+11. [Dokumentasi lanjutan](#dokumentasi-lanjutan)
 
 ## Status proyek
 
@@ -31,10 +32,10 @@ Sumber pengetahuan:
 | 5. Vector DB ChromaDB (cosine) | ✅ Selesai | `src/vectordb/build_chroma.py` |
 | 6. Retrieval hybrid (dense + BM25 + RRF, IKU boost, dedupe) | ✅ Selesai | `src/retrieval/retriever.py` |
 | 6b. Kalkulator rumus IKU (*formula registry*) | ✅ Selesai | `src/calculator/iku_formulas.py` |
-| 7. LLM + sitasi (generation) | ⬜ Berikutnya | – |
+| 7. LLM + tool calling kalkulator + sitasi (generation) | 🟡 Dalam pengerjaan: chatbot terminal tersedia, evaluasi jawaban otomatis menyusul | `src/generation/chat_cli.py` |
 | 8. Antarmuka (API / UI chat) | ⬜ Belum | – |
 
-**Hasil evaluasi terakhir** (test set 30 soal, koleksi `pmpt_qa_v2`, 605 chunk). Laporan lengkap ada di [reports/evaluation/](reports/evaluation/).
+**Hasil evaluasi retrieval & kalkulator terakhir** (test set 30 soal, koleksi `pmpt_qa_v2`, 605 chunk). Laporan lengkap ada di [reports/evaluation/](reports/evaluation/). Kualitas jawaban LLM (tahap 7) belum dievaluasi otomatis.
 
 | Metrik | Baseline v1 | Sekarang (v2) |
 |---|---|---|
@@ -66,9 +67,14 @@ data/embeddings/embeddings.npy + metadata.jsonl
 data/vectorstore/  (ChromaDB, koleksi pmpt_qa_v2)
    │  [6] retriever.py          dense + BM25 + RRF → IKU boost → dedupe → (rerank)
    ▼
-top-k chunk + sitasi halaman ──► [7] LLM (berikutnya)
-                                  ▲
-       [6b] iku_formulas.py ──────┘  rumus dihitung deterministik, bukan oleh LLM
+top-k chunk (bernomor [1]..[5]) ──► [7] answer.py  LLM (Gemini/Ollama/OpenAI lewat format OpenAI)
+                                         │  ▲
+                        alat hitung_iku  │  │  hasil + langkah + sumber halaman rumus
+                                         ▼  │
+                               [6b] iku_formulas.py   rumus dihitung deterministik, bukan oleh LLM
+                                         │
+                                         ▼
+                 jawaban + sitasi halaman (dari metadata chunk, bukan ditulis LLM) + PERINGATAN
 ```
 
 Semua artefak tahap 1–4 **sudah di-commit**, jadi anggota tim tidak perlu mengulang parsing (berbayar) atau embedding (lama tanpa GPU). Hanya `data/vectorstore/` yang perlu dibangun sendiri karena berupa database biner (beberapa detik).
@@ -79,7 +85,7 @@ Semua artefak tahap 1–4 **sudah di-commit**, jadi anggota tim tidak perlu meng
 iku-rag-chatbot/
 ├── .github/
 │   ├── workflows/ci.yml          # CI: cek sintaks + unit test di setiap push/PR
-│   ├── ISSUE_TEMPLATE/           # template laporan bug & usulan fitur
+│   ├── ISSUE_TEMPLATE/           # template laporan bug, jawaban chatbot salah, usulan fitur
 │   └── pull_request_template.md
 ├── data/                         # lihat data/README.md
 │   ├── raw/                      # PDF sumber (input)
@@ -100,6 +106,7 @@ iku-rag-chatbot/
 ├── src/                          # satu folder = satu tahap pipeline
 │   ├── parsing/  processing/  chunking/  embedding/
 │   ├── vectordb/ retrieval/   calculator/ evaluation/
+│   ├── generation/               # [7] chatbot: klien LLM, alat hitung_iku, prompt, chat_cli.py
 │   └── legacy/                   # script v1 yang sudah tidak dipakai
 ├── tests/                        # unit test (pytest), tanpa GPU
 ├── .env.example
@@ -120,6 +127,7 @@ iku-rag-chatbot/
 | **Ruang disk ±8 GB** | PyTorch CUDA ±3 GB, model `bge-m3` ±2,3 GB, reranker opsional ±2,3 GB (cache HuggingFace) |
 | **Internet** | Saat pertama kali: unduh dependency & model dari HuggingFace |
 | **LlamaCloud API key** (opsional) | Hanya untuk parsing ulang PDF. Hasil parsing sudah ada di repo |
+| **API key LLM** (untuk chatbot) | Default: Gemini free tier dari [Google AI Studio](https://aistudio.google.com). Alternatif: Ollama (lokal, tanpa key) atau OpenAI (berbayar). Lihat [Menjalankan chatbot](#menjalankan-chatbot) |
 
 ## Setup (langkah demi langkah)
 
@@ -180,7 +188,15 @@ pip install -r requirements-dev.txt   # untuk menjalankan unit test
 Copy-Item .env.example .env
 ```
 
-Isi `LLAMA_CLOUD_API_KEY` di `.env` **hanya jika** akan parsing ulang PDF. File `.env` sudah di-`.gitignore`, jadi jangan pernah di-commit.
+Isi `.env`:
+
+| Variabel | Wajib untuk | Keterangan |
+|---|---|---|
+| `LLM_BASE_URL`, `LLM_MODEL` | Chatbot | Sudah terisi untuk Gemini di `.env.example`; ganti bila memakai Ollama/OpenAI |
+| `LLM_API_KEY` | Chatbot | API key dari [Google AI Studio](https://aistudio.google.com) → *Get API key* |
+| `LLAMA_CLOUD_API_KEY` | Parsing ulang PDF saja | Boleh dikosongkan; hasil parsing sudah ada di repo |
+
+File `.env` sudah di-`.gitignore`, jadi jangan pernah di-commit, dan jangan menempel isinya di issue/PR/chat.
 
 ### 6. Bangun vector database
 
@@ -205,6 +221,63 @@ python src/evaluation/eval_retrieval.py
 ```
 
 Setup selesai bila `pytest` lulus dan `eval_retrieval.py` menghasilkan Hit@1 22/29 serta MRR@5 0,822.
+
+## Menjalankan chatbot
+
+Chatbot memakai retriever v2 untuk mengambil 5 potongan dokumen, lalu LLM menyusun jawaban. Untuk soal hitungan, LLM **memanggil kalkulator IKU** (alat `hitung_iku`) dan tidak menghitung sendiri. Nomor halaman sitasi ditambahkan oleh kode dari metadata chunk, sehingga tidak bisa dikarang oleh LLM.
+
+### Langkah menjalankan
+
+1. Pastikan **setup langkah 1–6 selesai** (venv aktif, dependency terpasang, vector DB sudah dibangun).
+2. Pastikan `LLM_BASE_URL`, `LLM_MODEL`, dan `LLM_API_KEY` di `.env` sudah terisi (setup langkah 5).
+3. Jalankan dari root repo:
+
+```powershell
+python src/generation/chat_cli.py            # tanya-jawab di terminal
+python src/generation/chat_cli.py --detail   # + argumen kalkulator & chunk yang dipakai (untuk debugging)
+```
+
+Ketik pertanyaan lalu Enter. Tekan **Enter kosong** untuk keluar. Saat pertama kali dijalankan, model `bge-m3` dimuat ke memori (beberapa detik; diunduh ±2,3 GB bila belum ada di cache).
+
+### Contoh pertanyaan untuk mencoba
+
+| Pertanyaan | Yang diuji | Yang diharapkan |
+|---|---|---|
+| `Apa itu IKU 3?` | Jawaban definisi + sitasi | Penjelasan dengan rujukan `[n]`, sumber Buku hlm. 53 |
+| `Sebuah PT punya 1000 mahasiswa. 100 magang 20 SKS, 150 pertukaran 8 SKS, 50 riset 4 SKS, 5 juara 1 nasional, 10 finalis internasional. Berapa capaian IKU 3?` | Tool calling kalkulator | Kalkulator dipanggil, hasil **21,5%**, sumber rumus hlm. 53–54 |
+| `Tracer study 400 responden, 280 bekerja. Berapa capaian IKU 2?` | Tanya balik bila data kurang | Menanyakan masa tunggu dan gaji lulusan |
+| `Lulusan 400, yang bekerja 280, berapa capaian IKU 1?` | Meluruskan premis keliru | Menjelaskan bahwa itu IKU 2, bukan IKU 1 |
+| `Berapa UKT di UGM tahun 2026?` | Menolak di luar dokumen | "Tidak ditemukan di dokumen IKU" |
+
+### Membaca output
+
+```text
+<jawaban LLM dengan rujukan [1], [2], ...>
+
+Sumber:
+  [1] Buku IKU Diktisaintek Berdampak V1, hlm. 53–54 (IKU 3, Formula); juga di PPT hlm. 50; ...
+Sumber rumus (kalkulator):
+  Buku IKU Diktisaintek Berdampak V1, IKU 3 – Formula & Ketentuan Bobot, hlm. 53–54
+
+PERINGATAN:
+  - ...
+```
+
+- **Sumber**: rujukan `[n]` di jawaban diubah menjadi halaman dari metadata chunk. "Juga di …" menunjukkan salinan isi yang sama di Lampiran atau PPT.
+- **Sumber rumus (kalkulator)**: muncul bila kalkulator dipanggil; halaman rumus ini selalu dari Bab V Buku.
+- **PERINGATAN**: pemeriksaan otomatis menemukan masalah, misalnya rujukan `[n]` yang tidak ada di konteks, angka hasil kalkulator yang tidak muncul di jawaban, soal hitungan yang dijawab tanpa kalkulator, atau jawaban tanpa rujukan. Jawaban dengan peringatan perlu dicek manual; laporkan lewat template issue *Jawaban chatbot salah*.
+
+### Mengganti penyedia LLM
+
+Kode memakai library `openai` dengan format OpenAI, sehingga penyedia cukup diganti lewat `.env` tanpa mengubah kode:
+
+| Penyedia | `LLM_BASE_URL` | `LLM_MODEL` (contoh) | `LLM_API_KEY` | Catatan |
+|---|---|---|---|---|
+| **Gemini** (default) | `https://generativelanguage.googleapis.com/v1beta/openai/` | `gemini-3.8-flash` | Dari Google AI Studio | Free tier: gratis dengan batas pemakaian; **data free tier dapat dipakai Google untuk meningkatkan produknya**, jadi jangan kirim data pribadi/internal |
+| Ollama (lokal) | `http://localhost:11434/v1` | `qwen2.5:7b` | `ollama` (isi bebas) | Gratis & offline; pasang Ollama lalu `ollama pull qwen2.5:7b`. Model kecil, kualitas di bawah Gemini |
+| OpenAI | `https://api.openai.com/v1` | model pilihan | Dari platform OpenAI | Berbayar per token |
+
+Setelah mengganti penyedia, coba ulang contoh pertanyaan di atas untuk membandingkan kualitasnya.
 
 ## Menjalankan pipeline dari awal
 
@@ -250,6 +323,8 @@ python src/chunking/show_chunks.py --cari "NUPTK" --maks 3
 | Validasi data | `validate_processed.py`, `validate_chunks.py` | Tidak | Setelah processing / chunking |
 | Evaluasi retrieval | `python src/evaluation/eval_retrieval.py` | bge-m3 | Setelah chunking / embedding / retriever berubah |
 | Uji soal hitungan + sitasi | `python src/evaluation/run_calc_tests.py` | bge-m3 | Setelah kalkulator / retriever berubah |
+| Uji chatbot manual | `python src/generation/chat_cli.py --detail` + [contoh pertanyaan](#contoh-pertanyaan-untuk-mencoba) | bge-m3 + API key LLM | Setelah prompt / alat / model LLM berubah |
+| Evaluasi jawaban LLM otomatis | *menyusul* | – | – |
 
 Variasi evaluasi:
 
@@ -286,6 +361,14 @@ Ringkasnya (detail di [CONTRIBUTING.md](CONTRIBUTING.md)):
 | Unduhan model HuggingFace lambat / terputus | Jalankan ulang; unduhan dilanjutkan dari cache `%USERPROFILE%\.cache\huggingface` |
 | `Activate.ps1 cannot be loaded` | `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` |
 | Hasil eval berbeda dari tabel di atas | Pastikan `data/chunks` dan `data/embeddings` tidak berubah (`git status`) dan vector DB dibangun ulang dengan `--reset` |
+| `can't open file ... chat_cli.py` | Nama file harus persis `chat_cli.py` (garis bawah, bukan titik), dan perintah dijalankan dari root repo |
+| Pesan error menyebut `C:\Python313\python.exe` / `ModuleNotFoundError` | venv belum aktif: jalankan `.venv\Scripts\Activate.ps1` hingga prompt diawali `(.venv)` |
+| `ModuleNotFoundError: No module named 'openai'` | `pip install -r requirements.txt` (atau `pip install openai`) di venv yang aktif |
+| `Isi LLM_BASE_URL, ... di file .env` | Tiga variabel `LLM_*` belum diisi di `.env` root repo (lihat setup langkah 5) |
+| `401` / `API key not valid` | Key salah atau terpotong; salin ulang dari Google AI Studio |
+| `404` / model tidak ditemukan | Nama `LLM_MODEL` tidak tersedia untuk akunmu; cek daftar model di AI Studio |
+| `429` / kuota habis | Batas free tier tercapai; tunggu lalu coba lagi (klien sudah mencoba ulang otomatis 5 kali) |
+| Error 400 tentang *thought signature* / function call | Pesan asisten yang meminta alat harus dikirim balik apa adanya; jangan ubah baris `message.model_dump(exclude_none=True)` di `answer.py` |
 
 ## Dokumentasi lanjutan
 
