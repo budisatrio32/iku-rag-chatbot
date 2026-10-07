@@ -1,6 +1,6 @@
 """
 run_calc_tests.py
-Jalankan 18 soal hitungan (H01-H18) dari test set:
+Jalankan soal hitungan (H01-H30) dari test set:
 1. HITUNG  : kalkulator IKU (src/calculator/iku_formulas.py) dengan input terstruktur
              dari data/evaluation/test_inputs_hitung.json -> bandingkan dengan kunci jawaban
 2. SITASI  : cari chunk sumber lewat retriever (koleksi Chroma v2) memakai teks soal,

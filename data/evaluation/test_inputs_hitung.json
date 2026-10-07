@@ -1,5 +1,5 @@
 {
-  "description": "Input terstruktur untuk 18 soal hitungan (H01-H18) di test_set_buku_iku.md. Pada chatbot sungguhan, LLM yang mengubah kalimat pertanyaan menjadi 'fungsi' + 'argumen' ini (tool calling); di sini ditulis manual agar kalkulator bisa diuji terpisah. 'harapan' = kunci jawaban dari test set. 'sitasi' = IKU yang seharusnya dikutip (untuk memilih chunk sitasi).",
+  "description": "Input terstruktur untuk 30 soal hitungan (H01-H30; H19-H30 = soal ketahanan: typo, bahasa santai, format angka/uang tidak baku) di test_set_buku_iku.md. Pada chatbot sungguhan, LLM yang mengubah kalimat pertanyaan menjadi 'fungsi' + 'argumen' ini (tool calling); di sini ditulis manual agar kalkulator bisa diuji terpisah. 'harapan' = kunci jawaban dari test set. 'sitasi' = IKU yang seharusnya dikutip (untuk memilih chunk sitasi).",
   "cases": [
     {"id": "H01", "fungsi": "iku1_aee_prodi",
      "argumen": {"jenjang": "S1", "lulus_tepat_waktu": 40, "total_mahasiswa": 200},
@@ -99,6 +99,81 @@
     {"id": "H18", "fungsi": "iku12_penghasilan_minimum",
      "argumen": {"ump": 3000000, "jabatan": ["lektor", "profesor"]},
      "harapan": {"lektor": 9000000, "profesor": 18000000},
-     "sitasi": {"iku_id": "12", "jenis": "iku", "halaman": [60]}}
+     "sitasi": {"iku_id": "12", "jenis": "iku", "halaman": [60]}},
+
+    {"id": "H19", "fungsi": "iku1_aee_prodi",
+     "argumen": {"jenjang": "S1", "lulus_tepat_waktu": 40, "total_mahasiswa": 200},
+     "harapan": {"aee_realisasi_pct": 20.0, "tingkat_pencapaian_pct": 80.0},
+     "sitasi": {"iku_id": "1", "jenis": "iku", "halaman": [49]},
+     "catatan": "Ketahanan: typo & singkatan (brp, klo, wktu, mhs). Sama dengan H01."},
+
+    {"id": "H20", "fungsi": "iku1_aee_pt",
+     "argumen": {"realisasi_per_jenjang": {"D3": 30, "S1": 22.5, "S2": 40}},
+     "harapan": 86.97,
+     "sitasi": {"iku_id": "1", "jenis": "iku", "halaman": [49, 50]},
+     "catatan": "Ketahanan: desimal koma '22,5%' harus dibaca 22.5. Sama dengan H02."},
+
+    {"id": "H21", "fungsi": "iku2_responden_minimum",
+     "argumen": {"jumlah_lulusan": 1341},
+     "harapan": 785,
+     "sitasi": {"iku_id": "2", "jenis": "iku", "halaman": [52]},
+     "catatan": "Ketahanan: titik pemisah ribuan '1.341' = 1341 (bukan 1,341)."},
+
+    {"id": "H22", "fungsi": "iku2_responden_minimum",
+     "argumen": {"jumlah_lulusan": 2000},
+     "harapan": 972,
+     "sitasi": {"iku_id": "2", "jenis": "iku", "halaman": [52]},
+     "catatan": "Ketahanan: '2rb' = 2000. Sama dengan H06."},
+
+    {"id": "H23", "fungsi": "rasio",
+     "argumen": {"kode": "iku5", "pembilang": 30, "penyebut": 120},
+     "harapan": 25.0,
+     "sitasi": {"iku_id": "5", "jenis": "iku", "halaman": [57]},
+     "catatan": "Ketahanan: typo 'kerjsama', 'iku5' tanpa spasi. Sama dengan H09."},
+
+    {"id": "H24", "fungsi": "rasio",
+     "argumen": {"kode": "iku7", "pembilang": 25, "penyebut": 50},
+     "harapan": 50.0,
+     "sitasi": {"iku_id": "7", "jenis": "iku", "halaman": [58]},
+     "catatan": "Ketahanan: typo 'progam', 'brapa'."},
+
+    {"id": "H25", "fungsi": "iku9",
+     "argumen": {"total_pendapatan": 500, "rincian": {
+       "ukt": 300, "boptn": 80, "hibah_riset": 50, "konsultasi": 40, "unit_bisnis": 20, "hasil_dana_abadi": 10}},
+     "harapan": 24.0,
+     "sitasi": {"iku_id": "9", "jenis": "iku", "halaman": [59]},
+     "catatan": "Ketahanan: satuan 'M' = miliar, ditulis rapat/berspasi ('300M', '80 M'). Argumen boleh dalam miliar asal konsisten. Sama dengan H13."},
+
+    {"id": "H26", "fungsi": "iku9",
+     "argumen": {"total_pendapatan": 1250000000, "rincian": {
+       "ukt": 900000000, "kontrak_riset": 150000000, "royalti": 50000000, "boptn": 150000000}},
+     "harapan": 16.0,
+     "sitasi": {"iku_id": "9", "jenis": "iku", "halaman": [59]},
+     "catatan": "Ketahanan: campuran 'Rp1.250.000.000', '900jt', '150 juta', 'Rp50.000.000'. Satuan harus disamakan sebelum dihitung."},
+
+    {"id": "H27", "fungsi": "iku9",
+     "argumen": {"total_pendapatan": 2000000000, "rincian": {
+       "hibah_riset": 300000000, "konsultasi": 200000000, "ukt": 1500000000}},
+     "harapan": 25.0,
+     "sitasi": {"iku_id": "9", "jenis": "iku", "halaman": [59]},
+     "catatan": "Ketahanan: ejaan 'milyar', desimal koma '0,2 M' dan '1,5 M' dicampur dengan 'jt'."},
+
+    {"id": "H28", "fungsi": "iku12_penghasilan_minimum",
+     "argumen": {"ump": 3500000, "jabatan": ["lektor_kepala"]},
+     "harapan": {"lektor_kepala": 14000000},
+     "sitasi": {"iku_id": "12", "jenis": "iku", "halaman": [60]},
+     "catatan": "Ketahanan: '3,5jt' = Rp3.500.000. Argumen ump harus rupiah penuh, bukan 3.5."},
+
+    {"id": "H29", "fungsi": "iku12_penghasilan_minimum",
+     "argumen": {"ump": 4250000, "jabatan": ["asisten_ahli", "profesor"]},
+     "harapan": {"asisten_ahli": 6375000, "profesor": 25500000},
+     "sitasi": {"iku_id": "12", "jenis": "iku", "halaman": [60]},
+     "catatan": "Ketahanan: 'Rp 4.250.000' dengan spasi setelah Rp dan titik ribuan."},
+
+    {"id": "H30", "fungsi": "rasio",
+     "argumen": {"kode": "iku4", "pembilang": 18, "penyebut": 250},
+     "harapan": 7.2,
+     "sitasi": {"iku_id": "4", "jenis": "iku", "halaman": [62]},
+     "catatan": "Ketahanan: nomor IKU tidak disebut; chatbot harus mengenali IKU 4 dari isi soal."}
   ]
 }

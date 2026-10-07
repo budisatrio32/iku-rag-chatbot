@@ -5,9 +5,9 @@ Dokumentasi disusun mengikuti fase SDLC. Folder fase baru dibuat ketika sudah ad
 | Fase | Lokasi | Isi |
 |---|---|---|
 | 1. Perencanaan & analisis kebutuhan | [01-analisis/](01-analisis/) | [Inventaris formula](01-analisis/inventaris_formula.md): 41 rumus IKU yang harus bisa dijawab chatbot |
-| 2. Desain | [02-desain/](02-desain/) | [Panduan chunking](02-desain/panduan_chunking.md), [Skema embedding & retrieval](02-desain/skema_embedding.md) |
+| 2. Desain | [02-desain/](02-desain/) | [Panduan chunking](02-desain/panduan_chunking.md), [Skema embedding & retrieval](02-desain/skema_embedding.md), [Integrasi ke backend](02-desain/integrasi_backend.md) (untuk tim BE) |
 | 3. Implementasi | [`src/`](../src/) | Satu folder per tahap pipeline; cara menjalankan ada di [README](../README.md) |
-| 4. Pengujian | [`tests/`](../tests/), [`data/evaluation/`](../data/evaluation/), [`reports/`](../reports/) | Unit test, test set 30 soal, laporan validasi & evaluasi |
+| 4. Pengujian | [`tests/`](../tests/), [`data/evaluation/`](../data/evaluation/), [`reports/`](../reports/) | Unit test, test set 44 soal, laporan validasi & evaluasi |
 | 5. Deployment | `04-deployment/` (belum ada) | Untuk tahap API/UI chatbot |
 | 6. Pemeliharaan | [CHANGELOG](../CHANGELOG.md), [CONTRIBUTING](../CONTRIBUTING.md) | Riwayat versi, aturan kontribusi |
 

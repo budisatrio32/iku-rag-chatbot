@@ -5,8 +5,8 @@ jawabannya dengan jawaban yang diharapkan.
 
 Sumber jawaban yang diharapkan:
 - data/evaluation/test_set_buku_iku.md       -> "Jawaban benar" + halaman kunci (semua soal)
-- data/evaluation/test_inputs_hitung.json     -> angka kunci soal hitungan (H01-H18)
-- data/evaluation/test_fakta_definisi.json    -> fakta kunci soal definisi & jebakan (D01-D12)
+- data/evaluation/test_inputs_hitung.json     -> angka kunci soal hitungan (H01-H30)
+- data/evaluation/test_fakta_definisi.json    -> fakta kunci soal definisi & jebakan (D01-D14)
 
 Pemeriksaan otomatis per soal:
 - Hitungan : kalkulator dipanggil, hasil kalkulator = kunci, angka kunci muncul di jawaban,
@@ -19,9 +19,9 @@ Setiap soal memanggil LLM (biasanya 1-3 kali). Pada Gemini free tier, beri jeda 
 agar tidak terkena batas pemakaian.
 
 Jalankan dari root project:
-    python src/evaluation/run_answer_tests.py                     # semua 30 soal
-    python src/evaluation/run_answer_tests.py --tipe hitung       # 18 soal hitungan saja
-    python src/evaluation/run_answer_tests.py --tipe definisi     # 12 soal definisi & jebakan
+    python src/evaluation/run_answer_tests.py                     # semua 44 soal
+    python src/evaluation/run_answer_tests.py --tipe hitung       # 30 soal hitungan saja
+    python src/evaluation/run_answer_tests.py --tipe definisi     # 14 soal definisi & jebakan
     python src/evaluation/run_answer_tests.py --id H07,D11        # soal tertentu
     python src/evaluation/run_answer_tests.py --jeda 10           # jeda 10 detik antar-soal
 """

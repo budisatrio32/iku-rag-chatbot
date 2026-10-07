@@ -1,0 +1,67 @@
+{
+  "model": "openai/gpt-oss-120b",
+  "results": [
+    {
+      "id": "H19",
+      "pertanyaan": "brp aee s1 klo yg lulus tepat wktu cm 40 org dr 200 mhs?",
+      "jawaban_benar": "AEE realisasi **20%**, tingkat pencapaian **80%**.",
+      "halaman_kunci": [
+        49
+      ],
+      "harapan_angka": {
+        "aee_realisasi_pct": 20.0,
+        "tingkat_pencapaian_pct": 80.0
+      },
+      "catatan": "Ketahanan: typo & singkatan (brp, klo, wktu, mhs). Sama dengan H01.",
+      "lulus": true,
+      "jawaban": "AEE untuk program S1 adalah **20 %** (AEE realisasi) dengan tingkat pencapaian **80 %** dibandingkan AEE ideal 25 % % [1][2].  Langkah perhitungannya:  \n- AEE realisasi = 40 / 200 × 100 % = 20 %  \n- AEE ideal S1 = 25 % (sesuai masa tempuh kurikulum 8 semester)  \n- Tingkat pencapaian = 20 % / 25 % × 100 % = 80 %   (hasil dari fungsi hitung_iku).",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 49 (IKU 1, Kriteria); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 100; PPT hlm. 45",
+        "[2] Buku IKU Diktisaintek Berdampak V1, hlm. 49–50 (IKU 1, Formula); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 101–102; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 101–102; PPT hlm. 46; PPT hlm. 46–47"
+      ],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 1 – Ketentuan & Formula a–b, hlm. 49"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"jenjang\\\": \\\"S1\\\", \\\"lulus_tepat_waktu\\\": 40, \\\"total_mahasiswa\\\": 200, \\\"pindah\\\": 0, \\\"drop_out\\\": 0, \\\"cuti_lebih\\\": 0}\",\"fungsi\":\"iku1_aee_prodi\"}",
+          "hasil": {
+            "id": "iku1_aee_prodi",
+            "ikuCode": "IKU 001",
+            "hasil": {
+              "aee_realisasi_pct": 20.0,
+              "tingkat_pencapaian_pct": 80.0
+            },
+            "satuan": "%",
+            "langkah": [
+              "AEE realisasi = 40 / 200 × 100% = 20%",
+              "AEE ideal S1 = 25% (masa tempuh 8 semester)",
+              "Tingkat pencapaian = 20% / 25% × 100% = 80%"
+            ],
+            "formula_teks": [
+              "AEE = lulus tepat masa tempuh ÷ (total mahasiswa − pindah − DO − cuti berlebih) × 100%",
+              "Tingkat pencapaian = AEE realisasi ÷ AEE ideal × 100%"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 1 – Ketentuan & Formula a–b, hlm. 49",
+            "rujukan": {
+              "dokumen": "Buku IKU Diktisaintek Berdampak",
+              "versi": "V1",
+              "bagian": "IKU 1 – Ketentuan & Formula a–b",
+              "halaman": [
+                49
+              ]
+            },
+            "status": "terverifikasi"
+          }
+        }
+      ],
+      "peringatan": [],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    }
+  ]
+}

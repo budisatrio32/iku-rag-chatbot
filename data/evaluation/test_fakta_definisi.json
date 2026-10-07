@@ -1,5 +1,5 @@
 {
-  "description": "Fakta kunci yang harus muncul di jawaban chatbot untuk soal definisi & jebakan (D01-D12) di test_set_buku_iku.md. Setiap soal berisi daftar KELOMPOK; satu kelompok terpenuhi bila salah satu alternatifnya muncul di jawaban (tidak peka huruf besar/kecil). Pemeriksaan ini bersifat bantuan: jawaban tetap perlu dibaca manual dan dibandingkan dengan 'Jawaban benar' di test set.",
+  "description": "Fakta kunci yang harus muncul di jawaban chatbot untuk soal definisi & jebakan (D01-D14; D13-D14 = soal ketahanan) di test_set_buku_iku.md. Setiap soal berisi daftar KELOMPOK; satu kelompok terpenuhi bila salah satu alternatifnya muncul di jawaban (tidak peka huruf besar/kecil). Pemeriksaan ini bersifat bantuan: jawaban tetap perlu dibaca manual dan dibandingkan dengan 'Jawaban benar' di test set.",
   "cases": {
     "D01": {"fakta": [["tepat waktu"], ["efisiensi edukasi", "AEE"]]},
     "D02": {"fakta": [["8 semester", "delapan semester"], ["25%", "25 %"], ["6 semester", "enam semester"], ["33%", "33 %"]]},
@@ -12,6 +12,8 @@
     "D09": {"fakta": [["MDPI"], ["Frontiers"], ["Hindawi"]]},
     "D10": {"fakta": [["semakin rendah"]]},
     "D11": {"fakta": [["IKU 2"], ["efisiensi edukasi", "tepat waktu", "AEE"]], "catatan": "Soal jebakan: chatbot harus meluruskan bahwa data lulusan bekerja termasuk IKU 2, bukan IKU 1."},
-    "D12": {"fakta": [["tidak ditemukan", "tidak terdapat", "tidak tersedia", "tidak ada informasi", "tidak dijelaskan", "tidak memuat"]], "tanpa_sitasi": true, "catatan": "Soal di luar cakupan: chatbot harus menolak, bukan mengarang angka UKT."}
+    "D12": {"fakta": [["tidak ditemukan", "tidak terdapat", "tidak tersedia", "tidak ada informasi", "tidak dijelaskan", "tidak memuat"]], "tanpa_sitasi": true, "catatan": "Soal di luar cakupan: chatbot harus menolak, bukan mengarang angka UKT."},
+    "D13": {"fakta": [["tepat waktu"], ["efisiensi edukasi"]], "catatan": "Ketahanan: bahasa santai ('aee tu apaan sih'). 'AEE' sengaja tidak dijadikan fakta karena sudah ada di pertanyaan."},
+    "D14": {"fakta": [["UKT", "SPP"], ["BOPTN"], ["iuran pengembangan"], ["dana abadi", "endowment"]], "catatan": "Ketahanan: typo ('pendptan', 'aj', 'diitung', 'iku9'). Sama dengan D08."}
   }
 }

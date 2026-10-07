@@ -3,7 +3,7 @@
 Sumber: `data/input/Buku IKU Diktisaintek Berdampak_V1.pdf` (Bab V, hlm. 48–68).
 Nomor halaman = nomor halaman file PDF (bukan nomor yang tercetak di dokumen).
 
-Jumlah: **30 pertanyaan** — 12 definisi/konsep (D), 18 perhitungan (H).
+Jumlah: **44 pertanyaan** — 14 definisi/konsep (D), 30 perhitungan (H). Soal D13–D14 dan H19–H30 adalah **soal ketahanan** (bagian C): bahasa santai, typo, dan penulisan angka/uang yang tidak baku.
 
 Cara pakai:
 - **Uji retrieval:** jalankan `python src/evaluation/eval_retrieval.py`. Sebuah chunk dianggap bukti jika memuat **semua** "Kata kunci bukti" soal tersebut (tidak peka huruf besar/kecil). Jika mengubah format file ini, pertahankan pola `### ID`, `**Pertanyaan:**`, `**Sumber:** ... hlm. N`, dan `**Kata kunci bukti:**` agar tetap terbaca script.
@@ -44,6 +44,20 @@ Cara pakai:
 | H16 | Hitung | 11b | Konversi nilai SAKIP ke predikat | 66 |
 | H17 | Hitung | 11d | Kegiatan anti kekerasan/narkoba/korupsi | 68 |
 | H18 | Hitung | 12 | Standar penghasilan dosen | 60 |
+| D13 | Definisi | 1 | Ketahanan: bahasa santai | 49 |
+| D14 | Definisi | 9 | Ketahanan: typo | 59 |
+| H19 | Hitung | 1 | Ketahanan: typo & singkatan | 49 |
+| H20 | Hitung | 1 | Ketahanan: desimal koma (22,5%) | 49–50 |
+| H21 | Hitung | 2 | Ketahanan: titik ribuan (1.341) | 52 |
+| H22 | Hitung | 2 | Ketahanan: "2rb" | 52 |
+| H23 | Hitung | 5 | Ketahanan: typo | 57 |
+| H24 | Hitung | 7 | Ketahanan: typo | 58 |
+| H25 | Hitung | 9 | Ketahanan: satuan "M" (miliar) | 59 |
+| H26 | Hitung | 9 | Ketahanan: campuran Rp/jt/juta | 59 |
+| H27 | Hitung | 9 | Ketahanan: "milyar" & "0,2 M" | 59 |
+| H28 | Hitung | 12 | Ketahanan: "3,5jt" | 60 |
+| H29 | Hitung | 12 | Ketahanan: "Rp 4.250.000" | 60 |
+| H30 | Hitung | 4 | Ketahanan: nomor IKU tidak disebut | 62 |
 
 ---
 
@@ -342,3 +356,110 @@ Berapa capaian IKU 9?
 **Jawaban benar:** Lektor minimal **Rp9.000.000**, Profesor minimal **Rp18.000.000**.
 **Sumber:** IKU 12 — Kriteria b.2, hlm. 60.
 **Kata kunci bukti:** `lektor kepala`, `ump`
+
+---
+
+## C. Pertanyaan Ketahanan (bahasa santai, typo, format angka/uang tidak baku)
+
+Soal di bagian ini menanyakan hal yang sama dengan soal A/B, tetapi ditulis seperti user sungguhan: singkatan, salah ketik, dan angka/uang yang tidak baku. Yang diuji bukan rumusnya, melainkan apakah chatbot **membaca angka dengan benar** dan tetap memilih rumus yang tepat.
+
+Aturan baca angka Indonesia yang harus dipatuhi chatbot:
+- Titik = pemisah ribuan (`1.341` = 1341, `Rp1.250.000.000` = 1,25 miliar); koma = desimal (`22,5%`, `0,2 M`).
+- `rb` = ribu; `jt` = juta; `M`, `miliar`, `milyar` = miliar (bukan *million*).
+- Untuk rasio, satuan boleh apa saja asal **konsisten** di pembilang dan penyebut. Untuk IKU 12 (rupiah), hasil harus dalam rupiah penuh.
+
+### D13 — Definisi IKU 1 dengan bahasa santai
+**Pertanyaan:** aee tu apaan sih? ngukur apa?
+**Jawaban benar:** AEE = Angka Efisiensi Edukasi (IKU 1), mengukur keberhasilan mahasiswa menyelesaikan studi **tepat waktu** sesuai masa studi standar (sama dengan D01).
+**Sumber:** IKU 1, hlm. 49.
+**Kata kunci bukti:** `tepat waktu`, `masa studi standar`
+
+### D14 — Pendapatan yang tidak dihitung IKU 9 (typo)
+**Pertanyaan:** pendptan apa aj yg ga diitung di iku9?
+**Jawaban benar:** SPP/UKT, iuran pengembangan institusi, subsidi langsung pemerintah (termasuk BOPTN/BPPTNBH), filantropi yang tidak tercatat, dan pokok dana abadi (sama dengan D08).
+**Sumber:** IKU 9 — Kriteria b, hlm. 59.
+**Kata kunci bukti:** `boptn`, `iuran pengembangan institusi`
+
+### H19 — IKU 1: typo & singkatan
+**Pertanyaan:** brp aee s1 klo yg lulus tepat wktu cm 40 org dr 200 mhs?
+**Perhitungan:** sama dengan H01: 40 / 200 = 20%; 20% / 25% = 80%.
+**Jawaban benar:** AEE realisasi **20%**, tingkat pencapaian **80%**.
+**Sumber:** IKU 1 — Formula a & b, hlm. 49.
+**Kata kunci bukti:** `aee ideal`, `tingkat pencapaian aee`
+
+### H20 — IKU 1: desimal koma
+**Pertanyaan:** realisasi aee kampus kmi: D3 30%, S1 22,5%, S2 40%. aee pt nya jd brp ya?
+**Perhitungan:** sama dengan H02; "22,5%" harus dibaca 22.5, bukan 225 atau 22.
+**Jawaban benar:** **86,97%**.
+**Sumber:** IKU 1 — Formula c dan contoh perhitungan, hlm. 49–50.
+**Kata kunci bukti:** `aee pt`, `tingkat pencapaian`
+
+### H21 — IKU 2: titik pemisah ribuan
+**Pertanyaan:** lulusan kampus kami 1.341 org, minimal responden tracer study nya brp?
+**Perhitungan:** "1.341" = 1341. N·d² = 1341 × 0,000529 = 0,7094; n = 1341 / 1,7094 = 784,5 → dibulatkan ke atas.
+**Jawaban benar:** **785 responden**.
+**Sumber:** IKU 2 — Formula Responden Minimum, hlm. 52.
+**Kata kunci bukti:** `responden minimum`, `galat`
+
+### H22 — IKU 2: singkatan "rb"
+**Pertanyaan:** klo lulusannya 2rb orang, responden minimum tracer studi brp
+**Perhitungan:** "2rb" = 2000; sama dengan H06.
+**Jawaban benar:** **972 responden**.
+**Sumber:** IKU 2 — Formula Responden Minimum, hlm. 52.
+**Kata kunci bukti:** `responden minimum`, `galat`
+
+### H23 — IKU 5: typo
+**Pertanyaan:** kerjsama PT kita ada 120, luaran nya 30 judul. capaian iku5 brp persen?
+**Perhitungan:** 30 / 120 × 100% = 25% (sama dengan H09).
+**Jawaban benar:** **25%**.
+**Sumber:** IKU 5 — Formula & Keterangan, hlm. 57.
+**Kata kunci bukti:** `total kerjasama perguruan tinggi`, `bukan jumlah dosen`
+
+### H24 — IKU 7: typo
+**Pertanyaan:** dr 50 progam sdgs, 25 yg kontribusi ke sdg 1,4,17 + 2 sdg pilihan. capaian iku 7 brapa
+**Perhitungan:** 25 / 50 × 100% = 50%.
+**Jawaban benar:** **50%**.
+**Sumber:** IKU 7 — Formula, hlm. 58.
+**Kata kunci bukti:** `total program sdg`
+
+### H25 — IKU 9: satuan "M" (miliar)
+**Pertanyaan:** total pendapatan PT 500 M. rinciannya ukt 300M, boptn 80 M, hibah riset 50M, konsultasi 40 M, unit bisnis 20M, hasil dana abadi 10 M. iku 9 brp?
+**Perhitungan:** sama dengan H13 (dalam miliar): diakui = 50 + 40 + 20 + 10 = 120; 120 / 500 × 100% = 24%.
+**Jawaban benar:** **24%**.
+**Sumber:** IKU 9 — Kriteria & Formula, hlm. 59.
+**Kata kunci bukti:** `boptn`, `dana abadi`
+
+### H26 — IKU 9: campuran Rp, "jt", dan "juta"
+**Pertanyaan:** pendapatan total Rp1.250.000.000, terdiri dr ukt rp 900jt, kontrak riset 150 juta, royalti Rp50.000.000, sisanya 150jt dari boptn. capaian iku 9?
+**Perhitungan:** semua dalam juta: total 1.250; diakui = kontrak riset 150 + royalti 50 = 200 (UKT & BOPTN tidak dihitung); 200 / 1.250 × 100% = 16%.
+**Jawaban benar:** **16%**.
+**Sumber:** IKU 9 — Kriteria & Formula, hlm. 59.
+**Kata kunci bukti:** `boptn`, `dana abadi`
+
+### H27 — IKU 9: "milyar" dan desimal koma "0,2 M"
+**Pertanyaan:** total pendapatan 2 milyar: hibah riset 300 jt, konsultasi 0,2 M, ukt 1,5 M. hitung iku 9 nya
+**Perhitungan:** dalam juta: total 2.000; diakui = 300 + 200 = 500; 500 / 2.000 × 100% = 25%.
+**Jawaban benar:** **25%**.
+**Sumber:** IKU 9 — Kriteria & Formula, hlm. 59.
+**Kata kunci bukti:** `boptn`, `dana abadi`
+
+### H28 — IKU 12: "3,5jt"
+**Pertanyaan:** ump disini 3,5jt, penghasilan minimal dosen lektor kepala brp?
+**Perhitungan:** 4 × Rp3.500.000 = Rp14.000.000.
+**Jawaban benar:** Lektor kepala minimal **Rp14.000.000**.
+**Sumber:** IKU 12 — Kriteria b.2, hlm. 60.
+**Kata kunci bukti:** `lektor kepala`, `ump`
+
+### H29 — IKU 12: "Rp 4.250.000" dengan spasi
+**Pertanyaan:** UMP prov kami Rp 4.250.000 , brp penghasilan min dosen asisten ahli sm profesor?
+**Perhitungan:** asisten ahli 1,5 × Rp4.250.000 = Rp6.375.000; profesor 6 × Rp4.250.000 = Rp25.500.000.
+**Jawaban benar:** Asisten ahli minimal **Rp6.375.000**, profesor minimal **Rp25.500.000**.
+**Sumber:** IKU 12 — Kriteria b.2, hlm. 60.
+**Kata kunci bukti:** `lektor kepala`, `ump`
+
+### H30 — IKU 4: nomor IKU tidak disebut
+**Pertanyaan:** dosen kami 250 org setahun terakhir, yg ber-NUPTK & dpt rekognisi internasional 18 org. capaiannya brp?
+**Perhitungan:** chatbot harus mengenali ini sebagai IKU 4: 18 / 250 × 100% = 7,2%.
+**Jawaban benar:** **7,2%** (IKU 4).
+**Sumber:** IKU 4 — Formula, hlm. 62.
+**Kata kunci bukti:** `nuptk`, `rekognisi internasional`

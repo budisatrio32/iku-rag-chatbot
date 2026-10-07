@@ -1,7 +1,7 @@
 """
 Unit test kalkulator IKU (src/calculator/iku_formulas.py).
 
-Memakai 18 soal hitungan dari data/evaluation/test_inputs_hitung.json, tanpa
+Memakai semua soal hitungan (H01-H30) dari data/evaluation/test_inputs_hitung.json, tanpa
 retriever/GPU, sehingga bisa dijalankan di CI. Uji sitasi lengkap tetap lewat
 src/evaluation/run_calc_tests.py.
 """

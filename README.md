@@ -33,7 +33,7 @@ Sumber pengetahuan:
 | 6. Retrieval hybrid (dense + BM25 + RRF, IKU boost, dedupe) | ✅ Selesai | `src/retrieval/retriever.py` |
 | 6b. Kalkulator rumus IKU (*formula registry*) | ✅ Selesai | `src/calculator/iku_formulas.py` |
 | 7. LLM + tool calling kalkulator + sitasi (generation) | 🟡 Dalam pengerjaan: chatbot terminal tersedia, evaluasi jawaban otomatis menyusul | `src/generation/chat_cli.py` |
-| 8. Antarmuka (API / UI chat) | ⬜ Belum | – |
+| 8. Antarmuka (API / UI chat) | ⬜ Belum. Rancangan integrasi ke backend dasbor: [docs/02-desain/integrasi_backend.md](docs/02-desain/integrasi_backend.md) | – |
 
 **Hasil evaluasi retrieval & kalkulator terakhir** (test set 30 soal, koleksi `pmpt_qa_v2`, 605 chunk). Laporan lengkap ada di [reports/evaluation/](reports/evaluation/). Kualitas jawaban LLM (tahap 7) belum dievaluasi otomatis.
 
@@ -67,7 +67,7 @@ data/embeddings/embeddings.npy + metadata.jsonl
 data/vectorstore/  (ChromaDB, koleksi pmpt_qa_v2)
    │  [6] retriever.py          dense + BM25 + RRF → IKU boost → dedupe → (rerank)
    ▼
-top-k chunk (bernomor [1]..[5]) ──► [7] answer.py  LLM (Gemini/Ollama/OpenAI lewat format OpenAI)
+top-k chunk (bernomor [1]..[5]) ──► [7] answer.py  LLM (Groq/Gemini/Ollama/OpenAI lewat format OpenAI)
                                          │  ▲
                         alat hitung_iku  │  │  hasil + langkah + sumber halaman rumus
                                          ▼  │
@@ -95,7 +95,7 @@ iku-rag-chatbot/
 │   ├── embeddings/               # [4] vektor bge-m3 + metadata
 │   ├── vectorstore/              # [5] ChromaDB (di-generate, tidak di-commit)
 │   ├── metadata/                 # catatan cacat dokumen sumber (known_source_issues.json)
-│   ├── evaluation/               # test set: 30 soal + input soal hitungan
+│   ├── evaluation/               # test set: 44 soal + input soal hitungan
 │   └── legacy/v1/                # artefak pipeline v1 (baseline pembanding)
 ├── docs/                         # dokumentasi per fase SDLC, lihat docs/README.md
 │   ├── 01-analisis/
@@ -127,7 +127,7 @@ iku-rag-chatbot/
 | **Ruang disk ±8 GB** | PyTorch CUDA ±3 GB, model `bge-m3` ±2,3 GB, reranker opsional ±2,3 GB (cache HuggingFace) |
 | **Internet** | Saat pertama kali: unduh dependency & model dari HuggingFace |
 | **LlamaCloud API key** (opsional) | Hanya untuk parsing ulang PDF. Hasil parsing sudah ada di repo |
-| **API key LLM** (untuk chatbot) | Default: Gemini free tier dari [Google AI Studio](https://aistudio.google.com). Alternatif: Ollama (lokal, tanpa key) atau OpenAI (berbayar). Lihat [Menjalankan chatbot](#menjalankan-chatbot) |
+| **API key LLM** (untuk chatbot) | Saat ini: Groq free tier dari [console.groq.com](https://console.groq.com). Alternatif: Gemini free tier, Ollama (lokal, tanpa key), atau OpenAI (berbayar). Lihat [Menjalankan chatbot](#menjalankan-chatbot) |
 
 ## Setup (langkah demi langkah)
 
@@ -192,8 +192,9 @@ Isi `.env`:
 
 | Variabel | Wajib untuk | Keterangan |
 |---|---|---|
-| `LLM_BASE_URL`, `LLM_MODEL` | Chatbot | Sudah terisi untuk Gemini di `.env.example`; ganti bila memakai Ollama/OpenAI |
-| `LLM_API_KEY` | Chatbot | API key dari [Google AI Studio](https://aistudio.google.com) → *Get API key* |
+| `LLM_BASE_URL`, `LLM_MODEL` | Chatbot | Sudah terisi untuk Groq di `.env.example` (blok Gemini tersedia sebagai komentar); ganti bila memakai penyedia lain |
+| `LLM_API_KEY` | Chatbot | API key penyedia yang dipilih: Groq ([console.groq.com](https://console.groq.com) → *API Keys*, diawali `gsk_`) atau Gemini ([Google AI Studio](https://aistudio.google.com) → *Get API key*) |
+| `LLM_TIMEOUT`, `LLM_MAX_RETRIES` | Opsional | Batas tunggu per panggilan LLM (detik, default 60) dan percobaan ulang otomatis (default 2) |
 | `LLAMA_CLOUD_API_KEY` | Parsing ulang PDF saja | Boleh dikosongkan; hasil parsing sudah ada di repo |
 
 File `.env` sudah di-`.gitignore`, jadi jangan pernah di-commit, dan jangan menempel isinya di issue/PR/chat.
@@ -273,7 +274,8 @@ Kode memakai library `openai` dengan format OpenAI, sehingga penyedia cukup diga
 
 | Penyedia | `LLM_BASE_URL` | `LLM_MODEL` (contoh) | `LLM_API_KEY` | Catatan |
 |---|---|---|---|---|
-| **Gemini** (default) | `https://generativelanguage.googleapis.com/v1beta/openai/` | `gemini-3.8-flash` | Dari Google AI Studio | Free tier: gratis dengan batas pemakaian; **data free tier dapat dipakai Google untuk meningkatkan produknya**, jadi jangan kirim data pribadi/internal |
+| **Groq** (dipakai saat ini) | `https://api.groq.com/openai/v1` | `openai/gpt-oss-120b` | Dari [console.groq.com](https://console.groq.com), diawali `gsk_` | Free tier tanpa kartu: cepat (±3 detik/panggilan), tetapi dibatasi ±8.000 token/menit. Biaya di menu *Usage* hanya simulasi selama belum *upgrade* |
+| Gemini | `https://generativelanguage.googleapis.com/v1beta/openai/` | `gemini-3.5-flash-lite` | Dari Google AI Studio | Free tier: ±20 request/hari per model, model flash sering 503 saat ramai; **data free tier dapat dipakai Google untuk meningkatkan produknya**, jadi jangan kirim data pribadi/internal |
 | Ollama (lokal) | `http://localhost:11434/v1` | `qwen2.5:7b` | `ollama` (isi bebas) | Gratis & offline; pasang Ollama lalu `ollama pull qwen2.5:7b`. Model kecil, kualitas di bawah Gemini |
 | OpenAI | `https://api.openai.com/v1` | model pilihan | Dari platform OpenAI | Berbayar per token |
 
@@ -337,7 +339,7 @@ python src/vectordb/build_chroma.py --embeddings-dir data/legacy/v1/embeddings -
 python src/evaluation/eval_retrieval.py --preset lama --collection pmpt_qa --metadata data/legacy/v1/embeddings/metadata.jsonl --oos-threshold 0.9
 ```
 
-Test set ada di [data/evaluation/test_set_buku_iku.md](data/evaluation/test_set_buku_iku.md): 10 soal definisi, 18 soal hitungan, dan soal jebakan/di luar cakupan. Setiap run menulis laporan bertanggal ke `reports/evaluation/`. Bandingkan metrik Hit@k, MRR, dan halaman sitasi. Jangan membandingkan angka *distance* antar-koleksi, karena koleksi v1 memakai L2 sedangkan v2 memakai cosine.
+Test set ada di [data/evaluation/test_set_buku_iku.md](data/evaluation/test_set_buku_iku.md): 12 soal definisi & jebakan, 18 soal hitungan, dan 14 soal ketahanan (typo, bahasa santai, format angka/uang tidak baku). Setiap run menulis laporan bertanggal ke `reports/evaluation/`. Bandingkan metrik Hit@k, MRR, dan halaman sitasi. Jangan membandingkan angka *distance* antar-koleksi, karena koleksi v1 memakai L2 sedangkan v2 memakai cosine.
 
 ## Alur kerja pengembangan
 
@@ -367,7 +369,8 @@ Ringkasnya (detail di [CONTRIBUTING.md](CONTRIBUTING.md)):
 | `Isi LLM_BASE_URL, ... di file .env` | Tiga variabel `LLM_*` belum diisi di `.env` root repo (lihat setup langkah 5) |
 | `401` / `API key not valid` | Key salah atau terpotong; salin ulang dari Google AI Studio |
 | `404` / model tidak ditemukan | Nama `LLM_MODEL` tidak tersedia untuk akunmu; cek daftar model di AI Studio |
-| `429` / kuota habis | Batas free tier tercapai; tunggu lalu coba lagi (klien sudah mencoba ulang otomatis 5 kali) |
+| `429` / kuota habis | Batas free tier tercapai; tunggu lalu coba lagi (klien mencoba ulang otomatis sebanyak `LLM_MAX_RETRIES`, default 2). Untuk evaluasi panjang di Groq, pakai `--jeda 30` |
+| `503` / *high demand* | Server penyedia sedang penuh; coba lagi nanti atau ganti `LLM_MODEL` ke model lain |
 | Error 400 tentang *thought signature* / function call | Pesan asisten yang meminta alat harus dikirim balik apa adanya; jangan ubah baris `message.model_dump(exclude_none=True)` di `answer.py` |
 
 ## Dokumentasi lanjutan
@@ -376,4 +379,5 @@ Ringkasnya (detail di [CONTRIBUTING.md](CONTRIBUTING.md)):
 - [docs/01-analisis/inventaris_formula.md](docs/01-analisis/inventaris_formula.md): inventaris 41 rumus IKU di Buku
 - [docs/02-desain/panduan_chunking.md](docs/02-desain/panduan_chunking.md): desain chunking v2 dan alasannya
 - [docs/02-desain/skema_embedding.md](docs/02-desain/skema_embedding.md): best practice embedding & retrieval, beserta status penerapannya
+- [docs/02-desain/integrasi_backend.md](docs/02-desain/integrasi_backend.md): **untuk tim Backend**: arsitektur, kontrak API, dan daftar tugas integrasi ke dasbor Monev IKU
 - [data/README.md](data/README.md): penjelasan setiap folder data
