@@ -29,6 +29,11 @@ def get_client() -> tuple[OpenAI, str]:
     if missing:
         raise RuntimeError(f"Isi {', '.join(missing)} di file .env (contoh ada di .env.example).")
 
-    # max_retries: percobaan ulang otomatis bila kena batas pemakaian (429) atau gangguan server
-    client = OpenAI(base_url=base_url, api_key=api_key, max_retries=5, timeout=120)
+    # Batas tunggu dibuat pendek: chatbot harus cepat gagal dan memberi tahu user,
+    # bukan diam berbelas menit. Bisa diubah lewat .env tanpa mengubah kode.
+    timeout = float(os.getenv("LLM_TIMEOUT", "60"))
+    max_retries = int(os.getenv("LLM_MAX_RETRIES", "2"))
+    client = OpenAI(base_url=base_url, api_key=api_key, max_retries=max_retries, timeout=timeout)
     return client, model
+
+

@@ -7,7 +7,7 @@ ia memilih fungsi dan mengisi argumennya, lalu kalkulator yang menghitung.
 Daftar kunci (kategori IKU 2, bobot prestasi, jenis publikasi, dst.) diambil
 langsung dari kalkulator, jadi petunjuk untuk LLM selalu sama dengan kodenya.
 """
-
+import inspect
 import json
 import sys
 from pathlib import Path
@@ -80,18 +80,51 @@ TOOL_HITUNG_IKU = {
 }
 
 
+NAMA_ALAT = TOOL_HITUNG_IKU["function"]["name"]
+
+def baca_permintaan(argumen_teks: str) -> tuple[str | None, dict]:
+    """Ambil (fungsi, argumen) dari teks argumen LLM. Toleran terhadap variasi format
+    yang sering muncul pada model berbeda:
+    - argumen_json berupa teks JSON (format resmi) atau sudah berupa objek
+    - kunci 'argumen' alih-alih 'argumen_json'
+    - argumen ditaruh langsung di tingkat atas: {"fungsi": "rasio", "kode": "iku5", ...}"""
+    permintaan = json.loads(argumen_teks or "{}")
+    if not isinstance(permintaan, dict):
+        raise ValueError("argumen alat harus berupa objek JSON")
+    fungsi = permintaan.get("fungsi")
+    argumen = permintaan.get("argumen_json", permintaan.get("argumen"))
+    if argumen is None:
+        argumen = {k: v for k, v in permintaan.items() if k != "fungsi"}
+    if isinstance(argumen, str):
+        argumen = json.loads(argumen or "{}")
+    if not isinstance(argumen, dict):
+        raise ValueError("argumen_json harus berupa objek JSON, mis. {\"kode\": \"iku5\", ...}")
+    return fungsi, argumen
+
+
 def jalankan_alat(nama: str, argumen_teks: str) -> dict:
     """Jalankan alat yang diminta LLM. Kesalahan dikembalikan sebagai pesan, bukan crash,
-    supaya LLM bisa memperbaiki argumennya di putaran berikutnya."""
-    if nama != "hitung_iku":
-        return {"error": f"Alat '{nama}' tidak dikenal. Alat yang tersedia: hitung_iku."}
+    supaya LLM bisa memperbaiki argumennya di putaran berikutnya.
+
+    Nama alat yang tidak baku (terpotong 'hit...', salah ketik 'hitung-iku') tetap diterima
+    bila isinya jelas permintaan kalkulator (ada 'fungsi' yang terdaftar): alatnya hanya satu."""
     try:
-        permintaan = json.loads(argumen_teks or "{}")
-        argumen = permintaan.get("argumen_json", {})
-        if isinstance(argumen, str):
-            argumen = json.loads(argumen)
-        return calc.hitung(permintaan["fungsi"], **argumen)
+        fungsi, argumen = baca_permintaan(argumen_teks)
     except json.JSONDecodeError as e:
         return {"error": f"argumen_json bukan JSON yang valid: {e}"}
-    except (KeyError, TypeError, ValueError, ZeroDivisionError) as e:
+    except ValueError as e:
+        return {"error": str(e)}
+
+    if nama != NAMA_ALAT and fungsi not in calc.REGISTRY:
+        return {"error": f"Alat '{nama}' tidak dikenal. Alat yang tersedia: {NAMA_ALAT}."}
+    if fungsi not in calc.REGISTRY:
+        return {"error": f"Fungsi '{fungsi}' tidak ada. Pilihan: {', '.join(sorted(calc.REGISTRY))}"}
+    try:
+        return calc.hitung(fungsi, **argumen)
+    except TypeError as e:
+        # biasanya nama parameter salah; beri tahu parameter yang benar agar LLM bisa memperbaiki
+        return {"error": f"TypeError: {e}. Parameter yang benar untuk {fungsi}: "
+                         f"{inspect.signature(calc.REGISTRY[fungsi])}"}
+    except (KeyError, ValueError, ZeroDivisionError) as e:
         return {"error": f"{type(e).__name__}: {e}. Periksa nama fungsi dan format argumen."}
+
