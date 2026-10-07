@@ -7,19 +7,32 @@ Sumber pengetahuan:
 - `Buku IKU Diktisaintek Berdampak_V1.pdf` (143 halaman, sumber utama)
 - `PPT IKU Diktisaintek Berdampak_PTS V2.pdf` (sumber pendukung)
 
+> [!IMPORTANT]
+> **Tim Backend / AI Ops:** mulai dari **[Untuk tim Backend](#untuk-tim-backend)** di bawah, lalu baca panduan lengkapnya di **[docs/02-desain/integrasi_backend.md](docs/02-desain/integrasi_backend.md)**. Kalian tidak perlu menjalankan pipeline RAG untuk mulai bekerja.
+
+### Mulai dari sini sesuai peran
+
+| Peran | Baca ini dulu | Lalu |
+|---|---|---|
+| **Backend / AI Ops** | [Untuk tim Backend](#untuk-tim-backend) | [Panduan integrasi backend](docs/02-desain/integrasi_backend.md) (kontrak API, tugas BE, batasan) |
+| **Frontend** | [Kontrak API di panduan integrasi](docs/02-desain/integrasi_backend.md#4-kontrak-api) | `src/types/chat.ts` di repo FE |
+| **AI Engineer / kontributor pipeline** | [Setup](#setup-langkah-demi-langkah) | [Menjalankan chatbot](#menjalankan-chatbot), [Alur kerja pengembangan](#alur-kerja-pengembangan) |
+| **QA** | [Pengujian & evaluasi](#pengujian--evaluasi) | [Test set 44 soal](data/evaluation/test_set_buku_iku.md) |
+
 ## Daftar isi
 
 1. [Status proyek](#status-proyek)
-2. [Arsitektur pipeline](#arsitektur-pipeline)
-3. [Struktur repositori](#struktur-repositori)
-4. [Prasyarat](#prasyarat)
-5. [Setup (langkah demi langkah)](#setup-langkah-demi-langkah)
-6. [Menjalankan chatbot](#menjalankan-chatbot)
-7. [Menjalankan pipeline dari awal](#menjalankan-pipeline-dari-awal)
-8. [Pengujian & evaluasi](#pengujian--evaluasi)
-9. [Alur kerja pengembangan](#alur-kerja-pengembangan)
-10. [Troubleshooting](#troubleshooting)
-11. [Dokumentasi lanjutan](#dokumentasi-lanjutan)
+2. [**Untuk tim Backend**](#untuk-tim-backend)
+3. [Arsitektur pipeline](#arsitektur-pipeline)
+4. [Struktur repositori](#struktur-repositori)
+5. [Prasyarat](#prasyarat)
+6. [Setup (langkah demi langkah)](#setup-langkah-demi-langkah)
+7. [Menjalankan chatbot](#menjalankan-chatbot)
+8. [Menjalankan pipeline dari awal](#menjalankan-pipeline-dari-awal)
+9. [Pengujian & evaluasi](#pengujian--evaluasi)
+10. [Alur kerja pengembangan](#alur-kerja-pengembangan)
+11. [Troubleshooting](#troubleshooting)
+12. [Dokumentasi lanjutan](#dokumentasi-lanjutan)
 
 ## Status proyek
 
@@ -32,10 +45,12 @@ Sumber pengetahuan:
 | 5. Vector DB ChromaDB (cosine) | ✅ Selesai | `src/vectordb/build_chroma.py` |
 | 6. Retrieval hybrid (dense + BM25 + RRF, IKU boost, dedupe) | ✅ Selesai | `src/retrieval/retriever.py` |
 | 6b. Kalkulator rumus IKU (*formula registry*) | ✅ Selesai | `src/calculator/iku_formulas.py` |
-| 7. LLM + tool calling kalkulator + sitasi (generation) | 🟡 Dalam pengerjaan: chatbot terminal tersedia, evaluasi jawaban otomatis menyusul | `src/generation/chat_cli.py` |
+| 7. LLM + tool calling kalkulator + sitasi (generation) | 🟡 Dalam pengerjaan: chatbot terminal & evaluasi jawaban otomatis tersedia; baseline penuh 44 soal menyusul | `src/generation/chat_cli.py`, `src/evaluation/run_answer_tests.py` |
 | 8. Antarmuka (API / UI chat) | ⬜ Belum. Rancangan integrasi ke backend dasbor: [docs/02-desain/integrasi_backend.md](docs/02-desain/integrasi_backend.md) | – |
 
-**Hasil evaluasi retrieval & kalkulator terakhir** (test set 30 soal, koleksi `pmpt_qa_v2`, 605 chunk). Laporan lengkap ada di [reports/evaluation/](reports/evaluation/). Kualitas jawaban LLM (tahap 7) belum dievaluasi otomatis.
+**Hasil evaluasi retrieval & kalkulator terakhir** (test set 30 soal pertama, koleksi `pmpt_qa_v2`, 605 chunk). Laporan lengkap ada di [reports/evaluation/](reports/evaluation/).
+
+**Evaluasi jawaban LLM (awal):** 14 soal ketahanan (typo, bahasa santai, format uang tidak baku) dengan Groq `openai/gpt-oss-120b`: **12/14 lulus**. Satu gagal karena nama alat terpotong (sudah ditangani dengan percobaan ulang otomatis) dan satu karena LLM mengarang kepanjangan istilah AEE (perbaikan prompt menyusul). Baseline penuh 44 soal menyusul.
 
 | Metrik | Baseline v1 | Sekarang (v2) |
 |---|---|---|
@@ -45,6 +60,47 @@ Sumber pengetahuan:
 | Halaman sitasi benar | 15/23 (65%) | **25/26 (96,2%)** |
 | Soal hitungan: hasil benar | – | **18/18** |
 | Soal hitungan: halaman sitasi benar | – | **17/18** |
+
+## Untuk tim Backend
+
+Ringkasan untuk tim Backend dasbor Monev IKU (Next.js + Prisma). Detail lengkap, contoh JSON, dan alasannya ada di **[panduan integrasi backend](docs/02-desain/integrasi_backend.md)**.
+
+**Kondisi sekarang:** inti chatbot (retrieval, kalkulator rumus, LLM + sitasi) sudah jalan dan teruji di terminal. **Layanan HTTP-nya belum ada**; UI chat di repo FE masih memakai data mock.
+
+**Arsitektur yang diusulkan:**
+
+```text
+Panel chat (FE) ──POST /api/chat──► Next.js Route Handler  ← dikerjakan BE
+                                        │  sesi, validasi, rate limit, log,
+                                        │  + conversationId, messageId, disclaimer
+                                        ▼
+                         Layanan RAG Python (FastAPI)      ← dikerjakan tim AI
+                         POST /v1/answer (internal saja)
+                                        │
+                                        ▼
+                         Penyedia LLM (Groq/Gemini/OpenAI) ← API key hanya di layanan RAG
+```
+
+**Yang dikerjakan BE** (urut prioritas):
+
+1. Sesi server dengan cookie `httpOnly`, agar `userEmail` tepercaya (saat ini sesi FE masih di `localStorage`).
+2. `POST /api/chat`: validasi `question` (maks. 2.000 karakter) dan `scope` (`overview` atau `IKU 001/002/003/005/007/009`), panggil layanan RAG dengan timeout dan pembatalan, petakan error ke 400/401/429/502/503.
+3. Batas laju **per pengguna dan global**: kuota LLM free tier dibagi seluruh aplikasi.
+4. Tabel log percakapan di Prisma (`ChatConversation`, `ChatMessage`, `MessageCitation`).
+5. Env server-only: `RAG_SERVICE_URL`, `RAG_SERVICE_TOKEN` (tanpa prefix `NEXT_PUBLIC_`).
+
+Selama layanan RAG belum siap, `/api/chat` bisa dibangun dengan **stub** yang mengembalikan contoh respons di [bagian 4.2 panduan](docs/02-desain/integrasi_backend.md#42-be--layanan-rag-post-v1answer-usulan).
+
+**Yang perlu disepakati dulu** (bagian 3 panduan): RAG tetap di Python atau di-port ke TypeScript, ChromaDB atau pgvector, dokumen yang di-index, dan siapa yang menambahkan `disclaimer`/`conversationId`.
+
+**Batasan penting:**
+
+| Hal | Artinya untuk BE |
+|---|---|
+| Kuota free tier kecil (Groq ±8.000 token/menit untuk satu akun; satu soal hitungan ±8.000–10.000 token) | Hanya cukup untuk demo satu pengguna; perlu rate limit global dan pesan 429 yang jelas |
+| Layanan RAG memuat model `bge-m3` (±1,5 GB RAM) | Harus proses yang selalu hidup (container/VM), **bukan** serverless |
+| Data free tier dapat dipakai penyedia LLM | Jangan kirim data internal kampus (isi spreadsheet, nama, NIM) |
+| Rumus IKU dibutuhkan juga di dasbor | Pakai [`src/calculator/spec/buku_iku_v1.json`](src/calculator/spec/buku_iku_v1.json) + kasus uji [`test_inputs_hitung.json`](data/evaluation/test_inputs_hitung.json), jangan salin bobot manual |
 
 ## Arsitektur pipeline
 
