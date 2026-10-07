@@ -1,0 +1,17 @@
+{
+  "description": "Fakta kunci yang harus muncul di jawaban chatbot untuk soal definisi & jebakan (D01-D12) di test_set_buku_iku.md. Setiap soal berisi daftar KELOMPOK; satu kelompok terpenuhi bila salah satu alternatifnya muncul di jawaban (tidak peka huruf besar/kecil). Pemeriksaan ini bersifat bantuan: jawaban tetap perlu dibaca manual dan dibandingkan dengan 'Jawaban benar' di test set.",
+  "cases": {
+    "D01": {"fakta": [["tepat waktu"], ["efisiensi edukasi", "AEE"]]},
+    "D02": {"fakta": [["8 semester", "delapan semester"], ["25%", "25 %"], ["6 semester", "enam semester"], ["33%", "33 %"]]},
+    "D03": {"fakta": [["7 (tujuh)", "tujuh", "7 IKU", "7 indikator", "sebanyak 7"], ["5 (lima)", "lima", "5 IKU", "5 indikator"], ["2 (dua)", "dua", "memilih 2"], ["partisipatif"]]},
+    "D04": {"fakta": [["efisiensi edukasi", "IKU 1"], ["lulusan", "IKU 2"], ["di luar program studi", "IKU 3"], ["kerja sama", "kerjasama", "IKU 5"], ["SDG", "IKU 7"], ["non pendidikan", "non-pendidikan", "UKT", "IKU 9"], ["kesejahteraan dosen", "IKU 12"]]},
+    "D05": {"fakta": [["tracer study"], ["slovin"], ["2,3", "2.3"]]},
+    "D06": {"fakta": [["magang", "praktik kerja"], ["pertukaran"], ["penelitian", "riset"], ["dosen pembimbing", "pendampingan"]]},
+    "D07": {"fakta": [["SDG 1", "SDG1"], ["SDG 4", "SDG4"], ["SDG 17", "SDG17"], ["2 (dua)", "dua SDG", "2 SDG", "dua tujuan", "2 tujuan"]]},
+    "D08": {"fakta": [["UKT", "SPP"], ["BOPTN"], ["iuran pengembangan"], ["dana abadi", "endowment"]]},
+    "D09": {"fakta": [["MDPI"], ["Frontiers"], ["Hindawi"]]},
+    "D10": {"fakta": [["semakin rendah"]]},
+    "D11": {"fakta": [["IKU 2"], ["efisiensi edukasi", "tepat waktu", "AEE"]], "catatan": "Soal jebakan: chatbot harus meluruskan bahwa data lulusan bekerja termasuk IKU 2, bukan IKU 1."},
+    "D12": {"fakta": [["tidak ditemukan", "tidak terdapat", "tidak tersedia", "tidak ada informasi", "tidak dijelaskan", "tidak memuat"]], "tanpa_sitasi": true, "catatan": "Soal di luar cakupan: chatbot harus menolak, bukan mengarang angka UKT."}
+  }
+}

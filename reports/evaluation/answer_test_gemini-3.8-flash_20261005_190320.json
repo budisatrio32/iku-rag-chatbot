@@ -1,0 +1,93 @@
+{
+  "model": "gemini-3.8-flash",
+  "results": [
+    {
+      "id": "D09",
+      "pertanyaan": "Penerbit apa yang tidak diperhitungkan dalam IKU 6?",
+      "jawaban_benar": "**MDPI, Frontiers, dan Hindawi**.",
+      "halaman_kunci": [
+        63
+      ],
+      "harapan_angka": null,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "Berdasarkan ketentuan IKU 6, penerbit yang tidak diperhitungkan meliputi penerbit seperti **MDPI**, **Frontiers**, dan **Hindawi Publisher** [1].",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 63 (IKU 6, Ketentuan); juga di PPT hlm. 61–62; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 118–119"
+      ],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [],
+      "cek": {
+        "fakta: MDPI": true,
+        "fakta: Frontiers": true,
+        "fakta: Hindawi": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "D12",
+      "pertanyaan": "Berapa besaran UKT di Universitas Gadjah Mada tahun 2026?",
+      "jawaban_benar": "Informasi ini **tidak ada** di Buku IKU. Chatbot harus menyatakan tidak menemukan jawabannya di dokumen, bukan mengarang angka.",
+      "halaman_kunci": [],
+      "harapan_angka": null,
+      "catatan": "Soal di luar cakupan: chatbot harus menolak, bukan mengarang angka UKT.",
+      "lulus": true,
+      "jawaban": "Informasi mengenai besaran UKT di Universitas Gadjah Mada tahun 2026 tidak ditemukan di dalam dokumen IKU.",
+      "sitasi": [],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [],
+      "cek": {
+        "fakta: tidak ditemukan / tidak terdapat / tidak tersedia / tidak ada informasi / tidak dijelaskan / tidak memuat": true,
+        "tidak mengarang sitasi": true
+      }
+    },
+    {
+      "id": "H07",
+      "pertanyaan": "Sebuah PT memiliki 1.000 mahasiswa S1/Diploma. Rinciannya: - 100 mahasiswa magang 20 SKS - 150 mahasiswa pertukaran 8 SKS - 50 mahasiswa riset 4 SKS - 5 mahasiswa juara 1 lomba nasional - 10 mahasiswa finalis lomba internasional Berapa capaian IKU 3?",
+      "jawaban_benar": "**21,5%**.",
+      "halaman_kunci": [
+        53,
+        54
+      ],
+      "harapan_angka": 21.5,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "Berdasarkan formula dan ketentuan bobot pada IKU 3 [1], capaian IKU 3 dihitung sebagai berikut:\n\n**Langkah Perhitungan:**\n1. **Kegiatan 20 SKS** (bobot $\\ge 10$ SKS = 1):  \n   $100 \\times 1 = 100$ [1]\n2. **Kegiatan 8 SKS** (bobot 6–10 SKS = 0,6):  \n   $150 \\times 0,6 = 90$ [1]\n3. **Kegiatan 4 SKS** (bobot $\\le 5$ SKS = 0,4):  \n   $50 \\times 0,4 = 20$ [1]\n4. **Prestasi Juara 1 Nasional** (bobot = 0,6):  \n   $5 \\times 0,6 = 3$ [1]\n5. **Prestasi Finalis Internasional** (bobot = 0,2):  \n   $10 \\times 0,2 = 2$ [1]\n\n**Total Pembilang ($\\sum n_i k_i$):**  \n$100 + 90 + 20 + 3 + 2 = 215$ [1]\n\n**Perhitungan Capaian:**  \n$$\\text{Capaian IKU 3} = \\frac{215}{1.000} \\times 100\\% = 21,5\\% \\text{ [1]}$$\n\nDengan demikian, capaian IKU 3 perguruan tinggi tersebut adalah **21,5%** [1].",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 53–54 (IKU 3, Formula); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 107–108; PPT hlm. 50"
+      ],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 3 – Formula & Ketentuan Bobot, hlm. 53–54"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"kegiatan\\\":[{\\\"jumlah\\\":100,\\\"sks\\\":20},{\\\"jumlah\\\":150,\\\"sks\\\":8},{\\\"jumlah\\\":50,\\\"sks\\\":4}],\\\"prestasi\\\":[{\\\"jumlah\\\":5,\\\"peringkat\\\":\\\"juara1\\\",\\\"tingkat\\\":\\\"nasional\\\"},{\\\"jumlah\\\":10,\\\"peringkat\\\":\\\"finalis\\\",\\\"tingkat\\\":\\\"internasional\\\"}],\\\"total_mahasiswa\\\":1000}\",\"fungsi\":\"iku3\"}",
+          "hasil": {
+            "hasil": 21.5,
+            "satuan": "%",
+            "langkah": [
+              "Kegiatan 20 SKS: 100 × 1 = 100",
+              "Kegiatan 8 SKS: 150 × 0,6 = 90",
+              "Kegiatan 4 SKS: 50 × 0,4 = 20",
+              "Prestasi juara1 nasional: 5 × 0,6 = 3",
+              "Prestasi finalis internasional: 10 × 0,2 = 2",
+              "Σ(n·k) = 215",
+              "Capaian = 215 / 1000 × 100% = 21,5%"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 3 – Formula & Ketentuan Bobot, hlm. 53–54",
+            "catatan": "Dokumen menulis '6 – 10 SKS = 0,6' dan '≥ 10 SKS = 1' sehingga 10 SKS tumpang-tindih; di sini 10 SKS diberi bobot 1."
+          }
+        }
+      ],
+      "peringatan": [],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "dokumen": "Buku IKU Diktisaintek Berdampak",
+  "versi": "V1",
+  "keterangan": "Sumber kebenaran rumus kalkulator IKU. Dibaca oleh src/calculator/iku_formulas.py (Python) dan boleh dibaca tim BE/FE (TypeScript) agar angka & bobot selalu sama. Halaman = nomor halaman file PDF. Kasus uji bersama ada di data/evaluation/test_inputs_hitung.json.",
+
+  "konstanta": {
+    "aee_ideal": {"D1": 100, "D2": 50, "D3": 33, "D4": 25, "S1": 25, "S2": 50, "S3": 33},
+    "masa_tempuh_semester": {"D1": 2, "D2": 4, "D3": 6, "D4": 8, "S1": 8, "S2": 3, "S3": 6},
+
+    "bobot_iku2": {
+      "bekerja_<6bln_>1.2ump": 1.0,
+      "bekerja_<1thn_>1.2ump": 0.8,
+      "bekerja_<1thn_<1.2ump": 0.6,
+      "founder_<6bln_>1.2ump": 1.2,
+      "founder_>6bln_>1.2ump": 1.0,
+      "founder_<6bln_<1.2ump": 0.8,
+      "founder_>6bln_<1.2ump": 0.6,
+      "freelancer_<6bln_>1.2ump": 0.5,
+      "freelancer_>6bln_>1.2ump": 0.4,
+      "freelancer_<6bln_<1.2ump": 0.3,
+      "freelancer_>6bln_<1.2ump": 0.2,
+      "studi_lanjut_<12bln": 0.6,
+      "bekerja_sebelum_lulus_>1.2ump": 1.0,
+      "wirausaha_sebelum_lulus_>1.2ump": 1.0,
+      "wirausaha_sebelum_lulus_<1.2ump": 0.6,
+      "belum": 0.0
+    },
+    "galat_slovin": 0.023,
+
+    "bobot_sks": [
+      {"sks_kurang_dari": 6, "bobot": 0.4},
+      {"sks_kurang_dari": 10, "bobot": 0.6},
+      {"sks_kurang_dari": null, "bobot": 1.0}
+    ],
+    "bobot_prestasi": {
+      "internasional": {"juara1": 1.0, "juara2_3_favorit": 0.5, "harapan": 0.3, "finalis": 0.2},
+      "nasional": {"juara1": 0.6, "juara2_3_favorit": 0.3, "harapan": 0.2, "finalis": 0.1},
+      "provinsi": {"juara1": 0.4, "juara2_3_favorit": 0.2, "harapan": 0.1, "finalis": 0.05}
+    },
+
+    "bobot_publikasi": {"top_tier": 1.2, "q1": 1.0, "q2": 0.75, "q3": 0.5, "q4": 0.25, "prosiding": 0.25, "tidak_terindeks": 0.0},
+    "bonus_kolaborasi": 0.25,
+
+    "pendapatan_diakui": ["hibah_riset", "kontrak_riset", "royalti", "komersialisasi", "inkubasi", "konsultasi", "pelatihan", "kerja_sama", "layanan_profesional", "unit_bisnis", "aset_produktif", "filantropi_tercatat", "hasil_dana_abadi"],
+    "pendapatan_tidak_diakui": ["ukt", "iuran_pengembangan", "boptn", "bpptnbh", "subsidi_pemerintah", "filantropi_tidak_tercatat", "pokok_dana_abadi"],
+
+    "predikat_sakip": [
+      {"nilai_min": 90, "predikat": "AA (memuaskan)"},
+      {"nilai_min": 80, "predikat": "A (sangat baik)"},
+      {"nilai_min": 70, "predikat": "BB (baik)"},
+      {"nilai_min": 60, "predikat": "B (cukup baik)"},
+      {"nilai_min": 0, "predikat": "CC-C (kurang)"}
+    ],
+
+    "kelipatan_ump": {"asisten_ahli": 1.5, "lektor": 3, "lektor_kepala": 4, "profesor": 6}
+  },
+
+  "rumus": [
+    {
+      "id": "iku1_aee_prodi", "fungsi": "iku1_aee_prodi", "pola": "khusus",
+      "ikuCode": "IKU 001", "jenis": "iku", "inventaris_no": 1,
+      "nama": "AEE satu program pendidikan dan tingkat pencapaiannya",
+      "formula_teks": [
+        "AEE = lulus tepat masa tempuh ÷ (total mahasiswa − pindah − DO − cuti berlebih) × 100%",
+        "Tingkat pencapaian = AEE realisasi ÷ AEE ideal × 100%"
+      ],
+      "sumber": {"bagian": "IKU 1 – Ketentuan & Formula a–b", "halaman": [49]},
+      "catatan": null, "status": "terverifikasi"
+    },
+    {
+      "id": "iku1_aee_pt", "fungsi": "iku1_aee_pt", "pola": "khusus",
+      "ikuCode": "IKU 001", "jenis": "iku", "inventaris_no": 1,
+      "nama": "AEE perguruan tinggi (rata-rata tingkat pencapaian semua program pendidikan)",
+      "formula_teks": [
+        "Tingkat pencapaianᵢ = AEE realisasiᵢ ÷ AEE idealᵢ × 100%",
+        "AEE PT = Σ tingkat pencapaianᵢ ÷ n"
+      ],
+      "sumber": {"bagian": "IKU 1 – Formula c & contoh perhitungan", "halaman": [49, 50]},
+      "catatan": null, "status": "terverifikasi"
+    },
+    {
+      "id": "iku2", "fungsi": "iku2", "pola": "berbobot",
+      "ikuCode": "IKU 002", "jenis": "iku", "inventaris_no": 2,
+      "nama": "Lulusan bekerja, studi lanjut, atau berwirausaha",
+      "formula_teks": ["Capaian = Σ(nᵢ × kᵢ) ÷ total responden × 100%"],
+      "sumber": {"bagian": "IKU 2 – Kriteria b–f & Formula", "halaman": [51, 52]},
+      "catatan": null, "status": "terverifikasi"
+    },
+    {
+      "id": "iku2_responden_minimum", "fungsi": "iku2_responden_minimum", "pola": "khusus",
+      "ikuCode": "IKU 002", "jenis": "iku", "inventaris_no": 3,
+      "nama": "Responden minimum tracer study (rumus Slovin)",
+      "formula_teks": ["n = N ÷ (N × d² + 1), d = 2,3%"],
+      "sumber": {"bagian": "IKU 2 – Formula Responden Minimum", "halaman": [52]},
+      "catatan": "Dokumen menulis '× 100%' pada rumus Slovin; hasil diperlakukan sebagai jumlah orang.",
+      "status": "ada_tafsir"
+    },
+    {
+      "id": "iku3", "fungsi": "iku3", "pola": "berbobot",
+      "ikuCode": "IKU 003", "jenis": "iku", "inventaris_no": 4,
+      "nama": "Mahasiswa berkegiatan atau berprestasi di luar program studi",
+      "formula_teks": ["Capaian = Σ(nᵢ × kᵢ) ÷ total mahasiswa × 100%  (k = bobot SKS atau bobot prestasi)"],
+      "sumber": {"bagian": "IKU 3 – Formula & Ketentuan Bobot", "halaman": [53, 54]},
+      "catatan": "Dokumen menulis '6 – 10 SKS = 0,6' dan '≥ 10 SKS = 1' sehingga 10 SKS tumpang-tindih; di sini 10 SKS diberi bobot 1.",
+      "status": "ada_tafsir"
+    },
+    {
+      "id": "iku4", "fungsi": "rasio", "pola": "rasio",
+      "ikuCode": "IKU 004", "jenis": "iku", "inventaris_no": 9,
+      "nama": "Dosen berkiprah/rekognisi internasional",
+      "input": {"pembilang": "Dosen ber-NUPTK yang mendapat rekognisi internasional", "penyebut": "Total dosen PT setahun terakhir"},
+      "formula_teks": ["Dosen ber-NUPTK yang mendapat rekognisi internasional ÷ Total dosen PT setahun terakhir × 100%"],
+      "sumber": {"bagian": "IKU 4 – Formula", "halaman": [62]},
+      "catatan": null, "status": "terverifikasi"
+    },
+    {
+      "id": "iku5", "fungsi": "rasio", "pola": "rasio",
+      "ikuCode": "IKU 005", "jenis": "iku", "inventaris_no": 5,
+      "nama": "Rasio luaran hasil kerja sama PT dan mitra",
+      "input": {"pembilang": "Jumlah luaran (judul/karya) hasil kerja sama", "penyebut": "Total kerja sama PT"},
+      "formula_teks": ["Jumlah luaran (judul/karya) hasil kerja sama ÷ Total kerja sama PT × 100%"],
+      "sumber": {"bagian": "IKU 5 – Formula & Keterangan", "halaman": [57]},
+      "catatan": null, "status": "terverifikasi"
+    },
+    {
+      "id": "iku6", "fungsi": "iku6", "pola": "berbobot",
+      "ikuCode": "IKU 006", "jenis": "iku", "inventaris_no": 10,
+      "nama": "Publikasi bereputasi internasional",
+      "formula_teks": ["Capaian = Σ(nᵢ × kᵢ) ÷ total publikasi × 100%  (k = bobot kuartil, +0,25 bila kolaborasi internasional)"],
+      "sumber": {"bagian": "IKU 6 – Kriteria (bobot kuartil) & Formula", "halaman": [63]},
+      "catatan": "Dokumen: 'tambahan bobot sebesar 0,25 dari bobot dasar'. Di sini ditafsirkan +0,25 (ditambahkan ke bobot dasar). Untuk Q1 (bobot dasar 1) kedua tafsiran (+0,25 dan +25%) sama.",
+      "status": "ada_tafsir"
+    },
+    {
+      "id": "iku7", "fungsi": "rasio", "pola": "rasio",
+      "ikuCode": "IKU 007", "jenis": "iku", "inventaris_no": 6,
+      "nama": "Keterlibatan PT dalam SDGs",
+      "input": {"pembilang": "Program/kegiatan berkontribusi pada SDG 1, 4, 17 + 2 SDG pilihan", "penyebut": "Total program SDGs PT"},
+      "formula_teks": ["Program/kegiatan SDG 1, 4, 17 + 2 SDG pilihan ÷ Total program SDGs PT × 100%"],
+      "sumber": {"bagian": "IKU 7 – Formula", "halaman": [58]},
+      "catatan": null, "status": "terverifikasi"
+    },
+    {
+      "id": "iku8", "fungsi": "rasio", "pola": "rasio",
+      "ikuCode": "IKU 008", "jenis": "iku", "inventaris_no": 11,
+      "nama": "SDM yang terlibat penyusunan kebijakan",
+      "input": {"pembilang": "SDM yang terlibat penyusunan kebijakan", "penyebut": "Total SDM PT dalam satu periode"},
+      "formula_teks": ["SDM yang terlibat penyusunan kebijakan ÷ Total SDM PT dalam satu periode × 100%"],
+      "sumber": {"bagian": "IKU 8 – Formula", "halaman": [64]},
+      "catatan": null, "status": "terverifikasi"
+    },
+    {
+      "id": "iku9", "fungsi": "iku9", "pola": "khusus",
+      "ikuCode": "IKU 009", "jenis": "iku", "inventaris_no": 7,
+      "nama": "Pendapatan non pendidikan/UKT",
+      "formula_teks": ["Capaian = Pendapatan yang diakui (non-mahasiswa) ÷ Total pendapatan PT satu periode × 100%"],
+      "sumber": {"bagian": "IKU 9 – Kriteria & Formula", "halaman": [59]},
+      "catatan": null, "status": "terverifikasi"
+    },
+    {
+      "id": "iku11b_predikat", "fungsi": "iku11b_predikat", "pola": "klasifikasi",
+      "ikuCode": "IKU 011", "jenis": "iku", "inventaris_no": 14,
+      "nama": "Predikat SAKIP dari nilai akhir",
+      "formula_teks": ["Nilai akhir SAKIP → tabel predikat (AA ≥ 90, A ≥ 80, BB ≥ 70, B ≥ 60, CC-C < 60)"],
+      "sumber": {"bagian": "IKU 11b – Skala dan Predikat", "halaman": [66]},
+      "catatan": null, "status": "terverifikasi"
+    },
+    {
+      "id": "iku11d", "fungsi": "rasio", "pola": "rasio",
+      "ikuCode": "IKU 011", "jenis": "iku", "inventaris_no": 16,
+      "nama": "Pencegahan & penanganan kekerasan, narkoba, dan korupsi",
+      "input": {"pembilang": "Kegiatan pencegahan & penanganan yang terlaksana", "penyebut": "Total kegiatan yang direncanakan"},
+      "formula_teks": ["Kegiatan pencegahan & penanganan yang terlaksana ÷ Total kegiatan yang direncanakan × 100%"],
+      "sumber": {"bagian": "IKU 11d – Formula", "halaman": [68]},
+      "catatan": null, "status": "terverifikasi"
+    },
+    {
+      "id": "iku12_penghasilan_minimum", "fungsi": "iku12_penghasilan_minimum", "pola": "khusus",
+      "ikuCode": "IKU 012", "jenis": "iku", "inventaris_no": null,
+      "nama": "Standar penghasilan minimum dosen per jabatan fungsional",
+      "formula_teks": ["Penghasilan minimum = kelipatan jabatan × UMP (asisten ahli 1,5; lektor 3; lektor kepala 4; profesor 6)"],
+      "sumber": {"bagian": "IKU 12 – Kriteria b.2", "halaman": [60]},
+      "catatan": null, "status": "terverifikasi"
+    }
+  ]
+}
