@@ -1,0 +1,33 @@
+{
+  "description": "Nama resmi setiap IKU, kunci = iku_id pada metadata chunk. Dipakai prompt.py agar setiap potongan konteks membawa nama IKU-nya, sehingga LLM tidak perlu (dan tidak boleh) menebak kepanjangan singkatan. Nama ditulis persis seperti di dokumen (ejaan diselaraskan seperlunya).",
+  "sumber": {
+    "iku": "Buku IKU Diktisaintek Berdampak V1, Bab V, tabel daftar IKU, hlm. 48; singkatan 'AEE PT' dari Lampiran hlm. 100",
+    "iku_lldikti": "Buku IKU Diktisaintek Berdampak V1, Bab VI, tabel IKU LLDIKTI, hlm. 86"
+  },
+  "nama": {
+    "1": "Angka Efisiensi Edukasi Perguruan Tinggi (AEE PT)",
+    "2": "Persentase lulusan pendidikan tinggi & vokasi yang langsung bekerja/melanjutkan jenjang pendidikan berikutnya dalam jangka waktu 1 tahun setelah kelulusan",
+    "3": "Persentase mahasiswa S1/D4/D3/D2/D1 berkegiatan/meraih prestasi di luar program studi",
+    "4": "Persentase Dosen PT yang mendapatkan rekognisi internasional",
+    "5": "Rasio luaran hasil kerja sama antara PT dan start-up/industri/Lembaga",
+    "6": "Persentase publikasi bereputasi internasional (Scopus/WoS)",
+    "7": "Persentase keterlibatan Perguruan Tinggi dalam SDG 1 (Tanpa Kemiskinan), SDG 4 (Pendidikan Berkualitas), SDG 17 (Kemitraan) dan 2 (dua) SDGs lain sesuai keunggulan",
+    "8": "Jumlah SDM PT (dosen, peneliti) yang terlibat langsung dalam penyusunan kebijakan (nasional/daerah/industri)",
+    "9": "Persentase Pendapatan Non Pendidikan/UKT",
+    "10": "Jumlah usulan Zona Integritas – WBK/WBBM",
+    "11": "IKU 11, empat alternatif: 11.1 Opini WTP atas Laporan Keuangan, 11.2 Predikat SAKIP, 11.3 Jumlah Laporan Pelanggaran Integritas Akademik, 11.4 Pencegahan dan Penanganan Anti Kekerasan, Anti Narkoba, dan Anti Korupsi",
+    "11a": "Opini WTP atas Laporan Keuangan Perguruan Tinggi (IKU 11.1)",
+    "11b": "Predikat SAKIP Perguruan Tinggi (IKU 11.2)",
+    "11c": "Jumlah Laporan Pelanggaran Integritas Akademik (IKU 11.3)",
+    "11d": "Pencegahan dan Penanganan Anti Kekerasan, Anti Narkoba, dan Anti Korupsi (IKU 11.4)",
+    "12": "Ketersediaan perencanaan strategis peningkatan kesejahteraan dosen",
+    "LLDIKTI-1": "Keunggulan Layanan LLDIKTI",
+    "LLDIKTI-2": "Arsitektur Perguruan Tinggi Swasta",
+    "LLDIKTI-3": "Predikat SAKIP dan Zona Integritas (WBK/WBBM) LLDIKTI",
+    "LLDIKTI-4": "Fasilitasi Peningkatan Mutu Perguruan Tinggi Swasta oleh LLDIKTI",
+    "LLDIKTI-5": "Pencegahan dan Penanganan Anti Kekerasan, Anti Narkoba, dan Anti Korupsi (LLDIKTI)",
+    "LLDIKTI-6": "Fasilitasi Pengembangan Kemahasiswaan dan Prestasi oleh LLDIKTI",
+    "LLDIKTI-7": "Jumlah Dosen PTS yang Meningkat Jabatan Fungsionalnya",
+    "LLDIKTI-8": "Fasilitasi Peningkatan Kinerja Penelitian, Publikasi, dan Kemitraan PTS"
+  }
+}

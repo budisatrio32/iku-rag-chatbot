@@ -8,6 +8,9 @@ __pycache__/
 venv/
 .pytest_cache/
 
+# Log demo Streamlit: berisi pertanyaan pengguna, jangan di-commit
+data/feedback/
+
 # Vector store: dibangun ulang dari data/embeddings (python src/vectordb/build_chroma.py --reset)
 data/vectorstore/
 

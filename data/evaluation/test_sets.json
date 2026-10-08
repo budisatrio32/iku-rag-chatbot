@@ -1,0 +1,15 @@
+{
+  "description": "Kelompok soal untuk run_answer_tests.py --set <nama>. Satu soal rata-rata memakai ±7.000 token LLM (terukur: 30 soal ±209 ribu token dengan openai/gpt-oss-120b), sedangkan jatah free tier Groq 200 ribu token/hari. Pakai set 'inti' setiap kali mengubah prompt/kode; run penuh 44 soal hanya saat milestone dan boleh dicicil beberapa hari.",
+  "sets": {
+    "inti": {
+      "keterangan": "15 soal wakil: setiap IKU halaman dasbor (1, 2, 3, 5, 7, 9), definisi, jebakan, dan ketahanan. ±105 ribu token.",
+      "id": ["D01", "D03", "D08", "D11", "D12", "D13",
+             "H01", "H04", "H07", "H09", "H12", "H13",
+             "H21", "H26", "H30"]
+    },
+    "ketahanan": {
+      "keterangan": "14 soal bagian C: typo, bahasa santai, format angka/uang tidak baku. ±100 ribu token.",
+      "id": ["D13", "D14", "H19", "H20", "H21", "H22", "H23", "H24", "H25", "H26", "H27", "H28", "H29", "H30"]
+    }
+  }
+}

@@ -1,0 +1,1417 @@
+{
+  "model": "openai/gpt-oss-120b",
+  "status": "jatah harian LLM habis (429 per hari)",
+  "rencana": [
+    "D01",
+    "D02",
+    "D03",
+    "D04",
+    "D05",
+    "D06",
+    "D07",
+    "D08",
+    "D09",
+    "D10",
+    "D11",
+    "D12",
+    "H01",
+    "H02",
+    "H03",
+    "H04",
+    "H05",
+    "H06",
+    "H07",
+    "H08",
+    "H09",
+    "H10",
+    "H11",
+    "H12",
+    "H13",
+    "H14",
+    "H15",
+    "H16",
+    "H17",
+    "H18",
+    "D13",
+    "D14",
+    "H19",
+    "H20",
+    "H21",
+    "H22",
+    "H23",
+    "H24",
+    "H25",
+    "H26",
+    "H27",
+    "H28",
+    "H29",
+    "H30"
+  ],
+  "belum_selesai": [
+    "H22",
+    "H23",
+    "H24",
+    "H25",
+    "H26",
+    "H27",
+    "H28",
+    "H29",
+    "H30"
+  ],
+  "results": [
+    {
+      "id": "D01",
+      "pertanyaan": "Apa itu IKU 1?",
+      "jawaban_benar": "IKU 1 adalah **Angka Efisiensi Edukasi (AEE) Perguruan Tinggi**, yaitu indikator yang mengukur tingkat keberhasilan mahasiswa menyelesaikan studi **tepat waktu** sesuai masa studi standar, dibandingkan dengan total mahasiswa yang masuk pada periode tertentu. AEE PT dihitung dari **rata-rata tingkat pencapaian AEE setiap program pendidikan**. Sifatnya **IKU Wajib**.",
+      "halaman_kunci": [
+        49
+      ],
+      "harapan_angka": null,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "**IKU 1 – Angka Efisiensi Edukasi Perguruan Tinggi (AEE PT)**  \n\nIKU 1 mengukur tingkat keberhasilan mahasiswa menyelesaikan studi tepat waktu sesuai masa studi standar, dibandingkan dengan total mahasiswa yang masuk pada periode tertentu. AEE PT dihitung sebagai rata‑rata nilai tingkat pencapaian AEE pada setiap program pendidikan (D1, D2, D3, D4/Sarjana, S2, S3, dll.) yang ada di perguruan tinggi [1][2].  \n\nKriteria utama IKU 1:  \n- Mahasiswa lulus tepat waktu sesuai masa tempuh kurikulum standar (misalnya D1 = 2 semester, D4/Sarjana = 8 semester, S2 = ≥ 3 semester, dst.) [5].  \n- Tidak menghitung mahasiswa yang pindah, drop‑out, atau cuti lebih dari ketentuan [4].  \n\nDengan kata lain, IKU 1 menunjukkan persentase mahasiswa yang berhasil menyelesaikan pendidikan sesuai jadwal yang ditetapkan, dan nilai akhir merupakan rata‑rata pencapaian tersebut di seluruh program pendidikan yang dihitung.",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 49 (IKU 1, Definisi); juga di PPT hlm. 45",
+        "[2] Buku IKU Diktisaintek Berdampak V1, hlm. 49–50 (IKU 1, Formula); juga di PPT hlm. 46–47; PPT hlm. 46",
+        "[4] Buku IKU Diktisaintek Berdampak V1, hlm. 49 (IKU 1, Ketentuan); juga di PPT hlm. 45; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 100–101",
+        "[5] Buku IKU Diktisaintek Berdampak V1, hlm. 49 (IKU 1, Kriteria); juga di PPT hlm. 45"
+      ],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [],
+      "cek": {
+        "fakta: tepat waktu": true,
+        "fakta: efisiensi edukasi / AEE": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "D02",
+      "pertanyaan": "Berapa masa tempuh kurikulum dan AEE ideal untuk program Sarjana dan Diploma Tiga?",
+      "jawaban_benar": "- Sarjana / Sarjana Terapan (D4): masa tempuh **8 semester**, AEE ideal **25%**.\n- Diploma Tiga: masa tempuh **6 semester**, AEE ideal **33%**.",
+      "halaman_kunci": [
+        49
+      ],
+      "harapan_angka": null,
+      "catatan": null,
+      "lulus": false,
+      "jawaban": "- **Diploma Tiga (D3)**  \n  - Masa tempuh kurikulum: **6 semester** [1]  \n  - AEE ideal: **33 %** [1][4]  \n\n- **Sarjana (S1)**  \n  - Masa tempuh kurikulum: **8 semester** [1]  \n  - AEE ideal: **25 %** [1][4]",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 49 (IKU 1, Ketentuan); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 100–101; PPT hlm. 45",
+        "[4] Buku IKU Diktisaintek Berdampak V1, hlm. 49–50 (IKU 1, Formula)"
+      ],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [],
+      "cek": {
+        "fakta: 8 semester / delapan semester": true,
+        "fakta: 25% / 25 %": false,
+        "fakta: 6 semester / enam semester": true,
+        "fakta: 33% / 33 %": false,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "D03",
+      "pertanyaan": "Berapa jumlah IKU wajib, IKU pilihan, dan IKU partisipatif?",
+      "jawaban_benar": "- **7 IKU wajib** bagi seluruh perguruan tinggi.\n- **5 IKU pilihan**; PT memilih **2** dari 5.\n- PT harus mengusulkan **1 IKU partisipatif**.\n- Catatan: IKU 6 (publikasi Scopus/WoS) **wajib bagi PTN-BH**.",
+      "halaman_kunci": [
+        48
+      ],
+      "harapan_angka": null,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "Jumlah IKU **wajib** yang harus dipenuhi oleh seluruh perguruan tinggi adalah **7 (tujuh)** [1].  \nIKU **pilihan** tersedia sebanyak **5 (lima)** indikator, dan perguruan tinggi dapat memilih **2 (dua)** di antaranya [1][3].  \nSetiap perguruan tinggi juga diwajibkan mengusulkan **1 (satu)** IKU **partisipatif** [2].",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 48–49",
+        "[2] Buku IKU Diktisaintek Berdampak V1, hlm. 69",
+        "[3] Buku IKU Diktisaintek Berdampak V1, hlm. 61"
+      ],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [],
+      "cek": {
+        "fakta: 7 (tujuh) / tujuh / 7 IKU / 7 indikator / sebanyak 7": true,
+        "fakta: 5 (lima) / lima / 5 IKU / 5 indikator": true,
+        "fakta: 2 (dua) / dua / memilih 2": true,
+        "fakta: partisipatif": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "D04",
+      "pertanyaan": "Sebutkan IKU yang bersifat wajib.",
+      "jawaban_benar": "IKU 1 (AEE), IKU 2 (lulusan bekerja/studi lanjut/wirausaha dalam 1 tahun), IKU 3 (mahasiswa berkegiatan/berprestasi di luar prodi), IKU 5 (rasio luaran kerja sama), IKU 7 (keterlibatan SDGs), IKU 9 (pendapatan non-UKT), dan IKU 12 (perencanaan kesejahteraan dosen).",
+      "halaman_kunci": [
+        48
+      ],
+      "harapan_angka": null,
+      "catatan": null,
+      "lulus": false,
+      "jawaban": "Berikut IKU yang disebutkan dalam dokumen sebagai **IKU wajib**:\n\n1. **IKU 1 – Angka Efisiensi Edukasi Perguruan Tinggi (AEE PT)** [2]  \n2. **IKU 3 – Persentase mahasiswa S1/D4/D3/D2/D1 berkegiatan/meraih prestasi di luar program studi** [3]  \n3. **IKU 5 – Rasio luaran hasil kerja sama antara PT dan start‑up/industri/lembaga** [4]  \n4. **IKU 7 – Persentase keterlibatan Perguruan Tinggi dalam SDG 1, SDG 4, SDG 17, dan dua SDG pilihan** [5]  \n\nDokumen menyatakan bahwa terdapat **total 7 (tujuh) IKU wajib**, namun definisi/detail untuk tiga IKU lainnya tidak disertakan dalam potongan konteks yang diberikan. Oleh karena itu, hanya keempat IKU di atas yang dapat kami sebutkan berdasarkan informasi yang tersedia.",
+      "sitasi": [
+        "[2] Buku IKU Diktisaintek Berdampak V1, hlm. 49 (IKU 1, Definisi); juga di PPT hlm. 45",
+        "[3] Buku IKU Diktisaintek Berdampak V1, hlm. 53 (IKU 3, Definisi); juga di PPT hlm. 49",
+        "[4] Buku IKU Diktisaintek Berdampak V1, hlm. 55 (IKU 5, Definisi); juga di PPT hlm. 51",
+        "[5] Buku IKU Diktisaintek Berdampak V1, hlm. 58 (IKU 7, Ketentuan); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 120–121"
+      ],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [],
+      "cek": {
+        "fakta: efisiensi edukasi / IKU 1": true,
+        "fakta: lulusan / IKU 2": false,
+        "fakta: di luar program studi / IKU 3": true,
+        "fakta: kerja sama / kerjasama / IKU 5": true,
+        "fakta: SDG / IKU 7": true,
+        "fakta: non pendidikan / non-pendidikan / UKT / IKU 9": false,
+        "fakta: kesejahteraan dosen / IKU 12": false,
+        "halaman sitasi benar": false
+      }
+    },
+    {
+      "id": "D05",
+      "pertanyaan": "Dari mana data IKU 2 diperoleh, dan bagaimana menentukan jumlah responden minimum?",
+      "jawaban_benar": "Data diperoleh dari **tracer study** yang dilakukan **1 tahun setelah kelulusan**. Responden minimum dihitung dengan **rumus Slovin** dengan **galat (d) 2,3%**: n = N / (N·d² + 1), dengan N = jumlah lulusan.",
+      "halaman_kunci": [
+        51,
+        52
+      ],
+      "harapan_angka": null,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "**Sumber data IKU 2**  \nData untuk IKU 2 diperoleh melalui **tracer study** yang dilakukan **1 tahun setelah kelulusan** oleh lulusan program D1, D2, D3, D4/Sarjana Terapan, atau Sarjana. [1]\n\n**Menentukan jumlah responden minimum**  \nJumlah responden minimum harus memenuhi batas yang dihitung dengan **rumus Slovin** (galat = 2,3 %). Rumusnya adalah:\n\n\\[\nn = \\frac{N}{N d^{2} + 1}\\times 100\\%\n\\]\n\n* **N** = total jumlah lulusan yang menjadi populasi.  \n* **d** = galat yang ditetapkan (2,3 % atau 0,023).  \n\nDengan memasukkan nilai N dan d ke dalam rumus di atas, diperoleh nilai n (sebagai persentase) yang merupakan **jumlah responden minimum** yang harus dikumpulkan dalam tracer study. [2]",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 51 (IKU 2, Ketentuan); juga di PPT hlm. 48; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 104",
+        "[2] Buku IKU Diktisaintek Berdampak V1, hlm. 52 (IKU 2, Formula); juga di PPT hlm. 48–49; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 104–105"
+      ],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [],
+      "cek": {
+        "fakta: tracer study": true,
+        "fakta: slovin": true,
+        "fakta: 2,3 / 2.3": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "D06",
+      "pertanyaan": "Kegiatan di luar program studi apa saja yang diakui untuk IKU 3?",
+      "jawaban_benar": "Kegiatan harus didampingi dosen pembimbing dan mendapat pengakuan SKS, berupa:\n1. magang/praktik kerja (swasta, nirlaba, organisasi multilateral, pemerintah/BUMN/BUMD);\n2. program mahasiswa berdampak (sosial/pengabdian masyarakat);\n3. pertukaran mahasiswa (dalam/luar negeri, berdasarkan perjanjian kerja sama); dan/atau\n4. penelitian/riset di bawah pengawasan dosen atau peneliti.\n\nPrestasi diakui bila berupa kompetisi tingkat provinsi/nasional/internasional, minimal sebagai finalis.\nCatatan: magang **tidak dihitung** bagi prodi vokasi yang sudah memiliki magang wajib.",
+      "halaman_kunci": [
+        53
+      ],
+      "harapan_angka": null,
+      "catatan": null,
+      "lulus": false,
+      "jawaban": "**IKU 3 – Persentase Mahasiswa S1 dan D4/D3/D2/D1 Berkegiatan/Meraih Prestasi di Luar Program Studi** mengakui kegiatan di luar program studi yang memenuhi kriteria berikut [1]:\n\n1. **Magang atau praktik kerja** yang dilaksanakan pada:\n   - Perusahaan swasta (nasional, multinasional, startup, UMKM, dll.);  \n   - Lembaga/organisasi nirlaba;  \n   - Institusi/organisasi multilateral (mis. PBB, UNICEF, dsb.); atau  \n   - Instansi pemerintah, BUMN, atau BUMD.  \n\n2. **Program mahasiswa Berdampak** berupa program sosial/pengabdian kepada masyarakat untuk pemberdayaan di daerah bencana, pedesaan, atau terpencil (mis. pembangunan ekonomi, infrastruktur, dll.).  \n\n3. **Pertukaran mahasiswa**, yaitu mengambil kelas atau semester di perguruan tinggi lain (dalam negeri maupun luar negeri) berdasarkan perjanjian kerja sama yang sudah ada, dengan memperoleh rekognisi kredit semester.  \n\n4. **Penelitian atau riset** yang dilakukan di bawah pengawasan dosen atau peneliti, baik di dalam maupun di luar perguruan tinggi (mis. kolaborasi dengan dosen tetap PT asal, dosen PT lain, lembaga riset, perusahaan multinasional, atau pemerintah/BUMN/BUMD).   [1]",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 53 (IKU 3, Kriteria); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 105–106; PPT hlm. 49"
+      ],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [],
+      "cek": {
+        "fakta: magang / praktik kerja": true,
+        "fakta: pertukaran": true,
+        "fakta: penelitian / riset": true,
+        "fakta: dosen pembimbing / pendampingan": false,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "D07",
+      "pertanyaan": "SDG apa saja yang wajib dan pilihan dalam IKU 7?",
+      "jawaban_benar": "SDG wajib: **SDG 1** (Tanpa Kemiskinan), **SDG 4** (Pendidikan Berkualitas), dan **SDG 17** (Kemitraan). Ditambah **2 SDG pilihan** di luar ketiganya, sesuai keunggulan PT, dan harus dituangkan dalam dokumen resmi (Renstra atau laporan kinerja tahunan).",
+      "halaman_kunci": [
+        58
+      ],
+      "harapan_angka": null,
+      "catatan": null,
+      "lulus": false,
+      "jawaban": "Dalam **IKU 7**, keterlibatan perguruan tinggi terbagi menjadi:\n\n* **SDG wajib**:  \n  1. **SDG 1 – Tanpa Kemiskinan**  \n  2. **SDG 4 – Pendidikan Berkualitas**  \n  3. **SDG 17 – Kemitraan**  \n\n* **SDG pilihan**:  \n  Perguruan tinggi wajib memilih **dua (2) tujuan SDG lain** di luar SDG 1, SDG 4, dan SDG 17, yang ditetapkan berdasarkan keunggulan, bidang spesialisasi, atau konteks strategis institusi masing‑masing【1】【4】.",
+      "sitasi": [],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [
+        "Jawaban tidak memuat rujukan [n] ke konteks."
+      ],
+      "cek": {
+        "fakta: SDG 1 / SDG1": false,
+        "fakta: SDG 4 / SDG4": false,
+        "fakta: SDG 17 / SDG17": false,
+        "fakta: 2 (dua) / dua SDG / 2 SDG / dua tujuan / 2 tujuan": false,
+        "halaman sitasi benar": false
+      }
+    },
+    {
+      "id": "D08",
+      "pertanyaan": "Pendapatan apa saja yang tidak termasuk dalam perhitungan IKU 9?",
+      "jawaban_benar": "1. SPP/UKT/biaya kuliah mahasiswa;\n2. iuran pengembangan institusi;\n3. subsidi langsung pemerintah (belanja pegawai, operasional, BOPTN, BPPTNBH, dan sejenisnya);\n4. sumbangan/filantropi yang tidak masuk laporan keuangan resmi; dan\n5. dana pokok dana abadi (*endowment fund*).",
+      "halaman_kunci": [
+        59
+      ],
+      "harapan_angka": null,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "Pendapatan yang **tidak termasuk** dalam perhitungan **IKU 9 – Persentase Pendapatan Non Pendidikan/UKT** adalah:\n\n1. **SPP/UKT/biaya kuliah mahasiswa**.  \n2. **Iuran pengembangan institusi**.  \n3. **Subsidi langsung dari pemerintah**, seperti belanja pegawai, belanja operasional, BOPTN, BPPTNBH, dan sejenisnya.  \n4. **Sumbangan/filantropi yang tidak masuk dalam laporan keuangan resmi perguruan tinggi**.  \n5. **Dana pokok dana abadi/endowment fund** yang disimpan secara permanen dan tidak dibelanjakan.  \n6. **Pendapatan yang tidak dibukukan**, termasuk hibah barang tanpa nilai dan dana yang masuk lewat kampus tanpa pelaporan resmi.  \n\n*(Sumber: Kriteria tidak termasuk pada IKU 9 [1]; tambahan “Tidak termasuk” pada Kriteria dan Ketentuan Sub‑Indikator IKU 9 [5]).*",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 59 (IKU 9, Kriteria); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 122–123; PPT hlm. 56",
+        "[5] Buku IKU Diktisaintek Berdampak V1, hlm. 79 (IKU 9, Kriteria dan Ketentuan); juga di PPT hlm. 81; PPT hlm. 85; PPT hlm. 86"
+      ],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [],
+      "cek": {
+        "fakta: UKT / SPP": true,
+        "fakta: BOPTN": true,
+        "fakta: iuran pengembangan": true,
+        "fakta: dana abadi / endowment": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "D09",
+      "pertanyaan": "Penerbit apa yang tidak diperhitungkan dalam IKU 6?",
+      "jawaban_benar": "**MDPI, Frontiers, dan Hindawi**.",
+      "halaman_kunci": [
+        63
+      ],
+      "harapan_angka": null,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "Penerbit yang **tidak** diperhitungkan dalam perhitungan IKU 6 adalah:\n\n- **MDPI**  \n- **Frontiers**  \n- **Hindawi Publisher**  \n\n[1]",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 63 (IKU 6, Ketentuan); juga di PPT hlm. 61–62; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 118–119"
+      ],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [],
+      "cek": {
+        "fakta: MDPI": true,
+        "fakta: Frontiers": true,
+        "fakta: Hindawi": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "D10",
+      "pertanyaan": "Bagaimana arah penilaian IKU 11c (pelanggaran integritas akademik)?",
+      "jawaban_benar": "**Semakin rendah semakin baik.** Nilai 0 laporan mencerminkan kinerja baik, **asalkan** PT memiliki dan menjalankan mekanisme pencegahan, pelaporan, verifikasi, dan penanganan pelanggaran integritas akademik. Formula: jumlah laporan pelanggaran integritas akademik dalam 1 periode (satuan: laporan).",
+      "halaman_kunci": [
+        67
+      ],
+      "harapan_angka": null,
+      "catatan": null,
+      "lulus": false,
+      "jawaban": "Arah penilaian IKU 11c adalah **semakin rendah semakin baik**; nilai 0 (nol) dapat mencerminkan kinerja yang baik, dengan catatan perguruan tinggi sudah memiliki dan menjalankan mekanisme pencegahan, pelaporan, verifikasi, dan penanganan pelanggaran integritas akademik secara institusional【2†L1-L3】.",
+      "sitasi": [],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [
+        "Jawaban tidak memuat rujukan [n] ke konteks."
+      ],
+      "cek": {
+        "fakta: semakin rendah": true,
+        "halaman sitasi benar": false
+      }
+    },
+    {
+      "id": "D11",
+      "pertanyaan": "Lulusan 400, yang bekerja 280, berapa capaian IKU 1?",
+      "jawaban_benar": "Chatbot harus **mengoreksi**: IKU 1 adalah Angka Efisiensi Edukasi (kelulusan tepat waktu), bukan persentase lulusan bekerja. Data lulusan bekerja termasuk **IKU 2**. Jika dihitung sebagai IKU 2, dengan asumsi seluruh 280 lulusan berbobot 1 (masa tunggu < 6 bulan dan gaji > 1,2× UMP) dan 400 adalah total responden tracer study: 280/400 × 100% = **70%** (lihat H04).",
+      "halaman_kunci": [
+        49,
+        51
+      ],
+      "harapan_angka": null,
+      "catatan": "Soal jebakan: chatbot harus meluruskan bahwa data lulusan bekerja termasuk IKU 2, bukan IKU 1.",
+      "lulus": false,
+      "jawaban": "Informasi yang diberikan (jumlah lulusan = 400 dan yang bekerja = 280) tidak berkaitan dengan perhitungan **IKU 1 – Angka Efisiensi Edukasi Perguruan Tinggi (AEE PT)**.  \nIKU 1 menghitung persentase mahasiswa yang lulus tepat waktu dibandingkan total mahasiswa pada tahun akademik yang bersangkutan, sebagaimana dijelaskan dalam definisi, kriteria, dan formula pada potongan [1]‑[4].  \n\nUntuk menghitung capaian IKU 1 diperlukan data:\n\n* Jumlah mahasiswa yang lulus tepat waktu (sesuai masa tempuh kurikulum).  \n* Total mahasiswa pada tahun akademik tersebut.  \n\nKarena data tersebut tidak tersedia dalam konteks yang diberikan, **capaian IKU 1 tidak dapat dihitung**. Silakan sampaikan data yang diperlukan agar perhitungan dapat dilakukan.",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 49–50 (IKU 1, Formula); juga di PPT hlm. 46–47; PPT hlm. 46; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 101–102",
+        "[4] Buku IKU Diktisaintek Berdampak V1, hlm. 49 (IKU 1, Kriteria); juga di PPT hlm. 45"
+      ],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [],
+      "cek": {
+        "fakta: IKU 2": false,
+        "fakta: efisiensi edukasi / tepat waktu / AEE": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "D12",
+      "pertanyaan": "Berapa besaran UKT di Universitas Gadjah Mada tahun 2026?",
+      "jawaban_benar": "Informasi ini **tidak ada** di Buku IKU. Chatbot harus menyatakan tidak menemukan jawabannya di dokumen, bukan mengarang angka.",
+      "halaman_kunci": [],
+      "harapan_angka": null,
+      "catatan": "Soal di luar cakupan: chatbot harus menolak, bukan mengarang angka UKT.",
+      "lulus": true,
+      "jawaban": "Informasinya tidak ditemukan di dokumen IKU yang tersedia.",
+      "sitasi": [],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [],
+      "cek": {
+        "fakta: tidak ditemukan / tidak terdapat / tidak tersedia / tidak ada informasi / tidak dijelaskan / tidak memuat": true,
+        "tidak mengarang sitasi": true
+      }
+    },
+    {
+      "id": "H01",
+      "pertanyaan": "Prodi S1 memiliki 200 mahasiswa dalam satu tahun akademik. Sebanyak 40 mahasiswa lulus tepat 8 semester. Berapa AEE realisasi dan tingkat pencapaian AEE prodi tersebut?",
+      "jawaban_benar": "AEE realisasi **20%**, tingkat pencapaian **80%**.",
+      "halaman_kunci": [
+        49
+      ],
+      "harapan_angka": {
+        "aee_realisasi_pct": 20.0,
+        "tingkat_pencapaian_pct": 80.0
+      },
+      "catatan": null,
+      "lulus": false,
+      "jawaban": "",
+      "sitasi": [],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [
+        "Jawaban tidak memuat rujukan [n] ke konteks."
+      ],
+      "cek": {
+        "kalkulator dipanggil": false,
+        "hasil kalkulator = kunci": false,
+        "angka kunci ada di jawaban": false,
+        "halaman sitasi benar": false
+      }
+    },
+    {
+      "id": "H02",
+      "pertanyaan": "Sebuah PT memiliki 3 program pendidikan: D3 dengan AEE realisasi 30%, S1 dengan 22,5%, dan S2 dengan 40%. Berapa AEE PT?",
+      "jawaban_benar": "**86,97%**.",
+      "halaman_kunci": [
+        49,
+        50
+      ],
+      "harapan_angka": 86.97,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "AEE PT = 86,97 % [1][2] \n\nLangkah perhitungannya:\n- Tingkat pencapaian D3 = 30 % ÷ 33 % = 90,91 %\n- Tingkat pencapaian S1 = 22,5 % ÷ 25 % = 90 %\n- Tingkat pencapaian S2 = 40 % ÷ 50 % = 80 %\n- AEE PT = (90,91 % + 90 % + 80 %) ÷ 3 = 86,97 % \n\n(Perhitungan menggunakan fungsi **hitung_iku** sesuai rumus resmi pada Buku IKU Diktisaintek Berdampak).",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 49–50 (IKU 1, Formula); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 101–102; PPT hlm. 46; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 101–102; PPT hlm. 46–47",
+        "[2] Buku IKU Diktisaintek Berdampak V1, hlm. 49–50 (IKU 1, Formula)"
+      ],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 1 – Formula c & contoh perhitungan, hlm. 49–50"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"realisasi_per_jenjang\\\": {\\\"D3\\\": 30, \\\"S1\\\": 22.5, \\\"S2\\\": 40}}\",\"fungsi\":\"iku1_aee_pt\"}",
+          "hasil": {
+            "id": "iku1_aee_pt",
+            "ikuCode": "IKU 001",
+            "hasil": 86.97,
+            "satuan": "%",
+            "langkah": [
+              "Tingkat pencapaian D3 = 30% / 33% = 90,91%",
+              "Tingkat pencapaian S1 = 22,5% / 25% = 90%",
+              "Tingkat pencapaian S2 = 40% / 50% = 80%",
+              "AEE PT = (90,91% + 90% + 80%) / 3 = 86,97%"
+            ],
+            "formula_teks": [
+              "Tingkat pencapaianᵢ = AEE realisasiᵢ ÷ AEE idealᵢ × 100%",
+              "AEE PT = Σ tingkat pencapaianᵢ ÷ n"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 1 – Formula c & contoh perhitungan, hlm. 49–50",
+            "rujukan": {
+              "dokumen": "Buku IKU Diktisaintek Berdampak",
+              "versi": "V1",
+              "bagian": "IKU 1 – Formula c & contoh perhitungan",
+              "halaman": [
+                49,
+                50
+              ]
+            },
+            "status": "terverifikasi"
+          }
+        }
+      ],
+      "peringatan": [],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "H03",
+      "pertanyaan": "Prodi S1 mencatat 250 mahasiswa pada satu tahun akademik, termasuk 10 mahasiswa pindah dan 15 mahasiswa *drop out*. Sebanyak 45 mahasiswa lulus tepat 8 semester. Berapa AEE realisasi dan tingkat pencapaiannya?",
+      "jawaban_benar": "AEE realisasi **20%**, tingkat pencapaian **80%**. Jawaban 45/250 = 18% **salah**.",
+      "halaman_kunci": [
+        49
+      ],
+      "harapan_angka": {
+        "aee_realisasi_pct": 20.0,
+        "tingkat_pencapaian_pct": 80.0
+      },
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "**IKU 1 – Angka Efisiensi Edukasi Perguruan Tinggi (AEE PT)**  \n\n- **AEE realisasi** = 20 %  [1][2]  \n- **Tingkat pencapaian AEE** = 80 %  [1][2]  \n\n*Langkah perhitungan (berdasarkan rumus resmi):*  \n1. Basis = 250 mahasiswa – 10 pindah – 15 drop‑out – 0 cuti lebih = **225** mahasiswa [c. Ketentuan].  \n2. AEE realisasi = 45 lulus tepat / 225 × 100 % = **20 %**.  \n3. AEE ideal untuk jenjang S1 = **25 %** (8 semester) [a. Ketentuan].  \n4. Tingkat pencapaian = 20 % / 25 % × 100 % = **80 %**.  \n\nJadi, prodi S1 mencatat AEE realisasi 20 % dengan tingkat pencapaian 80 %.",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 49 (IKU 1, Ketentuan); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 100–101; PPT hlm. 45",
+        "[2] Buku IKU Diktisaintek Berdampak V1, hlm. 49–50 (IKU 1, Formula); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 101–102; PPT hlm. 46; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 101–102"
+      ],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 1 – Ketentuan & Formula a–b, hlm. 49"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"jenjang\\\": \\\"S1\\\", \\\"lulus_tepat_waktu\\\": 45, \\\"total_mahasiswa\\\": 250, \\\"pindah\\\": 10, \\\"drop_out\\\": 15, \\\"cuti_lebih\\\": 0}\",\"fungsi\":\"iku1_aee_prodi\"}",
+          "hasil": {
+            "id": "iku1_aee_prodi",
+            "ikuCode": "IKU 001",
+            "hasil": {
+              "aee_realisasi_pct": 20.0,
+              "tingkat_pencapaian_pct": 80.0
+            },
+            "satuan": "%",
+            "langkah": [
+              "Basis = 250 − 10 pindah − 15 DO − 0 cuti = 225 (Ketentuan c: pindah/DO/cuti berlebih tidak dihitung)",
+              "AEE realisasi = 45 / 225 × 100% = 20%",
+              "AEE ideal S1 = 25% (masa tempuh 8 semester)",
+              "Tingkat pencapaian = 20% / 25% × 100% = 80%"
+            ],
+            "formula_teks": [
+              "AEE = lulus tepat masa tempuh ÷ (total mahasiswa − pindah − DO − cuti berlebih) × 100%",
+              "Tingkat pencapaian = AEE realisasi ÷ AEE ideal × 100%"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 1 – Ketentuan & Formula a–b, hlm. 49",
+            "rujukan": {
+              "dokumen": "Buku IKU Diktisaintek Berdampak",
+              "versi": "V1",
+              "bagian": "IKU 1 – Ketentuan & Formula a–b",
+              "halaman": [
+                49
+              ]
+            },
+            "status": "terverifikasi"
+          }
+        }
+      ],
+      "peringatan": [],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "H04",
+      "pertanyaan": "Tracer study mengumpulkan 400 responden lulusan S1. Sebanyak 280 lulusan bekerja dengan masa tunggu < 6 bulan dan gaji > 1,2× UMP; sisanya belum bekerja. Berapa capaian IKU 2?",
+      "jawaban_benar": "**70%**.",
+      "halaman_kunci": [
+        51,
+        52
+      ],
+      "harapan_angka": 70.0,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "Capaian IKU 2 = 70 % [5][1]  \n\n**Langkah perhitungan (menggunakan fungsi hitung_iku):**  \n1. bekerja < 6 bulan & > 1,2 × UMP: 280 × 1 = 280  \n2. belum bekerja: 120 × 0 = 0  \n3. Σ (n·k) = 280  \n4. Capaian = 280 ÷ 400 × 100 % = 70 %  \n\nJadi, persentase lulusan yang langsung bekerja dengan kriteria paling tinggi dalam 1 tahun setelah kelulusan adalah **70 %**.",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 51 (IKU 2, Kriteria); juga di PPT hlm. 47; PPT hlm. 47; PPT hlm. 47; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 103–104; PPT hlm. 47; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 103–104; PPT hlm. 47; PPT hlm. 47; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 103–104; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 103–104; PPT hlm. 48; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 103–104",
+        "[5] Buku IKU Diktisaintek Berdampak V1, hlm. 52 (IKU 2, Formula); juga di PPT hlm. 48–49; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 104–105"
+      ],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 2 – Kriteria b–f & Formula, hlm. 51–52"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"total_responden\\\": 400, \\\"kategori\\\": {\\\"bekerja_\\u003c6bln_\\u003e1.2ump\\\": 280, \\\"belum\\\": 120}}\",\"fungsi\":\"iku2\"}",
+          "hasil": {
+            "id": "iku2",
+            "ikuCode": "IKU 002",
+            "hasil": 70.0,
+            "satuan": "%",
+            "langkah": [
+              "bekerja_<6bln_>1.2ump: 280 × 1 = 280",
+              "belum: 120 × 0 = 0",
+              "Σ(n·k) = 280",
+              "Capaian = 280 / 400 × 100% = 70%"
+            ],
+            "formula_teks": [
+              "Capaian = Σ(nᵢ × kᵢ) ÷ total responden × 100%"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 2 – Kriteria b–f & Formula, hlm. 51–52",
+            "rujukan": {
+              "dokumen": "Buku IKU Diktisaintek Berdampak",
+              "versi": "V1",
+              "bagian": "IKU 2 – Kriteria b–f & Formula",
+              "halaman": [
+                51,
+                52
+              ]
+            },
+            "status": "terverifikasi"
+          }
+        }
+      ],
+      "peringatan": [],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "H05",
+      "pertanyaan": "Tracer study mengumpulkan 500 responden lulusan. Rinciannya: - 200 bekerja, masa tunggu < 6 bulan, gaji > 1,2× UMP - 100 bekerja, masa tunggu < 1 tahun, gaji > 1,2× UMP - 50 bekerja, masa tunggu < 1 tahun, gaji < 1,2× UMP - 30 melanjutkan studi (surat penerimaan < 12 bulan) - 20 *founder*, < 6 bulan, penghasilan > 1,2× UMP - 10 *freelancer*, > 6 bulan, penghasilan < 1,2× UMP - 90 belum bekerja/studi/wirausaha Berapa capaian IKU 2?",
+      "jawaban_benar": "**70,8%**.",
+      "halaman_kunci": [
+        51,
+        52
+      ],
+      "harapan_angka": 70.8,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "Capaian **IKU 2 – Persentase Lulusan Pendidikan Tinggi & Vokasi yang Langsung Bekerja / Melanjutkan Studi / Berwirausaha** adalah **70,8 %**.\n\n**Perhitungan** (menggunakan rumus resmi IKU 2 = Σ (nᵢ × kᵢ) ÷ t × 100 %):\n\n- **bekerja, < 6 bulan, gaji > 1,2 × UMP**: 200 × 1 = 200  \n- **bekerja, < 1 tahun, gaji > 1,2 × UMP**: 100 × 0,8 = 80  \n- **bekerja, < 1 tahun, gaji < 1,2 × UMP**: 50 × 0,6 = 30  \n- **melanjutkan studi (surat penerimaan < 12 bulan)**: 30 × 0,6 = 18  \n- **founder, < 6 bulan, penghasilan > 1,2 × UMP**: 20 × 1,2 = 24  \n- **freelancer, > 6 bulan, penghasilan < 1,2 × UMP**: 10 × 0,2 = 2  \n- **belum bekerja / studi / wirausaha**: 90 × 0 = 0  \n\nTotal Σ (n·k) = 354  \n\nCapaian = 354 ÷ 500 × 100 % = **70,8 %**.\n\n*Rujukan*: Kriteria bobot (b‑f) dan formula IKU 2 pada Buku IKU Diktisaintek Berdampak V1, hlm. 51‑52.",
+      "sitasi": [],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 2 – Kriteria b–f & Formula, hlm. 51–52"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"total_responden\\\":500,\\\"kategori\\\":{\\\"bekerja_\\u003c6bln_\\u003e1.2ump\\\":200,\\\"bekerja_\\u003c1thn_\\u003e1.2ump\\\":100,\\\"bekerja_\\u003c1thn_\\u003c1.2ump\\\":50,\\\"studi_lanjut_\\u003c12bln\\\":30,\\\"founder_\\u003c6bln_\\u003e1.2ump\\\":20,\\\"freelancer_\\u003e6bln_\\u003c1.2ump\\\":10,\\\"belum\\\":90}}\",\"fungsi\":\"iku2\"}",
+          "hasil": {
+            "id": "iku2",
+            "ikuCode": "IKU 002",
+            "hasil": 70.8,
+            "satuan": "%",
+            "langkah": [
+              "bekerja_<6bln_>1.2ump: 200 × 1 = 200",
+              "bekerja_<1thn_>1.2ump: 100 × 0,8 = 80",
+              "bekerja_<1thn_<1.2ump: 50 × 0,6 = 30",
+              "studi_lanjut_<12bln: 30 × 0,6 = 18",
+              "founder_<6bln_>1.2ump: 20 × 1,2 = 24",
+              "freelancer_>6bln_<1.2ump: 10 × 0,2 = 2",
+              "belum: 90 × 0 = 0",
+              "Σ(n·k) = 354",
+              "Capaian = 354 / 500 × 100% = 70,8%"
+            ],
+            "formula_teks": [
+              "Capaian = Σ(nᵢ × kᵢ) ÷ total responden × 100%"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 2 – Kriteria b–f & Formula, hlm. 51–52",
+            "rujukan": {
+              "dokumen": "Buku IKU Diktisaintek Berdampak",
+              "versi": "V1",
+              "bagian": "IKU 2 – Kriteria b–f & Formula",
+              "halaman": [
+                51,
+                52
+              ]
+            },
+            "status": "terverifikasi"
+          }
+        }
+      ],
+      "peringatan": [
+        "Jawaban tidak memuat rujukan [n] ke konteks."
+      ],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "H06",
+      "pertanyaan": "Jumlah lulusan suatu PT adalah 2.000 orang. Berapa jumlah responden minimum tracer study untuk IKU 2?",
+      "jawaban_benar": "**972 responden**.",
+      "halaman_kunci": [
+        52
+      ],
+      "harapan_angka": 972,
+      "catatan": null,
+      "lulus": false,
+      "jawaban": "",
+      "sitasi": [],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [
+        "Jawaban tidak memuat rujukan [n] ke konteks."
+      ],
+      "cek": {
+        "kalkulator dipanggil": false,
+        "hasil kalkulator = kunci": false,
+        "angka kunci ada di jawaban": false,
+        "halaman sitasi benar": false
+      }
+    },
+    {
+      "id": "H07",
+      "pertanyaan": "Sebuah PT memiliki 1.000 mahasiswa S1/Diploma. Rinciannya: - 100 mahasiswa magang 20 SKS - 150 mahasiswa pertukaran 8 SKS - 50 mahasiswa riset 4 SKS - 5 mahasiswa juara 1 lomba nasional - 10 mahasiswa finalis lomba internasional Berapa capaian IKU 3?",
+      "jawaban_benar": "**21,5%**.",
+      "halaman_kunci": [
+        53,
+        54
+      ],
+      "harapan_angka": 21.5,
+      "catatan": null,
+      "lulus": false,
+      "jawaban": "",
+      "sitasi": [],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [
+        "Jawaban tidak memuat rujukan [n] ke konteks."
+      ],
+      "cek": {
+        "kalkulator dipanggil": false,
+        "hasil kalkulator = kunci": false,
+        "angka kunci ada di jawaban": false,
+        "halaman sitasi benar": false
+      }
+    },
+    {
+      "id": "H08",
+      "pertanyaan": "Dari 500 mahasiswa, prestasi yang tercatat adalah 2 juara 1 internasional, 4 juara 2 tingkat provinsi, dan 20 finalis tingkat provinsi. Tidak ada kegiatan SKS di luar prodi. Berapa capaian IKU 3?",
+      "jawaban_benar": "**0,76%**.",
+      "halaman_kunci": [
+        54
+      ],
+      "harapan_angka": 0.76,
+      "catatan": null,
+      "lulus": false,
+      "jawaban": "Capaian IKU 3 =  \n\n\\[\n\\frac{\\displaystyle \n(2 \\times 1) \\;+\\; (4 \\times 0,2) \\;+\\; (20 \\times 0,05)\n}{500}\\times 100\\%\n= \\frac{3,8}{500}\\times100\\% = 0,76\\%\n\\]\n\nJadi, persentase mahasiswa yang memiliki prestasi di luar program studi adalah **0,76 %**.  \n\nRujukan: definisi, formula, bobot prestasi, dan ketentuan pada IKU 3 [1][2][3][4].",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 53–54 (IKU 3, Formula); juga di PPT hlm. 50; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 107–108",
+        "[2] Buku IKU Diktisaintek Berdampak V1, hlm. 53 (IKU 3, Kriteria); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 105–106; PPT hlm. 49",
+        "[3] Buku IKU Diktisaintek Berdampak V1, hlm. 53 (IKU 3, Ketentuan); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 106–107; PPT hlm. 50; PPT hlm. 49",
+        "[4] Buku IKU Diktisaintek Berdampak V1, hlm. 53 (IKU 3, Definisi); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 105"
+      ],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [
+        "Soal hitungan dijawab dengan persentase tetapi kalkulator tidak dipanggil."
+      ],
+      "cek": {
+        "kalkulator dipanggil": false,
+        "hasil kalkulator = kunci": false,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "H09",
+      "pertanyaan": "PT memiliki 120 kerja sama. Dari kerja sama itu dihasilkan 30 karya (judul) yang telah dimanfaatkan oleh mitra, melibatkan total 90 dosen. Berapa capaian IKU 5?",
+      "jawaban_benar": "**25%**. Yang dihitung adalah **jumlah judul/karya, bukan jumlah dosen**, sehingga angka 90 tidak dipakai.",
+      "halaman_kunci": [
+        57
+      ],
+      "harapan_angka": 25.0,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "Capaian **IKU 5 – Rasio Luaran Hasil Kerja Sama antara Perguruan Tinggi dan Start‑Up/Industri/Lembaga** adalah **25 %**.\n\n- Definisi dan kriteria IKU 5 dijelaskan pada [1] dan [3][4][5].\n- Formula perhitungannya terdapat pada [2]:  \n  \\[\n  \\text{Rasio} = \\frac{\\text{Jumlah luaran (judul/karya) hasil kerja sama}}{\\text{Total kerja sama PT}} \\times 100\\%\n  \\]\n\nDengan data yang diberikan:\n- Jumlah luaran (judul/karya) yang dimanfaatkan = 30  \n- Total kerja sama = 120  \n\nPerhitungan menggunakan fungsi resmi **rasio** menghasilkan 25 % (langkah perhitungan: 30 ÷ 120 × 100 = 25 %)【hasil:25.0%】.  \n\nJadi, IKU 5 tercapai sebesar **25 %**.",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 56–57 (IKU 5, Ketentuan); juga di PPT hlm. 53; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 116–117",
+        "[2] Buku IKU Diktisaintek Berdampak V1, hlm. 57–58 (IKU 5, Formula); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 117; PPT hlm. 53",
+        "[3] Buku IKU Diktisaintek Berdampak V1, hlm. 55–56 (IKU 5, Kriteria); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 112–116; PPT hlm. 52; PPT hlm. 51; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 112–116; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 112–116; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 112–116; PPT hlm. 51; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 112–116; PPT hlm. 52; PPT hlm. 52; PPT hlm. 53",
+        "[4] Buku IKU Diktisaintek Berdampak V1, hlm. 55–56 (IKU 5, Kriteria)",
+        "[5] Buku IKU Diktisaintek Berdampak V1, hlm. 55–56 (IKU 5, Kriteria)"
+      ],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 5 – Formula & Keterangan, hlm. 57"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"kode\\\":\\\"iku5\\\",\\\"pembilang\\\":30,\\\"penyebut\\\":120}\",\"fungsi\":\"rasio\"}",
+          "hasil": {
+            "id": "iku5",
+            "ikuCode": "IKU 005",
+            "hasil": 25.0,
+            "satuan": "%",
+            "langkah": [
+              "(Jumlah luaran (judul/karya) hasil kerja sama) / (Total kerja sama PT) × 100%",
+              "= 30 / 120 × 100% = 25%"
+            ],
+            "formula_teks": [
+              "Jumlah luaran (judul/karya) hasil kerja sama ÷ Total kerja sama PT × 100%"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 5 – Formula & Keterangan, hlm. 57",
+            "rujukan": {
+              "dokumen": "Buku IKU Diktisaintek Berdampak",
+              "versi": "V1",
+              "bagian": "IKU 5 – Formula & Keterangan",
+              "halaman": [
+                57
+              ]
+            },
+            "status": "terverifikasi"
+          }
+        }
+      ],
+      "peringatan": [],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "H10",
+      "pertanyaan": "Total publikasi PT dalam satu periode adalah 200, terdiri atas 10 jurnal Top Tier, 40 Q1, 50 Q2, 30 Q3, 20 Q4, dan 50 publikasi tidak terindeks Scopus/WoS. Berapa capaian IKU 6?",
+      "jawaban_benar": "**54,75%**.",
+      "halaman_kunci": [
+        63
+      ],
+      "harapan_angka": 54.75,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "Capaian IKU 6 = 54,75 %  \n\nPerhitungan:  \n- Top Tier: 10 × 1,2 = 12  \n- Q1: 40 × 1,00 = 40  \n- Q2: 50 × 0,75 = 37,5  \n- Q3: 30 × 0,50 = 15  \n- Q4: 20 × 0,25 = 5  \n\nJumlah bobot publikasi = 12 + 40 + 37,5 + 15 + 5 = 109,5  \n\nPersentase = (109,5 ÷ 200) × 100 % = 54,75 %  \n\nRujukan: definisi, kriteria bobot kuartil, dan formula IKU 6 pada Buku IKU Diktisaintek Berdampak V1, hlm. 63.",
+      "sitasi": [],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 6 – Kriteria (bobot kuartil) & Formula, hlm. 63"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"total_publikasi\\\":200,\\\"publikasi\\\":{\\\"top_tier\\\":10,\\\"q1\\\":40,\\\"q2\\\":50,\\\"q3\\\":30,\\\"q4\\\":20},\\\"kolaborasi\\\":{}}\",\"fungsi\":\"iku6\"}",
+          "hasil": {
+            "id": "iku6",
+            "ikuCode": "IKU 006",
+            "hasil": 54.75,
+            "satuan": "%",
+            "langkah": [
+              "top_tier: 10 × 1,2 = 12",
+              "q1: 40 × 1 = 40",
+              "q2: 50 × 0,75 = 37,5",
+              "q3: 30 × 0,5 = 15",
+              "q4: 20 × 0,25 = 5",
+              "Σ(n·k) = 109,5",
+              "Capaian = 109,5 / 200 × 100% = 54,75%"
+            ],
+            "formula_teks": [
+              "Capaian = Σ(nᵢ × kᵢ) ÷ total publikasi × 100%  (k = bobot kuartil, +0,25 bila kolaborasi internasional)"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 6 – Kriteria (bobot kuartil) & Formula, hlm. 63",
+            "rujukan": {
+              "dokumen": "Buku IKU Diktisaintek Berdampak",
+              "versi": "V1",
+              "bagian": "IKU 6 – Kriteria (bobot kuartil) & Formula",
+              "halaman": [
+                63
+              ]
+            },
+            "status": "ada_tafsir"
+          }
+        }
+      ],
+      "peringatan": [
+        "Jawaban tidak memuat rujukan [n] ke konteks."
+      ],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "H11",
+      "pertanyaan": "Total publikasi 20, terdiri atas 4 artikel Q1 hasil kolaborasi dengan penulis luar negeri, 6 artikel Q1 tanpa kolaborasi, dan 10 prosiding internasional terindeks Scopus. Berapa capaian IKU 6?",
+      "jawaban_benar": "**67,5%**.",
+      "halaman_kunci": [
+        63
+      ],
+      "harapan_angka": 67.5,
+      "catatan": null,
+      "lulus": false,
+      "jawaban": "",
+      "sitasi": [],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [
+        "Jawaban tidak memuat rujukan [n] ke konteks."
+      ],
+      "cek": {
+        "kalkulator dipanggil": false,
+        "hasil kalkulator = kunci": false,
+        "angka kunci ada di jawaban": false,
+        "halaman sitasi benar": false
+      }
+    },
+    {
+      "id": "H12",
+      "pertanyaan": "Dari 60 program SDGs PT, 45 program berkontribusi pada SDG 1, 4, 17, dan 2 SDG pilihan. Berapa capaian IKU 7?",
+      "jawaban_benar": "**75%**.",
+      "halaman_kunci": [
+        58
+      ],
+      "harapan_angka": 75.0,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "Capaian IKU 7 adalah **75 %**. Perhitungan menggunakan formula IKU 7:  \n\n\\[\n\\text{Capaian} = \\frac{\\text{Program/kegiatan berkontribusi pada SDG 1, 4, 17 + 2 SDG pilihan}}{\\text{Total program SDG PT}} \\times 100\\% = \\frac{45}{60}\\times100\\% = 75\\%\n\\]  \n\nHasil ini sesuai dengan rumusan pada dokumen IKU (Buku IKU Diktisaintek Berdampak V1, halaman 58)【1】.",
+      "sitasi": [],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 7 – Formula, hlm. 58"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"kode\\\":\\\"iku7\\\",\\\"pembilang\\\":45,\\\"penyebut\\\":60}\",\"fungsi\":\"rasio\"}",
+          "hasil": {
+            "id": "iku7",
+            "ikuCode": "IKU 007",
+            "hasil": 75.0,
+            "satuan": "%",
+            "langkah": [
+              "(Program/kegiatan berkontribusi pada SDG 1, 4, 17 + 2 SDG pilihan) / (Total program SDGs PT) × 100%",
+              "= 45 / 60 × 100% = 75%"
+            ],
+            "formula_teks": [
+              "Program/kegiatan SDG 1, 4, 17 + 2 SDG pilihan ÷ Total program SDGs PT × 100%"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 7 – Formula, hlm. 58",
+            "rujukan": {
+              "dokumen": "Buku IKU Diktisaintek Berdampak",
+              "versi": "V1",
+              "bagian": "IKU 7 – Formula",
+              "halaman": [
+                58
+              ]
+            },
+            "status": "terverifikasi"
+          }
+        }
+      ],
+      "peringatan": [
+        "Panggilan alat ditolak server (nama alat 'rasio' tidak dikenal); diulang otomatis.",
+        "Jawaban tidak memuat rujukan [n] ke konteks."
+      ],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "H13",
+      "pertanyaan": "Total pendapatan PT dalam satu tahun anggaran adalah Rp500 miliar, terdiri atas: - UKT Rp300 miliar - BOPTN Rp80 miliar - hibah riset kompetitif Rp50 miliar - jasa konsultasi dan pelatihan Rp40 miliar - unit bisnis (hotel, penerbitan) Rp20 miliar - hasil investasi dana abadi Rp10 miliar Berapa capaian IKU 9?",
+      "jawaban_benar": "**24%**. Jawaban yang memasukkan BOPTN (200/500 = 40%) **salah**.",
+      "halaman_kunci": [
+        59
+      ],
+      "harapan_angka": 24.0,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "Capaian IKU 9 = 24 % [[1][3]]\n\n**Penjelasan singkat**  \nPendapatan non‑mahasiswa yang diakui (hibah riset 50 miliar + jasa konsultasi 40 miliar + unit bisnis 20 miliar + hasil investasi dana abadi 10 miliar = 120 miliar) dibagi total pendapatan PT (500 miliar) kemudian dikalikan 100 % → 24 % [[1][3]].",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 59 (IKU 9, Kriteria); juga di PPT hlm. 56; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 122–123",
+        "[3] Buku IKU Diktisaintek Berdampak V1, hlm. 59 (IKU 9, Formula); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 124; PPT hlm. 56"
+      ],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 9 – Kriteria & Formula, hlm. 59"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"total_pendapatan\\\":500,\\\"rincian\\\":{\\\"hibah_riset\\\":50,\\\"konsultasi\\\":40,\\\"unit_bisnis\\\":20,\\\"hasil_dana_abadi\\\":10}}\",\"fungsi\":\"iku9\"}",
+          "hasil": {
+            "id": "iku9",
+            "ikuCode": "IKU 009",
+            "hasil": 24.0,
+            "satuan": "%",
+            "langkah": [
+              "hibah_riset: 50 → DIHITUNG (Kriteria a)",
+              "konsultasi: 40 → DIHITUNG (Kriteria a)",
+              "unit_bisnis: 20 → DIHITUNG (Kriteria a)",
+              "hasil_dana_abadi: 10 → DIHITUNG (Kriteria a)",
+              "Capaian = 120 / 500 × 100% = 24%"
+            ],
+            "formula_teks": [
+              "Capaian = Pendapatan yang diakui (non-mahasiswa) ÷ Total pendapatan PT satu periode × 100%"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 9 – Kriteria & Formula, hlm. 59",
+            "rujukan": {
+              "dokumen": "Buku IKU Diktisaintek Berdampak",
+              "versi": "V1",
+              "bagian": "IKU 9 – Kriteria & Formula",
+              "halaman": [
+                59
+              ]
+            },
+            "status": "terverifikasi"
+          }
+        }
+      ],
+      "peringatan": [
+        "Panggilan alat ditolak server (nama alat 'hit_iku' tidak dikenal); diulang otomatis."
+      ],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "H14",
+      "pertanyaan": "PT memiliki 300 dosen dalam satu tahun terakhir; 45 dosen ber-NUPTK mendapat rekognisi internasional. Berapa capaian IKU 4?",
+      "jawaban_benar": "**15%**.",
+      "halaman_kunci": [
+        62
+      ],
+      "harapan_angka": 15.0,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "Capaian **IKU 4 – Persentase Dosen Perguruan Tinggi yang Mendapatkan Rekognisi Internasional** adalah:\n\n**15 %**  \n\nPerhitungan: (45 dosen ber‑NUPTK yang mendapat rekognisi internasional ÷ 300 dosen total dalam satu tahun terakhir) × 100 % = 15 % [1][2][3][4][5] (rumus pada halaman 62‑63).",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 62–63 (IKU 4, Formula); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 112; PPT hlm. 60–61",
+        "[2] Buku IKU Diktisaintek Berdampak V1, hlm. 61 (IKU 4, Definisi); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 108; PPT hlm. 58",
+        "[3] Buku IKU Diktisaintek Berdampak V1, hlm. 62 (IKU 4, Ketentuan); juga di PPT hlm. 60; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 111–112",
+        "[4] Buku IKU Diktisaintek Berdampak V1, hlm. 61–62 (IKU 4, Kriteria); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 108–111; PPT hlm. 59; PPT hlm. 58; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 108–111; PPT hlm. 58; PPT hlm. 59; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 108–111; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 108–111",
+        "[5] Buku IKU Diktisaintek Berdampak V1, hlm. 61–62 (IKU 4, Kriteria)"
+      ],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 4 – Formula, hlm. 62"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"kode\\\": \\\"iku4\\\", \\\"pembilang\\\": 45, \\\"penyebut\\\": 300}\",\"fungsi\":\"rasio\"}",
+          "hasil": {
+            "id": "iku4",
+            "ikuCode": "IKU 004",
+            "hasil": 15.0,
+            "satuan": "%",
+            "langkah": [
+              "(Dosen ber-NUPTK yang mendapat rekognisi internasional) / (Total dosen PT setahun terakhir) × 100%",
+              "= 45 / 300 × 100% = 15%"
+            ],
+            "formula_teks": [
+              "Dosen ber-NUPTK yang mendapat rekognisi internasional ÷ Total dosen PT setahun terakhir × 100%"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 4 – Formula, hlm. 62",
+            "rujukan": {
+              "dokumen": "Buku IKU Diktisaintek Berdampak",
+              "versi": "V1",
+              "bagian": "IKU 4 – Formula",
+              "halaman": [
+                62
+              ]
+            },
+            "status": "terverifikasi"
+          }
+        }
+      ],
+      "peringatan": [],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "H15",
+      "pertanyaan": "Dari 400 SDM PT (dosen/peneliti), 12 orang terlibat langsung dalam penyusunan kebijakan nasional/daerah/industri, dibuktikan dengan SK atau undangan resmi. Berapa capaian IKU 8?",
+      "jawaban_benar": "**3%**.",
+      "halaman_kunci": [
+        64
+      ],
+      "harapan_angka": 3.0,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "Capaian **IKU 8 – Persentase SDM PT (dosen/peneliti) yang Terlibat Langsung dalam Penyusunan Kebijakan (Nasional/Daerah/Industri)** dapat dihitung dengan rumus pada [3]:\n\n\\[\n\\text{Persentase} = \\frac{\\text{Jumlah SDM yang terlibat}}{\\text{Total SDM PT}} \\times 100\\%\n\\]\n\nDengan data:\n- Jumlah SDM yang terlibat = 12 orang  \n- Total SDM PT = 400 orang  \n\nMenggunakan fungsi **rasio** untuk menghitung:\n\n\\[\n\\frac{12}{400} \\times 100\\% = 3\\%\n\\]\n\n**Hasil:** 3 % [3]  \n\nJadi, capaian IKU 8 adalah **3 %**.",
+      "sitasi": [
+        "[3] Buku IKU Diktisaintek Berdampak V1, hlm. 64 (IKU 8, Formula); juga di PPT hlm. 63; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 122"
+      ],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 8 – Formula, hlm. 64"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"kode\\\":\\\"iku8\\\",\\\"pembilang\\\":12,\\\"penyebut\\\":400}\",\"fungsi\":\"rasio\"}",
+          "hasil": {
+            "id": "iku8",
+            "ikuCode": "IKU 008",
+            "hasil": 3.0,
+            "satuan": "%",
+            "langkah": [
+              "(SDM yang terlibat penyusunan kebijakan) / (Total SDM PT dalam satu periode) × 100%",
+              "= 12 / 400 × 100% = 3%"
+            ],
+            "formula_teks": [
+              "SDM yang terlibat penyusunan kebijakan ÷ Total SDM PT dalam satu periode × 100%"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 8 – Formula, hlm. 64",
+            "rujukan": {
+              "dokumen": "Buku IKU Diktisaintek Berdampak",
+              "versi": "V1",
+              "bagian": "IKU 8 – Formula",
+              "halaman": [
+                64
+              ]
+            },
+            "status": "terverifikasi"
+          }
+        }
+      ],
+      "peringatan": [
+        "Panggilan alat ditolak server (nama alat 'hitungan_iku' tidak dikenal); diulang otomatis."
+      ],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "H16",
+      "pertanyaan": "Nilai akhir evaluasi SAKIP sebuah PT adalah 82. Apa predikatnya?",
+      "jawaban_benar": "Predikat **A (sangat baik)**, rentang nilai 80–89: efektif dan efisien, menghasilkan kinerja di atas target.",
+      "halaman_kunci": [
+        66
+      ],
+      "harapan_angka": "A (sangat baik)",
+      "catatan": null,
+      "lulus": false,
+      "jawaban": "Berdasarkan skala penilaian SAKIP pada IKU 11 b (dan juga pada IKU 3), nilai akhir 82 masuk dalam rentang **80–89**, yang diberikan predikat **A (Sangat Baik)**【1†L1-L4】【2†L1-L4】.",
+      "sitasi": [],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [
+        "Jawaban tidak memuat rujukan [n] ke konteks."
+      ],
+      "cek": {
+        "kalkulator dipanggil": false,
+        "hasil kalkulator = kunci": false,
+        "angka kunci ada di jawaban": false,
+        "halaman sitasi benar": false
+      }
+    },
+    {
+      "id": "H17",
+      "pertanyaan": "PT merencanakan 24 kegiatan pencegahan dan penanganan kekerasan, narkoba, dan korupsi; 18 kegiatan terlaksana. Berapa capaian IKU 11d?",
+      "jawaban_benar": "**75%**.",
+      "halaman_kunci": [
+        68
+      ],
+      "harapan_angka": 75.0,
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "Capaian IKU 11d (Pencegahan dan Penanganan Anti Kekerasan, Anti Narkoba, dan Anti Korupsi) adalah **75 %**.  \nPerhitungannya: (jumlah kegiatan yang terlaksana ÷ total kegiatan yang direncanakan) × 100 % = 18 ÷ 24 × 100 % = 75 %【1】.",
+      "sitasi": [],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 11d – Formula, hlm. 68"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"kode\\\":\\\"iku11d\\\",\\\"pembilang\\\":18,\\\"penyebut\\\":24}\",\"fungsi\":\"rasio\"}",
+          "hasil": {
+            "id": "iku11d",
+            "ikuCode": "IKU 011",
+            "hasil": 75.0,
+            "satuan": "%",
+            "langkah": [
+              "(Kegiatan pencegahan & penanganan yang terlaksana) / (Total kegiatan yang direncanakan) × 100%",
+              "= 18 / 24 × 100% = 75%"
+            ],
+            "formula_teks": [
+              "Kegiatan pencegahan & penanganan yang terlaksana ÷ Total kegiatan yang direncanakan × 100%"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 11d – Formula, hlm. 68",
+            "rujukan": {
+              "dokumen": "Buku IKU Diktisaintek Berdampak",
+              "versi": "V1",
+              "bagian": "IKU 11d – Formula",
+              "halaman": [
+                68
+              ]
+            },
+            "status": "terverifikasi"
+          }
+        }
+      ],
+      "peringatan": [
+        "Jawaban tidak memuat rujukan [n] ke konteks."
+      ],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "H18",
+      "pertanyaan": "UMP di provinsi tempat PT berada adalah Rp3.000.000. Berapa penghasilan minimum dosen dengan jabatan Lektor dan Profesor menurut IKU 12?",
+      "jawaban_benar": "Lektor minimal **Rp9.000.000**, Profesor minimal **Rp18.000.000**.",
+      "halaman_kunci": [
+        60
+      ],
+      "harapan_angka": {
+        "lektor": 9000000,
+        "profesor": 18000000
+      },
+      "catatan": null,
+      "lulus": true,
+      "jawaban": "Penghasilan minimum dosen menurut IKU 12:\n\n- **Lektor:** ≥ 3 × UMP = 3 × Rp 3.000.000 = **Rp 9.000.000** per bulan [1]  \n- **Profesor:** ≥ 6 × UMP = 6 × Rp 3.000.000 = **Rp 18.000.000** per bulan [1]",
+      "sitasi": [
+        "[1] Buku IKU Diktisaintek Berdampak V1, hlm. 60 (IKU 12, Kriteria); juga di PPT hlm. 57; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 131"
+      ],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 12 – Kriteria b.2, hlm. 60"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"ump\\\": 3000000, \\\"jabatan\\\": [\\\"lektor\\\", \\\"profesor\\\"]}\",\"fungsi\":\"iku12_penghasilan_minimum\"}",
+          "hasil": {
+            "id": "iku12_penghasilan_minimum",
+            "ikuCode": "IKU 012",
+            "hasil": {
+              "lektor": 9000000,
+              "profesor": 18000000
+            },
+            "satuan": "Rp",
+            "langkah": [
+              "lektor: ≥ 3 × UMP = 3 × Rp3.000.000 = Rp9.000.000",
+              "profesor: ≥ 6 × UMP = 6 × Rp3.000.000 = Rp18.000.000"
+            ],
+            "formula_teks": [
+              "Penghasilan minimum = kelipatan jabatan × UMP (asisten ahli 1,5; lektor 3; lektor kepala 4; profesor 6)"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 12 – Kriteria b.2, hlm. 60",
+            "rujukan": {
+              "dokumen": "Buku IKU Diktisaintek Berdampak",
+              "versi": "V1",
+              "bagian": "IKU 12 – Kriteria b.2",
+              "halaman": [
+                60
+              ]
+            },
+            "status": "terverifikasi"
+          }
+        }
+      ],
+      "peringatan": [
+        "Panggilan alat ditolak server (nama alat 'hitungan_iku' tidak dikenal); diulang otomatis."
+      ],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "D13",
+      "pertanyaan": "aee tu apaan sih? ngukur apa?",
+      "jawaban_benar": "AEE = Angka Efisiensi Edukasi (IKU 1), mengukur keberhasilan mahasiswa menyelesaikan studi **tepat waktu** sesuai masa studi standar (sama dengan D01).",
+      "halaman_kunci": [
+        49
+      ],
+      "harapan_angka": null,
+      "catatan": "Ketahanan: bahasa santai ('aee tu apaan sih'). 'AEE' sengaja tidak dijadikan fakta karena sudah ada di pertanyaan.",
+      "lulus": false,
+      "jawaban": "AEE (Angka Efisiensi Edukasi) adalah indikator yang mengukur **tingkat keberhasilan mahasiswa menyelesaikan studinya tepat waktu** sesuai dengan masa studi standar yang ditetapkan untuk setiap program pendidikan (misalnya D1 = 2 semester, D4/S1 = 8 semester, S2 = 3 semester, dst.) dibandingkan dengan **total mahasiswa yang masuk** pada tahun akademik yang bersangkutan【3】. Dengan kata lain, AEE menunjukkan persentase mahasiswa yang lulus tepat waktu terhadap seluruh mahasiswa yang terdaftar pada periode tersebut【3】.",
+      "sitasi": [],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [
+        "Jawaban tidak memuat rujukan [n] ke konteks."
+      ],
+      "cek": {
+        "fakta: tepat waktu": true,
+        "fakta: efisiensi edukasi": true,
+        "halaman sitasi benar": false
+      }
+    },
+    {
+      "id": "D14",
+      "pertanyaan": "pendptan apa aj yg ga diitung di iku9?",
+      "jawaban_benar": "SPP/UKT, iuran pengembangan institusi, subsidi langsung pemerintah (termasuk BOPTN/BPPTNBH), filantropi yang tidak tercatat, dan pokok dana abadi (sama dengan D08).",
+      "halaman_kunci": [
+        59
+      ],
+      "harapan_angka": null,
+      "catatan": "Ketahanan: typo ('pendptan', 'aj', 'diitung', 'iku9'). Sama dengan D08.",
+      "lulus": false,
+      "jawaban": "Pendapatan yang **tidak termasuk** dalam perhitungan IKU 9 – Persentase Pendapatan Non Pendidikan/UKT adalah:\n\n1. **SPP/UKT/biaya kuliah mahasiswa** (biaya pendidikan mahasiswa)【4】  \n2. **Iuran pengembangan institusi**【4】  \n3. **Subsidi langsung dari pemerintah**, meliputi:\n   - belanja pegawai,\n   - belanja operasional,\n   - BOPTN,\n   - BPPTNBH, dan sejenisnya【4】  \n4. **Sumbangan/filantropi yang tidak masuk laporan keuangan resmi perguruan tinggi**【4】  \n5. **Dana pokok dana abadi/endowment fund** yang disimpan permanen dan tidak dibelanjakan【4】\n\nSemua pendapatan di atas dikecualikan karena tidak termasuk dalam kategori “pendapatan non‑mahasiswa” yang diakui untuk IKU 9.",
+      "sitasi": [],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [
+        "Jawaban tidak memuat rujukan [n] ke konteks."
+      ],
+      "cek": {
+        "fakta: UKT / SPP": true,
+        "fakta: BOPTN": true,
+        "fakta: iuran pengembangan": true,
+        "fakta: dana abadi / endowment": true,
+        "halaman sitasi benar": false
+      }
+    },
+    {
+      "id": "H19",
+      "pertanyaan": "brp aee s1 klo yg lulus tepat wktu cm 40 org dr 200 mhs?",
+      "jawaban_benar": "AEE realisasi **20%**, tingkat pencapaian **80%**.",
+      "halaman_kunci": [
+        49
+      ],
+      "harapan_angka": {
+        "aee_realisasi_pct": 20.0,
+        "tingkat_pencapaian_pct": 80.0
+      },
+      "catatan": "Ketahanan: typo & singkatan (brp, klo, wktu, mhs). Sama dengan H01.",
+      "lulus": true,
+      "jawaban": "AEE (Angka Efisiensi Edukasi) untuk program S1 dihitung dengan rumus:\n\n\\[\n\\text{AEE realisasi} = \\frac{\\text{jumlah mahasiswa lulus tepat waktu}}{\\text{total mahasiswa}} \\times 100\\%\n\\]\n\n\\[\n\\text{Tingkat pencapaian} = \\frac{\\text{AEE realisasi}}{\\text{AEE ideal}} \\times 100\\%\n\\]\n\nDengan data yang diberikan (40 mahasiswa lulus tepat waktu dari 200 mahasiswa), hasil perhitungannya adalah:\n\n- **AEE realisasi** = 20 %  \n- **AEE ideal S1** = 25 % (sesuai standar masa studi 8 semester)  \n- **Tingkat pencapaian AEE S1** = 80 %  \n\nJadi, AEE S1 = **80 %**.  \n\nRujukan: formula dan ketentuan AEE PT pada Buku IKU Diktisaintek Berdampak V1, bagian IKU 1 – Formula & Ketentuan, hlm. 49‑50. [2][4]",
+      "sitasi": [
+        "[2] Buku IKU Diktisaintek Berdampak V1, hlm. 49–50 (IKU 1, Formula); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 101–102; Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 101–102; PPT hlm. 46; PPT hlm. 46–47",
+        "[4] Buku IKU Diktisaintek Berdampak V1, hlm. 49 (IKU 1, Ketentuan); juga di Buku (Lampiran Kepmen 358/M/KEP/2025) hlm. 100–101; PPT hlm. 45"
+      ],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 1 – Ketentuan & Formula a–b, hlm. 49"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"jenjang\\\": \\\"S1\\\", \\\"lulus_tepat_waktu\\\": 40, \\\"total_mahasiswa\\\": 200, \\\"pindah\\\": 0, \\\"drop_out\\\": 0, \\\"cuti_lebih\\\": 0}\",\"fungsi\":\"iku1_aee_prodi\"}",
+          "hasil": {
+            "id": "iku1_aee_prodi",
+            "ikuCode": "IKU 001",
+            "hasil": {
+              "aee_realisasi_pct": 20.0,
+              "tingkat_pencapaian_pct": 80.0
+            },
+            "satuan": "%",
+            "langkah": [
+              "AEE realisasi = 40 / 200 × 100% = 20%",
+              "AEE ideal S1 = 25% (masa tempuh 8 semester)",
+              "Tingkat pencapaian = 20% / 25% × 100% = 80%"
+            ],
+            "formula_teks": [
+              "AEE = lulus tepat masa tempuh ÷ (total mahasiswa − pindah − DO − cuti berlebih) × 100%",
+              "Tingkat pencapaian = AEE realisasi ÷ AEE ideal × 100%"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 1 – Ketentuan & Formula a–b, hlm. 49",
+            "rujukan": {
+              "dokumen": "Buku IKU Diktisaintek Berdampak",
+              "versi": "V1",
+              "bagian": "IKU 1 – Ketentuan & Formula a–b",
+              "halaman": [
+                49
+              ]
+            },
+            "status": "terverifikasi"
+          }
+        }
+      ],
+      "peringatan": [],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "H20",
+      "pertanyaan": "realisasi aee kampus kmi: D3 30%, S1 22,5%, S2 40%. aee pt nya jd brp ya?",
+      "jawaban_benar": "**86,97%**.",
+      "halaman_kunci": [
+        49,
+        50
+      ],
+      "harapan_angka": 86.97,
+      "catatan": "Ketahanan: desimal koma '22,5%' harus dibaca 22.5. Sama dengan H02.",
+      "lulus": true,
+      "jawaban": "AEE PT kampus KMI = **86,97 %**【1】.  \n\nLangkah perhitungan (menggunakan rumus resmi IKU 1):\n- Tingkat pencapaian D3 = 30 % ÷ 33 % = 90,91 %\n- Tingkat pencapaian S1 = 22,5 % ÷ 25 % = 90,00 %\n- Tingkat pencapaian S2 = 40 % ÷ 50 % = 80,00 %\n- AEE PT = (90,91 % + 90,00 % + 80,00 %) ÷ 3 = 86,97 %  \n\nSumber: Buku IKU Diktisaintek Berdampak V1, IKU 1 – Formula c & contoh perhitungan, hlm. 49‑50.",
+      "sitasi": [],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 1 – Formula c & contoh perhitungan, hlm. 49–50"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"realisasi_per_jenjang\\\": {\\\"D3\\\": 30, \\\"S1\\\": 22.5, \\\"S2\\\": 40}}\",\"fungsi\":\"iku1_aee_pt\"}",
+          "hasil": {
+            "id": "iku1_aee_pt",
+            "ikuCode": "IKU 001",
+            "hasil": 86.97,
+            "satuan": "%",
+            "langkah": [
+              "Tingkat pencapaian D3 = 30% / 33% = 90,91%",
+              "Tingkat pencapaian S1 = 22,5% / 25% = 90%",
+              "Tingkat pencapaian S2 = 40% / 50% = 80%",
+              "AEE PT = (90,91% + 90% + 80%) / 3 = 86,97%"
+            ],
+            "formula_teks": [
+              "Tingkat pencapaianᵢ = AEE realisasiᵢ ÷ AEE idealᵢ × 100%",
+              "AEE PT = Σ tingkat pencapaianᵢ ÷ n"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 1 – Formula c & contoh perhitungan, hlm. 49–50",
+            "rujukan": {
+              "dokumen": "Buku IKU Diktisaintek Berdampak",
+              "versi": "V1",
+              "bagian": "IKU 1 – Formula c & contoh perhitungan",
+              "halaman": [
+                49,
+                50
+              ]
+            },
+            "status": "terverifikasi"
+          }
+        }
+      ],
+      "peringatan": [
+        "Jawaban tidak memuat rujukan [n] ke konteks."
+      ],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "H21",
+      "pertanyaan": "lulusan kampus kami 1.341 org, minimal responden tracer study nya brp?",
+      "jawaban_benar": "**785 responden**.",
+      "halaman_kunci": [
+        52
+      ],
+      "harapan_angka": 785,
+      "catatan": "Ketahanan: titik pemisah ribuan '1.341' = 1341 (bukan 1,341).",
+      "lulus": false,
+      "jawaban": "",
+      "sitasi": [],
+      "sumber_rumus": [],
+      "kalkulator": [],
+      "peringatan": [
+        "Jawaban tidak memuat rujukan [n] ke konteks."
+      ],
+      "cek": {
+        "kalkulator dipanggil": false,
+        "hasil kalkulator = kunci": false,
+        "angka kunci ada di jawaban": false,
+        "halaman sitasi benar": false
+      }
+    },
+    {
+      "id": "H22",
+      "pertanyaan": "klo lulusannya 2rb orang, responden minimum tracer studi brp",
+      "jawaban_benar": "**972 responden**.",
+      "halaman_kunci": [
+        52
+      ],
+      "harapan_angka": 972,
+      "catatan": "Ketahanan: '2rb' = 2000. Sama dengan H06.",
+      "lulus": false,
+      "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m4e5peykedwrjbef346rv251` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 196151, Requested 5310. Please try again in 10m31.152s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    }
+  ]
+}

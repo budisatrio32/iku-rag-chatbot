@@ -7,7 +7,7 @@
     "D04": {"fakta": [["efisiensi edukasi", "IKU 1"], ["lulusan", "IKU 2"], ["di luar program studi", "IKU 3"], ["kerja sama", "kerjasama", "IKU 5"], ["SDG", "IKU 7"], ["non pendidikan", "non-pendidikan", "UKT", "IKU 9"], ["kesejahteraan dosen", "IKU 12"]]},
     "D05": {"fakta": [["tracer study"], ["slovin"], ["2,3", "2.3"]]},
     "D06": {"fakta": [["magang", "praktik kerja"], ["pertukaran"], ["penelitian", "riset"], ["dosen pembimbing", "pendampingan"]]},
-    "D07": {"fakta": [["SDG 1", "SDG1"], ["SDG 4", "SDG4"], ["SDG 17", "SDG17"], ["2 (dua)", "dua SDG", "2 SDG", "dua tujuan", "2 tujuan"]]},
+    "D07": {"fakta": [["SDG 1", "SDG1"], ["SDG 4", "SDG4"], ["SDG 17", "SDG17"], ["2 (dua)", "dua (2)", "dua SDG", "2 SDG", "dua tujuan", "2 tujuan"]]},
     "D08": {"fakta": [["UKT", "SPP"], ["BOPTN"], ["iuran pengembangan"], ["dana abadi", "endowment"]]},
     "D09": {"fakta": [["MDPI"], ["Frontiers"], ["Hindawi"]]},
     "D10": {"fakta": [["semakin rendah"]]},

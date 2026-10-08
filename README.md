@@ -337,6 +337,28 @@ Kode memakai library `openai` dengan format OpenAI, sehingga penyedia cukup diga
 
 Setelah mengganti penyedia, coba ulang contoh pertanyaan di atas untuk membandingkan kualitasnya.
 
+### Demo web untuk dicoba orang lain (Streamlit + tunnel)
+
+Demo ini berjalan **di laptop sendiri** (memakai GPU dan model yang sudah ada), lalu dibuka ke internet lewat tunnel. Tujuannya mengumpulkan pertanyaan nyata dan penilaian 👍/👎, **bukan** produk akhir (produk akhir: chatbot di dasbor, lihat [panduan integrasi backend](docs/02-desain/integrasi_backend.md)).
+
+1. Isi `DEMO_PASSWORD` di `.env` (wajib bila link dibagikan). Disarankan memakai API key LLM terpisah, karena jatah free tier dibagi dengan evaluasi.
+2. Jalankan aplikasi:
+
+   ```powershell
+   streamlit run src/ui/app_streamlit.py
+   ```
+
+   Buka `http://localhost:8501` untuk mencoba sendiri.
+3. Di terminal kedua, buka tunnel lalu bagikan link `https://...` yang muncul beserta kata sandinya:
+
+   ```powershell
+   ngrok http 8501                                     # butuh akun ngrok + authtoken
+   # atau tanpa akun:
+   cloudflared tunnel --url http://localhost:8501      # link *.trycloudflare.com
+   ```
+
+Demo hanya bisa diakses selama laptop dan kedua terminal menyala. Setiap pengguna dibatasi `DEMO_MAKS_PERTANYAAN` pertanyaan per sesi, dan pertanyaan diproses bergantian. Semua tanya-jawab dan penilaian dicatat ke `data/feedback/demo_log.jsonl` (tidak di-commit), sebagai bahan soal baru untuk test set.
+
 ## Menjalankan pipeline dari awal
 
 Pipeline penuh hanya perlu dijalankan bila **dokumen sumber atau logika suatu tahap berubah**. Jalankan dari root repo, berurutan. Cukup mulai dari tahap yang berubah.

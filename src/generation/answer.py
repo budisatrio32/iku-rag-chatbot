@@ -6,8 +6,8 @@ Alur satu pertanyaan:
 1. Retriever mengambil 5 chunk terbaik.
 2. LLM menerima instruksi + konteks bernomor + pertanyaan, dan boleh memanggil hitung_iku.
 3. Selama LLM meminta alat, kode menjalankan kalkulator dan mengirim hasilnya kembali.
-4. Jawaban akhir diperiksa: rujukan [n] diubah menjadi sitasi halaman dari metadata,
-   dan angka hasil kalkulator harus muncul di jawaban.
+4. Jawaban akhir dirapikan (postproses.py) lalu diperiksa: rujukan [n] diubah menjadi
+   sitasi halaman dari metadata, dan angka hasil kalkulator harus muncul di jawaban.
 """
 
 import json
@@ -22,11 +22,15 @@ sys.path.insert(0, str(PROJECT_ROOT / "src" / "generation"))
 
 from retriever import Retriever  # noqa: E402
 from llm_client import get_client  # noqa: E402
+from postproses import rapikan_jawaban  # noqa: E402
 from prompt import SYSTEM_PROMPT, build_user_message  # noqa: E402
 from tools import NAMA_ALAT, TOOL_HITUNG_IKU, jalankan_alat  # noqa: E402
 
 MAX_PUTARAN_ALAT = 4
 MAX_ULANG_ALAT_DITOLAK = 2
+MAX_ULANG_KOSONG = 2
+PESAN_JAWABAN_KOSONG = ("Maaf, chatbot belum berhasil menyusun jawaban untuk pertanyaan ini. "
+                        "Silakan ulangi pertanyaan beberapa saat lagi.")
 PESAN_ALAT_DITOLAK = (
     "Catatan sistem: panggilan alat sebelumnya ditolak server karena formatnya salah ({alasan}). "
     f"Satu-satunya alat adalah '{NAMA_ALAT}' dengan parameter 'fungsi' dan 'argumen_json'. "
@@ -140,8 +144,12 @@ class Chatbot:
         else:
             message = None
 
-        jawaban = (message.content or "").strip() if message else \
+        jawaban = rapikan_jawaban(message.content or "").strip() if message else \
             "Maaf, perhitungan tidak selesai dalam batas percobaan. Coba ulangi dengan data yang lebih lengkap."
+        if not jawaban:
+            # jangan gagal diam-diam: user tetap mendapat pesan, dan kejadiannya tercatat
+            jawaban = PESAN_JAWABAN_KOSONG
+            masalah_alat.append(f"LLM tetap mengembalikan jawaban kosong setelah diulang {MAX_ULANG_KOSONG}x.")
         sitasi, peringatan = periksa_jawaban(question, jawaban, chunks, hasil_alat)
         peringatan = masalah_alat + peringatan
         sumber_rumus = sorted({h["hasil"]["sumber"] for h in hasil_alat if "sumber" in h["hasil"]})
@@ -156,20 +164,30 @@ class Chatbot:
         }
 
     def _minta_llm(self, messages: list[dict], masalah_alat: list[str]):
-        """Panggil LLM. Bila server menolak panggilan alat yang rusak, ulangi dengan catatan koreksi
-        (catatan hanya dipakai untuk percobaan ulang, tidak masuk riwayat percakapan)."""
+        """Panggil LLM, dengan dua percobaan ulang otomatis:
+        - server menolak panggilan alat yang rusak (400): ulangi dengan catatan koreksi
+          (catatan hanya dipakai untuk percobaan ulang, tidak masuk riwayat percakapan);
+        - LLM mengembalikan respons kosong (tanpa teks dan tanpa panggilan alat): ulangi apa adanya."""
         percobaan = messages
-        for ke in range(MAX_ULANG_ALAT_DITOLAK + 1):
+        ditolak = kosong = 0
+        while True:
             try:
-                return self.client.chat.completions.create(
+                response = self.client.chat.completions.create(
                     model=self.model, messages=percobaan, tools=[TOOL_HITUNG_IKU], tool_choice="auto",
                 )
             except openai.BadRequestError as e:
-                if not alat_ditolak_server(e) or ke == MAX_ULANG_ALAT_DITOLAK:
+                if not alat_ditolak_server(e) or ditolak == MAX_ULANG_ALAT_DITOLAK:
                     raise
+                ditolak += 1
                 alasan = ringkas_alasan(e)
                 masalah_alat.append(f"Panggilan alat ditolak server ({alasan}); diulang otomatis.")
                 percobaan = messages + [{"role": "user", "content": PESAN_ALAT_DITOLAK.format(alasan=alasan)}]
+                continue
+            message = response.choices[0].message
+            if message.tool_calls or (message.content or "").strip() or kosong == MAX_ULANG_KOSONG:
+                return response
+            kosong += 1
+            masalah_alat.append("LLM mengembalikan respons kosong; diulang otomatis.")
 
 
 def tampilkan(hasil: dict) -> str:

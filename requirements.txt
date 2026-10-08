@@ -22,3 +22,6 @@ chromadb>=1.5,<2
 
 # Generation (LLM: Gemini / Ollama / OpenAI lewat format OpenAI)
 openai>=1.0
+
+# Demo UI (src/ui/app_streamlit.py)
+streamlit>=1.40
