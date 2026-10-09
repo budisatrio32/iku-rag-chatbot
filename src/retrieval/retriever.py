@@ -12,6 +12,8 @@ Tahapan (setiap fitur bisa dinyalakan terpisah agar dampaknya bisa diukur):
                lain dicatat di `also_in` (Lampiran sebagai dasar hukum)
 5. Rerank    : (opsional) cross-encoder bge-reranker-v2-m3 mengurutkan ulang kandidat
 6. Ambil top_k
+7. Sambung   : potongan lanjutan tabel yang terambil disambung dengan potongan
+               sebelumnya (lihat sambung_tabel.py)
 
 Retriever() tanpa argumen = perilaku lama (dense saja + buang dokumen < 80 karakter).
 Retriever.v2(...) = semua fitur best practice kecuali reranker.
@@ -27,6 +29,8 @@ import chromadb
 import numpy as np
 import torch
 from sentence_transformers import SentenceTransformer
+
+from sambung_tabel import cari_lanjutan_tabel, gabung_tabel
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -122,7 +126,7 @@ def where_and(**conds) -> dict:
 
 class Retriever:
     def __init__(self, top_k=5, collection_name=COLLECTION_NAME, candidates=None, hybrid=False,
-                 iku_boost=False, dedupe=False, rerank=False, min_chars=80):
+                 iku_boost=False, dedupe=False, rerank=False, min_chars=80, sambung_tabel=False):
         self.top_k = top_k
         self.candidates = candidates or top_k
         self.hybrid, self.iku_boost, self.dedupe, self.rerank = hybrid, iku_boost, dedupe, rerank
@@ -142,10 +146,18 @@ class Retriever:
         )
 
         self.bm25 = None
-        if hybrid:
-            corpus = self.collection.get(include=["documents"])
+        self.lanjutan_tabel: dict[str, str] = {}   # id potongan lanjutan -> id potongan sebelumnya
+        self.potongan_awal: dict[str, tuple[str, dict]] = {}
+        if hybrid or sambung_tabel:
+            corpus = self.collection.get(include=["documents", "metadatas"])
             self.corpus_ids = corpus["ids"]
-            self.bm25 = BM25([tokenize(d) for d in corpus["documents"]])
+            if hybrid:
+                self.bm25 = BM25([tokenize(d) for d in corpus["documents"]])
+            if sambung_tabel:
+                self.lanjutan_tabel = cari_lanjutan_tabel(corpus["ids"], corpus["documents"], corpus["metadatas"])
+                awal = set(self.lanjutan_tabel.values())
+                self.potongan_awal = {i: (d, m) for i, d, m in
+                                      zip(corpus["ids"], corpus["documents"], corpus["metadatas"]) if i in awal}
 
         self.reranker = None
         if rerank:
@@ -156,7 +168,7 @@ class Retriever:
     def v2(cls, top_k=5, collection_name=COLLECTION_NAME_V2, rerank=False):
         """Konfigurasi best practice (docs/02-desain/skema_embedding.md)."""
         return cls(top_k=top_k, collection_name=collection_name, candidates=30, hybrid=True,
-                   iku_boost=True, dedupe=True, rerank=rerank, min_chars=0)
+                   iku_boost=True, dedupe=True, rerank=rerank, min_chars=0, sambung_tabel=True)
 
     # -- bantuan --------------------------------------------------------------
 
@@ -237,10 +249,29 @@ class Retriever:
         for it in items:
             if self.min_chars and len(it["document"].strip()) < self.min_chars:
                 continue
-            output.append(self._format(it))
+            output.append(it)
             if len(output) == self.top_k:
                 break
-        return output
+
+        # 7) sambung potongan lanjutan tabel dengan potongan sebelumnya
+        if self.lanjutan_tabel:
+            output = self._sambung_tabel(output)
+        return [self._format(it) for it in output]
+
+    def _sambung_tabel(self, items: list[dict]) -> list[dict]:
+        disambung = set()
+        hasil = []
+        for it in items:
+            awal = self.lanjutan_tabel.get(it["id"])
+            if awal:
+                dok_awal, meta_awal = self.potongan_awal[awal]
+                it = {**it, "document": gabung_tabel(dok_awal, it["document"]),
+                      "metadata": {**it["metadata"], "page_start": meta_awal.get("page_start")},
+                      "disambung_dari": awal}
+                disambung.add(awal)
+            hasil.append(it)
+        # potongan awal yang sudah tersambung tidak perlu muncul dua kali
+        return [it for it in hasil if it["id"] not in disambung]
 
     def _dedupe(self, items: list[dict], query_emb: np.ndarray) -> list[dict]:
         best_tier: dict = {}
@@ -322,5 +353,6 @@ class Retriever:
             "source_notes": json.loads(metadata["source_notes"]) if metadata.get("source_notes") else [],
             "also_in": it.get("also_in", []),
             "rerank_score": it.get("rerank_score"),
+            "disambung_dari": it.get("disambung_dari"),
             "distance": it["distance"],
         }

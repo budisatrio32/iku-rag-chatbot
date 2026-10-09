@@ -40,12 +40,17 @@ def panduan_argumen() -> str:
         + _daftar(calc.BOBOT_PUBLIKASI) + "; kolaborasi = publikasi dengan penulis luar negeri)",
         '- rasio: {"kode": "iku5", "pembilang": 30, "penyebut": 120}  (kode: '
         + "; ".join(f'"{k}" = {a} / {b}' for k, (a, b, _) in calc.RASIO.items()) + ")",
-        '- iku9: {"total_pendapatan": 500, "rincian": {"<pos>": nilai, ...}}  (pos yang dihitung: '
+        # contoh sengaja memakai angka yang TIDAK ada di test set agar evaluasi tetap jujur
+        '- iku9: {"total_pendapatan": "3 milyar", "rincian": {"hibah_riset": "450 jt", "pelatihan": "0,1 M", '
+        '"ukt": "2,45 M"}}  (masukkan SEMUA pos yang disebut, termasuk yang tidak dihitung; pos yang dihitung: '
         + _daftar(sorted(calc.PENDAPATAN_DIAKUI)) + "; pos yang tidak dihitung: "
         + _daftar(sorted(calc.PENDAPATAN_TIDAK_DIAKUI)) + ")",
         '- iku11b_predikat: {"nilai_akhir": 82}',
-        '- iku12_penghasilan_minimum: {"ump": 3000000, "jabatan": ["lektor"]}  (jabatan: '
+        '- iku12_penghasilan_minimum: {"ump": "Rp2.900.000", "jabatan": ["lektor"]}  (jabatan: '
         + _daftar(calc.KELIPATAN_UMP) + ")",
+        "PENTING untuk nominal uang (iku9, iku12): tulis sebagai teks PERSIS seperti di pertanyaan, "
+        'misalnya "Rp1.750.000.000", "650jt", "0,3 M", "4 milyar". JANGAN mengubah satuannya sendiri; '
+        "kalkulator yang mengubah ke rupiah (M = miliar, jt = juta).",
     ])
 
 
@@ -81,6 +86,23 @@ TOOL_HITUNG_IKU = {
 
 
 NAMA_ALAT = TOOL_HITUNG_IKU["function"]["name"]
+
+
+def arahkan_dari_rasio(fungsi: str | None, argumen: dict) -> str | None:
+    """LLM kadang memakai fungsi umum 'rasio' untuk IKU yang punya fungsi sendiri
+    (kasus H11/H26/H27: rasio kode 'iku6'/'iku9'), lalu menyerah saat ditolak. Beri tahu
+    fungsi yang benar beserta format argumennya agar LLM bisa langsung mengulang."""
+    kode = str(argumen.get("kode", "")).strip().lower()
+    if fungsi != "rasio" or not kode or kode in calc.RASIO:
+        return None
+    pengganti = [f for f in sorted(calc.REGISTRY) if f == kode or f.startswith(kode + "_")]
+    if not pengganti:
+        return None
+    format_argumen = [b for b in panduan_argumen().splitlines()
+                      if any(b.startswith(f"- {f}:") for f in pengganti)]
+    return (f"'{kode}' bukan kode rasio: IKU ini punya fungsi sendiri ({', '.join(pengganti)}). "
+            f"Panggil ulang {NAMA_ALAT} dengan fungsi tersebut dan data asli dari pertanyaan "
+            f"(jangan dihitung dulu). Format: " + " ".join(format_argumen))
 
 def baca_permintaan(argumen_teks: str) -> tuple[str | None, dict]:
     """Ambil (fungsi, argumen) dari teks argumen LLM. Toleran terhadap variasi format
@@ -119,6 +141,9 @@ def jalankan_alat(nama: str, argumen_teks: str) -> dict:
         return {"error": f"Alat '{nama}' tidak dikenal. Alat yang tersedia: {NAMA_ALAT}."}
     if fungsi not in calc.REGISTRY:
         return {"error": f"Fungsi '{fungsi}' tidak ada. Pilihan: {', '.join(sorted(calc.REGISTRY))}"}
+    arahan = arahkan_dari_rasio(fungsi, argumen)
+    if arahan:
+        return {"error": arahan}
     try:
         return calc.hitung(fungsi, **argumen)
     except TypeError as e:

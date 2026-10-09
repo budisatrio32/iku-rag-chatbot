@@ -6,6 +6,7 @@ Alur satu pertanyaan:
 1. Retriever mengambil 5 chunk terbaik.
 2. LLM menerima instruksi + konteks bernomor + pertanyaan, dan boleh memanggil hitung_iku.
 3. Selama LLM meminta alat, kode menjalankan kalkulator dan mengirim hasilnya kembali.
+   Bila LLM ternyata menghitung sendiri tanpa kalkulator, ia diminta mengulang sekali.
 4. Jawaban akhir dirapikan (postproses.py) lalu diperiksa: rujukan [n] diubah menjadi
    sitasi halaman dari metadata, dan angka hasil kalkulator harus muncul di jawaban.
 """
@@ -22,7 +23,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "src" / "generation"))
 
 from retriever import Retriever  # noqa: E402
 from llm_client import get_client  # noqa: E402
-from postproses import rapikan_jawaban  # noqa: E402
+from postproses import rapikan_jawaban, tampak_menghitung_sendiri  # noqa: E402
 from prompt import SYSTEM_PROMPT, build_user_message  # noqa: E402
 from tools import NAMA_ALAT, TOOL_HITUNG_IKU, jalankan_alat  # noqa: E402
 
@@ -35,6 +36,12 @@ PESAN_ALAT_DITOLAK = (
     "Catatan sistem: panggilan alat sebelumnya ditolak server karena formatnya salah ({alasan}). "
     f"Satu-satunya alat adalah '{NAMA_ALAT}' dengan parameter 'fungsi' dan 'argumen_json'. "
     "Ulangi dengan nama alat dan format yang benar."
+)
+PESAN_HITUNG_SENDIRI = (
+    f"Catatan sistem: jawabanmu memuat perhitungan atau penentuan predikat yang tidak berasal dari alat "
+    f"'{NAMA_ALAT}'. Panggil alat itu untuk perhitungan tersebut, lalu tulis ulang jawaban lengkap "
+    "berdasarkan hasil alat, tanpa LaTeX. Jika datanya belum lengkap atau pertanyaannya di luar cakupan, "
+    "tulis ulang jawaban tanpa angka hasil hitunganmu sendiri."
 )
 
 
@@ -126,23 +133,14 @@ class Chatbot:
         ]
         hasil_alat, masalah_alat = [], []
 
-        for _ in range(MAX_PUTARAN_ALAT):
-            response = self._minta_llm(messages, masalah_alat)
-            message = response.choices[0].message
-            if not message.tool_calls:
-                break
-            # pesan asisten (berisi permintaan alat) dikirim balik APA ADANYA: Gemini menyisipkan
-            # data tambahan ("thought signature") yang wajib dikembalikan tanpa diubah
-            messages.append(message.model_dump(exclude_none=True))
-            for call in message.tool_calls:
-                if call.function.name != NAMA_ALAT:
-                    masalah_alat.append(f"LLM memakai nama alat tidak baku '{call.function.name}' (tetap diproses).")
-                hasil = jalankan_alat(call.function.name, call.function.arguments)
-                hasil_alat.append({"argumen": call.function.arguments, "hasil": hasil})
-                messages.append({"role": "tool", "tool_call_id": call.id,
-                                "content": json.dumps(hasil, ensure_ascii=False)})
-        else:
-            message = None
+        message = self._putaran_alat(messages, hasil_alat, masalah_alat)
+        berhasil = any("error" not in h["hasil"] for h in hasil_alat)
+        if message and not berhasil and tampak_menghitung_sendiri(question, message.content or ""):
+            # angka tanpa kalkulator tidak terverifikasi walaupun kebetulan benar: minta ulang sekali
+            masalah_alat.append("LLM menghitung sendiri tanpa kalkulator; diminta mengulang dengan alat.")
+            messages += [{"role": "assistant", "content": message.content or ""},
+                         {"role": "user", "content": PESAN_HITUNG_SENDIRI}]
+            message = self._putaran_alat(messages, hasil_alat, masalah_alat)
 
         jawaban = rapikan_jawaban(message.content or "").strip() if message else \
             "Maaf, perhitungan tidak selesai dalam batas percobaan. Coba ulangi dengan data yang lebih lengkap."
@@ -162,6 +160,26 @@ class Chatbot:
             "peringatan": peringatan,
             "chunks": chunks,
         }
+
+    def _putaran_alat(self, messages: list[dict], hasil_alat: list[dict], masalah_alat: list[str]):
+        """Tanya LLM; selama ia meminta alat, jalankan kalkulator dan kirim hasilnya kembali.
+        Mengembalikan pesan jawaban akhir, atau None bila batas putaran habis."""
+        for _ in range(MAX_PUTARAN_ALAT):
+            response = self._minta_llm(messages, masalah_alat)
+            message = response.choices[0].message
+            if not message.tool_calls:
+                return message
+            # pesan asisten (berisi permintaan alat) dikirim balik APA ADANYA: Gemini menyisipkan
+            # data tambahan ("thought signature") yang wajib dikembalikan tanpa diubah
+            messages.append(message.model_dump(exclude_none=True))
+            for call in message.tool_calls:
+                if call.function.name != NAMA_ALAT:
+                    masalah_alat.append(f"LLM memakai nama alat tidak baku '{call.function.name}' (tetap diproses).")
+                hasil = jalankan_alat(call.function.name, call.function.arguments)
+                hasil_alat.append({"argumen": call.function.arguments, "hasil": hasil})
+                messages.append({"role": "tool", "tool_call_id": call.id,
+                                "content": json.dumps(hasil, ensure_ascii=False)})
+        return None
 
     def _minta_llm(self, messages: list[dict], masalah_alat: list[str]):
         """Panggil LLM, dengan dua percobaan ulang otomatis:

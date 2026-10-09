@@ -52,7 +52,10 @@
       {"nilai_min": 0, "predikat": "CC-C (kurang)"}
     ],
 
-    "kelipatan_ump": {"asisten_ahli": 1.5, "lektor": 3, "lektor_kepala": 4, "profesor": 6}
+    "kelipatan_ump": {"asisten_ahli": 1.5, "lektor": 3, "lektor_kepala": 4, "profesor": 6},
+
+    "satuan_nominal": {"": 1, "rb": 1e3, "ribu": 1e3, "jt": 1e6, "juta": 1e6,
+                       "m": 1e9, "miliar": 1e9, "milyar": 1e9, "t": 1e12, "triliun": 1e12}
   },
 
   "rumus": [

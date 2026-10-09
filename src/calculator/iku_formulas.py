@@ -30,6 +30,7 @@ ditolak dengan ValueError berpesan jelas, tidak pernah diam-diam menjadi 0.
 
 import json
 import math
+import re
 from pathlib import Path
 
 SPEC_FILE = Path(__file__).resolve().parent / "spec" / "buku_iku_v1.json"
@@ -116,10 +117,60 @@ PENDAPATAN_DIAKUI = set(_K["pendapatan_diakui"])
 PENDAPATAN_TIDAK_DIAKUI = set(_K["pendapatan_tidak_diakui"])
 PREDIKAT_SAKIP = sorted(((p["nilai_min"], p["predikat"]) for p in _K["predikat_sakip"]), reverse=True)
 KELIPATAN_UMP = _K["kelipatan_ump"]
+SATUAN_NOMINAL = _K["satuan_nominal"]
 
 # kode rasio -> (label pembilang, label penyebut, bagian sumber)
 RASIO = {r["id"]: (r["input"]["pembilang"], r["input"]["penyebut"], r["sumber"]["bagian"])
          for r in SPEC["rumus"] if r["pola"] == "rasio"}
+
+
+# ---------------------------------------------------------------------------
+# Nominal uang
+# ---------------------------------------------------------------------------
+# Konversi satuan uang juga perhitungan, jadi dikerjakan di sini, bukan oleh LLM. Kasus H27
+# (laporan 2026-10-10): LLM membaca "0,2 M" sebagai 0,2 juta (M = million), padahal dalam
+# keuangan Indonesia M = miliar. LLM cukup menyalin teks nominal dari pertanyaan.
+
+_NOMINAL_RE = re.compile(r"^(?:rp\.?)?\s*(\d[\d.,]*)\s*([a-z]*)\.?$")
+
+
+def _angka_id(teks: str) -> float:
+    """Angka gaya Indonesia: koma = desimal; titik diikuti tepat 3 angka = pemisah ribuan.
+    '1.250.000' -> 1250000, '0,2' -> 0.2, '4.250' -> 4250, '1.5' -> 1.5, '1.250.000,5' -> 1250000.5"""
+    if "," in teks:
+        bulat, _, desimal = teks.rpartition(",")
+        return float(bulat.replace(".", "").replace(",", "") + "." + desimal)
+    bagian = teks.split(".")
+    if len(bagian) > 1 and all(len(b) == 3 for b in bagian[1:]):
+        return float("".join(bagian))
+    if len(bagian) > 2:
+        raise ValueError(f"angka '{teks}' tidak jelas")
+    return float(teks)
+
+
+def baca_nominal(nilai, nama: str) -> tuple[float, str | None]:
+    """Nominal dari LLM -> (rupiah, teks asli). Angka biasa dipakai apa adanya; teks seperti
+    "Rp1.250.000.000", "900jt", "0,2 M", "2 milyar" dibaca dengan aturan SATUAN_NOMINAL."""
+    if isinstance(nilai, bool):
+        raise ValueError(f"{nama} harus berupa angka atau teks nominal (diberikan: {nilai!r})")
+    if isinstance(nilai, (int, float)):
+        return float(nilai), None
+    asli = str(nilai).strip()
+    # "Rp1.000.000,-" dan "500 juta rupiah" juga lazim ditulis
+    m = _NOMINAL_RE.match(re.sub(r"\s*rupiah$", "", asli.lower().rstrip("-").strip()))
+    if not m or m.group(2) not in SATUAN_NOMINAL:
+        raise ValueError(f"{nama} '{asli}' tidak terbaca. Tulis nominal persis seperti di pertanyaan, "
+                         f"mis. \"300 jt\", \"0,2 M\", \"Rp1.250.000.000\" (satuan: "
+                         f"{', '.join(s for s in SATUAN_NOMINAL if s)})")
+    try:
+        angka = _angka_id(m.group(1).rstrip(".,"))
+    except ValueError as e:
+        raise ValueError(f"{nama} '{asli}' tidak terbaca: {e}") from None
+    return angka * SATUAN_NOMINAL[m.group(2)], asli
+
+
+def _tulis_nominal(rupiah: float, asli: str | None) -> str:
+    return f"\"{asli}\" = Rp{_fmt(rupiah)}" if asli else _fmt(rupiah)
 
 
 # ---------------------------------------------------------------------------
@@ -288,21 +339,38 @@ def rasio(kode: str, pembilang: float, penyebut: float) -> dict:
 # IKU 9 — Pendapatan non pendidikan/UKT, hlm. 59
 # ---------------------------------------------------------------------------
 
-def iku9(total_pendapatan: float, rincian: dict[str, float]) -> dict:
-    _wajib_positif(total_pendapatan, "Total pendapatan")
-    langkah, diakui = [], 0.0
-    for pos, nilai in rincian.items():
+def iku9(total_pendapatan: float | str, rincian: dict[str, float | str]) -> dict:
+    """Nominal boleh angka (satuan bebas asal konsisten) atau teks seperti di pertanyaan
+    ("Rp1.250.000.000", "900jt", "0,2 M"); teks diubah ke rupiah oleh baca_nominal."""
+    jenis = {isinstance(v, str) for v in [total_pendapatan, *rincian.values()]}
+    if len(jenis) > 1:
+        # "2 milyar" (teks -> rupiah) dicampur 300 (angka, mis. maksudnya juta) = satuan tidak konsisten
+        raise ValueError("Nominal tercampur antara teks dan angka. Tulis SEMUA nominal sebagai teks persis "
+                         "seperti di pertanyaan, mis. {\"total_pendapatan\": \"2 milyar\", \"rincian\": "
+                         "{\"hibah_riset\": \"300 jt\"}}")
+    total, total_asli = baca_nominal(total_pendapatan, "Total pendapatan")
+    _wajib_positif(total, "Total pendapatan")
+    langkah = [f"Total pendapatan: {_tulis_nominal(total, total_asli)}"] if total_asli else []
+    diakui = jumlah = 0.0
+    for pos, nilai_asli in rincian.items():
+        nilai, asli = baca_nominal(nilai_asli, f"Pos '{pos}'")
         _tidak_negatif(nilai, f"Pos '{pos}'")
+        jumlah += nilai
         if pos in PENDAPATAN_DIAKUI:
             diakui += nilai
-            langkah.append(f"{pos}: {_fmt(nilai)} → DIHITUNG (Kriteria a)")
+            langkah.append(f"{pos}: {_tulis_nominal(nilai, asli)} → DIHITUNG (Kriteria a)")
         elif pos in PENDAPATAN_TIDAK_DIAKUI:
-            langkah.append(f"{pos}: {_fmt(nilai)} → TIDAK dihitung (Kriteria b)")
+            langkah.append(f"{pos}: {_tulis_nominal(nilai, asli)} → TIDAK dihitung (Kriteria b)")
         else:
             raise ValueError(f"Pos pendapatan '{pos}' belum dikategorikan; tambahkan ke daftar diakui/tidak diakui")
-    _tidak_melebihi(sum(rincian.values()), total_pendapatan, "Jumlah rincian pendapatan", "total pendapatan")
-    hasil = diakui / total_pendapatan * 100
-    langkah.append(f"Capaian = {_fmt(diakui)} / {_fmt(total_pendapatan)} × 100% = {_fmt(round(hasil, 2))}%")
+    _tidak_melebihi(jumlah, total, "Jumlah rincian pendapatan", "total pendapatan")
+    if jumlah < total * (1 - 1e-9):
+        # bukan error (bisa ada pendapatan lain yang tidak dirinci), tetapi ditampilkan agar
+        # salah baca nominal mudah terlihat
+        langkah.append(f"Catatan: rincian berjumlah {_fmt(jumlah)} dari total {_fmt(total)}; selisih "
+                       f"{_fmt(total - jumlah)} dianggap pendapatan lain yang tidak dihitung")
+    hasil = diakui / total * 100
+    langkah.append(f"Capaian = {_fmt(diakui)} / {_fmt(total)} × 100% = {_fmt(round(hasil, 2))}%")
     return _keluaran("iku9", round(hasil, 2), "%", langkah)
 
 
@@ -318,9 +386,12 @@ def iku11b_predikat(nilai_akhir: float) -> dict:
     return _keluaran("iku11b_predikat", predikat, "predikat", langkah)
 
 
-def iku12_penghasilan_minimum(ump: float, jabatan: list[str]) -> dict:
+def iku12_penghasilan_minimum(ump: float | str, jabatan: list[str]) -> dict:
+    """ump dalam rupiah penuh, atau teks seperti di pertanyaan ("3,5jt", "Rp 4.250.000")."""
+    ump, ump_asli = baca_nominal(ump, "UMP")
     _wajib_positif(ump, "UMP")
-    hasil, langkah = {}, []
+    hasil = {}
+    langkah = [f"UMP: {_tulis_nominal(ump, ump_asli)}"] if ump_asli else []
     for j in jabatan:
         kelipatan = _pilih(KELIPATAN_UMP, j, "Jabatan")
         nilai = kelipatan * ump

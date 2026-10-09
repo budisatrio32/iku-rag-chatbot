@@ -9,6 +9,11 @@ halaman tidak mungkin dikarang oleh LLM.
 Setiap potongan juga diberi label nama resmi IKU-nya (data/metadata/iku_names.json),
 karena banyak chunk hanya bertuliskan "IKU 1" tanpa nama lengkap. Tanpa label ini LLM
 cenderung menebak kepanjangan singkatan (mis. AEE) dan bisa salah.
+
+Daftar nama IKU perguruan tinggi juga dimasukkan ke instruksi sistem. Retriever hanya
+mengambil chunk IKU yang disebut di pertanyaan, jadi tanpa daftar ini LLM tidak bisa
+meluruskan IKU yang salah sebut (kasus D11: data lulusan bekerja ditanyakan sebagai IKU 1,
+padahal termasuk IKU 2).
 """
 
 import json
@@ -17,6 +22,8 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 IKU_NAMES_FILE = PROJECT_ROOT / "data" / "metadata" / "iku_names.json"
 NAMA_IKU = json.loads(IKU_NAMES_FILE.read_text(encoding="utf-8"))["nama"]
+# IKU perguruan tinggi 1-12 (tanpa rincian 11a-11d dan IKU LLDIKTI agar instruksi tetap ringkas)
+DAFTAR_IKU = "\n".join(f"- IKU {k}: {v}" for k, v in NAMA_IKU.items() if k.isdigit())
 
 SYSTEM_PROMPT = """Kamu adalah asisten penjaminan mutu perguruan tinggi yang menjawab pertanyaan tentang \
 Indikator Kinerja Utama (IKU) Diktisaintek Berdampak. Jawab dalam bahasa Indonesia yang jelas dan ringkas.
@@ -38,8 +45,15 @@ luruskan dengan sopan berdasarkan konteks, lalu jawab untuk IKU yang tepat.
 7. Tulis nama IKU, singkatan, dan istilah persis seperti di konteks (termasuk label nama IKU pada setiap \
 potongan). Jangan menebak kepanjangan singkatan yang tidak tertulis di konteks.
 8. Tulis jawaban sebagai teks biasa. Jangan memakai format LaTeX atau notasi matematika khusus; tulis rumus \
-dengan kata dan simbol biasa, misalnya "30 ÷ 120 × 100% = 25%".
-"""
+dengan kata dan simbol biasa, misalnya "45 ÷ 150 × 100% = 30%".
+9. Jika data atau ukuran dalam pertanyaan tidak sesuai dengan IKU yang disebut, katakan IKU mana yang sesuai \
+berdasarkan DAFTAR IKU di bawah, dan sarankan pengguna menanyakan IKU tersebut. DAFTAR IKU hanya untuk \
+mengenali nama IKU, bukan sumber definisi atau rumus.
+10. Jika alat hitung_iku mengembalikan error, baca pesannya, perbaiki fungsi atau argumennya, lalu panggil \
+alat lagi. Error alat BUKAN berarti informasinya tidak ada di dokumen.
+
+DAFTAR IKU PERGURUAN TINGGI:
+""" + DAFTAR_IKU
 
 
 def label_iku(iku_id: str) -> str:

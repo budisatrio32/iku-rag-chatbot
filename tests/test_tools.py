@@ -53,3 +53,23 @@ def test_permintaan_rusak_jadi_pesan_error(nama, argumen, potongan_pesan):
     out = jalankan_alat(nama, argumen)
     assert "error" in out
     assert potongan_pesan in out["error"]
+
+
+@pytest.mark.parametrize("kode, fungsi_benar", [
+    # kasus asli laporan 2026-10-09: H11 (iku6), H26/H27 (iku9)
+    ("iku6", "iku6"),
+    ("iku9", "iku9"),
+    ("IKU1", "iku1_aee_prodi"),
+])
+def test_rasio_untuk_iku_berfungsi_sendiri_diarahkan(kode, fungsi_benar):
+    argumen = {"kode": kode, "pembilang": 200, "penyebut": 1250}
+    out = jalankan_alat(NAMA_ALAT, teks({"fungsi": "rasio", "argumen_json": teks(argumen)}))
+    assert "error" in out
+    assert fungsi_benar in out["error"] and "Format:" in out["error"]
+    assert f"- {fungsi_benar}:" in out["error"]  # contoh format argumen ikut dikirim
+
+
+def test_kode_tak_dikenal_tetap_pesan_lama():
+    out = jalankan_alat(NAMA_ALAT, teks({"fungsi": "rasio", "argumen_json": teks(
+        {"kode": "iku99", "pembilang": 1, "penyebut": 2})}))
+    assert "tidak dikenal" in out["error"]

@@ -460,15 +460,20 @@ def main():
     parser.add_argument("--dedupe", action="store_true", help="dahulukan Bab V, buang kembaran Lampiran/PPT")
     parser.add_argument("--rerank", action="store_true", help="reranker bge-reranker-v2-m3 (unduh ±2 GB sekali)")
     parser.add_argument("--min-chars", type=int, help="buang dokumen lebih pendek dari ini (lama: 80)")
+    parser.add_argument("--sambung-tabel", action=argparse.BooleanOptionalAction, default=None,
+                        help="sambung potongan lanjutan tabel dengan potongan sebelumnya (v2: aktif; "
+                             "--no-sambung-tabel untuk pembanding)")
     args = parser.parse_args()
     if args.preset == "v2":
         args.candidates = args.candidates or 30
         args.hybrid = args.iku_boost = args.dedupe = True
         args.min_chars = 0 if args.min_chars is None else args.min_chars
+        args.sambung_tabel = True if args.sambung_tabel is None else args.sambung_tabel
     retriever_options = {
         "candidates": args.candidates, "hybrid": args.hybrid, "iku_boost": args.iku_boost,
         "dedupe": args.dedupe, "rerank": args.rerank,
         "min_chars": 80 if args.min_chars is None else args.min_chars,
+        "sambung_tabel": bool(args.sambung_tabel),
     }
 
     sys.stdout.reconfigure(encoding="utf-8")

@@ -1,0 +1,88 @@
+{
+  "model": "openai/gpt-oss-120b",
+  "status": "jatah harian LLM habis (429 per hari)",
+  "rencana": [
+    "H25",
+    "H26",
+    "H27"
+  ],
+  "belum_selesai": [
+    "H26",
+    "H27"
+  ],
+  "results": [
+    {
+      "id": "H25",
+      "pertanyaan": "total pendapatan PT 500 M. rinciannya ukt 300M, boptn 80 M, hibah riset 50M, konsultasi 40 M, unit bisnis 20M, hasil dana abadi 10 M. iku 9 brp?",
+      "jawaban_benar": "**24%**.",
+      "halaman_kunci": [
+        59
+      ],
+      "harapan_angka": 24.0,
+      "catatan": "Ketahanan: satuan 'M' = miliar, ditulis rapat/berspasi ('300M', '80 M'). Argumen boleh dalam miliar asal konsisten. Sama dengan H13.",
+      "lulus": true,
+      "jawaban": "IKU 9 – Persentase Pendapatan Non Pendidikan/UKT = **24 %**.\n\nLangkah perhitungannya:\n- Total pendapatan PT = 500 M.  \n- Pendapatan yang diakui sebagai non-mahasiswa (hibah riset 50 M + konsultasi 40 M + unit bisnis 20 M + hasil dana abadi 10 M) = 120 M.  \n- Persentase = (120 M ÷ 500 M) × 100 % = **24 %**.  \n\nSumber: Buku IKU Diktisaintek Berdampak V1, IKU 9 – Kriteria & Formula, hlm. 59.",
+      "sitasi": [],
+      "sumber_rumus": [
+        "Buku IKU Diktisaintek Berdampak V1, IKU 9 – Kriteria & Formula, hlm. 59"
+      ],
+      "kalkulator": [
+        {
+          "argumen": "{\"argumen_json\":\"{\\\"total_pendapatan\\\":\\\"500 M\\\",\\\"rincian\\\":{\\\"ukt\\\":\\\"300 M\\\",\\\"boptn\\\":\\\"80 M\\\",\\\"hibah_riset\\\":\\\"50 M\\\",\\\"konsultasi\\\":\\\"40 M\\\",\\\"unit_bisnis\\\":\\\"20 M\\\",\\\"hasil_dana_abadi\\\":\\\"10 M\\\"}}\",\"fungsi\":\"iku9\"}",
+          "hasil": {
+            "id": "iku9",
+            "ikuCode": "IKU 009",
+            "hasil": 24.0,
+            "satuan": "%",
+            "langkah": [
+              "Total pendapatan: \"500 M\" = Rp500.000.000.000",
+              "ukt: \"300 M\" = Rp300.000.000.000 → TIDAK dihitung (Kriteria b)",
+              "boptn: \"80 M\" = Rp80.000.000.000 → TIDAK dihitung (Kriteria b)",
+              "hibah_riset: \"50 M\" = Rp50.000.000.000 → DIHITUNG (Kriteria a)",
+              "konsultasi: \"40 M\" = Rp40.000.000.000 → DIHITUNG (Kriteria a)",
+              "unit_bisnis: \"20 M\" = Rp20.000.000.000 → DIHITUNG (Kriteria a)",
+              "hasil_dana_abadi: \"10 M\" = Rp10.000.000.000 → DIHITUNG (Kriteria a)",
+              "Capaian = 120.000.000.000 / 500.000.000.000 × 100% = 24%"
+            ],
+            "formula_teks": [
+              "Capaian = Pendapatan yang diakui (non-mahasiswa) ÷ Total pendapatan PT satu periode × 100%"
+            ],
+            "sumber": "Buku IKU Diktisaintek Berdampak V1, IKU 9 – Kriteria & Formula, hlm. 59",
+            "rujukan": {
+              "dokumen": "Buku IKU Diktisaintek Berdampak",
+              "versi": "V1",
+              "bagian": "IKU 9 – Kriteria & Formula",
+              "halaman": [
+                59
+              ]
+            },
+            "status": "terverifikasi"
+          }
+        }
+      ],
+      "peringatan": [
+        "LLM mengembalikan respons kosong; diulang otomatis.",
+        "Panggilan alat ditolak server (nama alat 'hituk_iku' tidak dikenal); diulang otomatis.",
+        "Jawaban tidak memuat rujukan [n] ke konteks."
+      ],
+      "cek": {
+        "kalkulator dipanggil": true,
+        "hasil kalkulator = kunci": true,
+        "angka kunci ada di jawaban": true,
+        "halaman sitasi benar": true
+      }
+    },
+    {
+      "id": "H26",
+      "pertanyaan": "pendapatan total Rp1.250.000.000, terdiri dr ukt rp 900jt, kontrak riset 150 juta, royalti Rp50.000.000, sisanya 150jt dari boptn. capaian iku 9?",
+      "jawaban_benar": "**16%**.",
+      "halaman_kunci": [
+        59
+      ],
+      "harapan_angka": 16.0,
+      "catatan": "Ketahanan: campuran 'Rp1.250.000.000', '900jt', '150 juta', 'Rp50.000.000'. Satuan harus disamakan sebelum dihitung.",
+      "lulus": false,
+      "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m4bk7rfgeat9063z15rm7za5` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199467, Requested 5884. Please try again in 38m31.632s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+    }
+  ]
+}

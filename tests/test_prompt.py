@@ -10,7 +10,7 @@ from pathlib import Path
 
 import pytest
 
-from prompt import NAMA_IKU, build_context, label_iku
+from prompt import NAMA_IKU, SYSTEM_PROMPT, build_context, label_iku
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 CHUNKS = [json.loads(baris) for baris in
@@ -30,6 +30,13 @@ def test_setiap_iku_id_di_chunk_punya_nama_resmi():
 ])
 def test_label_iku(iku_id, harapan):
     assert label_iku(iku_id) == harapan
+
+
+def test_instruksi_sistem_memuat_daftar_iku_pt():
+    # kasus D11: LLM harus tahu bahwa "lulusan bekerja" adalah IKU 2 walau konteksnya hanya IKU 1
+    assert f"- IKU 2: {NAMA_IKU['2']}" in SYSTEM_PROMPT
+    assert f"- IKU 12: {NAMA_IKU['12']}" in SYSTEM_PROMPT
+    assert "LLDIKTI" not in SYSTEM_PROMPT.split("DAFTAR IKU PERGURUAN TINGGI:")[1]
 
 
 def test_konteks_definisi_iku1_memuat_kepanjangan_aee():
